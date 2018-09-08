@@ -1,6 +1,6 @@
 ﻿CREATE TABLE prato(
 	cod_prato SERIAL, 
-	nome VARCHAR(250),
+	nome VARCHAR(250) NOT NULL,
 	status_disponibilidade BIT,
 	preco DECIMAL(10,2),
 	descricao VARCHAR(250),
