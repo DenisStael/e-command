@@ -9,13 +9,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="355.0" layoutX="180.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/logo.JPG" />
-         </image>
+      <ImageView fitHeight="150.0" fitWidth="355.0" layoutX="180.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" >
+          <image>
+              <Image url="img/logo.JPG"></Image>
+          </image>
       </ImageView>
       <Label layoutX="254.0" layoutY="192.0" text="Para continuar, faça o login:">
          <font>
