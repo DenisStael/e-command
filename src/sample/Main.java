@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("TelaInicial/telainicial.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TelaInicial/telaInicial.fxml"));
         stage.setTitle("Ecommand");
         stage.setScene(new Scene(root));
         stage.show();
