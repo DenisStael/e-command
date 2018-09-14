@@ -8,37 +8,37 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
     <children>
-        <Label layoutX="254.0" layoutY="192.0" text="Para continuar, faça o login:">
+        <Label layoutX="254.0" layoutY="223.0" text="Para continuar, faça o login:">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="230.0" onAction="#acaoEmail" promptText="E-mail">
+        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="271.0" onAction="#acaoEmail" promptText="Usuário">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="278.0" onAction="#acaoSenha" promptText="Senha">
+        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="318.0" onAction="#acaoSenha" promptText="Senha">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="341.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="botaoRecuperarSenha" layoutX="295.0" layoutY="389.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
+        <Button fx:id="botaoRecuperarSenha" layoutX="295.0" layoutY="420.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="botaoCadastrar" layoutX="295.0" layoutY="503.0" mnemonicParsing="false" onAction="#acaoCadastrar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
+        <Button fx:id="botaoCadastrar" layoutX="295.0" layoutY="534.0" mnemonicParsing="false" onAction="#acaoCadastrar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Label layoutX="270.0" layoutY="457.0" text="Não possui uma conta?">
+        <Label layoutX="270.0" layoutY="488.0" text="Não possui uma conta?">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
@@ -48,5 +48,15 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
+      <Label fx:id="label" layoutX="331.0" layoutY="193.0" prefHeight="25.0" prefWidth="125.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="193.0" text="ID">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGerente.TelaGerenteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGerente.TelaGerenteController">
    <children>
       <Label layoutX="175.0" layoutY="177.0" text="Bem vindo Gerente, gostaria de fazer o quê?">
          <font>
@@ -19,7 +21,8 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <SplitMenuButton layoutX="260.0" layoutY="241.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="212.0" text="Favor selecione uma opção...">
+      <SplitMenuButton layoutX="260.0" layoutY="241.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="212.0"
+                       text="Favor selecione uma opção...">
         <items>
           <MenuItem mnemonicParsing="false" text="Cadastrar produto" />
             <MenuItem mnemonicParsing="false" text="Montar cardápio" />
