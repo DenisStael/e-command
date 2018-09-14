@@ -1,5 +1,6 @@
 package sample.TelaLogin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import sample.Main;
@@ -38,5 +39,9 @@ public class TelaLoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label.setText(tipo);
+    }
+
+    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+        Main.trocaTela("TelaInicial/telaInicial.fxml");
     }
 }
