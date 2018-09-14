@@ -1,8 +1,14 @@
-CREATE SEQUENCE Usuario_seq;
+﻿CREATE SEQUENCE Usuario_seq;
 
 CREATE TABLE Usuario (
   CodUsuario INT NOT NULL DEFAULT NEXTVAL ('Usuario_seq'),
   Senha VARCHAR(45) NOT NULL,
+  Nome VARCHAR(45) NOT NULL,
+  RG INT NOT NULL,
+  CPF INT NOT NULL,
+  Idade INT NOT NULL,
+  Endereco VARCHAR(50) NOT NULL,
+  Telefone INT NOT NULL,
   PRIMARY KEY (CodUsuario))
 ;
 
@@ -15,12 +21,6 @@ CREATE TABLE Mesa (
 ;
 
 CREATE TABLE Garcom (
-  Nome VARCHAR(45) NOT NULL,
-  RG INT NOT NULL,
-  CPF INT NOT NULL,
-  Idade INT NOT NULL,
-  Endereco VARCHAR(50) NOT NULL,
-  Telefone INT NOT NULL,
   Usuario_CodUsuario INT NOT NULL,
   PRIMARY KEY (Usuario_CodUsuario),
   CONSTRAINT fk_Garcom_Usuario1
@@ -31,12 +31,6 @@ CREATE TABLE Garcom (
 ;
 
 CREATE TABLE Cozinheiro (
-  Nome VARCHAR(45) NOT NULL,
-  RG INT NOT NULL,
-  CPF INT NOT NULL,
-  Idade INT NOT NULL,
-  Endereco VARCHAR(50) NOT NULL,
-  Telefone INT NOT NULL,
   Usuario_CodUsuario INT NOT NULL,
   PRIMARY KEY (Usuario_CodUsuario),
   CONSTRAINT fk_Cozinheiro_Usuario1
@@ -47,12 +41,6 @@ CREATE TABLE Cozinheiro (
 ;
 
 CREATE TABLE Gerente (
-  Nome VARCHAR(45) NOT NULL,
-  RG INT NOT NULL,
-  CPF INT NOT NULL,
-  Idade INT NOT NULL,
-  Endereco VARCHAR(50) NOT NULL,
-  Telefone INT NOT NULL,
   Usuario_CodUsuario INT NOT NULL,
   PRIMARY KEY (Usuario_CodUsuario),
   CONSTRAINT fk_Gerente_Usuario1
