@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaCadastrarProduto.TelaCadastrarProdutoController">
    <children>
       <Button fx:id="botaoVoltar" layoutX="347.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <Button fx:id="botaoCdProduto" layoutX="336.0" layoutY="348.0" mnemonicParsing="false" onAction="#acaoCdProduto" text="Confirmar" />
+      <Button fx:id="botaoCdProduto" layoutX="336.0" layoutY="429.0" mnemonicParsing="false" onAction="#acaoCdProduto" text="Confirmar" />
       <Label layoutX="315.0" layoutY="191.0" text="Cadastrando:">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -24,5 +24,6 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
+      <TextField layoutX="296.0" layoutY="350.0" promptText="Descrição" />
    </children>
 </AnchorPane>
