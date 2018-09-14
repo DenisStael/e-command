@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
     <children>
-        <ImageView fitHeight="150.0" fitWidth="355.0" layoutX="180.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" >
-            <image>
-                <Image url="/sample/img/logo.png"></Image>
-            </image>
-        </ImageView>
         <Label layoutX="254.0" layoutY="192.0" text="Para continuar, faça o login:">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <TextField layoutX="279.0" layoutY="230.0" promptText="E-mail">
+        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="230.0" onAction="#acaoEmail" promptText="E-mail">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <PasswordField layoutX="279.0" layoutY="278.0" promptText="Senha">
+        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="278.0" onAction="#acaoSenha" promptText="Senha">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button layoutX="296.0" layoutY="341.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="341.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="295.0" layoutY="389.0" mnemonicParsing="false" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
+        <Button fx:id="botaoRecuperarSenha" layoutX="295.0" layoutY="389.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="295.0" layoutY="503.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
+        <Button fx:id="botaoCadastrar" layoutX="295.0" layoutY="503.0" mnemonicParsing="false" onAction="#acaoCadastrar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -47,5 +43,10 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

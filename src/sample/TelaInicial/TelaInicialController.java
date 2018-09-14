@@ -1,5 +1,6 @@
 package sample.TelaInicial;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import sample.Main;
 
@@ -9,6 +10,9 @@ public class TelaInicialController {
     @FXML
     private void acaoLogin() throws Exception{
         Main.trocaTela("TelaLogin/telaLogin.fxml");
+    }
+
+    public void acaoMesa(ActionEvent actionEvent) {
     }
 
     /*Método de ação do botão Garçom

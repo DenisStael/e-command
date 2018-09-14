@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2929a3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaInicial.TelaInicialController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaInicial.TelaInicialController">
     <children>
-        <Button fx:id="botaoGerente" layoutX="259.0" layoutY="100.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Gerente" />
-        <Button fx:id="botaoGarcom" layoutX="259.0" layoutY="153.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Garçom" />
-        <Button fx:id="botaoCozinheiro" layoutX="259.0" layoutY="207.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Cozinheiro" />
-        <Button fx:id="botaoCliente" layoutX="259.0" layoutY="261.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="83.0" text="Cliente" />
-        <Label layoutX="114.0" layoutY="14.0" text="Bem vindo ao E-Command" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="botaoGerente" layoutX="321.0" layoutY="265.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Gerente" />
+        <Button fx:id="botaoGarcom" layoutX="321.0" layoutY="319.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Garçom" />
+        <Button fx:id="botaoCozinheiro" layoutX="321.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="35.0" prefWidth="83.0" text="Cozinheiro" />
+        <Button fx:id="botaoMesa" layoutX="321.0" layoutY="422.0" mnemonicParsing="false" onAction="#acaoMesa" prefHeight="35.0" prefWidth="83.0" text="Mesa" />
+        <Label layoutX="222.0" layoutY="166.0" text="Bem vindo ao E-Command" textAlignment="CENTER">
             <font>
-                <Font name="Arial" size="31.0" />
+                <Font name="System Bold" size="22.0" />
             </font>
         </Label>
-        <Label layoutX="250.0" layoutY="64.0" text="Quem é você?" textFill="WHITE">
+        <Label layoutX="296.0" layoutY="223.0" text="Fazer login como:">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font></Label>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
