@@ -23,8 +23,8 @@
         <items>
           <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#acaoCadastrarProduto" onMenuValidation="#acaoCadastrarProduto" text="Cadastrar produto" />
             <MenuItem fx:id="menuMontarCardapio" mnemonicParsing="false" onAction="#acaoMontarCardapio" onMenuValidation="#acaoMontarCardapio" text="Montar cardápio" />
-            <MenuItem mnemonicParsing="false" text="Montar Prato" />
-          <MenuItem mnemonicParsing="false" text="Editar Cardápio" />
+            <MenuItem fx:id="botaoMontarPrato" mnemonicParsing="false" onAction="#acaoMontarPrato" onMenuValidation="#acaoMontarPrato" text="Montar prato" />
+            <MenuItem fx:id="botaoEditarPrato" mnemonicParsing="false" onAction="#acaoEditarPrato" onMenuValidation="#acaoEditarPrato" text="Editar prato" />
         </items>
       </SplitMenuButton>
       <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />

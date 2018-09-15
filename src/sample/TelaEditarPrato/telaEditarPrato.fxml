@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaEditarPrato.TelaEditarPratoController">
+   <children>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="botaoVoltar" layoutX="338.0" layoutY="527.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <TextField fx:id="txtPesquisar" layoutX="288.0" layoutY="229.0" onAction="#acaoPesquisar" promptText="Pesquisar" />
+      <Label layoutX="180.0" layoutY="176.0" text="Selecione o produto que você deseja editar">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="botaoBuscar" layoutX="445.0" layoutY="229.0" mnemonicParsing="false" onAction="#acaoBuscar" text="Buscar" />
+   </children>
+</AnchorPane>

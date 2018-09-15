@@ -26,4 +26,12 @@ public class TelaGerenteController {
     public void acaoMontarCardapio(ActionEvent actionEvent) throws IOException {
         Main.trocaTela("TelaMontarCardapio/telaMontarCardapio.fxml");
     }
+
+    public void acaoMontarPrato(ActionEvent actionEvent) throws IOException {
+        Main.trocaTela("TelaMontarPrato/telaMontarPrato.fxml");
+    }
+
+    public void acaoEditarPrato(ActionEvent actionEvent) throws IOException {
+        Main.trocaTela("TelaEditarPrato/telaEditarPrato.fxml");
+    }
 }

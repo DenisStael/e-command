@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController">
+   <children>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="137.0" layoutY="184.0" text="Para montar o prato, insita as seguintes informações:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="288.0" layoutY="246.0" promptText="Nome do prato" />
+      <TextField layoutX="288.0" layoutY="294.0" promptText="Descrição do prato" />
+      <TextField layoutX="288.0" layoutY="343.0" promptText="Ingredientes/Produtos" />
+      <TextField layoutX="288.0" layoutY="392.0" promptText="Preço R$" />
+      <TextField layoutX="288.0" layoutY="441.0" promptText="Uinidade de medida" />
+      <Button layoutX="249.0" layoutY="492.0" mnemonicParsing="false" style="-fx-background-color: #00b33c;" text="Salvar Prato" textFill="WHITE" />
+      <Button layoutX="388.0" layoutY="492.0" mnemonicParsing="false" style="-fx-background-color: #e60000;" text="Descartar Prato" textFill="WHITE" />
+      <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="543.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+   </children>
+</AnchorPane>
