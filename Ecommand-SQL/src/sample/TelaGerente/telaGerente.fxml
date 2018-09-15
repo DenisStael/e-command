@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGerente.TelaGerenteController">
+   <children>
+      <Label layoutX="175.0" layoutY="177.0" text="Bem vindo Gerente, gostaria de fazer o quê?">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <SplitMenuButton fx:id="menuGerente" layoutX="260.0" layoutY="241.0" mnemonicParsing="false" onAction="#acaoMenuGerente" prefHeight="27.0" prefWidth="212.0" text="Favor selecione uma opção...">
+        <items>
+          <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#acaoCadastrarProduto" onMenuValidation="#acaoCadastrarProduto" text="Cadastrar produto" />
+            <MenuItem fx:id="menuMontarCardapio" mnemonicParsing="false" onAction="#acaoMontarCardapio" onMenuValidation="#acaoMontarCardapio" text="Montar cardápio" />
+            <MenuItem mnemonicParsing="false" text="Montar Prato" />
+          <MenuItem mnemonicParsing="false" text="Editar Cardápio" />
+        </items>
+      </SplitMenuButton>
+      <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Button fx:id="botaoConfirmarMenu" layoutX="328.0" layoutY="444.0" mnemonicParsing="false" onAction="#acaoConfirmarMenu" text="Continuar" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaInicial.TelaInicialController">
+    <children>
+        <Button fx:id="botaoGerente" layoutX="321.0" layoutY="265.0" mnemonicParsing="false" onAction="#acaoBotao"
+                prefHeight="35.0" prefWidth="83.0" text="Gerente" />
+        <Button fx:id="botaoGarcom" layoutX="321.0" layoutY="319.0" mnemonicParsing="false" onAction="#acaoBotao"
+                prefHeight="35.0" prefWidth="83.0" text="Garçom" />
+        <Button fx:id="botaoCozinheiro" layoutX="321.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoBotao"
+                prefHeight="35.0" prefWidth="83.0" text="Cozinheiro" />
+        <Button fx:id="botaoMesa" layoutX="321.0" layoutY="422.0" mnemonicParsing="false" onAction="#acaoMesa"
+                prefHeight="35.0" prefWidth="83.0" text="Mesa" />
+        <Label layoutX="222.0" layoutY="166.0" text="Bem vindo ao E-Command" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label layoutX="296.0" layoutY="223.0" text="Fazer login como:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
