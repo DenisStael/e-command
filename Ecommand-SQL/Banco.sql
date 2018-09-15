@@ -4,11 +4,6 @@ CREATE TABLE Usuario (
   CodUsuario INT NOT NULL DEFAULT NEXTVAL ('Usuario_seq'),
   Senha VARCHAR(45) NOT NULL,
   Nome VARCHAR(45) NOT NULL,
-  RG INT NOT NULL,
-  CPF INT NOT NULL,
-  Idade INT NOT NULL,
-  Endereco VARCHAR(50) NOT NULL,
-  Telefone INT NOT NULL,
   PRIMARY KEY (CodUsuario))
 ;
 
@@ -70,6 +65,15 @@ CREATE TABLE Complemento (
   PRIMARY KEY (CodComplemento))
 ;
 
+CREATE SEQUENCE Produto_seq;
+
+CREATE TABLE Produto (
+  CodProduto INT NOT NULL DEFAULT NEXTVAL ('Produto_seq'),
+  Nome VARCHAR(45) NOT NULL,
+  Descricao VARCHAR(200) NOT NULL,
+  Quantidade INT NOT NULL,
+  PRIMARY KEY (CodProduto)
+);
 
 CREATE SEQUENCE Prato_seq;
 
@@ -80,6 +84,14 @@ CREATE TABLE Prato (
   Quantidade INT NOT NULL,
   PRIMARY KEY (CodPrato))
 ;
+
+CREATE TABLE PratoProdutos (
+  CodPrato INT NOT NULL,
+  CodProduto INT NOT NULL,
+  PRIMARY KEY (CodPrato, CodProduto),
+  FOREIGN KEY (CodPrato) REFERENCES Prato (CodPrato),
+  FOREIGN KEY (CodProduto) REFERENCES Produto (CodProduto)
+);
 
 CREATE TABLE Bebida (
   CodBebida INT NOT NULL,
