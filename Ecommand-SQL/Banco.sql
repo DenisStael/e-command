@@ -4,16 +4,16 @@ CREATE TABLE Usuario (
   CodUsuario INT NOT NULL DEFAULT NEXTVAL ('Usuario_seq'),
   Senha VARCHAR(45) NOT NULL,
   Nome VARCHAR(45) NOT NULL,
-  PRIMARY KEY (CodUsuario))
-;
+  PRIMARY KEY (CodUsuario)
+);
 
 CREATE SEQUENCE Mesa_seq;
 
 CREATE TABLE Mesa (
   idMesa INT NOT NULL DEFAULT NEXTVAL ('Mesa_seq'),
   QtdCadeiras INT NOT NULL,
-  PRIMARY KEY (idMesa))
-;
+  PRIMARY KEY (idMesa)
+);
 
 CREATE TABLE Garcom (
   Usuario_CodUsuario INT NOT NULL,
@@ -22,8 +22,8 @@ CREATE TABLE Garcom (
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
+    ON UPDATE NO ACTION
+);
 
 CREATE TABLE Cozinheiro (
   Usuario_CodUsuario INT NOT NULL,
@@ -32,8 +32,8 @@ CREATE TABLE Cozinheiro (
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
+    ON UPDATE NO ACTION
+);
 
 CREATE TABLE Gerente (
   Usuario_CodUsuario INT NOT NULL,
@@ -42,8 +42,8 @@ CREATE TABLE Gerente (
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
+    ON UPDATE NO ACTION
+);
 
 CREATE SEQUENCE Opcional_seq;
 
@@ -52,8 +52,8 @@ CREATE TABLE Opcional (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
-  PRIMARY KEY (CodOpcional))
-;
+  PRIMARY KEY (CodOpcional)
+);
 
 CREATE SEQUENCE Complemento_seq;
 
@@ -62,8 +62,8 @@ CREATE TABLE Complemento (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
-  PRIMARY KEY (CodComplemento))
-;
+  PRIMARY KEY (CodComplemento)
+);
 
 CREATE SEQUENCE Produto_seq;
 
@@ -82,8 +82,8 @@ CREATE TABLE Prato (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
-  PRIMARY KEY (CodPrato))
-;
+  PRIMARY KEY (CodPrato)
+);
 
 CREATE TABLE PratoProdutos (
   CodPrato INT NOT NULL,
@@ -98,10 +98,11 @@ CREATE TABLE Bebida (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
-  PRIMARY KEY (CodBebida))
-;
+  PRIMARY KEY (CodBebida)
+);
 
 CREATE TABLE Pedido (
+  CodPedido INT NOT NULL,
   Mesa_idMesa INT NOT NULL,
   Complemento_CodComplemento INT NOT NULL,
   Prato_CodPrato1 INT NOT NULL,
@@ -109,8 +110,7 @@ CREATE TABLE Pedido (
   Opcional_CodOpcional INT NOT NULL,
   Garcom_Usuario_CodUsuario INT NOT NULL,
   Cozinheiro_Usuario_CodUsuario INT NOT NULL,
-  PRIMARY KEY (Mesa_idMesa, Garcom_Usuario_CodUsuario)
- ,
+  PRIMARY KEY (CodPedido),
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
     FOREIGN KEY (Mesa_idMesa)
     REFERENCES Mesa (idMesa)
@@ -145,8 +145,8 @@ CREATE TABLE Pedido (
     FOREIGN KEY (Cozinheiro_Usuario_CodUsuario)
     REFERENCES Cozinheiro (Usuario_CodUsuario)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
- ;
+    ON UPDATE NO ACTION
+ );
 
 CREATE INDEX fk_Mesa_has_Prato_Mesa1_idx ON Pedido (Mesa_idMesa);
 CREATE INDEX fk_Mesa_has_Prato_Complemento1_idx ON Pedido (Complemento_CodComplemento);
