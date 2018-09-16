@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Ecommand">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
+    <root id="1">
+      <ServerVersion>9.5.14</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="AulaBanco">
+      <ObjectId>25780</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="ECommand">
+      <ObjectId>26057</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>25</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="4" parent="1" name="postgres">
+      <ObjectId>12373</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="5" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="6" parent="3" name="information_schema">
+      <ObjectId>12081</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="7" parent="3" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="8" parent="3" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="9" parent="3" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="10" parent="3" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="11" parent="3" name="public">
+      <ObjectId>26665</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionTimestamp>2018-09-15.20:45:28.949</IntrospectionTimestamp>
+      <IntrospectionStateNumber>867</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="12" parent="3" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+    </access-method>
+    <access-method id="13" parent="3" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+    </access-method>
+    <access-method id="14" parent="3" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+    </access-method>
+    <access-method id="15" parent="3" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+    </access-method>
+    <access-method id="16" parent="3" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+    </access-method>
+    <access-method id="17" parent="3" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+    </access-method>
+    <sequence id="18" parent="11" name="complemento_seq">
+      <ObjectId>26720</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="19" parent="11" name="mesa_seq">
+      <ObjectId>26674</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="20" parent="11" name="opcional_seq">
+      <ObjectId>26712</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="21" parent="11" name="prato_seq">
+      <ObjectId>26736</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="22" parent="11" name="produto_seq">
+      <ObjectId>26728</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="23" parent="11" name="usuario_seq">
+      <ObjectId>26666</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="24" parent="11" name="bebida">
+      <ObjectId>26759</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="25" parent="11" name="complemento">
+      <ObjectId>26722</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="26" parent="11" name="cozinheiro">
+      <ObjectId>26692</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="27" parent="11" name="garcom">
+      <ObjectId>26682</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="28" parent="11" name="gerente">
+      <ObjectId>26702</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="29" parent="11" name="mesa">
+      <ObjectId>26676</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="30" parent="11" name="opcional">
+      <ObjectId>26714</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="31" parent="11" name="pedido">
+      <ObjectId>26764</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="32" parent="11" name="prato">
+      <ObjectId>26738</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="33" parent="11" name="pratoprodutos">
+      <ObjectId>26744</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="34" parent="11" name="produto">
+      <ObjectId>26730</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <table id="35" parent="11" name="usuario">
+      <ObjectId>26668</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>867</StateNumber>
+    </table>
+    <column id="36" parent="24" name="codbebida">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="37" parent="24" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="24" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="24" name="quantidade">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="40" parent="24" name="bebida_pkey">
+      <ObjectId>26762</ObjectId>
+      <ColNames>codbebida</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="24" name="bebida_pkey">
+      <ObjectId>26763</ObjectId>
+      <ColNames>codbebida</ColNames>
+      <UnderlyingIndexName>bebida_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="42" parent="25" name="codcomplemento">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;complemento_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="43" parent="25" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="44" parent="25" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="45" parent="25" name="quantidade">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="46" parent="25" name="complemento_pkey">
+      <ObjectId>26726</ObjectId>
+      <ColNames>codcomplemento</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="25" name="complemento_pkey">
+      <ObjectId>26727</ObjectId>
+      <ColNames>codcomplemento</ColNames>
+      <UnderlyingIndexName>complemento_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="26" name="usuario_codusuario">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="49" parent="26" name="cozinheiro_pkey">
+      <ObjectId>26695</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="26" name="cozinheiro_pkey">
+      <ObjectId>26696</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <UnderlyingIndexName>cozinheiro_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="51" parent="26" name="fk_cozinheiro_usuario1">
+      <ObjectId>26697</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <RefTableId>26668</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usuario</RefTableName>
+      <RefKeyName>usuario_pkey</RefKeyName>
+      <RefColNames>codusuario</RefColNames>
+    </foreign-key>
+    <column id="52" parent="27" name="usuario_codusuario">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="53" parent="27" name="garcom_pkey">
+      <ObjectId>26685</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="27" name="garcom_pkey">
+      <ObjectId>26686</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <UnderlyingIndexName>garcom_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="55" parent="27" name="fk_garcom_usuario1">
+      <ObjectId>26687</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <RefTableId>26668</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usuario</RefTableName>
+      <RefKeyName>usuario_pkey</RefKeyName>
+      <RefColNames>codusuario</RefColNames>
+    </foreign-key>
+    <column id="56" parent="28" name="usuario_codusuario">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="57" parent="28" name="gerente_pkey">
+      <ObjectId>26705</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="58" parent="28" name="gerente_pkey">
+      <ObjectId>26706</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <UnderlyingIndexName>gerente_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="59" parent="28" name="fk_gerente_usuario1">
+      <ObjectId>26707</ObjectId>
+      <ColNames>usuario_codusuario</ColNames>
+      <RefTableId>26668</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usuario</RefTableName>
+      <RefKeyName>usuario_pkey</RefKeyName>
+      <RefColNames>codusuario</RefColNames>
+    </foreign-key>
+    <column id="60" parent="29" name="idmesa">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;mesa_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="61" parent="29" name="qtdcadeiras">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="62" parent="29" name="mesa_pkey">
+      <ObjectId>26680</ObjectId>
+      <ColNames>idmesa</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="29" name="mesa_pkey">
+      <ObjectId>26681</ObjectId>
+      <ColNames>idmesa</ColNames>
+      <UnderlyingIndexName>mesa_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="64" parent="30" name="codopcional">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;opcional_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="65" parent="30" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="66" parent="30" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="67" parent="30" name="quantidade">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="68" parent="30" name="opcional_pkey">
+      <ObjectId>26718</ObjectId>
+      <ColNames>codopcional</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="69" parent="30" name="opcional_pkey">
+      <ObjectId>26719</ObjectId>
+      <ColNames>codopcional</ColNames>
+      <UnderlyingIndexName>opcional_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="70" parent="31" name="codpedido">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="71" parent="31" name="mesa_idmesa">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="72" parent="31" name="complemento_codcomplemento">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="73" parent="31" name="prato_codprato1">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="74" parent="31" name="bebida_codbebida">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="75" parent="31" name="opcional_codopcional">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="76" parent="31" name="garcom_usuario_codusuario">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="77" parent="31" name="cozinheiro_usuario_codusuario">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="78" parent="31" name="pedido_pkey">
+      <ObjectId>26767</ObjectId>
+      <ColNames>codpedido</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="79" parent="31" name="fk_mesa_has_prato_mesa1_idx">
+      <ObjectId>26804</ObjectId>
+      <ColNames>mesa_idmesa</ColNames>
+    </index>
+    <index id="80" parent="31" name="fk_mesa_has_prato_complemento1_idx">
+      <ObjectId>26805</ObjectId>
+      <ColNames>complemento_codcomplemento</ColNames>
+    </index>
+    <index id="81" parent="31" name="fk_mesa_has_prato_prato1_idx">
+      <ObjectId>26806</ObjectId>
+      <ColNames>prato_codprato1</ColNames>
+    </index>
+    <index id="82" parent="31" name="fk_mesa_has_prato_bebida1_idx">
+      <ObjectId>26807</ObjectId>
+      <ColNames>bebida_codbebida</ColNames>
+    </index>
+    <index id="83" parent="31" name="fk_mesa_has_prato_opcional1_idx">
+      <ObjectId>26808</ObjectId>
+      <ColNames>opcional_codopcional</ColNames>
+    </index>
+    <index id="84" parent="31" name="fk_pedido_garcom1_idx">
+      <ObjectId>26809</ObjectId>
+      <ColNames>garcom_usuario_codusuario</ColNames>
+    </index>
+    <index id="85" parent="31" name="fk_pedido_cozinheiro1_idx">
+      <ObjectId>26810</ObjectId>
+      <ColNames>cozinheiro_usuario_codusuario</ColNames>
+    </index>
+    <key id="86" parent="31" name="pedido_pkey">
+      <ObjectId>26768</ObjectId>
+      <ColNames>codpedido</ColNames>
+      <UnderlyingIndexName>pedido_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="87" parent="31" name="fk_mesa_has_prato_mesa1">
+      <ObjectId>26769</ObjectId>
+      <ColNames>mesa_idmesa</ColNames>
+      <RefTableId>26676</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>mesa</RefTableName>
+      <RefKeyName>mesa_pkey</RefKeyName>
+      <RefColNames>idmesa</RefColNames>
+    </foreign-key>
+    <foreign-key id="88" parent="31" name="fk_mesa_has_prato_complemento1">
+      <ObjectId>26774</ObjectId>
+      <ColNames>complemento_codcomplemento</ColNames>
+      <RefTableId>26722</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>complemento</RefTableName>
+      <RefKeyName>complemento_pkey</RefKeyName>
+      <RefColNames>codcomplemento</RefColNames>
+    </foreign-key>
+    <foreign-key id="89" parent="31" name="fk_mesa_has_prato_prato1">
+      <ObjectId>26779</ObjectId>
+      <ColNames>prato_codprato1</ColNames>
+      <RefTableId>26738</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>prato</RefTableName>
+      <RefKeyName>prato_pkey</RefKeyName>
+      <RefColNames>codprato</RefColNames>
+    </foreign-key>
+    <foreign-key id="90" parent="31" name="fk_mesa_has_prato_bebida1">
+      <ObjectId>26784</ObjectId>
+      <ColNames>bebida_codbebida</ColNames>
+      <RefTableId>26759</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>bebida</RefTableName>
+      <RefKeyName>bebida_pkey</RefKeyName>
+      <RefColNames>codbebida</RefColNames>
+    </foreign-key>
+    <foreign-key id="91" parent="31" name="fk_mesa_has_prato_opcional1">
+      <ObjectId>26789</ObjectId>
+      <ColNames>opcional_codopcional</ColNames>
+      <RefTableId>26714</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>opcional</RefTableName>
+      <RefKeyName>opcional_pkey</RefKeyName>
+      <RefColNames>codopcional</RefColNames>
+    </foreign-key>
+    <foreign-key id="92" parent="31" name="fk_pedido_garcom1">
+      <ObjectId>26794</ObjectId>
+      <ColNames>garcom_usuario_codusuario</ColNames>
+      <RefTableId>26682</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>garcom</RefTableName>
+      <RefKeyName>garcom_pkey</RefKeyName>
+      <RefColNames>usuario_codusuario</RefColNames>
+    </foreign-key>
+    <foreign-key id="93" parent="31" name="fk_pedido_cozinheiro1">
+      <ObjectId>26799</ObjectId>
+      <ColNames>cozinheiro_usuario_codusuario</ColNames>
+      <RefTableId>26692</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>cozinheiro</RefTableName>
+      <RefKeyName>cozinheiro_pkey</RefKeyName>
+      <RefColNames>usuario_codusuario</RefColNames>
+    </foreign-key>
+    <column id="94" parent="32" name="codprato">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;prato_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="95" parent="32" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="96" parent="32" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="97" parent="32" name="quantidade">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="98" parent="32" name="prato_pkey">
+      <ObjectId>26742</ObjectId>
+      <ColNames>codprato</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="99" parent="32" name="prato_pkey">
+      <ObjectId>26743</ObjectId>
+      <ColNames>codprato</ColNames>
+      <UnderlyingIndexName>prato_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="100" parent="33" name="codprato">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="101" parent="33" name="codproduto">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="102" parent="33" name="pratoprodutos_pkey">
+      <ObjectId>26747</ObjectId>
+      <ColNames>codprato
+codproduto</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="103" parent="33" name="pratoprodutos_pkey">
+      <ObjectId>26748</ObjectId>
+      <ColNames>codprato
+codproduto</ColNames>
+      <UnderlyingIndexName>pratoprodutos_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="104" parent="33" name="pratoprodutos_codprato_fkey">
+      <ObjectId>26749</ObjectId>
+      <ColNames>codprato</ColNames>
+      <RefTableId>26738</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>prato</RefTableName>
+      <RefKeyName>prato_pkey</RefKeyName>
+      <RefColNames>codprato</RefColNames>
+    </foreign-key>
+    <foreign-key id="105" parent="33" name="pratoprodutos_codproduto_fkey">
+      <ObjectId>26754</ObjectId>
+      <ColNames>codproduto</ColNames>
+      <RefTableId>26730</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>produto</RefTableName>
+      <RefKeyName>produto_pkey</RefKeyName>
+      <RefColNames>codproduto</RefColNames>
+    </foreign-key>
+    <column id="106" parent="34" name="codproduto">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;produto_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="107" parent="34" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="108" parent="34" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="109" parent="34" name="quantidade">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="110" parent="34" name="produto_pkey">
+      <ObjectId>26734</ObjectId>
+      <ColNames>codproduto</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="111" parent="34" name="produto_pkey">
+      <ObjectId>26735</ObjectId>
+      <ColNames>codproduto</ColNames>
+      <UnderlyingIndexName>produto_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="112" parent="35" name="codusuario">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <DefaultExpression>nextval(&apos;usuario_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="113" parent="35" name="senha">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="114" parent="35" name="nome">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>867</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="115" parent="35" name="usuario_pkey">
+      <ObjectId>26672</ObjectId>
+      <ColNames>codusuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="116" parent="35" name="usuario_pkey">
+      <ObjectId>26673</ObjectId>
+      <ColNames>codusuario</ColNames>
+      <UnderlyingIndexName>usuario_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
