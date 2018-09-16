@@ -1,37 +1,36 @@
 package sample.TelaGerente;
 
-import javafx.event.ActionEvent;
 import sample.Main;
-
 import java.io.IOException;
 
 public class TelaGerenteController {
 
-    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+    public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
 
-    public void acaoConfirmarMenu(ActionEvent actionEvent) throws IOException {
-
+    public void acaoCadastrarCozinheiro() throws IOException {
+        Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
-    public void acaoMenuGerente(ActionEvent actionEvent) {
+    public void acaoCadastrarGarcom() throws IOException {
+        Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
-    public void acaoCadastrarProduto(ActionEvent actionEvent) throws IOException {
+    public void acaoCadastrarProduto() throws IOException {
         Main.trocaTela("TelaCadastrarProduto/telaCadastrarProduto.fxml");
 
     }
 
-    public void acaoMontarCardapio(ActionEvent actionEvent) throws IOException {
+    public void acaoMontarCardapio() throws IOException {
         Main.trocaTela("TelaMontarCardapio/telaMontarCardapio.fxml");
     }
 
-    public void acaoMontarPrato(ActionEvent actionEvent) throws IOException {
+    public void acaoMontarPrato() throws IOException {
         Main.trocaTela("TelaMontarPrato/telaMontarPrato.fxml");
     }
 
-    public void acaoEditarPrato(ActionEvent actionEvent) throws IOException {
+    public void acaoEditarPrato() throws IOException {
         Main.trocaTela("TelaEditarPrato/telaEditarPrato.fxml");
     }
 }

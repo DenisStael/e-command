@@ -1,6 +1,5 @@
 package sample.TelaLogin;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import sample.Main;
@@ -14,7 +13,7 @@ public class TelaLoginController implements Initializable {
     @FXML
     private Label label;
 
-    public static String tipo = new String();
+    public static String tipo;
 
     public void acaoLogar() throws IOException {
         if(tipo == "Gerente")
@@ -24,24 +23,15 @@ public class TelaLoginController implements Initializable {
     }
 
     public void acaoRecuperarSenha() {
-
-    }
-    public void acaoEmail() {
+        //método não implementado ainda
     }
 
-    public void acaoSenha() {
-    }
-
-    public void acaoCadastrar() throws IOException {
-        Main.trocaTela("TelaCadastro/telaCadastro.fxml");
+    public void acaoVoltar() throws IOException {
+        Main.trocaTela("TelaInicial/telaInicial.fxml");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label.setText(tipo);
-    }
-
-    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
-        Main.trocaTela("TelaInicial/telaInicial.fxml");
     }
 }

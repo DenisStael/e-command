@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -13,12 +12,12 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="271.0" onAction="#acaoEmail" promptText="Usuário">
+        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="271.0" promptText="Usuário">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="318.0" onAction="#acaoSenha" promptText="Senha">
+        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="318.0" promptText="Senha">
             <font>
                 <Font size="13.0" />
             </font>
@@ -33,16 +32,6 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="botaoCadastrar" layoutX="296.0" layoutY="502.0" mnemonicParsing="false" onAction="#acaoCadastrar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-        <Label layoutX="270.0" layoutY="464.0" text="Não possui uma conta?">
-            <font>
-                <Font name="System Bold" size="16.0" />
-            </font>
-        </Label>
       <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
          <image>
             <Image url="@../img/logo.png" />
@@ -58,6 +47,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="334.0" layoutY="544.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Button fx:id="botaoVoltar" layoutX="334.0" layoutY="498.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
     </children>
 </AnchorPane>

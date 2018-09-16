@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.web.*?>
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -25,9 +24,10 @@
             <MenuItem fx:id="menuMontarCardapio" mnemonicParsing="false" onAction="#acaoMontarCardapio" onMenuValidation="#acaoMontarCardapio" text="Montar cardápio" />
             <MenuItem fx:id="botaoMontarPrato" mnemonicParsing="false" onAction="#acaoMontarPrato" onMenuValidation="#acaoMontarPrato" text="Montar prato" />
             <MenuItem fx:id="botaoEditarPrato" mnemonicParsing="false" onAction="#acaoEditarPrato" onMenuValidation="#acaoEditarPrato" text="Editar prato" />
+            <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarCozinheiro" text="Cadastrar Cozinheiro" />
+            <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarGarcom" text="Cadastrar Garçom" />
         </items>
       </SplitMenuButton>
       <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <Button fx:id="botaoConfirmarMenu" layoutX="328.0" layoutY="444.0" mnemonicParsing="false" onAction="#acaoConfirmarMenu" text="Continuar" />
    </children>
 </AnchorPane>

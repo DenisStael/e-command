@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -13,20 +12,19 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtCdEmail" layoutX="288.0" layoutY="242.0" onAction="#acaoCdEmail" promptText="E-mail" />
+      <TextField fx:id="txtNome" layoutX="288.0" layoutY="259.0" promptText="Nome" />
       <Label layoutX="175.0" layoutY="192.0" text="Para continuar insira as informações abaixo:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtConfirmarCdEmail" layoutX="288.0" layoutY="288.0" onAction="#acaoConfirmarCdEmail" promptText="Confirme o e-mail" />
-      <PasswordField fx:id="txtCriarSenha" layoutX="288.0" layoutY="332.0" onAction="#acaoCriarSenha" promptText="Senha" />
-      <PasswordField fx:id="txtConfirmarCriarSenha" layoutX="288.0" layoutY="378.0" onAction="#acaoConfirmarCriarSenha" promptText="Confirme a senha" />
-      <Button fx:id="botaoEnviarCadastro" layoutX="298.0" layoutY="432.0" mnemonicParsing="false" onAction="#acaoEnviarCadastro" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
+      <PasswordField fx:id="txtCriarSenha" layoutX="288.0" layoutY="308.0" promptText="Senha" />
+      <PasswordField fx:id="txtConfirmarCriarSenha" layoutX="288.0" layoutY="354.0" promptText="Confirme a senha" />
+      <Button fx:id="botaoEnviarCadastro" layoutX="298.0" layoutY="408.0" mnemonicParsing="false" onAction="#acaoEnvioCadastro" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="botaoVoltar" layoutX="336.0" layoutY="507.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Button fx:id="botaoVoltar" layoutX="336.0" layoutY="483.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
    </children>
 </AnchorPane>
