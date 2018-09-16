@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -18,7 +17,7 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <SplitMenuButton fx:id="menuGerente" layoutX="260.0" layoutY="241.0" mnemonicParsing="false" onAction="#acaoMenuGerente" prefHeight="27.0" prefWidth="212.0" text="Favor selecione uma opção...">
+      <SplitMenuButton fx:id="menuGerente" layoutX="260.0" layoutY="241.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="212.0" text="Favor selecione uma opção...">
         <items>
           <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#acaoCadastrarProduto" onMenuValidation="#acaoCadastrarProduto" text="Cadastrar produto" />
             <MenuItem fx:id="menuMontarCardapio" mnemonicParsing="false" onAction="#acaoMontarCardapio" onMenuValidation="#acaoMontarCardapio" text="Montar cardápio" />

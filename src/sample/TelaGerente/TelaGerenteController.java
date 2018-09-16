@@ -1,6 +1,8 @@
 package sample.TelaGerente;
 
 import sample.Main;
+import sample.TelaCadastro.TelaCadastroController;
+
 import java.io.IOException;
 
 public class TelaGerenteController {
@@ -10,16 +12,17 @@ public class TelaGerenteController {
     }
 
     public void acaoCadastrarCozinheiro() throws IOException {
+        TelaCadastroController.tipo = "Cozinheiro";
         Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
     public void acaoCadastrarGarcom() throws IOException {
+        TelaCadastroController.tipo = "Garçom";
         Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
     public void acaoCadastrarProduto() throws IOException {
         Main.trocaTela("TelaCadastrarProduto/telaCadastrarProduto.fxml");
-
     }
 
     public void acaoMontarCardapio() throws IOException {

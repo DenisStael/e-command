@@ -1,16 +1,20 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 
 public class Main extends Application {
 
     public static Stage stage; //Stage principal
     public static Class thisClass; //Atributo Classe
+    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
 
     //Construtor da classe para definir o método getClass()
     public Main(){
@@ -25,6 +29,16 @@ public class Main extends Application {
         stage.setTitle("Ecommand");
         stage.setScene(new Scene(root));
         stage.show();
+        conexaoBanco.conectaBanco();//Realiza a conexão com o banco de dados
+
+        //Chamada do método ao clicar no botão de fechar a tela
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                conexaoBanco.desconectaBanco();//Realiza a desconexão do banco de dados
+                stage.close();//Fecha a aplicação
+            }
+        });
     }
 
     /*Método para alterar Scenes utilizando o mesmo Stage
@@ -41,5 +55,4 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

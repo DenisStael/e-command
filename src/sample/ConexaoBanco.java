@@ -1,26 +1,36 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
+import javax.swing.*;
+import java.sql.*;
 
 public class ConexaoBanco {
-    private static final String url = "jdbc:postgresql://localhost:5432/ECommand";
-    private static final String driver = "org.postgresql.Driver";
-    private static final String user = "postgres";
-    private static final String pass = "admin";
+    private String url = "jdbc:postgresql://localhost:5432/ECommand";
+    private String driver = "org.postgresql.Driver";
+    private String user = "postgres";
+    private String pass = "admin";
+    public static Connection connection;
+    public Statement stmt;
+    public ResultSet rs;
 
-    public static void consultaBanco(String sql){
+    public void conectaBanco(){
+        System.setProperty("jdbc.Drivers", driver);
         try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, user, pass);
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            rs.close();
-            connection.close();
-        } catch (ClassNotFoundException | SQLException ex) {
+            connection = DriverManager.getConnection(url, user, pass);
+            JOptionPane.showMessageDialog(null, "Banco conectado com sucesso!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o Banco!\n Erro: "+e.getMessage());
+            Main.stage.close();
         }
     }
+
+    public void desconectaBanco(){
+        try {
+            connection.close();
+            JOptionPane.showMessageDialog(null, "Banco desconectado!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao desconectar do Banco!\n Erro: "+e.getMessage());
+        }
+
+    }
+
 }

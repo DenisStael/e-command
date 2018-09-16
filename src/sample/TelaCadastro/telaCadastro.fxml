@@ -18,8 +18,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtCriarSenha" layoutX="288.0" layoutY="308.0" promptText="Senha" />
-      <PasswordField fx:id="txtConfirmarCriarSenha" layoutX="288.0" layoutY="354.0" promptText="Confirme a senha" />
+      <PasswordField fx:id="txtSenha" layoutX="288.0" layoutY="308.0" promptText="Senha" />
+      <PasswordField fx:id="txtConfirmaSenha" layoutX="288.0" layoutY="354.0" promptText="Confirme a senha" />
       <Button fx:id="botaoEnviarCadastro" layoutX="298.0" layoutY="408.0" mnemonicParsing="false" onAction="#acaoEnvioCadastro" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
