@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -12,7 +13,7 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <TextField fx:id="txtEmail" layoutX="279.0" layoutY="271.0" promptText="Usuário">
+        <TextField fx:id="txtUsuario" layoutX="279.0" layoutY="271.0" promptText="Usuário">
             <font>
                 <Font size="13.0" />
             </font>
@@ -22,12 +23,12 @@
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="397.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="botaoRecuperarSenha" layoutX="295.0" layoutY="420.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
+        <Button fx:id="botaoRecuperarSenha" layoutX="296.0" layoutY="442.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -48,5 +49,10 @@
          </font>
       </Label>
       <Button fx:id="botaoVoltar" layoutX="334.0" layoutY="498.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Label fx:id="labelErroLogin" layoutX="195.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" textFill="#ae1313">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
