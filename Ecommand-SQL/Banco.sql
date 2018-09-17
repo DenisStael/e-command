@@ -52,6 +52,7 @@ CREATE TABLE Opcional (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (CodOpcional))
 ;
 
@@ -62,6 +63,7 @@ CREATE TABLE Complemento (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (CodComplemento))
 ;
 
@@ -81,7 +83,7 @@ CREATE TABLE Prato (
   CodPrato INT NOT NULL DEFAULT NEXTVAL ('Prato_seq'),
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
-  Quantidade INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (CodPrato))
 ;
 
@@ -98,6 +100,7 @@ CREATE TABLE Bebida (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (CodBebida))
 ;
 
