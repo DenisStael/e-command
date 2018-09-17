@@ -2,12 +2,8 @@
 
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController">
    <children>

@@ -44,7 +44,6 @@ public class Main extends Application {
     /*Método para alterar Scenes utilizando o mesmo Stage
       com passagem de parâmetro de uma string referenciando o nome
       do arquivo .fxml que será carregado.*/
-
     public static void trocaTela(String tela) throws IOException {
         Parent root = FXMLLoader.load(thisClass.getResource(tela));
         Scene scene = new Scene(root);

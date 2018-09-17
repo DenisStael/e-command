@@ -1,27 +1,20 @@
 package sample.TelaEditarPrato;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import sample.Main;
-
 import java.io.IOException;
 
 public class TelaEditarPratoController {
-    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+    public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
-    public void acaoPesquisar(ActionEvent actionEvent) {
-    }
-
-    public void acaoBuscar(ActionEvent actionEvent) {
+    public void acaoBuscar() {
     }
 
     /*private ObservableList<Prato> busca(){
         ObservableList<Prato> pratoPesquisa = (ObservableList<Prato>) FXCollections.observableArrayList();
 
-        return pratoPesquisa; */
-
-    }
+        return pratoPesquisa;
+    }*/
+}
 

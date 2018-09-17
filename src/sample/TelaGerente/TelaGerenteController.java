@@ -2,7 +2,6 @@ package sample.TelaGerente;
 
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
-
 import java.io.IOException;
 
 public class TelaGerenteController {

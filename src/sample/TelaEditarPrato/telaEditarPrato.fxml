@@ -2,12 +2,8 @@
 
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaEditarPrato.TelaEditarPratoController">
    <children>
@@ -17,7 +13,7 @@
          </image>
       </ImageView>
       <Button fx:id="botaoVoltar" layoutX="338.0" layoutY="527.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <TextField fx:id="txtPesquisar" layoutX="288.0" layoutY="229.0" onAction="#acaoPesquisar" promptText="Pesquisar" />
+      <TextField fx:id="txtPesquisar" layoutX="288.0" layoutY="229.0" promptText="Pesquisar" />
       <Label layoutX="180.0" layoutY="176.0" text="Selecione o produto que você deseja editar">
          <font>
             <Font name="System Bold" size="18.0" />
