@@ -5,25 +5,70 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController">
-   <children>
-      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="137.0" layoutY="184.0" text="Para montar o prato, insita as seguintes informações:">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField layoutX="288.0" layoutY="246.0" promptText="Nome do prato" />
-      <TextField layoutX="288.0" layoutY="294.0" promptText="Descrição do prato" />
-      <TextField layoutX="288.0" layoutY="343.0" promptText="Ingredientes/Produtos" />
-      <TextField layoutX="288.0" layoutY="392.0" promptText="Preço R$" />
-      <TextField layoutX="288.0" layoutY="441.0" promptText="Uinidade de medida" />
-      <Button layoutX="249.0" layoutY="492.0" mnemonicParsing="false" style="-fx-background-color: #00b33c;" text="Salvar Prato" textFill="WHITE" />
-      <Button layoutX="388.0" layoutY="492.0" mnemonicParsing="false" style="-fx-background-color: #e60000;" text="Descartar Prato" textFill="WHITE" />
-      <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="543.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.19597989949748743" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="596.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="722.0" style="-fx-background-color: #5353c6;">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="225.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
+         <children>
+            <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="224.0" prefHeight="200.0" prefWidth="707.0">
+              <columns>
+                <TableColumn fx:id="colunaAddProd" prefWidth="125.0" text="Produto" />
+                <TableColumn fx:id="colunaAddCod" prefWidth="61.0" text="Código" />
+                  <TableColumn fx:id="colunaAddDescricao" prefWidth="463.0" text="Descrição" />
+              </columns>
+            </TableView>
+            <TextField fx:id="txtNomePrato" layoutX="96.0" layoutY="17.0" />
+            <TextField fx:id="txtPreco" layoutX="351.0" layoutY="17.0" prefHeight="25.0" prefWidth="85.0" />
+            <TextArea fx:id="txtDescricao" layoutX="96.0" layoutY="52.0" prefHeight="113.0" prefWidth="340.0" />
+            <Label layoutX="23.0" layoutY="19.0" text="Nome:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="277.0" layoutY="17.0" text="Preço:   R$">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="52.0" text="Descrição:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView layoutX="454.0" layoutY="17.0" prefHeight="200.0" prefWidth="247.0">
+              <columns>
+                <TableColumn fx:id="colunaProdutos" prefWidth="157.0" text="Produtos" />
+                <TableColumn fx:id="colunaCodigoProdutos" prefWidth="89.0" text="Código " />
+              </columns>
+            </TableView>
+            <TextField fx:id="txtAdicionaProduto" layoutX="153.0" layoutY="182.0" promptText="Código do Produto" />
+            <Label layoutX="14.0" layoutY="184.0" text="Adicionar Produtos:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="botaoVoltar" layoutX="54.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoCancelar" layoutX="321.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoCancelar" text="Cancelar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoSalvar" layoutX="568.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoSalvar" text="Salvar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

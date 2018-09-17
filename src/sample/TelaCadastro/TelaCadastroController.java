@@ -36,7 +36,9 @@ public class TelaCadastroController {
                 Statement stmt = conexaoBanco.connection.createStatement();
                 ResultSet rs = stmt.executeQuery("select count(codusuario) qtde from usuario;");
                 int qtde = 0;
-                if(rs.next()) qtde = rs.getInt("qtde");
+                if(rs.next()) {
+                    qtde = rs.getInt("qtde");
+                }
                 rs.close();
                 PreparedStatement ps2;
                 if(tipo.equals("Cozinheiro")){
