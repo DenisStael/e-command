@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +43,7 @@ public class TelaLoginController implements Initializable {
             if ((txtUsuario.getText().equals("admin")) && (txtSenha.getText().equals("admin"))) {
                 Main.trocaTela("TelaGerente/telaGerente.fxml");
             } else {
-                labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                usuarioIncorreto();
             }
         } else if (tipo == "Garçom") {
             try {
@@ -56,9 +55,9 @@ public class TelaLoginController implements Initializable {
                         if(txtUsuario.getText().equals(rs.getString("nome"))
                                 && txtSenha.getText().equals(rs.getString("senha"))){
                             Main.trocaTela("TelaGarcom/telaGarcom.fxml");
-                        } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                        } else usuarioIncorreto();
                     }
-                } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                } else usuarioIncorreto();
 
                 rs.close();
             } catch (SQLException e) {
@@ -75,14 +74,20 @@ public class TelaLoginController implements Initializable {
                         if(txtUsuario.getText().equals(rs.getString("nome"))
                                 && txtSenha.getText().equals(rs.getString("senha"))){
                             Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
-                        } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                        } else usuarioIncorreto();
                     }
-                } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                } else usuarioIncorreto();
                 rs.close();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro:\n"+e);
             }
         }
+    }
+
+    private void usuarioIncorreto(){
+        labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+        txtUsuario.clear();
+        txtSenha.clear();
     }
 
     public void acaoRecuperarSenha() {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -15,14 +14,19 @@
                   <Image url="@../img/logo.png" />
                </image>
             </ImageView>
+            <Label layoutX="304.0" layoutY="39.0" text="Cadastro de Pratos" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
          <children>
-            <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="224.0" prefHeight="200.0" prefWidth="707.0">
+            <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="255.0" prefHeight="169.0" prefWidth="707.0">
               <columns>
-                <TableColumn fx:id="colunaAddProd" prefWidth="125.0" resizable="false" text="Produto" />
-                <TableColumn fx:id="colunaAddCod" prefWidth="97.0" resizable="false" text="Código" />
-                  <TableColumn fx:id="colunaAddDescricao" prefWidth="427.0" resizable="false" text="Descrição" />
+                <TableColumn fx:id="colunaProd" prefWidth="134.0" resizable="false" text="Produtos" />
+                <TableColumn fx:id="colunaCod" prefWidth="88.0" resizable="false" text="Código" />
+                  <TableColumn fx:id="colunaDescricao" prefWidth="427.0" resizable="false" text="Descrição" />
               </columns>
             </TableView>
             <TextField fx:id="txtNomePrato" layoutX="96.0" layoutY="17.0" />
@@ -43,10 +47,10 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TableView layoutX="454.0" layoutY="17.0" prefHeight="200.0" prefWidth="247.0">
+            <TableView fx:id="tabelaAddProdutos" layoutX="454.0" layoutY="17.0" prefHeight="200.0" prefWidth="247.0">
               <columns>
-                <TableColumn fx:id="colunaProdutos" prefWidth="157.0" resizable="false" text="Produtos" />
-                <TableColumn fx:id="colunaCodigoProdutos" prefWidth="89.0" resizable="false" text="Código " />
+                <TableColumn fx:id="colunaAddProd" prefWidth="157.0" resizable="false" text="Produtos" />
+                <TableColumn fx:id="colunaAddCod" prefWidth="89.0" resizable="false" text="Código " />
               </columns>
             </TableView>
             <TextField fx:id="txtAdicionaProduto" layoutX="153.0" layoutY="182.0" promptText="Código do Produto" />
@@ -55,21 +59,27 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="botaoVoltar" layoutX="54.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
+            <Button fx:id="botaoVoltar" layoutX="66.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="botaoCancelar" layoutX="321.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoCancelar" text="Cancelar">
+            <Button fx:id="botaoCancelar" layoutX="309.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoCancelar" style="-fx-background-color: #ff3333;" text="Cancelar" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="botaoSalvar" layoutX="568.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoSalvar" text="Salvar">
+            <Button fx:id="botaoSalvar" layoutX="568.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoSalvar" style="-fx-background-color: #47d147;" text="Salvar" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Button layoutX="324.0" layoutY="182.0" mnemonicParsing="false" text="Adicionar" />
+            <Label layoutX="15.0" layoutY="227.0" text="Produtos em estoque:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </items>
 </SplitPane>
