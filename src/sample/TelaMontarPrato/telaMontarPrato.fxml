@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -74,12 +75,13 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="324.0" layoutY="182.0" mnemonicParsing="false" text="Adicionar" />
+            <Button layoutX="324.0" layoutY="182.0" mnemonicParsing="false" onAction="#acaoAdicionaProduto" text="Adicionar" />
             <Label layoutX="15.0" layoutY="227.0" text="Produtos em estoque:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Label fx:id="labelProd" layoutX="161.0" layoutY="209.0" textFill="#fc0a0a" />
          </children></AnchorPane>
   </items>
 </SplitPane>

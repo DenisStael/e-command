@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Produto;
@@ -28,6 +29,8 @@ public class TelaMontarPratoController implements Initializable {
     TableColumn<Produto, Integer> colunaAddCod, colunaCod;
     @FXML
     TableView<Produto> tabelaProdutos, tabelaAddProdutos;
+    @FXML
+    Label labelProd;
     ObservableList<Produto> listaProdutos = FXCollections.observableArrayList();
     ObservableList<Produto> listaAddProdutos = FXCollections.observableArrayList();
 
@@ -41,12 +44,31 @@ public class TelaMontarPratoController implements Initializable {
     }
 
     public void acaoSalvar(){
-        /*try {
+        try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement("");
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
+    }
+
+    public void acaoAdicionaProduto(){
+        if(!txtAdicionaProduto.getText().isEmpty()){
+            try {
+                int cod = Integer.parseInt(txtAdicionaProduto.getText());
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,codproduto from produto where codproduto = ?;");
+                ps.setInt(1, cod);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    listaAddProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto")));
+                } else labelProd.setText("Produto não encontrado!");
+                colunaAddProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
+                colunaAddCod.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
+                tabelaAddProdutos.setItems(listaAddProdutos);
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Digite apenas números!\n"+e);
+            }
+        } else System.out.println("Nada");
     }
 
     @Override
