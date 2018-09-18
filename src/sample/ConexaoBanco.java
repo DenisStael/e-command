@@ -9,7 +9,7 @@ public class ConexaoBanco {
     private String url = "jdbc:postgresql://localhost:5432/ECommand";//Caminho da database PostgresSQL
     private String driver = "org.postgresql.Driver";//Driver do Postgres
     private String user = "postgres";//Usuário configurado no Postgres
-    private String pass = "amin";//Senha de acesso ao Postgres
+    private String pass = "admin";//Senha de acesso ao Postgres
     public static Connection connection;//Variável de conexão do Banco
 
     public void conectaBanco(){

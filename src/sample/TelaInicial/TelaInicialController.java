@@ -23,11 +23,11 @@ public class TelaInicialController{
 
             //Verificação do ID de qual botão foi acionado para passar a informação do tipo de usuário à tela Login
             if(botao.equals(botaoGerente))
-                TelaLoginController.tipo = "Gerente";
+                TelaLoginController.setTipo("Gerente");
             else if(botao.equals(botaoGarcom))
-                TelaLoginController.tipo = "Garçom";
+                TelaLoginController.setTipo("Garçom");
             else if(botao.equals(botaoCozinheiro))
-                TelaLoginController.tipo = "Cozinheiro";
+                TelaLoginController.setTipo("Cozinheiro");
 
             //Chamada da Scene telaLogin
             Main.trocaTela("TelaLogin/telaLogin.fxml");

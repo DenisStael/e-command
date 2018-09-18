@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.19597989949748743" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="596.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.19597989949748743" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="596.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarPrato.TelaMontarPratoController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="722.0" style="-fx-background-color: #5353c6;">
          <children>
@@ -19,9 +20,9 @@
          <children>
             <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="224.0" prefHeight="200.0" prefWidth="707.0">
               <columns>
-                <TableColumn fx:id="colunaAddProd" prefWidth="125.0" text="Produto" />
-                <TableColumn fx:id="colunaAddCod" prefWidth="61.0" text="Código" />
-                  <TableColumn fx:id="colunaAddDescricao" prefWidth="463.0" text="Descrição" />
+                <TableColumn fx:id="colunaAddProd" prefWidth="125.0" resizable="false" text="Produto" />
+                <TableColumn fx:id="colunaAddCod" prefWidth="97.0" resizable="false" text="Código" />
+                  <TableColumn fx:id="colunaAddDescricao" prefWidth="427.0" resizable="false" text="Descrição" />
               </columns>
             </TableView>
             <TextField fx:id="txtNomePrato" layoutX="96.0" layoutY="17.0" />
@@ -44,8 +45,8 @@
             </Label>
             <TableView layoutX="454.0" layoutY="17.0" prefHeight="200.0" prefWidth="247.0">
               <columns>
-                <TableColumn fx:id="colunaProdutos" prefWidth="157.0" text="Produtos" />
-                <TableColumn fx:id="colunaCodigoProdutos" prefWidth="89.0" text="Código " />
+                <TableColumn fx:id="colunaProdutos" prefWidth="157.0" resizable="false" text="Produtos" />
+                <TableColumn fx:id="colunaCodigoProdutos" prefWidth="89.0" resizable="false" text="Código " />
               </columns>
             </TableView>
             <TextField fx:id="txtAdicionaProduto" layoutX="153.0" layoutY="182.0" promptText="Código do Produto" />

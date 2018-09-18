@@ -1,19 +1,22 @@
 package sample.TelaLogin;
 
-import javafx.application.Preloader;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sample.ConexaoBanco;
 import sample.Main;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import static javafx.application.Preloader.*;
-
 public class TelaLoginController implements Initializable {
+
+    ConexaoBanco conexaoBanco = new ConexaoBanco();
 
     @FXML
     private Label label;
@@ -24,10 +27,17 @@ public class TelaLoginController implements Initializable {
     @FXML
     private TextField txtUsuario;
 
-
     @FXML
     private Label labelErroLogin;
-    public static String tipo;
+    private static String tipo;
+
+    public static String getTipo() {
+        return tipo;
+    }
+
+    public static void setTipo(String tipo) {
+        TelaLoginController.tipo = tipo;
+    }
 
     public void acaoLogar() throws IOException {
         if (tipo == "Gerente") {
@@ -37,10 +47,41 @@ public class TelaLoginController implements Initializable {
                 labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
             }
         } else if (tipo == "Garçom") {
-            System.out.println("Métodos ainda não implementados");
+            try {
+                Statement stmt = conexaoBanco.connection.createStatement();
+                ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, garcom g where" +
+                        " u.codusuario = g.usuario_codusuario;");
+                if(rs.next()){
+                    while(rs.next()){
+                        if(txtUsuario.getText().equals(rs.getString("nome"))
+                                && txtSenha.getText().equals(rs.getString("senha"))){
+                            Main.trocaTela("TelaGarcom/telaGarcom.fxml");
+                        } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                    }
+                } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
         } else if (tipo == "Cozinheiro") {
-            System.out.println("Métodos ainda não implementados");
+            try {
+                Statement stmt = conexaoBanco.connection.createStatement();
+                ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, cozinheiro c " +
+                        "where u.codusuario = c.usuario_codusuario;");
+                if(rs.next()){
+                    while(rs.next()){
+                        if(txtUsuario.getText().equals(rs.getString("nome"))
+                                && txtSenha.getText().equals(rs.getString("senha"))){
+                            Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
+                        } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                    }
+                } else labelErroLogin.setText("Usuário ou senha inválidos, tente novamente");
+                rs.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro:\n"+e);
+            }
         }
     }
 
