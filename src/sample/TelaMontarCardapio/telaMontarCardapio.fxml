@@ -1,25 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarCardapio.TelaMontarCardapioController">
-   <children>
-      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="224.0" layoutY="29.0">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="botaoVoltar" layoutX="348.0" layoutY="483.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <TextField layoutX="293.0" layoutY="239.0" prefHeight="27.0" prefWidth="159.0" promptText="Nome do cardápio" />
-      <Label layoutX="133.0" layoutY="178.0" prefHeight="25.0" prefWidth="526.0" text="Para montar o cardápio, preencha os seguintes campos:">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField layoutX="293.0" layoutY="288.0" prefHeight="25.0" prefWidth="159.0" promptText="Quantidade de categorias" />
-      <Button fx:id="botaoContinuarCardapio" layoutX="338.0" layoutY="374.0" mnemonicParsing="false" onAction="#acaoContinuarCardapio" text="Continuar" />
-   </children>
-</AnchorPane>
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarCardapio.TelaMontarCardapioController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
+         <children>
+            <TabPane layoutY="114.0" prefHeight="442.0" prefWidth="718.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                  <Tab text="Adicionar Pratos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="720.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <TableView layoutX="6.0" layoutY="123.0" prefHeight="287.0" prefWidth="705.0">
+                                <columns>
+                                  <TableColumn prefWidth="170.0" text="Prato" />
+                                  <TableColumn prefWidth="60.0" text="Código" />
+                                    <TableColumn prefWidth="381.0" text="Descrição" />
+                                    <TableColumn prefWidth="93.0" text="Preço" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="139.0" layoutY="28.0" text="Código do Prato:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="275.0" layoutY="28.0" prefHeight="25.0" prefWidth="142.0" promptText="Código do Prato" />
+                              <Button layoutX="440.0" layoutY="26.0" mnemonicParsing="false" text="Adicionar Prato">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="474.0" layoutY="88.0" mnemonicParsing="false" text="Pesquisar">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <TextField layoutX="311.0" layoutY="90.0" promptText="Nome do produto" />
+                              <Label layoutX="139.0" layoutY="89.0" text="Pesquisar por nome:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Adicionar Bebidas, Complementos e Opcionais">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="718.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label layoutX="111.0" layoutY="14.0" text="Código do Produto:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtCodProdComp" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="105.0" promptText="Código Produto" />
+                              <Button layoutX="248.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarComplemento" text="Adicionar como Complemento">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="111.0" layoutY="103.0" text="Pesquisar por nome:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtNomeProduto" layoutX="285.0" layoutY="104.0" promptText="Nome do produto" />
+                              <Button layoutX="458.0" layoutY="102.0" mnemonicParsing="false" onAction="#acaoPesquisar" text="Pesquisar">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="383.0" layoutY="14.0" text="Definir preço:  R$">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtPreco" layoutX="513.0" layoutY="14.0" prefHeight="25.0" prefWidth="67.0" promptText="0.00" />
+                              <TableView layoutX="6.0" layoutY="137.0" prefHeight="270.0" prefWidth="707.0">
+                                <columns>
+                                  <TableColumn prefWidth="151.0" text="Produto" />
+                                  <TableColumn prefWidth="62.0" text="Código" />
+                                    <TableColumn prefWidth="418.0" text="Descricao" />
+                                    <TableColumn prefWidth="75.0" text="Quantidade" />
+                                </columns>
+                              </TableView>
+                              <Button layoutX="79.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarBebida" text="Adicionar como Bebida">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarOpcional" text="Adicionar como Opcional">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <ImageView fitHeight="74.0" fitWidth="212.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="317.0" layoutY="37.0" text="Montar Cardápio" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="203.0" layoutY="565.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="385.0" layoutY="565.0" mnemonicParsing="false" style="-fx-background-color: #47d147;" text="Visualizar Cardápio" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
