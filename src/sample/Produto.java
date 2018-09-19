@@ -7,13 +7,19 @@ public class Produto {
 
     private final SimpleStringProperty nome;
     private SimpleStringProperty descricao;
-    //private SimpleIntegerProperty quantidade;
+    private SimpleIntegerProperty quantidade;
     private final SimpleIntegerProperty codproduto;
+
+    public Produto(String nome, int codproduto, String descricao, int quantidade) {
+        this.nome = new SimpleStringProperty(nome);
+        this.descricao = new SimpleStringProperty(descricao);
+        this.quantidade = new SimpleIntegerProperty(quantidade);
+        this.codproduto = new SimpleIntegerProperty(codproduto);
+    }
 
     public Produto(String nome, int codproduto, String descricao) {
         this.nome = new SimpleStringProperty(nome);
         this.descricao = new SimpleStringProperty(descricao);
-        //this.quantidade = new SimpleIntegerProperty(quantidade);
         this.codproduto = new SimpleIntegerProperty(codproduto);
     }
 
@@ -46,7 +52,7 @@ public class Produto {
         this.descricao.set(descricao);
     }
 
-    /*public int getQuantidade() {
+    public int getQuantidade() {
         return quantidade.get();
     }
 
@@ -56,7 +62,7 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade.set(quantidade);
-    }*/
+    }
 
     public int getCodproduto() {
         return codproduto.get();
