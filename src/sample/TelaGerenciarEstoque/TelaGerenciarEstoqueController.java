@@ -24,6 +24,7 @@ public class TelaGerenciarEstoqueController {
             PreparedStatement ps = ConexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
             ps.setInt(1, cod);
             ps.executeUpdate();
+
             JOptionPane.showMessageDialog(null, "Produto Deletado!");
         }
         catch (SQLException e){

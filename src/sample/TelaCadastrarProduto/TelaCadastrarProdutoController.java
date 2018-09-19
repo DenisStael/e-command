@@ -33,7 +33,7 @@ public class TelaCadastrarProdutoController {
             ps.setString(1, txtNomeProduto.getText());
             ps.setInt(2, Integer.parseInt(txtQtdProduto.getText()));
             ps.setString(3, txtDescricao.getText());
-            ps.executeUpdate();
+            ps.executeUpdate();  
             JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);

@@ -58,6 +58,7 @@ public class TelaMontarPratoController implements Initializable {
                 int cod = Integer.parseInt(txtAdicionaProduto.getText());
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,codproduto from produto where codproduto = ?;");
                 ps.setInt(1, cod);
+
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
                     listaAddProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto")));
