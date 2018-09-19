@@ -20,7 +20,7 @@ public class TelaGerenciarEstoqueController {
 
     public void acaoRemoverProduto(ActionEvent actionEvent) {
         try {
-            int cod = Integer.parseInt(txtCodProduto.getText());
+             int cod = Integer.parseInt(txtCodProduto.getText());
             PreparedStatement ps = ConexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
             ps.setInt(1, cod);
             ps.executeUpdate();

@@ -29,11 +29,11 @@ public class TelaCadastrarProdutoController {
     public void acaoCdProduto() {
         try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
+                     ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
             ps.setString(1, txtNomeProduto.getText());
             ps.setInt(2, Integer.parseInt(txtQtdProduto.getText()));
             ps.setString(3, txtDescricao.getText());
-            ps.executeUpdate();  
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);

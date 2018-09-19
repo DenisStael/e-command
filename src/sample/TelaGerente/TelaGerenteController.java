@@ -37,7 +37,7 @@ public class TelaGerenteController {
         Main.trocaTela("TelaEditarPrato/telaEditarPrato.fxml");
     }
 
-    public void acaoGerenciarEstoque() throws IOException {
+     public void acaoGerenciarEstoque() throws IOException {
         Main.trocaTela("TelaGerenciarEstoque/telaGerenciarEstoque.fxml");
     }
 }
