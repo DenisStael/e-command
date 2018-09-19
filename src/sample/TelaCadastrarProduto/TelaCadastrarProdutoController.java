@@ -29,7 +29,7 @@ public class TelaCadastrarProdutoController {
     public void acaoCdProduto() {
         try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
+                     ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
             ps.setString(1, txtNomeProduto.getText());
             ps.setInt(2, Integer.parseInt(txtQtdProduto.getText()));
             ps.setString(3, txtDescricao.getText());
@@ -55,13 +55,14 @@ public class TelaCadastrarProdutoController {
     public void acaoAttProduto(ActionEvent actionEvent) {
     }
 
-    public void acaoRemoverProduto(ActionEvent actionEvent) {
-        /*try {
+    /*public void acaoRemoverProduto(ActionEvent actionEvent) {
+        try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("DELETE FROM Produto WHERE nome = txtNomeProduto ;");
+                    ("DELETE FROM Produto WHERE codproduto = ? ;");
+            ps.setInt(1, txt);
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
     }
-}
+
 

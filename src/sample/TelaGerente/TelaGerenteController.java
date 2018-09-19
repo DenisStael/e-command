@@ -1,5 +1,6 @@
 package sample.TelaGerente;
 
+import javafx.event.ActionEvent;
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
 import java.io.IOException;
@@ -34,5 +35,9 @@ public class TelaGerenteController {
 
     public void acaoEditarPrato() throws IOException {
         Main.trocaTela("TelaEditarPrato/telaEditarPrato.fxml");
+    }
+
+     public void acaoGerenciarEstoque() throws IOException {
+        Main.trocaTela("TelaGerenciarEstoque/telaGerenciarEstoque.fxml");
     }
 }
