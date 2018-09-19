@@ -1,6 +1,8 @@
 package sample.TelaCadastrarProduto;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import sample.ConexaoBanco;
 import sample.Main;
 import javafx.scene.control.TextField;
@@ -15,7 +17,10 @@ public class TelaCadastrarProdutoController {
     ConexaoBanco conexaoBanco = new ConexaoBanco();
 
     @FXML
-    private TextField txtQtdProduto, txtNomeProduto, txtDescricao;
+    private TextField txtQtdProduto, txtNomeProduto;
+
+    @FXML
+    TextArea txtDescricao;
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
@@ -31,11 +36,32 @@ public class TelaCadastrarProdutoController {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: "+e);
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);
         }
         txtQtdProduto.clear();
         txtDescricao.clear();
         txtNomeProduto.clear();
     }
 
+    public void acaoCancelar(ActionEvent actionEvent) {
+        txtQtdProduto.clear();
+        txtDescricao.clear();
+        txtNomeProduto.clear();
+    }
+
+    public void acaoSalvar(ActionEvent actionEvent) {
+    }
+
+    public void acaoAttProduto(ActionEvent actionEvent) {
+    }
+
+    public void acaoRemoverProduto(ActionEvent actionEvent) {
+        /*try {
+            PreparedStatement ps = conexaoBanco.connection.prepareStatement
+                    ("DELETE FROM Produto WHERE nome = txtNomeProduto ;");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+    }
 }
+

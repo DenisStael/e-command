@@ -2,6 +2,7 @@ package sample.TelaMontarPrato;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,12 +36,14 @@ public class TelaMontarPratoController implements Initializable {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
-    public void acaoCancelar(){
-        txtNomePrato.clear(); txtPreco.clear();
-        txtDescricao.clear(); txtAdicionaProduto.clear();
+    public void acaoCancelar() {
+        txtNomePrato.clear();
+        txtPreco.clear();
+        txtDescricao.clear();
+        txtAdicionaProduto.clear();
     }
 
-    public void acaoSalvar(){
+    public void acaoSalvar() {
         /*try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement("");
 
@@ -54,7 +57,7 @@ public class TelaMontarPratoController implements Initializable {
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
             ResultSet rs = stmt.executeQuery("select nome,codproduto,descricao from produto;");
-            while (rs.next()){
+            while (rs.next()) {
                 listaProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto"), rs.getString("descricao")));
             }
             rs.close();
@@ -63,7 +66,7 @@ public class TelaMontarPratoController implements Initializable {
             colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
             tabelaProdutos.setItems(listaProdutos);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar produtos!\n"+e);
+            JOptionPane.showMessageDialog(null, "Erro ao apresentar produtos!\n" + e);
         }
     }
 }

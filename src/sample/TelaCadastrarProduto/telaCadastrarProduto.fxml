@@ -1,26 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaCadastrarProduto.TelaCadastrarProdutoController">
-   <children>
-      <Label layoutX="315.0" layoutY="191.0" text="Cadastrando:">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtNomeProduto" layoutX="296.0" layoutY="243.0" promptText="Nome do produto" />
-      <TextField fx:id="txtQtdProduto" layoutX="296.0" layoutY="298.0" promptText="Quantidade" />
-      <TextField fx:id="txtDescricao" layoutX="296.0" layoutY="350.0" promptText="Descrição" />
-      <Button fx:id="botaoCdProduto" layoutX="336.0" layoutY="429.0" mnemonicParsing="false" onAction="#acaoCdProduto" text="Confirmar" />
-      <Button fx:id="botaoVoltar" layoutX="347.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="224.0" layoutY="29.0">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.19597989949748743" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="596.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaCadastrarProduto.TelaCadastrarProdutoController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="722.0" style="-fx-background-color: #5353c6;">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="225.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="304.0" layoutY="39.0" text="Cadastro de Pratos" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
+         <children>
+            <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="255.0" prefHeight="169.0" prefWidth="707.0">
+               <columns>
+                  <TableColumn fx:id="colunaProd" prefWidth="134.0" resizable="false" text="Produtos" />
+                  <TableColumn fx:id="colunaCod" prefWidth="88.0" resizable="false" text="Código" />
+                  <TableColumn fx:id="colunaDescricao" prefWidth="427.0" resizable="false" text="Descrição" />
+               </columns>
+            </TableView>
+            <TextField fx:id="txtNomeProduto" layoutX="87.0" layoutY="50.0" />
+            <TextField fx:id="txtQtdProduto" layoutX="344.0" layoutY="50.0" prefHeight="25.0" prefWidth="85.0" />
+            <TextArea fx:id="txtDescricao" layoutX="88.0" layoutY="82.0" prefHeight="113.0" prefWidth="340.0" />
+            <Label layoutX="24.0" layoutY="52.0" text="Nome:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="246.0" layoutY="52.0" text="Quantidade:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="12.0" layoutY="82.0" text="Descrição:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="10.0" prefHeight="30.0" prefWidth="266.0" text="Adicionar/Atualizar/Remover Produto:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="botaoVoltar" layoutX="66.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoCancelar" layoutX="309.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoCancelar" style="-fx-background-color: #ff3333;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoSalvar" layoutX="568.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoSalvar" style="-fx-background-color: #47d147;" text="Salvar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoCdProduto" layoutX="441.0" layoutY="78.0" mnemonicParsing="false" onAction="#acaoCdProduto" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #47d147;" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Label layoutX="15.0" layoutY="227.0" text="Produtos em estoque:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="botaoAttProduto" layoutX="441.0" layoutY="124.0" mnemonicParsing="false" onAction="#acaoAttProduto" prefHeight="30.0" prefWidth="77.0" text="Atualizar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoRemoverProduto" layoutX="441.0" layoutY="165.0" mnemonicParsing="false" onAction="#acaoRemoverProduto" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: ff3333;" text="Remover" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
