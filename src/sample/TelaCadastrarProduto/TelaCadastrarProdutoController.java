@@ -55,14 +55,14 @@ public class TelaCadastrarProdutoController {
     public void acaoAttProduto(ActionEvent actionEvent) {
     }
 
-    public void acaoRemoverProduto(ActionEvent actionEvent) {
+    /*public void acaoRemoverProduto(ActionEvent actionEvent) {
         try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
                     ("DELETE FROM Produto WHERE codproduto = ? ;");
             ps.setInt(1, txt);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
-}
+
 
