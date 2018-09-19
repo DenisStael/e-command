@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -64,15 +66,31 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="botaoCdProduto" layoutX="208.0" layoutY="197.0" mnemonicParsing="false" onAction="#acaoCdProduto" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #47d147;" text="Adicionar" textFill="WHITE">
+            <Button fx:id="botaoSalvar" layoutX="568.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoSalvar" style="-fx-background-color: #47d147;" text="Salvar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoCdProduto" layoutX="89.0" layoutY="197.0" mnemonicParsing="false" onAction="#acaoCdProduto" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #47d147;" text="Adicionar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Label layoutX="15.0" layoutY="227.0" text="Produtos em estoque:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Button fx:id="botaoRemoverProduto" layoutX="582.0" layoutY="117.0" mnemonicParsing="false" onAction="#acaoRemoverProduto" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: ff3333;" text="Remover" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoAttProduto" layoutX="464.0" layoutY="117.0" mnemonicParsing="false" onAction="#acaoAttProduto" prefHeight="30.0" prefWidth="77.0" text="Atualizar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </items>

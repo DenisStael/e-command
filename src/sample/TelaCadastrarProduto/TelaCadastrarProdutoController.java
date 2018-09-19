@@ -56,12 +56,13 @@ public class TelaCadastrarProdutoController {
     }
 
     public void acaoRemoverProduto(ActionEvent actionEvent) {
-        /*try {
+        try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("DELETE FROM Produto WHERE nome = txtNomeProduto ;");
+                    ("DELETE FROM Produto WHERE codproduto = ? ;");
+            ps.setInt(1, txt);
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
 
