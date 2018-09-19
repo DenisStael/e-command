@@ -38,38 +38,70 @@ public class TelaMontarPratoController implements Initializable {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
-    public void acaoCancelar(){
+    public void acaoLimpar(){
         txtNomePrato.clear(); txtPreco.clear();
         txtDescricao.clear(); txtAdicionaProduto.clear();
+        tabelaAddProdutos.getItems().clear(); labelProd.setText(null);
     }
 
     public void acaoSalvar(){
-        try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !listaAddProdutos.isEmpty()){
+            try {
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao)values(?,?,?);");
+                ps.setString(1, txtNomePrato.getText());
+                ps.setFloat(2, Float.parseFloat(txtPreco.getText()));
+                ps.setString(3, txtDescricao.getText());
+                ps.executeUpdate();
+                Statement stmt = conexaoBanco.connection.createStatement();
+                ResultSet rs = stmt.executeQuery("select count(codprato) qtde from prato;");
+                int qtde = 0;
+                if(rs.next()) {
+                    qtde = rs.getInt("qtde");
+                }
+                rs.close();
+                PreparedStatement ps2;
+                for(int i = 0; i < listaAddProdutos.size(); i++){
+                    ps2 = conexaoBanco.connection.prepareStatement("insert into pratoprodutos(codprato,codproduto) values(?,?);");
+                    ps2.setInt(1, qtde);
+                    ps2.setInt(2, listaAddProdutos.get(i).getCodproduto());
+                    ps2.executeUpdate();
+                    ps2.close();
+                }
+                acaoLimpar();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else JOptionPane.showMessageDialog(null, "Preencha todos os campos para adicionar!");
     }
 
     public void acaoAdicionaProduto(){
+        labelProd.setText(null);
+        boolean prodIsDif = true;
         if(!txtAdicionaProduto.getText().isEmpty()){
             try {
                 int cod = Integer.parseInt(txtAdicionaProduto.getText());
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,codproduto from produto where codproduto = ?;");
-                ps.setInt(1, cod);
-
-                ResultSet rs = ps.executeQuery();
-                if(rs.next()){
-                    listaAddProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto")));
-                } else labelProd.setText("Produto não encontrado!");
-                colunaAddProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
-                colunaAddCod.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
-                tabelaAddProdutos.setItems(listaAddProdutos);
+                for(int i = 0; i < listaAddProdutos.size(); i++){
+                    if(listaAddProdutos.get(i).getCodproduto() == cod){
+                        labelProd.setText("Produto já adicionado!");
+                        prodIsDif = false;
+                    }
+                }
+                if(prodIsDif){
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,codproduto from produto where codproduto = ?;");
+                    ps.setInt(1, cod);
+                    ResultSet rs = ps.executeQuery();
+                    if(rs.next()){
+                        listaAddProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto")));
+                    } else labelProd.setText("Produto não encontrado!");
+                    colunaAddProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
+                    colunaAddCod.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
+                    tabelaAddProdutos.setItems(listaAddProdutos);
+                }
             } catch (Exception e){
                 JOptionPane.showMessageDialog(null, "Digite apenas números!\n"+e);
             }
-        } else System.out.println("Nada");
+        }
+        txtAdicionaProduto.clear();
     }
 
     @Override

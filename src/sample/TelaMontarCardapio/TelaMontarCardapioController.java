@@ -45,7 +45,7 @@ public class TelaMontarCardapioController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
+        /*try {
             Statement stmt = conexaoBanco.connection.createStatement();
             ResultSet rs = stmt.executeQuery("select nome,codprato,descricao,preco from produto;");
             while (rs.next()){
@@ -58,6 +58,6 @@ public class TelaMontarCardapioController implements Initializable {
             tabelaProdutos.setItems(listaProdutos);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao apresentar produtos!\n"+e);
-        }
+        }*/
     }
 }

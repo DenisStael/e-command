@@ -4,18 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
+import sample.Main;
+
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TelaGerenciarEstoqueController {
-    public void acaoVoltar(ActionEvent actionEvent) {
+    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+        Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
     public void acaoCancelar(ActionEvent actionEvent) {
-    }
-
-    public void acaoSalvar(ActionEvent actionEvent) {
     }
 
     public void acaoRemoverProduto(ActionEvent actionEvent) {
