@@ -1,23 +1,24 @@
 package sample.TelaGerente;
 
-import javafx.event.ActionEvent;
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
 import java.io.IOException;
 
 public class TelaGerenteController {
 
+    //Métodos de trocar de telas e suas respectivas telas
+
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
 
     public void acaoCadastrarCozinheiro() throws IOException {
-        TelaCadastroController.tipo = "Cozinheiro";
+        TelaCadastroController.tipo = "Cozinheiro"; //Atribui ao atributo estático da tela de cadastro o tipo cozinheiro
         Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
     public void acaoCadastrarGarcom() throws IOException {
-        TelaCadastroController.tipo = "Garçom";
+        TelaCadastroController.tipo = "Garçom"; //Atribui ao atributo estático da tela de cadastro o tipo garçom
         Main.trocaTela("TelaCadastro/telaCadastro.fxml");
     }
 
