@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.scene.control.Alert;
-
 import javax.swing.*;
 import java.sql.*;
 
@@ -19,10 +17,6 @@ public class ConexaoBanco {
 
             //Mensagem na tela informando se a conexão foi bem sucedida
             JOptionPane.showMessageDialog(null, "Banco conectado com sucesso!");
-            /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Mensagem de confrimação");
-            alert.setContentText("Banco conectado com sucesso");
-            alert.show();*/
         } catch (SQLException e) {
             //Mensagem informando que houve algum problema com a conexão
             JOptionPane.showMessageDialog(null, "Erro ao conectar com o Banco!\nErro: "+e.getMessage());

@@ -39,49 +39,50 @@ public class TelaLoginController implements Initializable {
     }
 
     public void acaoLogar() throws IOException {
-        if (tipo == "Gerente") {
-            if ((txtUsuario.getText().equals("admin")) && (txtSenha.getText().equals("admin"))) {
-                Main.trocaTela("TelaGerente/telaGerente.fxml");
-            } else {
-                usuarioIncorreto();
-            }
-        } else if (tipo == "Garçom") {
-            try {
-                Statement stmt = conexaoBanco.connection.createStatement();
-                ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, garcom g where" +
-                        " u.codusuario = g.usuario_codusuario;");
-                if(rs.next()){
-                    while(rs.next()){
-                        if(txtUsuario.getText().equals(rs.getString("nome"))
-                                && txtSenha.getText().equals(rs.getString("senha"))){
-                            Main.trocaTela("TelaGarcom/telaGarcom.fxml");
-                        } else usuarioIncorreto();
-                    }
-                } else usuarioIncorreto();
+        if(!txtSenha.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
+            if (tipo == "Gerente") {
+                if ((txtUsuario.getText().equals("admin")) && (txtSenha.getText().equals("admin"))) {
+                    Main.trocaTela("TelaGerente/telaGerente.fxml");
+                } else {
+                    usuarioIncorreto();
+                }
+            } else if (tipo == "Garçom") {
+                try {
+                    Statement stmt = conexaoBanco.connection.createStatement();
+                    ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, garcom g where" +
+                            " u.codusuario = g.usuario_codusuario;");
+                    if(rs.next()){
+                        while(rs.next()){
+                            if(txtUsuario.getText().equals(rs.getString("nome"))
+                                    && txtSenha.getText().equals(rs.getString("senha"))){
+                                //Main.trocaTela("TelaGarcom/telaGarcom.fxml");
+                            } else usuarioIncorreto();
+                        }
+                    } else usuarioIncorreto();
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Erro:\n"+e);
+                }
 
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } else if (tipo == "Cozinheiro") {
+                try {
+                    Statement stmt = conexaoBanco.connection.createStatement();
+                    ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, cozinheiro c " +
+                            "where u.codusuario = c.usuario_codusuario;");
+                    if(rs.next()){
+                        while(rs.next()){
+                            if(txtUsuario.getText().equals(rs.getString("nome"))
+                                    && txtSenha.getText().equals(rs.getString("senha"))){
+                                Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
+                            } else usuarioIncorreto();
+                        }
+                    } else usuarioIncorreto();
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Erro:\n"+e);
+                }
             }
-
-        } else if (tipo == "Cozinheiro") {
-            try {
-                Statement stmt = conexaoBanco.connection.createStatement();
-                ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, cozinheiro c " +
-                        "where u.codusuario = c.usuario_codusuario;");
-                if(rs.next()){
-                    while(rs.next()){
-                        if(txtUsuario.getText().equals(rs.getString("nome"))
-                                && txtSenha.getText().equals(rs.getString("senha"))){
-                            Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
-                        } else usuarioIncorreto();
-                    }
-                } else usuarioIncorreto();
-                rs.close();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Erro:\n"+e);
-            }
-        }
+        } else JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
     }
 
     private void usuarioIncorreto(){

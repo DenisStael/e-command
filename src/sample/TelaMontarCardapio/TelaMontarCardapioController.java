@@ -2,13 +2,13 @@ package sample.TelaMontarCardapio;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Prato;
 import sample.Produto;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -23,23 +23,28 @@ public class TelaMontarCardapioController implements Initializable {
 
     ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
 
+    @FXML
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
-
+    @FXML
     private void adicionarPrato() {
 
     }
-
-    private void adcionarBebida(){
+    @FXML
+    private void adicionarBebida(){
 
     }
-
+    @FXML
     private void adicionarComplemento(){
 
     }
-
+    @FXML
     private void adicionarOpcional(){
+
+    }
+    @FXML
+    private void acaoPesquisar(){
 
     }
 
@@ -57,7 +62,7 @@ public class TelaMontarCardapioController implements Initializable {
             colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
             tabelaProdutos.setItems(listaProdutos);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar produtos!\n"+e);
+            JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n"+e);
         }*/
     }
 }
