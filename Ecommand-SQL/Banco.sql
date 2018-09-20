@@ -21,8 +21,8 @@ CREATE TABLE Garcom (
   CONSTRAINT fk_Garcom_Usuario1
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 CREATE TABLE Cozinheiro (
@@ -31,8 +31,8 @@ CREATE TABLE Cozinheiro (
   CONSTRAINT fk_Cozinheiro_Usuario1
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 CREATE TABLE Gerente (
@@ -41,30 +41,8 @@ CREATE TABLE Gerente (
   CONSTRAINT fk_Gerente_Usuario1
     FOREIGN KEY (Usuario_CodUsuario)
     REFERENCES Usuario (CodUsuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-;
-
-CREATE SEQUENCE Opcional_seq;
-
-CREATE TABLE Opcional (
-  CodOpcional INT NOT NULL DEFAULT NEXTVAL ('Opcional_seq'),
-  Nome VARCHAR(45) NOT NULL,
-  Descricao VARCHAR(200) NOT NULL,
-  Quantidade INT NOT NULL,
-  Preco DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (CodOpcional))
-;
-
-CREATE SEQUENCE Complemento_seq;
-
-CREATE TABLE Complemento (
-  CodComplemento INT NOT NULL DEFAULT NEXTVAL ('Complemento_seq'),
-  Nome VARCHAR(45) NOT NULL,
-  Descricao VARCHAR(200) NOT NULL,
-  Quantidade INT NOT NULL,
-  Preco DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (CodComplemento))
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ;
 
 CREATE SEQUENCE Produto_seq;
@@ -74,8 +52,36 @@ CREATE TABLE Produto (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Quantidade INT NOT NULL,
-  PRIMARY KEY (CodProduto)
+  PRIMARY KEY (CodProduto) 
 );
+
+CREATE TABLE Opcional (
+  CodOpcional INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (CodOpcional),
+  FOREIGN KEY (CodOpcional) 
+  REFERENCES Produto (CodProduto)
+  ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Complemento (
+  CodComplemento INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (CodComplemento),
+  FOREIGN KEY (CodComplemento) 
+  REFERENCES Produto (CodProduto)
+  ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Bebida (
+  CodBebida INT NOT NULL,
+  Preco DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (CodBebida),
+  FOREIGN KEY (CodBebida) 
+  REFERENCES Produto (CodProduto)
+  ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
 
 CREATE SEQUENCE Prato_seq;
 
@@ -84,25 +90,18 @@ CREATE TABLE Prato (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (CodPrato))
-;
+  PRIMARY KEY (CodPrato)
+);
 
 CREATE TABLE PratoProdutos (
   CodPrato INT NOT NULL,
   CodProduto INT NOT NULL,
   PRIMARY KEY (CodPrato, CodProduto),
-  FOREIGN KEY (CodPrato) REFERENCES Prato (CodPrato),
-  FOREIGN KEY (CodProduto) REFERENCES Produto (CodProduto)
+  FOREIGN KEY (CodPrato) REFERENCES Prato (CodPrato) 
+  ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (CodProduto) REFERENCES Produto (CodProduto) 
+  ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-CREATE TABLE Bebida (
-  CodBebida INT NOT NULL,
-  Nome VARCHAR(45) NOT NULL,
-  Descricao VARCHAR(200) NOT NULL,
-  Quantidade INT NOT NULL,
-  Preco DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (CodBebida))
-;
 
 CREATE TABLE Pedido (
   Mesa_idMesa INT NOT NULL,
@@ -117,38 +116,38 @@ CREATE TABLE Pedido (
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
     FOREIGN KEY (Mesa_idMesa)
     REFERENCES Mesa (idMesa)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Mesa_has_Prato_Complemento1
     FOREIGN KEY (Complemento_CodComplemento)
     REFERENCES Complemento (CodComplemento)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Mesa_has_Prato_Prato1
     FOREIGN KEY (Prato_CodPrato1)
     REFERENCES Prato (CodPrato)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Mesa_has_Prato_Bebida1
     FOREIGN KEY (Bebida_CodBebida)
     REFERENCES Bebida (CodBebida)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Mesa_has_Prato_Opcional1
     FOREIGN KEY (Opcional_CodOpcional)
     REFERENCES Opcional (CodOpcional)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Pedido_Garcom1
     FOREIGN KEY (Garcom_Usuario_CodUsuario)
     REFERENCES Garcom (Usuario_CodUsuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_Pedido_Cozinheiro1
     FOREIGN KEY (Cozinheiro_Usuario_CodUsuario)
     REFERENCES Cozinheiro (Usuario_CodUsuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
  ;
 
 CREATE INDEX fk_Mesa_has_Prato_Mesa1_idx ON Pedido (Mesa_idMesa);
