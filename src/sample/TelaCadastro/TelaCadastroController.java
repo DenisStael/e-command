@@ -35,20 +35,20 @@ public class TelaCadastroController {
                     ps.setString(2, txtSenha.getText());
                     ps.executeUpdate();
                     Statement stmt = conexaoBanco.connection.createStatement();
-                    ResultSet rs = stmt.executeQuery("select count(codusuario) qtde from usuario;");
-                    int qtde = 0;
+                    ResultSet rs = stmt.executeQuery("select max(codusuario) codMax from usuario;");
+                    int codMax = 0;
                     if(rs.next()) {
-                        qtde = rs.getInt("qtde");
+                        codMax = rs.getInt("codMax");
                     }
                     rs.close();
                     PreparedStatement ps2;
                     if(tipo.equals("Cozinheiro")){
                         ps2 = conexaoBanco.connection.prepareStatement("insert into cozinheiro(usuario_codusuario) VALUES(?);");
-                        ps2.setInt(1, qtde);
+                        ps2.setInt(1, codMax);
                         ps2.executeUpdate();
                     } else if(tipo.equals("Garçom")){
                         ps2 = conexaoBanco.connection.prepareStatement("insert into garcom(usuario_codusuario) VALUES(?);");
-                        ps2.setInt(1, qtde);
+                        ps2.setInt(1, codMax);
                         ps2.executeUpdate();
                     }
                     JOptionPane.showMessageDialog(null, "Inserido com sucesso!");

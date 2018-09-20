@@ -53,16 +53,16 @@ public class TelaMontarPratoController implements Initializable {
                 ps.setString(3, txtDescricao.getText());
                 ps.executeUpdate();
                 Statement stmt = conexaoBanco.connection.createStatement();
-                ResultSet rs = stmt.executeQuery("select count(codprato) qtde from prato;");
-                int qtde = 0;
+                ResultSet rs = stmt.executeQuery("select max(codprato) codMax from prato;");
+                int codMax = 0;
                 if(rs.next()) {
-                    qtde = rs.getInt("qtde");
+                    codMax = rs.getInt("codMax");
                 }
                 rs.close();
                 PreparedStatement ps2;
                 for(int i = 0; i < listaAddProdutos.size(); i++){
                     ps2 = conexaoBanco.connection.prepareStatement("insert into pratoprodutos(codprato,codproduto) values(?,?);");
-                    ps2.setInt(1, qtde);
+                    ps2.setInt(1, codMax);
                     ps2.setInt(2, listaAddProdutos.get(i).getCodproduto());
                     ps2.executeUpdate();
                     ps2.close();

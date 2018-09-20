@@ -52,12 +52,10 @@ public class TelaLoginController implements Initializable {
                     ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, garcom g where" +
                             " u.codusuario = g.usuario_codusuario;");
                     if(rs.next()){
-                        while(rs.next()){
-                            if(txtUsuario.getText().equals(rs.getString("nome"))
-                                    && txtSenha.getText().equals(rs.getString("senha"))){
-                                //Main.trocaTela("TelaGarcom/telaGarcom.fxml");
-                            } else usuarioIncorreto();
-                        }
+                        if(txtUsuario.getText().equals(rs.getString("nome"))
+                                && txtSenha.getText().equals(rs.getString("senha"))){
+                            //Main.trocaTela("TelaGarcom/telaGarcom.fxml");
+                        } else usuarioIncorreto();
                     } else usuarioIncorreto();
                     rs.close();
                 } catch (SQLException e) {
@@ -70,12 +68,10 @@ public class TelaLoginController implements Initializable {
                     ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, cozinheiro c " +
                             "where u.codusuario = c.usuario_codusuario;");
                     if(rs.next()){
-                        while(rs.next()){
-                            if(txtUsuario.getText().equals(rs.getString("nome"))
-                                    && txtSenha.getText().equals(rs.getString("senha"))){
-                                Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
-                            } else usuarioIncorreto();
-                        }
+                        if(txtUsuario.getText().equals(rs.getString("nome"))
+                                && txtSenha.getText().equals(rs.getString("senha"))){
+                            Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
+                        } else usuarioIncorreto();
                     } else usuarioIncorreto();
                     rs.close();
                 } catch (SQLException e) {
