@@ -91,7 +91,8 @@ public class TelaGerenciarEstoqueController implements Initializable {
 
     //Método de pesquisar pelos produtos por nome (ainda não implementado)
     public void acaoPesquisar() {
-        //tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+        String sqlPesquisa = "select * from produto where nome ilike '%"+txtPesquisar.getText()+"%';";
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sqlPesquisa);
     }
 
     @Override
