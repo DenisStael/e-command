@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -27,7 +28,8 @@
                <columns>
                   <TableColumn fx:id="colunaProd" prefWidth="134.0" resizable="false" text="Produtos" />
                   <TableColumn fx:id="colunaCod" prefWidth="88.0" resizable="false" text="Código" />
-                  <TableColumn fx:id="colunaDescricao" prefWidth="427.0" resizable="false" text="Descrição" />
+                  <TableColumn fx:id="colunaDescricao" prefWidth="406.0" resizable="false" text="Descrição" />
+                  <TableColumn fx:id="colunaQuantidade" prefWidth="78.0" text="Quantidade" />
                </columns>
             </TableView>
             <TextField fx:id="txtNomeProduto" layoutX="87.0" layoutY="50.0" />
@@ -48,17 +50,17 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="18.0" layoutY="10.0" prefHeight="30.0" prefWidth="266.0" text="Adicionar/Atualizar/Remover Produto:">
+            <Label layoutX="18.0" layoutY="10.0" prefHeight="30.0" prefWidth="266.0" text="Adicionar Produto:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="botaoVoltar" layoutX="66.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
+            <Button fx:id="botaoVoltar" layoutX="198.0" layoutY="431.0" mnemonicParsing="false" onAction="#acaoVoltar" text="Voltar">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="botaoCancelar" layoutX="309.0" layoutY="436.0" mnemonicParsing="false" onAction="#acaoCancelar" style="-fx-background-color: #ff3333;" text="Cancelar" textFill="WHITE">
+            <Button fx:id="botaoCancelar" layoutX="441.0" layoutY="431.0" mnemonicParsing="false" onAction="#acaoCancelar" style="-fx-background-color: #ff3333;" text="Cancelar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

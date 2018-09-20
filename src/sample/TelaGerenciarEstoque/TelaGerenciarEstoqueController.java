@@ -1,25 +1,30 @@
 package sample.TelaGerenciarEstoque;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TelaGerenciarEstoqueController {
-    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+
+    @FXML
+    TextField txtPesquisar;
+
+    public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
-    public void acaoCancelar(ActionEvent actionEvent) {
+    public void acaoLimpar() {
+        txtCodProduto.clear(); txtDescricao.clear();
+        txtNomeProduto.clear(); txtQtdProduto.clear();
+        txtPesquisar.clear();
     }
 
-    public void acaoRemoverProduto(ActionEvent actionEvent) {
+    public void acaoRemoverProduto() {
         try {
              int cod = Integer.parseInt(txtCodProduto.getText());
             PreparedStatement ps = ConexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
@@ -34,7 +39,7 @@ public class TelaGerenciarEstoqueController {
 
     }
 
-    public void acaoAttProduto(ActionEvent actionEvent) {
+    public void acaoAttProduto() {
             try {
                 int cod = Integer.parseInt(txtCodProduto.getText());
                 PreparedStatement ps = ConexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ? WHERE codproduto = ? ;");
@@ -50,10 +55,7 @@ public class TelaGerenciarEstoqueController {
             catch(SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao Atualizar produto!\nErro: " + e);
             }
-            txtQtdProduto.clear();
-            txtDescricao.clear();
-            txtNomeProduto.clear();
-
+            acaoLimpar();
         }
 
     @FXML
@@ -63,6 +65,6 @@ public class TelaGerenciarEstoqueController {
     private TextArea txtDescricao;
 
 
-    public void acaoPesquisar(ActionEvent actionEvent) {
+    public void acaoPesquisar() {
     }
 }

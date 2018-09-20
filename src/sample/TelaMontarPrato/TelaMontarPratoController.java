@@ -68,8 +68,8 @@ public class TelaMontarPratoController implements Initializable {
                     ps2.close();
                 }
                 acaoLimpar();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Digite apenas números!\n"+e);
             }
         }else JOptionPane.showMessageDialog(null, "Preencha todos os campos para adicionar!");
     }
@@ -108,7 +108,7 @@ public class TelaMontarPratoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select nome,codproduto,descricao from produto;");
+            ResultSet rs = stmt.executeQuery("select nome,codproduto,descricao from produto order by codproduto;");
             while (rs.next()){
                 listaProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto"), rs.getString("descricao")));
             }
