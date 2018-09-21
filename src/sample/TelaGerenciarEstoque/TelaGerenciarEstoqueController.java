@@ -18,7 +18,6 @@ public class TelaGerenciarEstoqueController implements Initializable {
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
     private TabelaProduto tabelaProduto = new TabelaProduto(); //Tabela dos produtos cadastrados no banco
     private String sql = "select nome,codproduto,descricao,quantidade from produto order by codproduto;"; //String sql
-
     //Atributos da tela
     @FXML
     private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar; //Caixas de texto
@@ -27,9 +26,9 @@ public class TelaGerenciarEstoqueController implements Initializable {
     @FXML
     private TableColumn<Produto, Integer> colunaCod, colunaQuantidade; //Colunas da tabela
     @FXML
-    TableView<Produto> tabelaProdutos; //Tabela
+    private TableView<Produto> tabelaProdutos; //Tabela
     @FXML
-    TextArea txtDescricao; //Caixa de texto
+    private TextArea txtDescricao; //Caixa de texto
 
     //Método de voltar para tela anterior
     public void acaoVoltar() throws IOException {
@@ -89,7 +88,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
             acaoLimpar();
     }
 
-    //Método de pesquisar pelos produtos por nome (ainda não implementado)
+    //Método de pesquisar pelos produtos por nome
     public void acaoPesquisar() {
         String sqlPesquisa = "select * from produto where nome ilike '%"+txtPesquisar.getText()+"%';";
         tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sqlPesquisa);

@@ -4,24 +4,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.cell.PropertyValueFactory;
-import sample.ConexaoBanco;
-import sample.Main;
-import sample.Prato;
-import sample.Produto;
-import javax.swing.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import sample.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TelaMontarCardapioController implements Initializable {
 
     ConexaoBanco conexaoBanco = new ConexaoBanco();
-
-    ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
+    TabelaProduto tabelaProduto = new TabelaProduto();
+    TabelaPrato tabelaPrato = new TabelaPrato();
+    private String sql = "select * from produto order by codproduto;"; //sql pra consulta
+    private String sql2 = "select * from prato order by codprato;"; //String sql
+    @FXML
+    private TableView<Produto> tabelaProdutos, tabelaPratos;
+    @FXML
+    private TableColumn<Produto, String> colunaProd, colunaDescProd, colunaPrato, colunaDescPrato;
+    @FXML
+    private TableColumn<Produto, Integer> colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco;
 
     @FXML
     public void acaoVoltar() throws IOException {
@@ -44,25 +46,21 @@ public class TelaMontarCardapioController implements Initializable {
 
     }
     @FXML
-    private void acaoPesquisar(){
+    private void acaoPesquisarProduto(){
+
+    }
+    @FXML
+    private void acaoPesquisarPrato(){
+
+    }
+    @FXML
+    private void acaoVisualizarCardapio(){
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*try {
-            Statement stmt = conexaoBanco.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select nome,codprato,descricao,preco from produto;");
-            while (rs.next()){
-                listaPratos.add(new Prato(rs.getString("nome"),rs.getInt("codprato"),rs.getString("descricao"), rs.getFloat("preco")));
-            }
-            rs.close();
-            colunaProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            colunaCod.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
-            colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-            tabelaProdutos.setItems(listaProdutos);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n"+e);
-        }*/
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,sql);
+        tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql2);
     }
 }
