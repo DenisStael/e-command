@@ -55,51 +55,34 @@ CREATE TABLE Produto (
   PRIMARY KEY (CodProduto) 
 );
 
-CREATE SEQUENCE Cardapio_seq;
-
-CREATE TABLE Cardapio(
-  codcardapio INT NOT NULL DEFAULT NEXTVAL ('Cardapio_seq'),
-  nome VARCHAR(45) NOT NULL,
-  PRIMARY KEY(codcardapio)
-);
-
 CREATE TABLE Opcional (
   CodOpcional INT NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
-  codcardapio INT,
+  cardapio BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (CodOpcional),
   FOREIGN KEY (CodOpcional) 
   REFERENCES Produto (CodProduto)
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (codcardapio) 
-  REFERENCES Cardapio (codcardapio)
   ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Complemento (
   CodComplemento INT NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
-  codcardapio INT,
+  cardapio BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (CodComplemento),
   FOREIGN KEY (CodComplemento) 
   REFERENCES Produto (CodProduto)
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (codcardapio) 
-  REFERENCES Cardapio (codcardapio)
   ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Bebida (
   CodBebida INT NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
-  codcardapio INT,
+  cardapio BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (CodBebida),
   FOREIGN KEY (CodBebida) 
   REFERENCES Produto (CodProduto)
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (codcardapio) 
-  REFERENCES Cardapio (codcardapio)
-  ON DELETE CASCADE ON UPDATE CASCADE 
+  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -110,11 +93,8 @@ CREATE TABLE Prato (
   Nome VARCHAR(45) NOT NULL,
   Descricao VARCHAR(200) NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
-  codcardapio INT,
-  PRIMARY KEY (CodPrato),
-  FOREIGN KEY (codcardapio) 
-  REFERENCES Cardapio (codcardapio)
-  ON DELETE CASCADE ON UPDATE CASCADE
+  cardapio BOOLEAN DEFAULT FALSE,
+  PRIMARY KEY (CodPrato)
 );
 
 CREATE TABLE PratoProdutos (
