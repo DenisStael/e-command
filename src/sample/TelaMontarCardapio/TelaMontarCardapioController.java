@@ -1,16 +1,11 @@
 package sample.TelaMontarCardapio;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import sample.*;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +26,7 @@ public class TelaMontarCardapioController implements Initializable {
     @FXML
     private TableColumn<Produto, Integer> colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco;
     @FXML
-    private TextField txtNomePrato,txtNomeProduto,txtCodPrato;
+    private TextField txtNomePrato,txtNomeProduto,txtCodPrato,txtCodProduto,txtPreco;
 
     @FXML
     public void acaoVoltar() throws IOException {
@@ -53,43 +48,71 @@ public class TelaMontarCardapioController implements Initializable {
 
     }
 
+    public void acaoAdicionarPrato() {
+       if(!txtCodPrato.getText().isEmpty())
+        {
+            try {
+                //Declaração SQL pra inserção no banco
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement
+                        ("UPDATE Prato SET cardapio = TRUE WHERE codprato = ?;");
+
+                //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
+                ps.setInt(1, Integer.parseInt(txtCodPrato.getText()));
+
+                ps.executeUpdate();//Executa a declaração SQL
+
+                limpar(); //limpa os campos de texto
+                //Mensagem de Sucesso
+                JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
+
+            } catch (Exception e) {
+                //Mensagem de erro
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\nErro: " + e);
+            }
+        }
+    }
+
+    public void adicionarAoCardapio(String SQL) {
+        try {
+            //Declaração SQL pra inserção no banco
+            PreparedStatement ps = conexaoBanco.connection.prepareStatement(SQL);
+
+            //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
+            ps.setInt(1, Integer.parseInt(txtCodProduto.getText()));
+            ps.setFloat(2, Float.parseFloat(txtPreco.getText()));
+
+            ps.executeUpdate();//Executa a declaração SQL
+
+            limpar(); //limpa os campos de texto
+            //Mensagem de Sucesso
+            JOptionPane.showMessageDialog(null, "Produto adicionado!");
+
+        } catch (Exception e) {
+            //Mensagem de erro
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar produto!\nErro: " + e);
+        }
+    }
+
+    public void acaoAdicionarComplemento(){
+        adicionarAoCardapio("INSERT INTO Complemento(codcomplemento, preco, cardapio) VALUES(?,?,true);");
+    }
+
+    public void acaoAdicionarBebida() {
+        adicionarAoCardapio("INSERT INTO Bebida(codbebida, preco, cardapio) VALUES(?,?,true);");
+    }
+
+    public void acaoAdicionarOpcional() {
+        adicionarAoCardapio("INSERT INTO Opcional(codopcional, preco, cardapio) VALUES(?,?,true);");
+    }
+
+    public void limpar(){
+        txtPreco.clear(); txtCodPrato.clear(); txtCodProduto.clear();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,sql);
         tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql2);
     }
 
-    public void acaoAdicionarPrato(ActionEvent actionEvent) {
-       /* if(!txtCodPrato.getText().isEmpty())
-        {
-            try {
-                //Declaração SQL pra inserção no banco
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                        ("ALTER TABLE Prato SET (codprato) VALUES(?);");
-
-                //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
-                ps.setString(1, txtCodPrato.getText());
-
-                ps.executeUpdate();//Executa a declaração SQL
-
-                //Mensagem de Sucesso
-                JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
-
-                //Chama o método mostraTabela da classe TabelaProduto para mostrar os produtos cadastrados no banco na tabela
-                tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql);
-            } catch (Exception e) {
-                //Mensagem de erro
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\nErro: " + e);
-            }
-        }*/
-    }
-
-    public void acaoAdicionarComplemento(ActionEvent actionEvent) {
-    }
-
-    public void acaoAdicionarBebida(ActionEvent actionEvent) {
-    }
-
-    public void acaoAdicionarOpcional(ActionEvent actionEvent) {
-    }
 }
