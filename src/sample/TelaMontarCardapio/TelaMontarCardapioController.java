@@ -44,8 +44,8 @@ public class TelaMontarCardapioController implements Initializable {
 
     }
     @FXML
-    private void acaoVisualizarCardapio(){
-
+    private void acaoVisualizarCardapio() throws IOException {
+        Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
 
     public void acaoAdicionarPrato() {

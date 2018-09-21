@@ -6,6 +6,9 @@ import sample.Main;
 import sample.TelaLogin.TelaLoginController;
 import javafx.scene.control.Button;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class TelaInicialController{
 
     @FXML
@@ -36,7 +39,8 @@ public class TelaInicialController{
 
     //Método de ação do botão Mesa
     public void acaoMesa() throws Exception{
-        //Main.trocaTela("TelaCardapio/telaCardapio.fxml");
+        Main.trocaTela("TelaMesa/telaMesa.fxml");
     }
+
 
 }

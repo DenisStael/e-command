@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,5 +10,23 @@
 
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMesa.TelaMesaController">
-
+   <children>
+      <Button fx:id="botaoVisualizarCardapio" layoutX="306.0" layoutY="442.0" mnemonicParsing="false" onAction="#acaoVisualizarCardapio" style="-fx-background-color: #47d147;" text="Ir para Cardápio" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField layoutX="286.0" layoutY="230.0" promptText="Numero da mesa" />
+      <Label layoutX="227.0" layoutY="172.0" text="Preencha abaixo para continuar">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="213.0" layoutY="29.0">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="botaoVoltar" layoutX="336.0" layoutY="537.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+   </children>
 </AnchorPane>
