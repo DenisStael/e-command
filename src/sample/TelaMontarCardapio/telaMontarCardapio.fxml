@@ -30,12 +30,12 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtCodPrato" layoutX="275.0" layoutY="28.0" prefHeight="25.0" prefWidth="142.0" promptText="Código do Prato" />
-                              <Button layoutX="440.0" layoutY="26.0" mnemonicParsing="false" onAction="#adicionarPrato" text="Adicionar Prato">
+                              <Button fx:id="botaoAdicionarPrato" layoutX="440.0" layoutY="26.0" mnemonicParsing="false" onAction="#acaoAdicionarPrato" text="Adicionar Prato">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="474.0" layoutY="88.0" mnemonicParsing="false" onAction="#acaoPesquisarPrato" text="Pesquisar">
+                              <Button fx:id="botaoPesquisarPrato" layoutX="474.0" layoutY="88.0" mnemonicParsing="false" onAction="#acaoPesquisarPrato" text="Pesquisar">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -60,7 +60,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtCodProdComp" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="105.0" promptText="Código Produto" />
-                              <Button layoutX="248.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarComplemento" text="Adicionar como Complemento">
+                              <Button fx:id="botaoAddComplemento" layoutX="248.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarComplemento" text="Adicionar como Complemento">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -71,7 +71,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtNomeProduto" layoutX="285.0" layoutY="104.0" promptText="Nome do produto" />
-                              <Button layoutX="458.0" layoutY="102.0" mnemonicParsing="false" onAction="#acaoPesquisarProduto" text="Pesquisar">
+                              <Button fx:id="botaoPesquisarProduto" layoutX="458.0" layoutY="102.0" mnemonicParsing="false" onAction="#acaoPesquisarProduto" text="Pesquisar">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -90,12 +90,12 @@
                                     <TableColumn fx:id="colunaQtdProd" prefWidth="75.0" text="Quantidade" />
                                 </columns>
                               </TableView>
-                              <Button layoutX="79.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarBebida" text="Adicionar como Bebida">
+                              <Button fx:id="botaoAddBebida" layoutX="79.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarBebida" text="Adicionar como Bebida">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#adicionarOpcional" text="Adicionar como Opcional">
+                              <Button fx:id="botaoAddOpcional" layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarOpcional" text="Adicionar como Opcional">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -121,7 +121,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="385.0" layoutY="565.0" mnemonicParsing="false" onAction="#acaoVisualizarCardapio" style="-fx-background-color: #47d147;" text="Visualizar Cardápio" textFill="WHITE">
+            <Button fx:id="botaoVisualizarCardapio" layoutX="385.0" layoutY="565.0" mnemonicParsing="false" onAction="#acaoVisualizarCardapio" style="-fx-background-color: #47d147;" text="Visualizar Cardápio" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
