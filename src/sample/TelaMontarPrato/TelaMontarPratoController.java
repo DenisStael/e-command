@@ -92,6 +92,7 @@ public class TelaMontarPratoController implements Initializable {
                     ps2.close();
                 }
                 acaoLimpar();//Limpa os campos da tela
+                JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Digite apenas números!\n"+e); //mensagem de sucesso
             }
