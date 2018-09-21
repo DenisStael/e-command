@@ -20,11 +20,11 @@ public class TelaMontarCardapioController implements Initializable {
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
     private String sql2 = "select * from prato order by codprato;"; //String sql
     @FXML
-    private TableView<Produto> tabelaProdutos, tabelaPratos;
+    private TableView tabelaProdutos, tabelaPratos;
     @FXML
-    private TableColumn<Produto, String> colunaProd, colunaDescProd, colunaPrato, colunaDescPrato;
+    private TableColumn colunaProd, colunaDescProd, colunaPrato, colunaDescPrato;
     @FXML
-    private TableColumn<Produto, Integer> colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco;
+    private TableColumn colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco;
     @FXML
     private TextField txtNomePrato,txtNomeProduto,txtCodPrato,txtCodProduto,txtPreco;
 
@@ -39,7 +39,7 @@ public class TelaMontarCardapioController implements Initializable {
     }
     @FXML
     private void acaoPesquisarPrato(){
-       String sqlPesquisa = "select * from prato where nome ilike '%"+txtNomePrato.getText()+"%';";
+        String sqlPesquisa = "select * from prato where nome ilike '%"+txtNomePrato.getText()+"%';";
         tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sqlPesquisa);
 
     }
@@ -49,8 +49,7 @@ public class TelaMontarCardapioController implements Initializable {
     }
 
     public void acaoAdicionarPrato() {
-       if(!txtCodPrato.getText().isEmpty())
-        {
+       if(!txtCodPrato.getText().isEmpty()){
             try {
                 //Declaração SQL pra inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement
@@ -69,28 +68,30 @@ public class TelaMontarCardapioController implements Initializable {
                 //Mensagem de erro
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\nErro: " + e);
             }
-        }
+        } else JOptionPane.showMessageDialog(null,"Digite o código do prato que deseja adicionar ao Cardápio!");
     }
 
     public void adicionarAoCardapio(String SQL) {
-        try {
-            //Declaração SQL pra inserção no banco
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement(SQL);
+        if(!txtCodProduto.getText().isEmpty() && !txtPreco.getText().isEmpty()){
+            try {
+                //Declaração SQL pra inserção no banco
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement(SQL);
 
-            //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
-            ps.setInt(1, Integer.parseInt(txtCodProduto.getText()));
-            ps.setFloat(2, Float.parseFloat(txtPreco.getText()));
+                //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
+                ps.setInt(1, Integer.parseInt(txtCodProduto.getText()));
+                ps.setFloat(2, Float.parseFloat(txtPreco.getText()));
 
-            ps.executeUpdate();//Executa a declaração SQL
+                ps.executeUpdate();//Executa a declaração SQL
 
-            limpar(); //limpa os campos de texto
-            //Mensagem de Sucesso
-            JOptionPane.showMessageDialog(null, "Produto adicionado!");
+                limpar(); //limpa os campos de texto
+                //Mensagem de Sucesso
+                JOptionPane.showMessageDialog(null, "Produto adicionado!");
 
-        } catch (Exception e) {
-            //Mensagem de erro
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar produto!\nErro: " + e);
-        }
+            } catch (Exception e) {
+                //Mensagem de erro
+                JOptionPane.showMessageDialog(null, "Erro ao adicionar produto!\nErro: " + e);
+            }
+        } else JOptionPane.showMessageDialog(null,"Digite o código do produto e defina um preço!");
     }
 
     public void acaoAdicionarComplemento(){

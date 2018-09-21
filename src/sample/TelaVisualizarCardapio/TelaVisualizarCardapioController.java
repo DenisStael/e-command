@@ -42,16 +42,16 @@ public class TelaVisualizarCardapioController {
 
 
 
-    /*método que mostra a tabela com todos os pratos em estoque e
-    recebe como parâmetros a tabela que será apresentada, suas colunas e a string sql
-    public void mostraLista(ListView listaPratos, String sql){
+    //método que mostra a tabela com todos os pratos em estoque e
+    //recebe como parâmetros a tabela que será apresentada, suas colunas e a string sql
+    /*public void mostraLista(ListView listaPratos, String sql){
         try {
             Statement stmt = conexaoBanco.connection.createStatement();//cria declaração sql
             ResultSet rs = stmt.executeQuery(sql); //executa a declaração e armazena o resultado
 
             //enquanto há resultados na consulta, registra os pratos na lista
             while (rs.next()){
-                this.listPrato.add(new Prato(rs.getString();
+                this.listPrato.add(new Prato(rs.getString());
             }
             rs.close(); //fecha o resultset
         } catch (SQLException e) {

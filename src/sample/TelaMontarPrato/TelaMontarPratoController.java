@@ -26,11 +26,9 @@ public class TelaMontarPratoController implements Initializable {
     @FXML
     TextArea txtDescricao;
     @FXML
-    TableColumn<Produto, String> colunaProd, colunaAddProd, colunaDescricao;
+    TableColumn colunaProd, colunaAddProd, colunaDescricao, colunaAddCod, colunaCod;
     @FXML
-    TableColumn<Produto, Integer> colunaAddCod, colunaCod;
-    @FXML
-    TableView<Produto> tabelaProdutos, tabelaAddProdutos;
+    TableView tabelaProdutos, tabelaAddProdutos;
     @FXML
     Label labelProd;
 

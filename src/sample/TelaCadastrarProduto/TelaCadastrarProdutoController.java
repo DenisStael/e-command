@@ -23,11 +23,9 @@ public class TelaCadastrarProdutoController implements Initializable {
     @FXML
     private TextField txtQtdProduto, txtNomeProduto; //caixas de texto
     @FXML
-    private TableColumn<Produto, String> colunaProd, colunaDescricao; //Colunas da tabela que serão preenchidas com atributos de produto
+    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade; //Colunas da tabela que serão preenchidas com atributos de produto
     @FXML
-    private TableColumn<Produto, Integer> colunaCod, colunaQuantidade; //Colunas da tabela que serão preenchidas com atributos de produto
-    @FXML
-    private TableView<Produto> tabelaProdutos; //Tabela que será mostrada na tela com os produtos cadastrados no banco
+    private TableView tabelaProdutos; //Tabela que será mostrada na tela com os produtos cadastrados no banco
     @FXML
     private TextArea txtDescricao;
 
