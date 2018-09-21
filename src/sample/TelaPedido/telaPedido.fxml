@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaPedido.TelaPedidoController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="718.0">
+         <children>
+            <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="722.0" style="-fx-background-color: #5353c6;">
+               <children>
+                  <ImageView fitHeight="85.0" fitWidth="225.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="324.0" layoutY="38.0" text="Realize o pedido:" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Accordion layoutX="-2.0" layoutY="113.0" prefHeight="486.0" prefWidth="332.0">
+              <panes>
+                <TitledPane animated="false" text="Pratos">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="listaPratos" layoutY="-1.0" prefHeight="387.0" prefWidth="332.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Complementos">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="listaComplementos" prefHeight="387.0" prefWidth="332.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane fx:id="listaBebidas" animated="false" text="Bebidas">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView prefHeight="387.0" prefWidth="332.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                  <TitledPane fx:id="listaOpcionais" animated="false" text="Opcionais">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView prefHeight="387.0" prefWidth="332.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+            <Button fx:id="botaoAddPedido" layoutX="330.0" layoutY="113.0" mnemonicParsing="false" text="Adicionar ao pedido" />
+            <Button fx:id="botaoVoltar" layoutX="347.0" layoutY="548.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
