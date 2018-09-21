@@ -60,34 +60,28 @@ public class TelaMontarCardapioController implements Initializable {
     }
 
     public void acaoAdicionarPrato(ActionEvent actionEvent) {
-        if(!txtCodPrato.getText().isEmpty(){
+       /* if(!txtCodPrato.getText().isEmpty())
+        {
             try {
                 //Declaração SQL pra inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                        ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
+                        ("ALTER TABLE Prato SET (codprato) VALUES(?);");
 
                 //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
-                ps.setString(1, txtNomeProduto.getText());
-                ps.setInt(2, Integer.parseInt(txtQtdProduto.getText()));
-                ps.setString(3, txtDescricao.getText());
+                ps.setString(1, txtCodPrato.getText());
 
                 ps.executeUpdate();//Executa a declaração SQL
 
                 //Mensagem de Sucesso
-                JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
+                JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
 
                 //Chama o método mostraTabela da classe TabelaProduto para mostrar os produtos cadastrados no banco na tabela
-                tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+                tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql);
             } catch (Exception e) {
                 //Mensagem de erro
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\nErro: " + e);
             }
-            //Limpa os campos de texto
-            acaoCancelar();
-
-            //Mensagem caso os campos não tenham todos sidos preenchidos
-        } else JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-    }
+        }*/
     }
 
     public void acaoAdicionarComplemento(ActionEvent actionEvent) {
