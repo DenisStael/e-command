@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
-import sample.Produto;
 import sample.TabelaProduto;
 import javax.swing.*;
 import java.io.IOException;
@@ -22,11 +21,9 @@ public class TelaGerenciarEstoqueController implements Initializable {
     @FXML
     private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar; //Caixas de texto
     @FXML
-    private TableColumn<Produto, String> colunaProd, colunaDescricao; //Colunas da tabela
+    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade; //Colunas da tabela
     @FXML
-    private TableColumn<Produto, Integer> colunaCod, colunaQuantidade; //Colunas da tabela
-    @FXML
-    private TableView<Produto> tabelaProdutos; //Tabela
+    private TableView tabelaProdutos; //Tabela
     @FXML
     private TextArea txtDescricao; //Caixa de texto
 
@@ -44,47 +41,53 @@ public class TelaGerenciarEstoqueController implements Initializable {
 
     //Método de remover os produtos do banco
     public void acaoRemoverProduto() {
-        try {
-            int cod = Integer.parseInt(txtCodProduto.getText()); //Recebe o código inserido pelo usuário convertido para inteiro
-
-            //Cria declaração sql
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
-            ps.setInt(1, cod); //Insere valor no parâmetro da declaração sql
-            ps.executeUpdate(); //Eexecuta declaração sql
-
-            //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-            tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
-            JOptionPane.showMessageDialog(null, "Produto Deletado!"); //Mensagem de sucesso
-        }
-        catch (SQLException e){
-            //Mensagem de erro
-            JOptionPane.showMessageDialog(null, "Erro ao Deletar produto!\nErro: " + e);
-        }
-    }
-
-    //Método de adicionar produtos ao banco
-    public void acaoAttProduto() {
+        if(!txtCodProduto.getText().isEmpty()){
             try {
                 int cod = Integer.parseInt(txtCodProduto.getText()); //Recebe o código inserido pelo usuário convertido para inteiro
 
                 //Cria declaração sql
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ? WHERE codproduto = ? ;");
-
-                //Insere valores nos parâmetros da declaração sql
-                ps.setString(1, txtDescricao.getText());
-                ps.setString(2, txtNomeProduto.getText());
-                ps.setInt(3, Integer.parseInt(txtQtdProduto.getText()));
-                ps.setInt(4, cod);
-                ps.executeUpdate(); // Executa a declaração sql
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
+                ps.setInt(1, cod); //Insere valor no parâmetro da declaração sql
+                ps.executeUpdate(); //Eexecuta declaração sql
 
                 //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
                 tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
-                JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
+                JOptionPane.showMessageDialog(null, "Produto Deletado!"); //Mensagem de sucesso
             }
-            catch(SQLException e) {
+            catch (SQLException e){
                 //Mensagem de erro
-                JOptionPane.showMessageDialog(null, "Erro ao Atualizar produto!\nErro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro ao Deletar produto!\nErro: " + e);
             }
+        } else JOptionPane.showMessageDialog(null,"Insira o código do produto que deseja remover!");
+    }
+
+    //Método de adicionar produtos ao banco
+    public void acaoAttProduto() {
+            if(!txtCodProduto.getText().isEmpty()){
+                if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
+                    try {
+                        int cod = Integer.parseInt(txtCodProduto.getText()); //Recebe o código inserido pelo usuário convertido para inteiro
+
+                        //Cria declaração sql
+                        PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ? WHERE codproduto = ? ;");
+
+                        //Insere valores nos parâmetros da declaração sql
+                        ps.setString(1, txtDescricao.getText());
+                        ps.setString(2, txtNomeProduto.getText());
+                        ps.setInt(3, Integer.parseInt(txtQtdProduto.getText()));
+                        ps.setInt(4, cod);
+                        ps.executeUpdate(); // Executa a declaração sql
+
+                        //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
+                        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+                        JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
+                    }
+                    catch(SQLException e) {
+                        //Mensagem de erro
+                        JOptionPane.showMessageDialog(null, "Erro ao Atualizar produto!\nErro: " + e);
+                    }
+                } else JOptionPane.showMessageDialog(null,"Preencha todos os campos para atualizar!");
+            } else JOptionPane.showMessageDialog(null,"Insira o código do produto que deseja atualizar!");
             acaoLimpar();
     }
 
