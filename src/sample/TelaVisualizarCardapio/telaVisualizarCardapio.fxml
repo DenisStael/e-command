@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,15 +8,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaVisualizarCardapio.TelaVisualizarCardapioController">
-   <children>
-      <ListView fx:id="listaCardapio" layoutY="150.0" prefHeight="450.0" prefWidth="365.0" />
-      <Button layoutX="525.0" layoutY="353.0" mnemonicParsing="false" text="Button" />
-      <ImageView fitHeight="104.0" fitWidth="241.0" layoutX="245.0" layoutY="24.0">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.205685618729097" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
+         <children>
+            <Label layoutX="347.0" layoutY="42.0" text="Cardápio" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="85.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
+         <children>
+            <TableView fx:id="tabelaProdutos" layoutX="-1.0" layoutY="63.0" prefHeight="318.0" prefWidth="720.0">
+               <columns>
+                  <TableColumn fx:id="colunaProd" prefWidth="192.0" resizable="false" text="Nome do prato" />
+                  <TableColumn fx:id="colunaDescricao" prefWidth="428.0" resizable="false" text="Descrição" />
+                  <TableColumn minWidth="0.0" prefWidth="98.0" text="Preço" />
+               </columns>
+            </TableView>
+            <Button fx:id="botaoVoltar" layoutX="327.0" layoutY="403.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="30.0" prefWidth="64.0" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="153.0" layoutY="403.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Adicionar ao pedido">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

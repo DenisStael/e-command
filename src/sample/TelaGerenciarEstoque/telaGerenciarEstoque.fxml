@@ -24,7 +24,7 @@
       </AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
          <children>
-            <TableView fx:id="tabelaProdutos" layoutX="4.0" layoutY="255.0" prefHeight="169.0" prefWidth="707.0">
+            <TableView fx:id="tabelaProdutos" layoutX="-3.0" layoutY="256.0" prefHeight="168.0" prefWidth="722.0">
                <columns>
                   <TableColumn fx:id="colunaProd" prefWidth="154.0" resizable="false" text="Produtos" />
                   <TableColumn fx:id="colunaCod" prefWidth="68.0" resizable="false" text="Código" />
