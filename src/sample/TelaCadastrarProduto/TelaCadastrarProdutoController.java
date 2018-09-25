@@ -17,13 +17,13 @@ public class TelaCadastrarProdutoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco();//Objeto de conexão com o banco
     private TabelaProduto tabelaProduto = new TabelaProduto();//Objeto tabela que mostra todos os produtos no banco
-    private String sql = "select nome,codproduto,descricao,quantidade from produto order by codproduto;"; //sql pra consulta
+    private String sql = "select * from produto order by codproduto;"; //sql pra consulta
 
     //Atributos da tela
     @FXML
-    private TextField txtQtdProduto, txtNomeProduto; //caixas de texto
+    private TextField txtQtdProduto, txtNomeProduto, txtUnidadeMedida; //caixas de texto
     @FXML
-    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade; //Colunas da tabela que serão preenchidas com atributos de produto
+    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade, colunaMedida; //Colunas da tabela que serão preenchidas com atributos de produto
     @FXML
     private TableView tabelaProdutos; //Tabela que será mostrada na tela com os produtos cadastrados no banco
     @FXML
@@ -38,16 +38,17 @@ public class TelaCadastrarProdutoController implements Initializable {
     public void acaoCdProduto() {
 
         //checa se todos os campos foram preenchidos
-        if(!txtNomeProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtQtdProduto.getText().isEmpty()){
+        if(!txtNomeProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtUnidadeMedida.getText().isEmpty()){
             try {
                 //Declaração SQL pra inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                        ("INSERT INTO Produto(nome, quantidade, descricao) VALUES(?,?,?);");
+                        ("INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES(?,?,?,?);");
 
                 //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
                 ps.setString(1, txtNomeProduto.getText());
-                ps.setInt(2, Integer.parseInt(txtQtdProduto.getText()));
+                ps.setFloat(2, Float.parseFloat(txtQtdProduto.getText()));
                 ps.setString(3, txtDescricao.getText());
+                ps.setString(4, txtUnidadeMedida.getText());
 
                 ps.executeUpdate();//Executa a declaração SQL
 
@@ -55,7 +56,7 @@ public class TelaCadastrarProdutoController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
 
                 //Chama o método mostraTabela da classe TabelaProduto para mostrar os produtos cadastrados no banco na tabela
-                tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+                tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
             } catch (Exception e) {
                 //Mensagem de erro
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);
@@ -72,6 +73,7 @@ public class TelaCadastrarProdutoController implements Initializable {
         txtQtdProduto.clear();
         txtDescricao.clear();
         txtNomeProduto.clear();
+        txtUnidadeMedida.clear();
     }
 
     //Método que é executado assim que a tela é exibida
@@ -79,7 +81,7 @@ public class TelaCadastrarProdutoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Chama o método mostraTabela da classe TabelaProduto para mostrar os produtos cadastrados no banco na tabela
-        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
     }
 }
 

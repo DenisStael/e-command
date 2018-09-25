@@ -16,7 +16,7 @@ public class TabelaProduto {
 
     /*método que mostra a tabela com todos os produtos em estoque e
     recebe como parâmetros a tabela que será apresentada, suas colunas e a string sql*/
-    public void mostraTabela(TableView tabelaProdutos, TableColumn colunaProd, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaQuantidade, String sql){
+    public void mostraTabela(TableView tabelaProdutos, TableColumn colunaProd, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaQuantidade, TableColumn colunaMedida, String sql){
         try {
             this.listaProdutos.clear();//limpa a lista
             Statement stmt = conexaoBanco.connection.createStatement();//cria declaração sql
@@ -25,7 +25,7 @@ public class TabelaProduto {
             //enquanto há resultados na consulta, registra os produtos na lista
             while (rs.next()){
                 this.listaProdutos.add(new Produto(rs.getString("nome"), rs.getInt("codproduto"),
-                        rs.getString("descricao"), rs.getInt("quantidade")));
+                        rs.getString("descricao"), rs.getInt("quantidade"), rs.getString("medida")));
             }
             rs.close(); //fecha o resultset
 
@@ -34,6 +34,7 @@ public class TabelaProduto {
             colunaCod.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
             colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
             colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+            colunaMedida.setCellValueFactory(new PropertyValueFactory<>("medida"));
 
             //insere os itens na tabela
             tabelaProdutos.setItems(this.listaProdutos);

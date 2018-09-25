@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -13,7 +18,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarCardapio.TelaMontarCardapioController">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarCardapio.TelaMontarCardapioController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
          <children>
@@ -27,8 +32,8 @@
                                 <columns>
                                   <TableColumn fx:id="colunaPrato" prefWidth="170.0" text="Prato" />
                                   <TableColumn fx:id="colunaCodPrato" prefWidth="60.0" text="Código" />
-                                    <TableColumn fx:id="colunaDescPrato" prefWidth="381.0" text="Descrição" />
-                                    <TableColumn fx:id="colunaPreco" prefWidth="93.0" text="Preço" />
+                                    <TableColumn fx:id="colunaDescPrato" prefWidth="394.0" text="Descrição" />
+                                    <TableColumn fx:id="colunaPreco" text="Preço" />
                                 </columns>
                               </TableView>
                               <Label layoutX="139.0" layoutY="28.0" text="Código do Prato:">
@@ -67,7 +72,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtCodProduto" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="105.0" promptText="Código Produto" />
-                              <Button fx:id="botaoAddComplemento" layoutX="248.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarComplemento" text="Adicionar como Complemento">
+                              <Button fx:id="botaoAddComplemento" layoutX="373.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarComplemento" text="Adicionar como Complemento">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -91,18 +96,14 @@
                               <TextField fx:id="txtPreco" layoutX="513.0" layoutY="14.0" prefHeight="25.0" prefWidth="67.0" promptText="0.00" />
                               <TableView fx:id="tabelaProdutos" layoutX="6.0" layoutY="137.0" prefHeight="270.0" prefWidth="707.0">
                                 <columns>
-                                  <TableColumn fx:id="colunaProd" prefWidth="151.0" text="Produto" />
-                                  <TableColumn fx:id="colunaCodProd" prefWidth="62.0" text="Código" />
-                                    <TableColumn fx:id="colunaDescProd" prefWidth="418.0" text="Descricao" />
-                                    <TableColumn fx:id="colunaQtdProd" prefWidth="75.0" text="Quantidade" />
+                                  <TableColumn fx:id="colunaProd" prefWidth="122.0" text="Produto" />
+                                  <TableColumn fx:id="colunaCodProd" prefWidth="67.0" text="Código" />
+                                    <TableColumn fx:id="colunaDescProd" prefWidth="386.0" text="Descricao" />
+                                    <TableColumn fx:id="colunaQtdProd" prefWidth="70.0" text="Quantidade" />
+                                    <TableColumn fx:id="colunaMedida" prefWidth="60.0" text="Medida" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="botaoAddBebida" layoutX="79.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarBebida" text="Adicionar como Bebida">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="botaoAddOpcional" layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarOpcional" text="Adicionar como Opcional">
+                              <Button fx:id="botaoAddBebida" layoutX="186.0" layoutY="54.0" mnemonicParsing="false" onAction="#acaoAdicionarBebida" text="Adicionar como Bebida">
                                  <font>
                                     <Font size="13.0" />
                                  </font>

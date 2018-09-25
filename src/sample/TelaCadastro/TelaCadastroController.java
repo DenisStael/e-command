@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 public class TelaCadastroController {
 
-    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto deconexão com o banco
+    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
 
     public static String tipo; //String que recebe da tela do Gerente o tipo de usuário que está sendo cadastrado
 
@@ -39,51 +39,15 @@ public class TelaCadastroController {
             if(txtSenha.getText().equals(txtConfirmaSenha.getText())){
                 try {
                     //Declaração SQL de inserção no banco
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into usuario(nome,senha)VALUES(?,?);");
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into usuario(nome,senha,tipo)VALUES(?,?,?);");
 
                     //Insere os valores nos determinados parâmetros da declaração SQL
                     ps.setString(1, txtNome.getText());
                     ps.setString(2, txtSenha.getText());
+                    ps.setString(3, tipo);
 
                     ps.executeUpdate(); //Executa a declaração SQL
 
-                    //Declaração SQL sem parâmetros
-                    Statement stmt = conexaoBanco.connection.createStatement();
-
-                    /*Consulta o último Código de usuário adicionado e
-                    retorna o resultado da consulta ao banco na variável 'rs' do tipo ResultSet*/
-                    ResultSet rs = stmt.executeQuery("select max(codusuario) codMax from usuario;");
-
-                    int codMax = 0; //Inteiro que irá receber o resultado da consulta
-
-                    //Checa se há resultados na consulta
-                    if(rs.next()) {
-                        codMax = rs.getInt("codMax");//Atribui o valor convertido para inteiro à 'codMax'
-                    }
-                    rs.close(); //Encerra o ResultSet
-
-                    //Nova declaração SQL para registrar o código do usuário ao seu tipo (Garçom ou Cozinheiro)
-                    PreparedStatement ps2;
-
-                    //Checa se o tipo de usuário recebido no atributo estático 'tipo' é Cozinheiro
-                    if(tipo.equals("Cozinheiro")){
-
-                        //Insere a String SQL à declaração criada
-                        ps2 = conexaoBanco.connection.prepareStatement("insert into cozinheiro(usuario_codusuario) VALUES(?);");
-
-                        ps2.setInt(1, codMax); //Atriui o valor ao parâmetro da declaração SQL
-
-                        ps2.executeUpdate(); // Executa a declaração SQL
-
-                        //Checa se o tipo de usuário recebido no atributo estático 'tipo' é Garçom
-                    } else if(tipo.equals("Garçom")){
-                        //Insere a String SQL à declaração criada
-                        ps2 = conexaoBanco.connection.prepareStatement("insert into garcom(usuario_codusuario) VALUES(?);");
-
-                        ps2.setInt(1, codMax); //Atriui o valor ao parâmetro da declaração SQL
-
-                        ps2.executeUpdate(); // Executa a declaração SQL
-                    }
                     JOptionPane.showMessageDialog(null, "Inserido com sucesso!"); //Mensagem de Sucesso
                 } catch (SQLException e) {
                     //Mensagem de erro

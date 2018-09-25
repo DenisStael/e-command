@@ -6,28 +6,19 @@ import javafx.beans.property.SimpleStringProperty;
 public class Produto {
 
     //atributos da classe que serão utilizados nas colunas da tabela
-    private final SimpleStringProperty nome;
+    private SimpleStringProperty nome;
     private SimpleStringProperty descricao;
     private SimpleIntegerProperty quantidade;
-    private final SimpleIntegerProperty codproduto;
+    private SimpleIntegerProperty codproduto;
+    private SimpleStringProperty medida;
 
-    //construtor com 4 parâmetros
-    public Produto(String nome, int codproduto, String descricao, int quantidade) {
+    //construtor com 5 parâmetros
+    public Produto(String nome, int codproduto, String descricao, int quantidade, String medida) {
         this.nome = new SimpleStringProperty(nome);
         this.descricao = new SimpleStringProperty(descricao);
         this.quantidade = new SimpleIntegerProperty(quantidade);
         this.codproduto = new SimpleIntegerProperty(codproduto);
-    }
-    //construtor com 3 parâmetros
-    public Produto(String nome, int codproduto, String descricao) {
-        this.nome = new SimpleStringProperty(nome);
-        this.descricao = new SimpleStringProperty(descricao);
-        this.codproduto = new SimpleIntegerProperty(codproduto);
-    }
-    //construtor com 2 parâmetros
-    public Produto(String nome, int codproduto) {
-        this.nome = new SimpleStringProperty(nome);
-        this.codproduto = new SimpleIntegerProperty(codproduto);
+        this.medida = new SimpleStringProperty(medida);
     }
 
     //Getters e Setters
@@ -77,5 +68,17 @@ public class Produto {
 
     public void setCodproduto(int codproduto) {
         this.codproduto.set(codproduto);
+    }
+
+    public String getMedida() {
+        return medida.get();
+    }
+
+    public SimpleStringProperty medidaProperty() {
+        return medida;
+    }
+
+    public void setMedida(String medida) {
+        this.medida.set(medida);
     }
 }

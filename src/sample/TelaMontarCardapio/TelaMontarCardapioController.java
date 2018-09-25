@@ -18,13 +18,13 @@ public class TelaMontarCardapioController implements Initializable {
     TabelaProduto tabelaProduto = new TabelaProduto();
     TabelaPrato tabelaPrato = new TabelaPrato();
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
-    private String sql2 = "select * from prato order by codprato;"; //String sql
+    private String sql2 = "select nome,codprato,descricao,preco from prato order by codprato;"; //String sql
     @FXML
     private TableView tabelaProdutos, tabelaPratos;
     @FXML
     private TableColumn colunaProd, colunaDescProd, colunaPrato, colunaDescPrato;
     @FXML
-    private TableColumn colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco;
+    private TableColumn colunaCodProd, colunaQtdProd, colunaCodPrato, colunaPreco, colunaMedida;
     @FXML
     private TextField txtNomePrato,txtNomeProduto,txtCodPrato,txtCodProduto,txtPreco;
 
@@ -35,7 +35,7 @@ public class TelaMontarCardapioController implements Initializable {
     @FXML
     private void acaoPesquisarProduto(){
         String sqlPesquisa = "select * from produto where nome ilike '%"+txtNomeProduto.getText()+"%';";
-        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,sqlPesquisa);
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,colunaMedida,sqlPesquisa);
     }
     @FXML
     private void acaoPesquisarPrato(){
@@ -77,7 +77,7 @@ public class TelaMontarCardapioController implements Initializable {
                 //Declaração SQL pra inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement(SQL);
 
-                //Atribui os parâmetros e os valores à declaração SQL criada anteriormente
+                //Atribui os parâmetros e os valores à declaração SQL passada por parâmetro
                 ps.setInt(1, Integer.parseInt(txtCodProduto.getText()));
                 ps.setFloat(2, Float.parseFloat(txtPreco.getText()));
 
@@ -102,17 +102,13 @@ public class TelaMontarCardapioController implements Initializable {
         adicionarAoCardapio("INSERT INTO Bebida(codbebida, preco, cardapio) VALUES(?,?,true);");
     }
 
-    public void acaoAdicionarOpcional() {
-        adicionarAoCardapio("INSERT INTO Opcional(codopcional, preco, cardapio) VALUES(?,?,true);");
-    }
-
     public void limpar(){
         txtPreco.clear(); txtCodPrato.clear(); txtCodProduto.clear();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,sql);
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,colunaMedida,sql);
         tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql2);
     }
 

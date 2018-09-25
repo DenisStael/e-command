@@ -59,8 +59,7 @@ public class TelaLoginController implements Initializable {
                     Statement stmt = conexaoBanco.connection.createStatement();
 
                     //Armazena o resultado da consulta
-                    ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, garcom g where" +
-                            " u.codusuario = g.usuario_codusuario;");
+                    ResultSet rs = stmt.executeQuery("select nome,senha from usuario where tipo = 'Garçom';");
 
                     //Verifica se há resultados encontrados
                     if(rs.next()){
@@ -84,8 +83,7 @@ public class TelaLoginController implements Initializable {
                     Statement stmt = conexaoBanco.connection.createStatement();
 
                     //Armazena o resultado da consulta
-                    ResultSet rs = stmt.executeQuery("select u.nome,u.senha from usuario u, cozinheiro c " +
-                            "where u.codusuario = c.usuario_codusuario;");
+                    ResultSet rs = stmt.executeQuery("select nome,senha from usuario where tipo = 'Cozinheiro';");
 
                     //Verifica se há resultados encontrados
                     if(rs.next()){

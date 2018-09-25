@@ -16,12 +16,12 @@ public class TelaGerenciarEstoqueController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
     private TabelaProduto tabelaProduto = new TabelaProduto(); //Tabela dos produtos cadastrados no banco
-    private String sql = "select nome,codproduto,descricao,quantidade from produto order by codproduto;"; //String sql
+    private String sql = "select * from produto order by codproduto;"; //String sql
     //Atributos da tela
     @FXML
-    private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar; //Caixas de texto
+    private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar, txtMedida; //Caixas de texto
     @FXML
-    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade; //Colunas da tabela
+    private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade, colunaMedida; //Colunas da tabela
     @FXML
     private TableView tabelaProdutos; //Tabela
     @FXML
@@ -36,7 +36,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
     public void acaoLimpar() {
         txtCodProduto.clear(); txtDescricao.clear();
         txtNomeProduto.clear(); txtQtdProduto.clear();
-        txtPesquisar.clear();
+        txtPesquisar.clear(); txtMedida.clear();
     }
 
     //Método de remover os produtos do banco
@@ -51,7 +51,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
                 ps.executeUpdate(); //Eexecuta declaração sql
 
                 //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-                tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+                tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
                 JOptionPane.showMessageDialog(null, "Produto Deletado!"); //Mensagem de sucesso
             }
             catch (SQLException e){
@@ -66,20 +66,19 @@ public class TelaGerenciarEstoqueController implements Initializable {
             if(!txtCodProduto.getText().isEmpty()){
                 if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
                     try {
-                        int cod = Integer.parseInt(txtCodProduto.getText()); //Recebe o código inserido pelo usuário convertido para inteiro
-
                         //Cria declaração sql
-                        PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ? WHERE codproduto = ? ;");
+                        PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ?, medida = ? WHERE codproduto = ? ;");
 
                         //Insere valores nos parâmetros da declaração sql
                         ps.setString(1, txtDescricao.getText());
                         ps.setString(2, txtNomeProduto.getText());
                         ps.setInt(3, Integer.parseInt(txtQtdProduto.getText()));
-                        ps.setInt(4, cod);
+                        ps.setString(4, txtMedida.getText());
+                        ps.setInt(5, Integer.parseInt(txtCodProduto.getText()));
                         ps.executeUpdate(); // Executa a declaração sql
 
                         //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-                        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+                        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
                         JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
                     }
                     catch(SQLException e) {
@@ -94,12 +93,12 @@ public class TelaGerenciarEstoqueController implements Initializable {
     //Método de pesquisar pelos produtos por nome
     public void acaoPesquisar() {
         String sqlPesquisa = "select * from produto where nome ilike '%"+txtPesquisar.getText()+"%';";
-        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sqlPesquisa);
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sqlPesquisa);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,sql);
+        tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
     }
 }
