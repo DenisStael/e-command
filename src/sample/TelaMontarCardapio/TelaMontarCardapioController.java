@@ -20,7 +20,9 @@ public class TelaMontarCardapioController implements Initializable {
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
     private String sql2 = "select nome,codprato,descricao,preco from prato order by codprato;"; //String sql
     @FXML
-    private TableView tabelaProdutos, tabelaPratos;
+    private TableView<Produto> tabelaProdutos;
+    @FXML
+    TableView<Prato> tabelaPratos;
     @FXML
     private TableColumn colunaProd, colunaDescProd, colunaPrato, colunaDescPrato;
     @FXML
@@ -28,22 +30,29 @@ public class TelaMontarCardapioController implements Initializable {
     @FXML
     private TextField txtNomePrato,txtNomeProduto,txtCodPrato,txtCodProduto,txtPreco;
 
-    @FXML
+    @FXML //volta para a tela anterior
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
-    @FXML
+    @FXML //pesquisa por nome e mostra na tabela apenas produtos correspondentes à pesquisa
     private void acaoPesquisarProduto(){
         String sqlPesquisa = "select * from produto where nome ilike '%"+txtNomeProduto.getText()+"%';";
         tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescProd,colunaCodProd,colunaQtdProd,colunaMedida,sqlPesquisa);
     }
-    @FXML
+    @FXML //pesquisa por nome e mostra na tabela apenas pratos correspondentes à pesquisa
     private void acaoPesquisarPrato(){
         String sqlPesquisa = "select * from prato where nome ilike '%"+txtNomePrato.getText()+"%';";
         tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sqlPesquisa);
-
     }
-    @FXML
+    @FXML //preenche o campo de texto com o código do prato selecionado ao clicar numa linha da tabela
+    private void clicarTabelaPrato(){
+        txtCodPrato.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
+    }
+    @FXML //preenche o campo de texto com o código do produto selecionado ao clicar numa linha da tabela
+    private void clicarTabelaProduto(){
+        txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodproduto());
+    }
+    @FXML //chama a tela de visualizar cardápio
     private void acaoVisualizarCardapio() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }

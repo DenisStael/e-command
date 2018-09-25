@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.20903010033444816" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" fx:controller="sample.TelaEditarPrato.TelaEditarPratoController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.20903010033444816" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaEditarPrato.TelaEditarPratoController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
          <children>
@@ -23,7 +23,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <TableView fx:id="tabelaPratos" layoutX="12.0" layoutY="172.0" prefHeight="256.0" prefWidth="697.0">
+            <TableView fx:id="tabelaPratos" layoutX="12.0" layoutY="172.0" onMouseClicked="#clicarTabela" prefHeight="256.0" prefWidth="697.0">
               <columns>
                 <TableColumn fx:id="colunaPratos" prefWidth="132.0" text="Pratos" />
                 <TableColumn fx:id="colunaCodigo" prefWidth="63.0" text="Código" />
@@ -65,7 +65,7 @@
             <Button layoutX="550.0" layoutY="140.0" mnemonicParsing="false" onAction="#acaoLimpar" prefHeight="27.0" prefWidth="81.0" text="Limpar" />
             <Button layoutX="550.0" layoutY="100.0" mnemonicParsing="false" onAction="#acaoRemover" prefHeight="27.0" prefWidth="81.0" text="Remover" />
             <Separator layoutX="451.0" orientation="VERTICAL" prefHeight="172.0" prefWidth="6.0" />
-            <Button layoutX="326.0" layoutY="434.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="66.0" onAction="#acaoVoltar" text="Voltar">
+            <Button layoutX="326.0" layoutY="434.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="21.0" prefWidth="66.0" text="Voltar">
                <font>
                   <Font size="14.0" />
                </font>

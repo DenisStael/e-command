@@ -24,7 +24,7 @@
       </AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
          <children>
-            <TableView fx:id="tabelaProdutos" layoutX="-3.0" layoutY="256.0" prefHeight="168.0" prefWidth="723.0">
+            <TableView fx:id="tabelaProdutos" layoutX="-3.0" layoutY="256.0" onMouseClicked="#acaoClicarTabela" prefHeight="168.0" prefWidth="723.0">
                <columns>
                   <TableColumn fx:id="colunaProd" prefWidth="135.0" resizable="false" text="Produtos" />
                   <TableColumn fx:id="colunaCod" prefWidth="59.0" resizable="false" text="Código" />
@@ -36,6 +36,7 @@
             <TextField fx:id="txtNomeProduto" layoutX="98.0" layoutY="54.0" prefHeight="25.0" prefWidth="149.0" promptText="Nome" />
             <TextField fx:id="txtQtdProduto" layoutX="97.0" layoutY="94.0" prefHeight="25.0" prefWidth="82.0" promptText="Quantidade" />
             <TextArea fx:id="txtDescricao" layoutX="277.0" layoutY="54.0" prefHeight="71.0" prefWidth="348.0" />
+            <TextField fx:id="txtMedida" layoutX="97.0" layoutY="132.0" prefHeight="25.0" prefWidth="68.0" promptText="Kg, Lt, Un" />
             <Label layoutX="31.0" layoutY="54.0" prefHeight="25.0" prefWidth="51.0" text="Nome:">
                <font>
                   <Font size="15.0" />
@@ -89,7 +90,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtMedida" layoutX="97.0" layoutY="132.0" prefHeight="25.0" prefWidth="68.0" promptText="Kg, Lt, Un" />
          </children>
       </AnchorPane>
    </items>

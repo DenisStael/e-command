@@ -45,8 +45,8 @@ public class Prato {
         this.descricao.set(descricao);
     }
 
-    public float getPreco() {
-        return preco.get();
+    public String getPreco() {
+        return String.valueOf(preco.get());
     }
 
     public SimpleFloatProperty precoProperty() {
@@ -57,8 +57,8 @@ public class Prato {
         this.preco.set(preco);
     }
 
-    public int getCodprato() {
-        return codprato.get();
+    public String getCodprato() {
+        return String.valueOf(codprato.get());
     }
 
     public SimpleIntegerProperty codpratoProperty() {

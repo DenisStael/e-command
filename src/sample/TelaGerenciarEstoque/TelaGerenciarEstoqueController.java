@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
+import sample.Produto;
 import sample.TabelaProduto;
 import javax.swing.*;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
     @FXML
     private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade, colunaMedida; //Colunas da tabela
     @FXML
-    private TableView tabelaProdutos; //Tabela
+    private TableView<Produto> tabelaProdutos; //Tabela
     @FXML
     private TextArea txtDescricao; //Caixa de texto
 
@@ -52,6 +53,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
 
                 //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
                 tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
+                acaoLimpar(); //limpa os campos de texto
                 JOptionPane.showMessageDialog(null, "Produto Deletado!"); //Mensagem de sucesso
             }
             catch (SQLException e){
@@ -61,7 +63,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
         } else JOptionPane.showMessageDialog(null,"Insira o código do produto que deseja remover!");
     }
 
-    //Método de adicionar produtos ao banco
+    //Método de atualizar produtos
     public void acaoAttProduto() {
             if(!txtCodProduto.getText().isEmpty()){
                 if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
@@ -72,7 +74,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
                         //Insere valores nos parâmetros da declaração sql
                         ps.setString(1, txtDescricao.getText());
                         ps.setString(2, txtNomeProduto.getText());
-                        ps.setInt(3, Integer.parseInt(txtQtdProduto.getText()));
+                        ps.setFloat(3, Float.parseFloat(txtQtdProduto.getText()));
                         ps.setString(4, txtMedida.getText());
                         ps.setInt(5, Integer.parseInt(txtCodProduto.getText()));
                         ps.executeUpdate(); // Executa a declaração sql
@@ -94,6 +96,15 @@ public class TelaGerenciarEstoqueController implements Initializable {
     public void acaoPesquisar() {
         String sqlPesquisa = "select * from produto where nome ilike '%"+txtPesquisar.getText()+"%';";
         tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sqlPesquisa);
+    }
+
+    //ao clicar numa linha da tabela pega os valores e preenche os campos de texto
+    public void acaoClicarTabela(){
+        txtNomeProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getNome());
+        txtDescricao.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getDescricao());
+        txtQtdProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getQuantidade());
+        txtMedida.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getMedida());
+        txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodproduto());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -8,20 +9,21 @@ public class Produto {
     //atributos da classe que serão utilizados nas colunas da tabela
     private SimpleStringProperty nome;
     private SimpleStringProperty descricao;
-    private SimpleIntegerProperty quantidade;
+    private SimpleFloatProperty quantidade;
     private SimpleIntegerProperty codproduto;
     private SimpleStringProperty medida;
 
     //construtor com 5 parâmetros
-    public Produto(String nome, int codproduto, String descricao, int quantidade, String medida) {
+    public Produto(String nome, int codproduto, String descricao, float quantidade, String medida) {
         this.nome = new SimpleStringProperty(nome);
         this.descricao = new SimpleStringProperty(descricao);
-        this.quantidade = new SimpleIntegerProperty(quantidade);
+        this.quantidade = new SimpleFloatProperty(quantidade);
         this.codproduto = new SimpleIntegerProperty(codproduto);
         this.medida = new SimpleStringProperty(medida);
     }
 
     //Getters e Setters
+
     public String getNome() {
         return nome.get();
     }
@@ -46,20 +48,20 @@ public class Produto {
         this.descricao.set(descricao);
     }
 
-    public int getQuantidade() {
-        return quantidade.get();
+    public String getQuantidade() {
+        return String.valueOf(quantidade.get());
     }
 
-    public SimpleIntegerProperty quantidadeProperty() {
+    public SimpleFloatProperty quantidadeProperty() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(float quantidade) {
         this.quantidade.set(quantidade);
     }
 
-    public int getCodproduto() {
-        return codproduto.get();
+    public String getCodproduto() {
+        return String.valueOf(codproduto.get());
     }
 
     public SimpleIntegerProperty codprodutoProperty() {

@@ -6,19 +6,26 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import sample.ConexaoBanco;
 import sample.Main;
+import sample.Prato;
 import sample.TabelaPrato;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaEditarPratoController implements Initializable {
 
-    TabelaPrato tabelaPrato = new TabelaPrato();
+    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto de conexão com o banco
+    private TabelaPrato tabelaPrato = new TabelaPrato(); //objeto do tipo TabelaPrato
     private String sql = "select * from prato order by codprato;"; //String sql
 
     @FXML
-    private TableView tabelaPratos;
+    private TableView<Prato> tabelaPratos;
     @FXML
     private TableColumn colunaPratos, colunaDescricao, colunaCodigo, colunaPreco;
     @FXML
@@ -35,16 +42,66 @@ public class TelaEditarPratoController implements Initializable {
         tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sqlPesquisa);
     }
 
-    public void acaoAtualizar(){
+    //método que preenche os campos de texto com as informaçoes ao selecionar o prato na tabela
+    public void clicarTabela(){
+        txtNome.setText(tabelaPratos.getSelectionModel().getSelectedItem().getNome());
+        txtCodigo.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
+        txtDescricao.setText(tabelaPratos.getSelectionModel().getSelectedItem().getDescricao());
+        txtPreco.setText(tabelaPratos.getSelectionModel().getSelectedItem().getPreco());
+    }
 
+    //Método para atualizar os pratos
+    public void acaoAtualizar(){
+        if(!txtCodigo.getText().isEmpty()){ //verifica se o campo do código não está vazio
+            //verifica se todos os campos de texto estão preenchidos
+            if(!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty()){
+                try {
+                    //Cria declaração sql
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? WHERE codprato = ?;");
+
+                    //Insere valores nos parâmetros da declaração sql
+                    ps.setString(1, txtDescricao.getText());
+                    ps.setString(2, txtNome.getText());
+                    ps.setFloat(3, Float.parseFloat(txtPreco.getText()));
+                    ps.setInt(4, Integer.parseInt(txtCodigo.getText()));
+                    ps.executeUpdate(); // Executa a declaração sql
+
+                    //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
+                    tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                    JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
+                }
+                catch(SQLException e) {
+                    //Mensagem de erro
+                    JOptionPane.showMessageDialog(null, "Erro ao Atualizar prato!\nErro: " + e);
+                }
+            } else JOptionPane.showMessageDialog(null,"Preencha todos os campos para atualizar!");
+        } else JOptionPane.showMessageDialog(null,"Insira o código do prato que deseja atualizar!");
+        acaoLimpar();
     }
 
     public void acaoRemover(){
+        if(!txtCodigo.getText().isEmpty()){
+            try {
+                //Cria declaração sql
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("DELETE FROM Prato WHERE codprato = ? ;");
+                ps.setInt(1, Integer.parseInt(txtCodigo.getText())); //Insere valor no parâmetro da declaração sql
+                ps.executeUpdate(); //Eexecuta declaração sql
 
+                //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
+                tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                acaoLimpar(); //limpa os campos de texto
+                JOptionPane.showMessageDialog(null, "Prato Deletado!"); //Mensagem de sucesso
+            }
+            catch (SQLException e){
+                //Mensagem de erro
+                JOptionPane.showMessageDialog(null, "Erro ao Deletar prato!\nErro: " + e);
+            }
+        }
     }
 
     public void acaoLimpar(){
-
+        txtNome.clear(); txtCodigo.clear(); txtDescricao.clear();
+        txtPreco.clear(); txtPesquisa.clear();
     }
 
     @Override

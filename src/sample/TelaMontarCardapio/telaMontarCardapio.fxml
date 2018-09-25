@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaMontarCardapio.TelaMontarCardapioController">
   <items>
@@ -28,7 +15,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="720.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <TableView fx:id="tabelaPratos" layoutX="6.0" layoutY="123.0" prefHeight="287.0" prefWidth="705.0">
+                              <TableView fx:id="tabelaPratos" layoutX="6.0" layoutY="123.0" onMouseClicked="#clicarTabelaPrato" prefHeight="287.0" prefWidth="705.0">
                                 <columns>
                                   <TableColumn fx:id="colunaPrato" prefWidth="170.0" text="Prato" />
                                   <TableColumn fx:id="colunaCodPrato" prefWidth="60.0" text="Código" />
@@ -94,7 +81,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="txtPreco" layoutX="513.0" layoutY="14.0" prefHeight="25.0" prefWidth="67.0" promptText="0.00" />
-                              <TableView fx:id="tabelaProdutos" layoutX="6.0" layoutY="137.0" prefHeight="270.0" prefWidth="707.0">
+                              <TableView fx:id="tabelaProdutos" layoutX="6.0" layoutY="137.0" onMouseClicked="#clicarTabelaProduto" prefHeight="270.0" prefWidth="707.0">
                                 <columns>
                                   <TableColumn fx:id="colunaProd" prefWidth="122.0" text="Produto" />
                                   <TableColumn fx:id="colunaCodProd" prefWidth="67.0" text="Código" />
