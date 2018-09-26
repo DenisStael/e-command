@@ -7,10 +7,10 @@ public class Bebida extends Produto {
     private SimpleFloatProperty preco;
     private SimpleIntegerProperty codbebida;
 
-    public Bebida(float preco, String nome, String descricao){
+    public Bebida(float preco, String nome, int codbebida, String descricao){
         super(nome,descricao);
         this.preco = new SimpleFloatProperty(preco);
-        //this.codbebida = new SimpleIntegerProperty(codbebida);
+        this.codbebida = new SimpleIntegerProperty(codbebida);
 
     }
 
