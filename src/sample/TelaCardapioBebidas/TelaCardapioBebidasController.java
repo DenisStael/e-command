@@ -16,17 +16,14 @@ public class TelaCardapioBebidasController implements Initializable {
     @FXML
     TableView<Bebida> tabelaBebidaCardapio;
     @FXML
-    TableColumn colunaNomeBebida,colunaDescricaoBebida,colunaPrecoBebida,colunaCodigo;
+    TableColumn colunaNomeBebida,colunaDescricaoBebida,colunaPrecoBebida;
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
 
     public void acaoAddPedido() {
-        //System.out.println(tabelaBebidaCardapio.getSelectionModel().getSelectedItem().getCodbebida());
-    }
-
-    public void acaoComplemento() {
+        System.out.println(tabelaBebidaCardapio.getSelectionModel().getSelectedItem().getCodbebida());
     }
 
     public void acaoMeuPedido() {
@@ -34,6 +31,6 @@ public class TelaCardapioBebidasController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabelaBebida.mostraTabelaBebida(tabelaBebidaCardapio,colunaNomeBebida,colunaDescricaoBebida,colunaPrecoBebida,colunaCodigo,sql);
+        tabelaBebida.mostraTabelaBebida(tabelaBebidaCardapio,colunaNomeBebida,colunaDescricaoBebida,colunaPrecoBebida,sql);
     }
 }

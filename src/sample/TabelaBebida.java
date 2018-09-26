@@ -17,20 +17,19 @@ public class TabelaBebida {
     private ObservableList<Bebida> listaBebida = FXCollections.observableArrayList();
 
     public void mostraTabelaBebida(TableView tabelaBebida, TableColumn colunaNome, TableColumn colunaDescricao,
-                                   TableColumn colunaPreco, TableColumn colunaCodigo, String sql){
+                                   TableColumn colunaPreco, String sql){
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-                listaBebida.add(new Bebida(rs.getFloat("preco"),
-                        rs.getString("nome"),rs.getInt("codbebida"),rs.getString("descricao")));
+                listaBebida.add(new Bebida(rs.getFloat("preco"), rs.getString("nome"),
+                        rs.getInt("codbebida"),rs.getString("descricao")));
             }
             rs.close();
             colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
             colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
             colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-            colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codbebida"));
 
             tabelaBebida.setItems(listaBebida);
         } catch (SQLException e) {

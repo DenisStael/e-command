@@ -27,9 +27,9 @@
          <children>
             <TableView fx:id="tabelaPratoCardapio" prefHeight="400.0" prefWidth="554.0">
                <columns>
-                  <TableColumn fx:id="colunaNomePrato" prefWidth="165.0" resizable="false" text="Nome do prato" />
-                  <TableColumn fx:id="colunaDescricaoPrato" prefWidth="318.0" resizable="false" text="Descrição" />
-                  <TableColumn fx:id="colunaPrecoPrato" minWidth="0.0" prefWidth="68.0" text="Preço" />
+                  <TableColumn fx:id="colunaNomePrato" prefWidth="152.0" resizable="false" text="Nome do prato" />
+                  <TableColumn fx:id="colunaDescricaoPrato" prefWidth="331.0" resizable="false" text="Descrição" />
+                  <TableColumn fx:id="colunaPrecoPrato" minWidth="0.0" prefWidth="70.0" text="Preço" />
                </columns>
             </TableView>
             <Button fx:id="botaoVoltar" layoutX="263.0" layoutY="418.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="30.0" prefWidth="64.0" text="Voltar">

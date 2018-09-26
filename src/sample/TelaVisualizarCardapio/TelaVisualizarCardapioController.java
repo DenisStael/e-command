@@ -12,17 +12,11 @@ import java.util.ResourceBundle;
 public class TelaVisualizarCardapioController implements Initializable {
 
     TabelaPrato tabelaPrato = new TabelaPrato();
-    private String sql = "select nome,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
+    private String sql = "select nome,codprato,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
     @FXML
     TableView<Prato> tabelaPratoCardapio;
     @FXML
     TableColumn colunaNomePrato,colunaDescricaoPrato,colunaPrecoPrato;
-
-
-    
-    public void initialize(URL url, ResourceBundle rb){
-        tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaDescricaoPrato,colunaPrecoPrato,sql);
-    }
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
@@ -36,5 +30,9 @@ public class TelaVisualizarCardapioController implements Initializable {
     }
 
     public void acaoMeuPedido() {
+    }
+
+    public void initialize(URL url, ResourceBundle rb){
+        tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaDescricaoPrato,colunaPrecoPrato,sql);
     }
 }

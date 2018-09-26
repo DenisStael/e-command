@@ -19,11 +19,7 @@ public class Prato {
         this.preco = new SimpleFloatProperty(preco);
         this.codprato = new SimpleIntegerProperty(codprato);
     }
-    public Prato(String nome,String descricao, float preco) {
-        this.nome = new SimpleStringProperty(nome);
-        this.descricao = new SimpleStringProperty(descricao);
-        this.preco = new SimpleFloatProperty(preco);
-    }
+
     //Getters e Setters
     public String getNome() {
         return nome.get();

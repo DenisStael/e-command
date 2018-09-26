@@ -11,7 +11,6 @@ public class Bebida extends Produto {
         super(nome,descricao);
         this.preco = new SimpleFloatProperty(preco);
         this.codbebida = new SimpleIntegerProperty(codbebida);
-
     }
 
     public float getPreco() {

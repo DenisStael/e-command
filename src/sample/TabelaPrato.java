@@ -11,22 +11,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TabelaPrato {
-    //Lista de objetos do tipo prato
-    private ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto para conexão com o banco
 
     /*método que mostra a tabela com todos os pratos em estoque e
     recebe como parâmetros a tabela que será apresentada, suas colunas e a string sql*/
     public void mostraTabela(TableView tabelaPratos, TableColumn colunaPrato, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaPreco, String sql) {
+        ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
         try {
-            this.listaPratos.clear();//limpa a lista
+            listaPratos.clear();//limpa a lista
             Statement stmt = conexaoBanco.connection.createStatement();//cria declaração sql
             ResultSet rs = stmt.executeQuery(sql); //executa a declaração e armazena o resultado
 
             //enquanto há resultados na consulta, registra os pratos na lista
             while (rs.next()) {
-                this.listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
+                listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
                         rs.getString("descricao"), rs.getFloat("preco")));
             }
             rs.close(); //fecha o resultset
@@ -38,7 +37,7 @@ public class TabelaPrato {
             colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
             //insere os itens na tabela
-            tabelaPratos.setItems(this.listaPratos);
+            tabelaPratos.setItems(listaPratos);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
         }
@@ -51,7 +50,7 @@ public class TabelaPrato {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-            listaPratos.add(new Prato(rs.getString("nome"),
+            listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
                     rs.getString("descricao"),rs.getFloat("preco")));
             }
             rs.close();
