@@ -21,6 +21,11 @@ public class Produto {
         this.codproduto = new SimpleIntegerProperty(codproduto);
         this.medida = new SimpleStringProperty(medida);
     }
+    public Produto(String nome,String descricao){
+        this.nome = new SimpleStringProperty(nome);
+        this.descricao = new SimpleStringProperty(descricao);
+
+    }
 
     //Getters e Setters
 

@@ -10,6 +10,6 @@ public class TelaMesaController {
     }
 
     public void acaoVoltar() throws IOException {
-        Main.trocaTela("TelaLogin/telaLogin.fxml");
+        Main.trocaTela("TelaInicial/telaInicial.fxml");
     }
 }
