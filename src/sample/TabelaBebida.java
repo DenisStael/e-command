@@ -16,8 +16,7 @@ public class TabelaBebida {
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private ObservableList<Bebida> listaBebida = FXCollections.observableArrayList();
 
-    public void mostraTabelaBebida(TableView tabelaBebida, TableColumn colunaNome, TableColumn colunaDescricao,
-                                   TableColumn colunaPreco, String sql){
+    public void mostraTabelaBebida(TableView tabelaBebida, TableColumn colunaNome, TableColumn colunaPreco, String sql){
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -29,7 +28,6 @@ public class TabelaBebida {
             rs.close();
             colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
             colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-            colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
 
             tabelaBebida.setItems(listaBebida);
         } catch (SQLException e) {

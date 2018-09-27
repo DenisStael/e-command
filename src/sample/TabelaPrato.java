@@ -2,6 +2,8 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,7 +45,7 @@ public class TabelaPrato {
         }
     }
 
-    public void mostraTabelaPrato(TableView tabelaPratoCardapio, TableColumn colunaNomePrato, TableColumn colunaDescricaoPrato, TableColumn colunaPrecoPrato, String sql) {
+    public void mostraTabelaPrato(TableView tabelaPratoCardapio, TableColumn colunaNomePrato, TableColumn colunaPrecoPrato, String sql) {
         ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
@@ -51,12 +53,11 @@ public class TabelaPrato {
 
             while (rs.next()){
             listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
-                    rs.getString("descricao"),rs.getFloat("preco")));
+                    rs.getString("descricao"), rs.getFloat("preco")));
             }
             rs.close();
 
             colunaNomePrato.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            colunaDescricaoPrato.setCellValueFactory(new PropertyValueFactory<>("descricao"));
             colunaPrecoPrato.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
             tabelaPratoCardapio.setItems(listaPratos);

@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.205685618729097" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaVisualizarCardapio.TelaVisualizarCardapioController">
+<SplitPane dividerPositions="0.16722408026755853" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaVisualizarCardapio.TelaVisualizarCardapioController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
          <children>
-            <Label layoutX="347.0" layoutY="42.0" text="Pratos" textFill="WHITE">
+            <Label layoutX="346.0" layoutY="31.0" text="Cardápio" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
@@ -25,29 +23,68 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="646.0" style="-fx-background-color: #5353c6;">
          <children>
-            <TableView fx:id="tabelaPratoCardapio" prefHeight="400.0" prefWidth="554.0">
-               <columns>
-                  <TableColumn fx:id="colunaNomePrato" prefWidth="152.0" resizable="false" text="Nome do prato" />
-                  <TableColumn fx:id="colunaDescricaoPrato" prefWidth="331.0" resizable="false" text="Descrição" />
-                  <TableColumn fx:id="colunaPrecoPrato" minWidth="0.0" prefWidth="70.0" text="Preço" />
-               </columns>
+            <Accordion layoutX="3.0" layoutY="5.0" prefHeight="441.0" prefWidth="384.0">
+              <panes>
+                <TitledPane animated="false" prefHeight="421.0" prefWidth="336.0" text="Selecione um Prato">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tabelaPratoCardapio" layoutX="3.0" layoutY="1.0" prefHeight="392.0" prefWidth="378.0" stylesheets="@../css/TableStyle.css">
+                                <columns>
+                                  <TableColumn fx:id="colunaNomePrato" prefWidth="295.0" resizable="false" text="Pratos" />
+                                  <TableColumn fx:id="colunaPrecoPrato" prefWidth="81.0" resizable="false" text="Preço" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Selecione uma Bebida">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tabelaBebidaCardapio" prefHeight="392.0" prefWidth="363.0" stylesheets="@../css/TableStyle.css">
+                                 <columns>
+                                    <TableColumn fx:id="colunaNomeBebida" prefWidth="295.0" resizable="false" text="Bebidas" />
+                                    <TableColumn fx:id="colunaPrecoBebida" prefWidth="66.0" resizable="false" text="Preço" />
+                                 </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <Button layoutX="64.0" layoutY="455.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="25.0" prefWidth="60.0" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Button layoutX="195.0" layoutY="455.0" mnemonicParsing="false" onAction="#acaoAddPedido" style="-fx-background-color: #47d147;" text="Adicionar ao Pedido" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TableView fx:id="tabelaPedido" layoutX="406.0" layoutY="48.0" prefHeight="399.0" prefWidth="309.0">
+              <columns>
+                <TableColumn fx:id="colunaNomePedido" prefWidth="225.0" text="Nome" />
+                <TableColumn fx:id="colunaPrecoPedido" prefWidth="81.0" text="Preço" />
+              </columns>
             </TableView>
-            <Button fx:id="botaoVoltar" layoutX="263.0" layoutY="418.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="30.0" prefWidth="64.0" text="Voltar">
+            <Label layoutX="438.0" layoutY="14.0" text="Meu pedido" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="391.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="501.0" prefWidth="14.0" />
+            <Button layoutX="419.0" layoutY="457.0" mnemonicParsing="false" onAction="#removerPratoPedido" prefHeight="25.0" prefWidth="142.0" text="Remover do Pedido" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="botaoAddPedido" layoutX="43.0" layoutY="418.0" mnemonicParsing="false" onAction="#acaoAddPedido" prefHeight="30.0" prefWidth="131.0" text="Adicionar ao pedido">
+            <Button layoutX="602.0" layoutY="457.0" mnemonicParsing="false" onAction="#acaoProximo" style="-fx-background-color: #47d147;" text="Próximo" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="botaoBebidas" layoutX="423.0" layoutY="418.0" mnemonicParsing="false" onAction="#acaoBebidas" prefHeight="30.0" prefWidth="108.0" text="Ir para Bebidas">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="botaoMeuPedido" layoutX="589.0" layoutY="14.0" mnemonicParsing="false" onAction="#acaoMeuPedido" prefHeight="102.0" prefWidth="115.0" text="Meu pedido" />
          </children></AnchorPane>
   </items>
 </SplitPane>

@@ -12,11 +12,17 @@ import java.util.ResourceBundle;
 public class TelaVisualizarCardapioController implements Initializable {
 
     TabelaPrato tabelaPrato = new TabelaPrato();
-    private String sql = "select nome,codprato,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
+    private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
+    private TabelaBebida tabelaBebida = new TabelaBebida();
+    private String sqlBebida = "select p.nome,p.descricao,b.preco,b.codbebida from bebida b, produto p where b.codbebida = p.codproduto and b.cardapio = TRUE;"; //String sql
     @FXML
     TableView<Prato> tabelaPratoCardapio;
     @FXML
-    TableColumn colunaNomePrato,colunaDescricaoPrato,colunaPrecoPrato;
+    TableColumn colunaNomePrato,colunaPrecoPrato;
+    @FXML
+    TableView<Bebida> tabelaBebidaCardapio;
+    @FXML
+    TableColumn colunaNomeBebida,colunaPrecoBebida;
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
@@ -25,14 +31,17 @@ public class TelaVisualizarCardapioController implements Initializable {
     public void acaoAddPedido() {
     }
 
-    public void acaoBebidas() throws IOException {
-        Main.trocaTela("TelaCardapioBebidas/telaCardapioBebidas.fxml");
-    }
-
     public void acaoMeuPedido() {
     }
 
+    public void removerPratoPedido() {
+    }
+
+    public void acaoProximo() {
+    }
+
     public void initialize(URL url, ResourceBundle rb){
-        tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaDescricaoPrato,colunaPrecoPrato,sql);
+        tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
+        tabelaBebida.mostraTabelaBebida(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
     }
 }

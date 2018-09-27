@@ -7,12 +7,12 @@ import javafx.beans.property.SimpleStringProperty;
 public class Prato {
 
     //Atributos da classe que serão utilizados na tabela de pratos
-    private final SimpleStringProperty nome;
-    private final SimpleStringProperty descricao;
+    private SimpleStringProperty nome;
+    private SimpleStringProperty descricao;
     private final SimpleFloatProperty preco;
     private SimpleIntegerProperty codprato;
 
-    //construtor com todos os parâmetros
+    //construtor com 4 parâmetros
     public Prato(String nome, int codprato, String descricao, float preco) {
         this.nome = new SimpleStringProperty(nome);
         this.descricao = new SimpleStringProperty(descricao);
@@ -68,4 +68,5 @@ public class Prato {
     public void setCodprato(int codprato) {
         this.codprato.set(codprato);
     }
+
 }
