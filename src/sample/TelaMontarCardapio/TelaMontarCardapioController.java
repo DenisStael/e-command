@@ -14,9 +14,9 @@ import java.util.ResourceBundle;
 
 public class TelaMontarCardapioController implements Initializable {
 
-    ConexaoBanco conexaoBanco = new ConexaoBanco();
-    TabelaProduto tabelaProduto = new TabelaProduto();
-    TabelaPrato tabelaPrato = new TabelaPrato();
+    private ConexaoBanco conexaoBanco = new ConexaoBanco();
+    private Produto tabelaProduto = new Produto();
+    private Prato tabelaPrato = new Prato();
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
     private String sql2 = "select nome,codprato,descricao,preco from prato order by codprato;"; //String sql
     @FXML

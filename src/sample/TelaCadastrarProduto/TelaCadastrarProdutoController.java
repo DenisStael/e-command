@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Produto;
-import sample.TabelaProduto;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +15,7 @@ import java.util.ResourceBundle;
 public class TelaCadastrarProdutoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco();//Objeto de conexão com o banco
-    private TabelaProduto tabelaProduto = new TabelaProduto();//Objeto tabela que mostra todos os produtos no banco
+    private Produto tabelaProduto = new Produto();//Objeto tabela que mostra todos os produtos no banco
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
 
     //Atributos da tela

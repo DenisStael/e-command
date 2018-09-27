@@ -11,9 +11,9 @@ import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController implements Initializable {
 
-    TabelaPrato tabelaPrato = new TabelaPrato();
+    Prato tabelaPrato = new Prato();
     private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
-    private TabelaBebida tabelaBebida = new TabelaBebida();
+    private Bebida tabelaBebida = new Bebida();
     private String sqlBebida = "select p.nome,p.descricao,b.preco,b.codbebida from bebida b, produto p where b.codbebida = p.codproduto and b.cardapio = TRUE;"; //String sql
     @FXML
     TableView<Prato> tabelaPratoCardapio;

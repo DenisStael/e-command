@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Produto;
-import sample.TabelaProduto;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class TelaGerenciarEstoqueController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
-    private TabelaProduto tabelaProduto = new TabelaProduto(); //Tabela dos produtos cadastrados no banco
+    private Produto tabelaProduto = new Produto(); //Tabela dos produtos cadastrados no banco
     private String sql = "select * from produto order by codproduto;"; //String sql
     //Atributos da tela
     @FXML

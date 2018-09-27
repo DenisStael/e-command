@@ -5,7 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
-import sample.TabelaPrato;
+import sample.Prato;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import java.sql.*;
 public class TelaMontarPratoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
-    private TabelaPrato tabelaPrato = new TabelaPrato();
+    private Prato tabelaPrato = new Prato();
     private String sql = "select nome,codprato,descricao,preco from prato;";
 
     //Atributos da tela

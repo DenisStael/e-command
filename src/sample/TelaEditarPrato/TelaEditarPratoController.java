@@ -9,8 +9,6 @@ import javafx.scene.control.TextField;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Prato;
-import sample.TabelaPrato;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +19,7 @@ import java.util.ResourceBundle;
 public class TelaEditarPratoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto de conexão com o banco
-    private TabelaPrato tabelaPrato = new TabelaPrato(); //objeto do tipo TabelaPrato
+    private Prato tabelaPrato = new Prato(); //objeto do tipo TabelaPrato
     private String sql = "select * from prato order by codprato;"; //String sql
 
     @FXML
