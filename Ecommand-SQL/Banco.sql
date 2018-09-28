@@ -25,17 +25,6 @@ CREATE TABLE Produto (
   PRIMARY KEY (CodProduto) 
 );
 
-CREATE TABLE Complemento (
-  CodComplemento INT NOT NULL,
-  Preco DECIMAL(10,2) NOT NULL,
-  cardapio BOOLEAN DEFAULT FALSE,
-  Quantidade INT DEFAULT 0,
-  PRIMARY KEY (CodComplemento),
-  FOREIGN KEY (CodComplemento) 
-  REFERENCES Produto (CodProduto)
-  ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 CREATE TABLE Bebida (
   CodBebida INT NOT NULL,
   Preco DECIMAL(10,2) NOT NULL,
@@ -65,8 +54,8 @@ CREATE SEQUENCE Pedido_seq;
 CREATE TABLE Pedido (
   CodPedido INT NOT NULL DEFAULT NEXTVAL ('Pedido_seq'),
   Mesa_idMesa INT NOT NULL,
-  Garcom_Usuario_CodUsuario INT NOT NULL,
-  Cozinheiro_Usuario_CodUsuario INT NOT NULL,
+  Garcom_Usuario_CodUsuario INT,
+  Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
   PRIMARY KEY (CodPedido),
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
@@ -105,16 +94,6 @@ CREATE TABLE PedidoBebida(
   CodPedido INT NOT NULL,
   PRIMARY KEY (CodBebida,CodPedido),
   FOREIGN KEY (CodBebida) REFERENCES Bebida (CodBebida)
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (CodPedido) REFERENCES Pedido (CodPedido)
-  ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE PedidoComplemento(
-  CodComplemento INT NOT NULL,
-  CodPedido INT NOT NULL,
-  PRIMARY KEY (CodComplemento,CodPedido),
-  FOREIGN KEY (CodComplemento) REFERENCES Complemento (CodComplemento)
   ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (CodPedido) REFERENCES Pedido (CodPedido)
   ON DELETE CASCADE ON UPDATE CASCADE

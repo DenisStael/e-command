@@ -8,6 +8,7 @@ import sample.Main;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,22 +57,15 @@ public class TelaLoginController implements Initializable {
             } else if (tipo == "Garçom") {
                 try {
                     //Cria declaração para consulta no banco
-                    Statement stmt = conexaoBanco.connection.createStatement();
-
-                    //Armazena o resultado da consulta
-                    ResultSet rs = stmt.executeQuery("select nome,senha from usuario where tipo = 'Garçom';");
-
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = 'Garçom' and nome = ? and senha = ?;");
+                    ps.setString(1,txtUsuario.getText());
+                    ps.setString(2,txtSenha.getText());
+                    ResultSet rs = ps.executeQuery();
                     //Verifica se há resultados encontrados
                     if(rs.next()){
-                        //Verifica se usuario e senha correspondem
-                        if(txtUsuario.getText().equals(rs.getString("nome"))
-                                && txtSenha.getText().equals(rs.getString("senha"))){
-                            Main.trocaTela("TelaGarçom/telaGarçom.fxml"); //Chama a tela garçom
-
-                        } else usuarioIncorreto(); //chama método de usuário incorreto
-
+                        Main.trocaTela("TelaGarçom/telaGarçom.fxml"); //Chama a tela garçom
                     } else usuarioIncorreto(); //chama método de usuário incorreto
-                    rs.close();//Fecha ResultSet
+                    rs.close(); //Fecha ResultSet
 
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Erro:\n"+e);//Mensagem de erro
@@ -80,20 +74,13 @@ public class TelaLoginController implements Initializable {
             } else if (tipo == "Cozinheiro") {
                 try {
                     //Cria declaração para consulta no banco
-                    Statement stmt = conexaoBanco.connection.createStatement();
-
-                    //Armazena o resultado da consulta
-                    ResultSet rs = stmt.executeQuery("select nome,senha from usuario where tipo = 'Cozinheiro';");
-
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = 'Cozinheiro' and nome = ? and senha = ?;");
+                    ps.setString(1,txtUsuario.getText());
+                    ps.setString(2,txtSenha.getText());
+                    ResultSet rs = ps.executeQuery();
                     //Verifica se há resultados encontrados
                     if(rs.next()){
-                        //Verifica se usuario e senha correspondem
-                        if(txtUsuario.getText().equals(rs.getString("nome"))
-                                && txtSenha.getText().equals(rs.getString("senha"))){
-                            Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml"); //Chama a tela cozinheiro
-
-                        } else usuarioIncorreto(); //chama método de usuário incorreto
-
+                        Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml"); //Chama a tela cozinheiro
                     } else usuarioIncorreto(); //chama método de usuário incorreto
                     rs.close(); //Fecha ResultSet
 
