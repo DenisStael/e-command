@@ -18,55 +18,20 @@
                         <Image url="@../img/logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="324.0" layoutY="38.0" text="Realize o pedido:" textFill="WHITE">
+                  <Label layoutX="324.0" layoutY="38.0" text="Pedidos:" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="30.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Accordion layoutX="-2.0" layoutY="113.0" prefHeight="486.0" prefWidth="332.0">
-              <panes>
-                <TitledPane animated="false" text="Pratos">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ListView fx:id="listaPratos" layoutY="-1.0" prefHeight="387.0" prefWidth="332.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane animated="false" text="Complementos">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ListView fx:id="listaComplementos" prefHeight="387.0" prefWidth="332.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane fx:id="listaBebidas" animated="false" text="Bebidas">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ListView prefHeight="387.0" prefWidth="332.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                  <TitledPane fx:id="listaOpcionais" animated="false" text="Opcionais">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ListView prefHeight="387.0" prefWidth="332.0" />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-              </panes>
-            </Accordion>
-            <Button fx:id="botaoAddPedido" layoutX="330.0" layoutY="113.0" mnemonicParsing="false" text="Adicionar ao pedido" />
-            <Button fx:id="botaoVoltar" layoutX="347.0" layoutY="548.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
+            <Button fx:id="botaoVoltar" layoutX="314.0" layoutY="548.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
+            <TableView layoutX="-2.0" layoutY="265.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
          </children></AnchorPane>
   </items>
 </SplitPane>

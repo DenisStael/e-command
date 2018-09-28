@@ -66,7 +66,7 @@ public class TelaLoginController implements Initializable {
                         //Verifica se usuario e senha correspondem
                         if(txtUsuario.getText().equals(rs.getString("nome"))
                                 && txtSenha.getText().equals(rs.getString("senha"))){
-                            //Main.trocaTela("TelaGarcom/telaGarcom.fxml"); //Chama a tela garçom
+                            Main.trocaTela("TelaGarçom/telaGarçom.fxml"); //Chama a tela garçom
 
                         } else usuarioIncorreto(); //chama método de usuário incorreto
 
