@@ -103,10 +103,6 @@ public class TelaMontarCardapioController implements Initializable {
         } else JOptionPane.showMessageDialog(null,"Digite o código do produto e defina um preço!");
     }
 
-    public void acaoAdicionarComplemento(){
-        adicionarAoCardapio("INSERT INTO Complemento(codcomplemento, preco, cardapio) VALUES(?,?,true);");
-    }
-
     public void acaoAdicionarBebida() {
         adicionarAoCardapio("INSERT INTO Bebida(codbebida, preco, cardapio) VALUES(?,?,true);");
     }
