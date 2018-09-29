@@ -11,16 +11,14 @@ import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController implements Initializable {
 
-    Prato tabelaPrato = new Prato();
-    private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE order by codprato;"; //String sql
-    private Bebida tabelaBebida = new Bebida();
-    private String sqlBebida = "select p.nome,p.descricao,b.preco,b.codbebida from bebida b, produto p where b.codbebida = p.codproduto and b.cardapio = TRUE;"; //String sql
+    private Prato tabelaPrato = new Prato();
+    private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
+    private Prato tabelaBebida = new Prato();
+    private String sqlBebida = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
-    TableView<Prato> tabelaPratoCardapio;
+    TableView<Prato> tabelaPratoCardapio, tabelaBebidaCardapio;
     @FXML
     TableColumn colunaNomePrato,colunaPrecoPrato;
-    @FXML
-    TableView<Bebida> tabelaBebidaCardapio;
     @FXML
     TableColumn colunaNomeBebida,colunaPrecoBebida;
 
@@ -42,6 +40,6 @@ public class TelaVisualizarCardapioController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb){
         tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
-        tabelaBebida.mostraTabelaBebida(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
+        tabelaBebida.mostraTabelaPrato(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
     }
 }

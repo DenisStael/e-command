@@ -20,7 +20,7 @@ public class TelaMontarPratoController implements Initializable {
 
     //Atributos da tela
     @FXML
-    TextField txtNomePrato, txtPreco;
+    TextField txtNomePrato, txtPreco, txtTipo;
     @FXML
     TextArea txtDescricao;
     @FXML
@@ -36,7 +36,7 @@ public class TelaMontarPratoController implements Initializable {
     //limpa os campos da tela
     public void acaoLimpar(){
         txtNomePrato.clear(); txtPreco.clear();
-        txtDescricao.clear();
+        txtDescricao.clear(); txtTipo.clear();
     }
 
     //Método de salvar prato no banco de dados
@@ -45,12 +45,13 @@ public class TelaMontarPratoController implements Initializable {
         if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
             try {
                 //Cria declaração sql para inserção no banco
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao)values(?,?,?);");
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao,tipo)values(?,?,?,?);");
 
                 //insere os valores aos parâmetros da declaração sql
                 ps.setString(1, txtNomePrato.getText());
                 ps.setFloat(2, Float.parseFloat(txtPreco.getText())); //converte para float
                 ps.setString(3, txtDescricao.getText());
+                ps.setString(4, txtTipo.getText());
 
                 ps.executeUpdate(); //Executa declaração sql
 

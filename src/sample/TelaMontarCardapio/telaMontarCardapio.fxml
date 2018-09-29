@@ -16,21 +16,21 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="720.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <TableView fx:id="tabelaPratos" layoutX="6.0" layoutY="123.0" onMouseClicked="#clicarTabelaPrato" prefHeight="287.0" prefWidth="705.0">
+                              <TableView fx:id="tabelaPratos" layoutX="6.0" layoutY="123.0" onMouseClicked="#clicarTabelaPrato" prefHeight="287.0" prefWidth="708.0">
                                 <columns>
-                                  <TableColumn fx:id="colunaPrato" prefWidth="170.0" text="Prato" />
+                                  <TableColumn fx:id="colunaPrato" prefWidth="126.0" text="Nome" />
                                   <TableColumn fx:id="colunaCodPrato" prefWidth="60.0" text="Código" />
-                                    <TableColumn fx:id="colunaDescPrato" prefWidth="394.0" text="Descrição" />
-                                    <TableColumn fx:id="colunaPreco" text="Preço" />
+                                    <TableColumn fx:id="colunaDescPrato" prefWidth="448.0" text="Descrição" />
+                                    <TableColumn fx:id="colunaPreco" prefWidth="72.0" text="Preço" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="139.0" layoutY="28.0" text="Código do Prato:">
+                              <Label layoutX="131.0" layoutY="26.0" text="Código do Prato/Bebida:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtCodPrato" layoutX="275.0" layoutY="28.0" prefHeight="25.0" prefWidth="142.0" promptText="Código do Prato" />
-                              <Button fx:id="botaoAdicionarPrato" layoutX="440.0" layoutY="26.0" mnemonicParsing="false" onAction="#acaoAdicionarPrato" text="Adicionar Prato">
+                              <TextField fx:id="txtCodPrato" layoutX="317.0" layoutY="26.0" prefHeight="25.0" prefWidth="147.0" promptText="Código do Prato/Bebida" />
+                              <Button fx:id="botaoAdicionarPrato" layoutX="482.0" layoutY="24.0" mnemonicParsing="false" onAction="#acaoAdicionarPrato" text="Adicionar">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -40,57 +40,12 @@
                                     <Font size="13.0" />
                                  </font>
                               </Button>
-                              <TextField fx:id="txtNomePrato" layoutX="311.0" layoutY="90.0" promptText="Nome do prato" />
+                              <TextField fx:id="txtNomePrato" layoutX="311.0" layoutY="90.0" promptText="Nome do prato/bebida" />
                               <Label layoutX="139.0" layoutY="89.0" text="Pesquisar por nome:">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab text="Adicionar Bebidas">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="718.0" style="-fx-background-color: #ffffff;">
-                           <children>
-                              <Label layoutX="111.0" layoutY="14.0" text="Código do Produto:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtCodProduto" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="105.0" promptText="Código Produto" />
-                              <Label layoutX="111.0" layoutY="103.0" text="Pesquisar por nome:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtNomeProduto" layoutX="285.0" layoutY="104.0" promptText="Nome do produto" />
-                              <Button fx:id="botaoPesquisarProduto" layoutX="458.0" layoutY="102.0" mnemonicParsing="false" onAction="#acaoPesquisarProduto" text="Pesquisar">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </Button>
-                              <Label layoutX="383.0" layoutY="14.0" text="Definir preço:  R$">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtPreco" layoutX="513.0" layoutY="14.0" prefHeight="25.0" prefWidth="67.0" promptText="0.00" />
-                              <TableView fx:id="tabelaProdutos" layoutX="6.0" layoutY="137.0" onMouseClicked="#clicarTabelaProduto" prefHeight="270.0" prefWidth="707.0">
-                                <columns>
-                                  <TableColumn fx:id="colunaProd" prefWidth="122.0" text="Produto" />
-                                  <TableColumn fx:id="colunaCodProd" prefWidth="67.0" text="Código" />
-                                    <TableColumn fx:id="colunaDescProd" prefWidth="386.0" text="Descricao" />
-                                    <TableColumn fx:id="colunaQtdProd" prefWidth="70.0" text="Quantidade" />
-                                    <TableColumn fx:id="colunaMedida" prefWidth="60.0" text="Medida" />
-                                </columns>
-                              </TableView>
-                              <Button fx:id="botaoAddBebida" layoutX="302.0" layoutY="55.0" mnemonicParsing="false" onAction="#acaoAdicionarBebida" text="Adicionar Bebida">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </AnchorPane>
                     </content>

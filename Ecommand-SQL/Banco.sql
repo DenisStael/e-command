@@ -8,9 +8,10 @@ CREATE TABLE Usuario (
   PRIMARY KEY (CodUsuario)
 );
 
+CREATE SEQUENCE Mesa_seq;
+
 CREATE TABLE Mesa (
-  idMesa INT NOT NULL,
-  QtdCadeiras INT NOT NULL,
+  idMesa INT NOT NULL DEFAULT NEXTVAL ('Mesa_seq'),
   PRIMARY KEY (idMesa)
 );
 
@@ -25,17 +26,6 @@ CREATE TABLE Produto (
   PRIMARY KEY (CodProduto) 
 );
 
-CREATE TABLE Bebida (
-  CodBebida INT NOT NULL,
-  Preco DECIMAL(10,2) NOT NULL,
-  cardapio BOOLEAN DEFAULT FALSE,
-  Quantidade INT DEFAULT 0,
-  PRIMARY KEY (CodBebida),
-  FOREIGN KEY (CodBebida) 
-  REFERENCES Produto (CodProduto)
-  ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 CREATE SEQUENCE Prato_seq;
 
 CREATE TABLE Prato (
@@ -45,6 +35,7 @@ CREATE TABLE Prato (
   Preco DECIMAL(10,2) NOT NULL,
   cardapio BOOLEAN DEFAULT FALSE,
   Quantidade INT DEFAULT 0,
+  Tipo VARCHAR(15) NOT NULL CHECK(Tipo IN ('Bebida','Comida')),
   PRIMARY KEY (CodPrato)
 );
 
@@ -57,6 +48,7 @@ CREATE TABLE Pedido (
   Garcom_Usuario_CodUsuario INT,
   Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
+  StatusPedido VARCHAR(10) CHECK(StatusPedido IN ('Aberto','Fechado')),
   PRIMARY KEY (CodPedido),
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
     FOREIGN KEY (Mesa_idMesa)
@@ -84,16 +76,6 @@ CREATE TABLE PedidoPrato(
   CodPedido INT NOT NULL,
   PRIMARY KEY (CodPrato,CodPedido),
   FOREIGN KEY (CodPrato) REFERENCES Prato (CodPrato)
-  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (CodPedido) REFERENCES Pedido (CodPedido)
-  ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE PedidoBebida(
-  CodBebida INT NOT NULL,
-  CodPedido INT NOT NULL,
-  PRIMARY KEY (CodBebida,CodPedido),
-  FOREIGN KEY (CodBebida) REFERENCES Bebida (CodBebida)
   ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (CodPedido) REFERENCES Pedido (CodPedido)
   ON DELETE CASCADE ON UPDATE CASCADE
