@@ -115,6 +115,7 @@ public class Prato {
         }
     }
 
+    //método pra mostrar tabelas com os pratos na tela do cardapio
     public void mostraTabelaPrato(TableView tabelaPratoCardapio, TableColumn colunaNomePrato, TableColumn colunaPrecoPrato, String sql) {
         ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
         try {

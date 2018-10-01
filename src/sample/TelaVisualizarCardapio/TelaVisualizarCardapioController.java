@@ -4,42 +4,73 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import sample.*;
+import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController implements Initializable {
 
-    private Prato tabelaPrato = new Prato();
+    private static Pedido pedido = new Pedido();
+    private Prato tabelas = new Prato();
     private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
-    private Prato tabelaBebida = new Prato();
     private String sqlBebida = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
-    TableView<Prato> tabelaPratoCardapio, tabelaBebidaCardapio;
+    private TableView<Prato> tabelaPratoCardapio, tabelaBebidaCardapio, tabelaPedido;
     @FXML
-    TableColumn colunaNomePrato,colunaPrecoPrato;
-    @FXML
-    TableColumn colunaNomeBebida,colunaPrecoBebida;
+    private TableColumn colunaNomePrato,colunaPrecoPrato,colunaNomePedido,colunaNomeBebida,colunaPrecoBebida,colunaPrecoPedido;
+
+    public static Pedido getPedido() {
+        return pedido;
+    }
+
+    public static void setPedido(Pedido pedido) {
+        TelaVisualizarCardapioController.pedido = pedido;
+    }
 
     public void acaoVoltar() throws IOException {
+        tabelaPedido.getItems().clear();
         Main.trocaTela("TelaMesa/telaMesa.fxml");
     }
 
-    public void acaoAddPedido() {
+    public void acaoSelecaoPrato(){
+        if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null)
+            tabelaBebidaCardapio.getSelectionModel().clearSelection();
     }
 
-    public void acaoMeuPedido() {
+    public void acaoSelecaoBebida(){
+        if(tabelaPratoCardapio.getSelectionModel().getSelectedItem() != null)
+            tabelaPratoCardapio.getSelectionModel().clearSelection();
+    }
+
+    public void acaoAddPedido() {
+        if(tabelaPratoCardapio.getSelectionModel().getSelectedItem() != null){
+            pedido.getListaPedido().add(tabelaPratoCardapio.getSelectionModel().getSelectedItem());
+            tabelaPedido.setItems(pedido.getListaPedido());
+        } else if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null){
+            pedido.getListaPedido().add(tabelaBebidaCardapio.getSelectionModel().getSelectedItem());
+            tabelaPedido.setItems(pedido.getListaPedido());
+        }
     }
 
     public void removerPratoPedido() {
+        if(tabelaPedido.getSelectionModel().getSelectedItem() != null){
+            pedido.getListaPedido().remove(tabelaPedido.getSelectionModel().getSelectedItem());
+        }
     }
 
-    public void acaoProximo() {
+    public void acaoProximo() throws IOException {
+        TelaPedidoController.setPedido(pedido);
+        Main.trocaTela("TelaPedido/telaPedido.fxml");
     }
 
     public void initialize(URL url, ResourceBundle rb){
-        tabelaPrato.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
-        tabelaBebida.mostraTabelaPrato(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
+        tabelas.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
+        tabelas.mostraTabelaPrato(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
+        colunaNomePedido.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colunaPrecoPedido.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        tabelaPedido.setItems(pedido.getListaPedido());
     }
 }
