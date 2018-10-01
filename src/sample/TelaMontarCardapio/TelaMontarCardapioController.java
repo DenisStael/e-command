@@ -37,10 +37,6 @@ public class TelaMontarCardapioController implements Initializable {
     private void clicarTabelaPrato(){
         txtCodPrato.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
     }
-    @FXML //chama a tela de visualizar cardápio
-    private void acaoVisualizarCardapio() throws IOException {
-        Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
-    }
 
     public void acaoAdicionarPrato() {
        if(!txtCodPrato.getText().isEmpty()){
@@ -55,6 +51,10 @@ public class TelaMontarCardapioController implements Initializable {
                 ps.executeUpdate();//Executa a declaração SQL
 
                 limpar(); //limpa os campos de texto
+
+                //chama as informações da tabela
+                tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql);
+
                 //Mensagem de Sucesso
                 JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
 
