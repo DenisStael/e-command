@@ -71,10 +71,13 @@ CREATE INDEX fk_Mesa_has_Prato_Mesa1_idx ON Pedido (Mesa_idMesa);
 CREATE INDEX fk_Pedido_Garcom1_idx ON Pedido (Garcom_Usuario_CodUsuario);
 CREATE INDEX fk_Pedido_Cozinheiro1_idx ON Pedido (Cozinheiro_Usuario_CodUsuario);
 
+CREATE SEQUENCE PedidoPrato_seq;
+
 CREATE TABLE PedidoPrato(
+  CodPedPrato INT NOT NULL DEFAULT NEXTVAL ('PedidoPrato_seq'),
   CodPrato INT NOT NULL,
   CodPedido INT NOT NULL,
-  PRIMARY KEY (CodPrato,CodPedido),
+  PRIMARY KEY (CodPedPrato),
   FOREIGN KEY (CodPrato) REFERENCES Prato (CodPrato)
   ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (CodPedido) REFERENCES Pedido (CodPedido)
