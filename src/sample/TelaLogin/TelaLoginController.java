@@ -44,52 +44,38 @@ public class TelaLoginController implements Initializable {
         //Verifica se todos os campos foram preenchidos
         if(!txtSenha.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
 
-            //Verifica se o tipo é gerente
-            if (tipo == "Gerente") {
+            if(login()){
+                if (tipo.equals("Gerente"))
+                    Main.trocaTela("TelaGerente/telaGerente.fxml");
+                else if (tipo.equals("Cozinheiro"))
+                    Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
+                else if (tipo.equals("Garçom"))
+                    Main.trocaTela("TelaGarçom/telaGarçom.fxml");
+            } else usuarioIncorreto();
 
-                //Verifica se o usuario e senha corresponde
-                if ((txtUsuario.getText().equals("admin")) && (txtSenha.getText().equals("admin"))) {
-                    Main.trocaTela("TelaGerente/telaGerente.fxml"); //Chama a tela gerente
-                } else {
-                    usuarioIncorreto(); //chama método de usuário incorreto
-                }
-                //Verifica se o tipo é garçom
-            } else if (tipo == "Garçom") {
-                try {
-                    //Cria declaração para consulta no banco
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = 'Garçom' and nome = ? and senha = ?;");
-                    ps.setString(1,txtUsuario.getText());
-                    ps.setString(2,txtSenha.getText());
-                    ResultSet rs = ps.executeQuery();
-                    //Verifica se há resultados encontrados
-                    if(rs.next()){
-                        Main.trocaTela("TelaGarçom/telaGarçom.fxml"); //Chama a tela garçom
-                    } else usuarioIncorreto(); //chama método de usuário incorreto
-                    rs.close(); //Fecha ResultSet
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Erro:\n"+e);//Mensagem de erro
-                }
-                //Verifica se o tipo é cozinheiro
-            } else if (tipo == "Cozinheiro") {
-                try {
-                    //Cria declaração para consulta no banco
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = 'Cozinheiro' and nome = ? and senha = ?;");
-                    ps.setString(1,txtUsuario.getText());
-                    ps.setString(2,txtSenha.getText());
-                    ResultSet rs = ps.executeQuery();
-                    //Verifica se há resultados encontrados
-                    if(rs.next()){
-                        Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml"); //Chama a tela cozinheiro
-                    } else usuarioIncorreto(); //chama método de usuário incorreto
-                    rs.close(); //Fecha ResultSet
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Erro:\n"+e); //Mensagem de erro
-                }
-            }
             //Mensagem para preencher todos os campos
         } else JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
+    }
+
+    private boolean login(){
+        boolean existe = false;
+        try {
+            //Cria declaração para consulta no banco
+            PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = ? and nome = ? and senha = ?;");
+            ps.setString(1,tipo);
+            ps.setString(2,txtUsuario.getText());
+            ps.setString(3,txtSenha.getText());
+            ResultSet rs = ps.executeQuery();
+            //Verifica se há resultados encontrados
+            if(rs.next()){
+                existe = true;
+            } else existe = false; //insere falso no booleano
+            rs.close(); //Fecha ResultSet
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro:\n"+e); //Mensagem de erro
+        }
+        return existe;
     }
 
     //Método de usuário incorreto

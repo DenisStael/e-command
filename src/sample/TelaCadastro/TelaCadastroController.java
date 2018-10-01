@@ -49,12 +49,16 @@ public class TelaCadastroController {
                     ps.executeUpdate(); //Executa a declaração SQL
 
                     JOptionPane.showMessageDialog(null, "Inserido com sucesso!"); //Mensagem de Sucesso
-                } catch (SQLException e) {
+
+                    if(tipo.equals("Gerente"))
+                        Main.trocaTela("TelaInicial/telaInicial.fxml");
+                } catch (Exception e) {
                     //Mensagem de erro
                     JOptionPane.showMessageDialog(null, "Erro ao inserir os dados!\nErro: "+e);
                 }
                 //Limpa os campos de texto
                 txtNome.clear(); txtSenha.clear(); txtConfirmaSenha.clear();
+
             } else {
                 //Mensagem de erro na verificação das senhas
                 JOptionPane.showMessageDialog(null, "As senhas são diferentes!");
