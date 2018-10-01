@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaComandaController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="718.0">
+            <children>
+                <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="722.0" style="-fx-background-color: #5353c6;">
+                    <children>
+                        <ImageView fitHeight="85.0" fitWidth="225.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="324.0" layoutY="38.0" text="Minha Comanda" textFill="WHITE">
+                            <font>
+                                <Font name="Arial Bold" size="30.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <Button layoutX="314.0" layoutY="548.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
+            <Label layoutX="132.0" layoutY="195.0" prefHeight="66.0" prefWidth="383.0" text="Aqui vai ser listado os pedidos feitos, o preço total, e as opções de fazer mais outro pedido e futuramente fechar a conta" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            </children></AnchorPane>
+    </items>
+</SplitPane>
