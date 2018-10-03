@@ -48,6 +48,7 @@ CREATE TABLE Pedido (
   Garcom_Usuario_CodUsuario INT,
   Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
+  precototal DECIMAL(10,2) NOT NULL DEFAULT 0,
   StatusPedido VARCHAR(10) CHECK(StatusPedido IN ('Aberto','Fechado')),
   PRIMARY KEY (CodPedido),
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
