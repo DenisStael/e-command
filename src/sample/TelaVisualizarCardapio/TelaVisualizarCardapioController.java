@@ -35,12 +35,14 @@ public class TelaVisualizarCardapioController implements Initializable {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
     }
 
-    public void acaoSelecaoPrato(){
+    @FXML
+    private void acaoSelecaoPrato(){
         if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null)
             tabelaBebidaCardapio.getSelectionModel().clearSelection();
     }
 
-    public void acaoSelecaoBebida(){
+    @FXML
+    private void acaoSelecaoBebida(){
         if(tabelaPratoCardapio.getSelectionModel().getSelectedItem() != null)
             tabelaPratoCardapio.getSelectionModel().clearSelection();
     }

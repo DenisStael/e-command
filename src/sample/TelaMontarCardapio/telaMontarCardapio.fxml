@@ -50,6 +50,55 @@
                         </AnchorPane>
                     </content>
                   </Tab>
+                  <Tab text="Remover Pratos">
+                     <content>
+                        <AnchorPane prefHeight="396.0" prefWidth="706.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Accordion prefHeight="371.0" prefWidth="718.0">
+                                 <panes>
+                                    <TitledPane animated="false" onMouseClicked="#acaoSelecaoPrato" prefHeight="421.0" prefWidth="336.0" text="Selecione um Prato">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="tabelaPratos2" prefHeight="323.0" prefWidth="718.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="colunaNomePrato2" prefWidth="126.0" text="Nome" />
+                                                      <TableColumn fx:id="colunaCodPrato2" prefWidth="60.0" text="Código" />
+                                                      <TableColumn fx:id="colunaDescPrato2" prefWidth="460.0" text="Descrição" />
+                                                      <TableColumn fx:id="colunaPreco2" prefWidth="69.0" text="Preço" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" onMouseClicked="#acaoSelecaoBebida" prefHeight="337.0" prefWidth="718.0" text="Selecione uma Bebida">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="312.0" prefWidth="716.0">
+                                             <children>
+                                                <TableView fx:id="tabelaBebida" prefHeight="325.0" prefWidth="718.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="colunaNomeBebida" prefWidth="126.0" text="Nome" />
+                                                      <TableColumn fx:id="colunaCodBebida" prefWidth="60.0" text="Código" />
+                                                      <TableColumn fx:id="colunaDescBebida" prefWidth="464.0" text="Descrição" />
+                                                      <TableColumn fx:id="colunaPrecoBebida" prefWidth="66.0" text="Preço" />
+                                                   </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Button layoutX="290.0" layoutY="376.0" mnemonicParsing="false" onAction="#acaoRemoverDoCardapio" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ff3333;" text="Remover do Cardápio" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <ImageView fitHeight="74.0" fitWidth="212.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
