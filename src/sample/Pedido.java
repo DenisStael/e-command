@@ -89,7 +89,8 @@ public class Pedido {
             tabelaPedido.setItems(listaPedidos);
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
+            //JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
+            e.printStackTrace();
         }
     }
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="275.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaComandaController">
+<AnchorPane prefHeight="275.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaInfoPedidoController">
    <children>
       <TableView fx:id="tabelaPratos" prefHeight="274.0" prefWidth="723.0">
          <columns>

@@ -1,51 +1,59 @@
 package sample.TelaComanda;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Pedido;
-import sample.Prato;
-
+import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
-    private String sql = "";
-    private String sql_2 = "";
-    private Pedido tabelaPedido;
-    private Prato tabelaPrato;
+    private Pedido tabelaPedido = new Pedido();
     @FXML
-    private TableView<Pedido> tabelaPedidos, tabelaPratos;
+    private TableView<Pedido> tabelaPedidos;
     @FXML
-    private TableColumn colunaCodPedido, colunaNumeroMesa, colunaPrecoPedido, colunaPrato, colunaDescPrato,
-    colunaCodPrato, colunaPrecoPrato;
-
-
+    private TableColumn colunaCodPedido, colunaNumeroMesa, colunaPrecoPedido;
+    @FXML
+    private Label labelPreco;
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
 
     @FXML
     private void acaoInformacaoPedido() throws IOException {
-        Stage stage = new Stage();
-        stage.setTitle("Informações do Pedido");
-        Parent root = FXMLLoader.load(getClass().getResource("telaInformacaoPedido.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(tabelaPedidos.getSelectionModel().getSelectedItem() != null){
+            TelaInfoPedidoController.codPedido = tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido();
+            Stage stage = new Stage();
+            stage.setTitle("Informações do Pedido");
+            Parent root = FXMLLoader.load(getClass().getResource("telaInfoPedido.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    private float calculaPreco(){
+        Float precoTotal = 0f;
+        for(int i = 0; i < tabelaPedidos.getItems().size(); i++){
+            precoTotal += tabelaPedidos.getItems().get(i).getPreco();
+        }
+        return precoTotal;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
+        String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+
+                TelaPedidoController.numeroMesa+" and statuspedido = 'Aberto';";
+        tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
+        labelPreco.setText(Float.toString(calculaPreco()));
     }
 }
