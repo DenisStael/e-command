@@ -35,6 +35,10 @@ public class TelaVisualizarCardapioController implements Initializable {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
     }
 
+    public void acaoComanda() throws IOException {
+        Main.trocaTela("TelaComanda/telaComanda.fxml");
+    }
+
     @FXML
     private void acaoSelecaoPrato(){
         if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null)

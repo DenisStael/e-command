@@ -20,6 +20,11 @@
                   <Image url="@../img/logo.png" />
                </image>
             </ImageView>
+            <Button layoutX="544.0" layoutY="37.0" mnemonicParsing="false" onAction="#acaoComanda" style="-fx-background-color: #47d147;" text="Ver todos os pedidos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="646.0" style="-fx-background-color: #5353c6;">
          <children>
@@ -54,7 +59,7 @@
                 </TitledPane>
               </panes>
             </Accordion>
-            <Button layoutX="64.0" layoutY="455.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="25.0" prefWidth="60.0" text="Voltar">
+            <Button layoutX="78.0" layoutY="455.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="25.0" prefWidth="60.0" text="Voltar">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>

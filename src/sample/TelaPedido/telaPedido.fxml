@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -35,7 +36,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="labelPrecoTotal" layoutX="264.0" layoutY="453.0" text="0.00" textFill="LIME">
+            <Label fx:id="labelPrecoTotal" layoutX="264.0" layoutY="453.0" prefHeight="25.0" prefWidth="58.0" text="0.00" textFill="LIME">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

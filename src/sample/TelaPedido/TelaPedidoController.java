@@ -49,8 +49,9 @@ public class TelaPedidoController implements Initializable {
     public void acaoConfirmar(){
         try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("insert into pedido(mesa_idmesa,observacao,statuspedido)values(?,?,'Aberto');");
+                    ("insert into pedido(mesa_idmesa,observacao,statuspedido,precototal)values(?,?,'Aberto',?);");
             ps.setInt(1,numeroMesa);
+            ps.setFloat(3,calculaPreco());
 
             if(txtObservacao.getText().isEmpty())
                 ps.setString(2,null);
@@ -98,8 +99,8 @@ public class TelaPedidoController implements Initializable {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         tabelaPedido.setItems(pedido.getListaPedido());
-        labelNumeroMesa.setText(Integer.toString(numeroMesa));
         labelPrecoTotal.setText(Float.toString(calculaPreco()));
+        labelNumeroMesa.setText(Integer.toString(numeroMesa));
         if(!tabelaPedido.getItems().isEmpty())
             btConfirmarPedido.setDisable(false);
         else
