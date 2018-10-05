@@ -8,11 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Pedido;
-import sample.TelaComanda.TelaInfoPedidoController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +27,7 @@ public class TelaGarçomController implements Initializable {
     public void acaoVoltar(ActionEvent actionEvent) throws IOException {
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
-    public void acaoInformacaoGarcom(MouseEvent mouseEvent) throws IOException {
+    public void acaoInformacaoGarcom() throws IOException {
         if(tabelaGarcom.getSelectionModel().getSelectedItem() != null){
             TelaInformacaoGarcomController.codPedido = tabelaGarcom.getSelectionModel().getSelectedItem().getCodpedido();
             Stage stage = new Stage();

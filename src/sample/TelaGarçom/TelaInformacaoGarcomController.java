@@ -30,11 +30,13 @@ public class TelaInformacaoGarcomController implements Initializable {
         tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
     public void acaoAtenderPedido() throws SQLException {
-        PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set garcom_usuario_codusuario = ? where codpedido = ?;");
-        ps.setInt(1, TelaLoginController.codUsuario);
+        /*Aqui tem que inserir o codigo do garçom no pedido para demonstrar que o pedido foi atendido
+          e para o pedido sair da tabela de pedidos para serem atendidos*/
+
+        /*PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set garcom_usuario_codusuario = ? where codpedido = ?;");
+        ps.setInt(1, );
         ps.setInt(2,codPedido);
-        ps.executeUpdate();
-        System.out.println(TelaLoginController.codUsuario);
+        ps.executeUpdate();*/
     }
 
 }
