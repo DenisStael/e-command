@@ -45,4 +45,12 @@ public class TelaGerenteController {
      public void acaoCadastrarMesas() throws IOException {
         Main.trocaTela("TelaCadastroMesa/telaCadastroMesa.fxml");
      }
+
+    public void acaoVerComandas() throws IOException {
+        Main.trocaTela("TelaGerente/telaComandas.fxml");
+    }
+
+    public void acaoEmitirRelatorio() throws IOException {
+        Main.trocaTela("telaRelatorio.fxml");
+    }
 }

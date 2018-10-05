@@ -28,6 +28,8 @@
             <MenuItem fx:id="menuMontarCardapio" mnemonicParsing="false" onAction="#acaoMontarCardapio" onMenuValidation="#acaoMontarCardapio" text="Montar cardápio" />
             <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarCozinheiro" text="Cadastrar Cozinheiro" />
             <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarGarcom" text="Cadastrar Garçom" />
+            <MenuItem mnemonicParsing="false" onAction="#acaoVerComandas" text="Visualizar Comandas" />
+            <MenuItem mnemonicParsing="false" onAction="#acaoEmitirRelatorio" text="Emitir Relatório" />
         </items>
       </SplitMenuButton>
       <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
