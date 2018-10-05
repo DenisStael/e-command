@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Pedido;
+import sample.TelaInfoPedido.TelaInfoPedidoController;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +35,7 @@ public class TelaComandaController implements Initializable {
             TelaInfoPedidoController.codPedido = tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido();
             Stage stage = new Stage();
             stage.setTitle("Informações do Pedido");
-            Parent root = FXMLLoader.load(getClass().getResource("telaInfoPedido.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../TelaInfoPedido/telaInfoPedido.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

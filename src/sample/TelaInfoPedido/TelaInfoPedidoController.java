@@ -1,4 +1,4 @@
-package sample.TelaComanda;
+package sample.TelaInfoPedido;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
