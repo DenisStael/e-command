@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class TelaLoginController implements Initializable {
 
     ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão ao banco
-
+    public static int codUsuario;
     //Atributos da tela
     @FXML
     private Label label;
@@ -61,7 +61,7 @@ public class TelaLoginController implements Initializable {
         boolean existe = false;
         try {
             //Cria declaração para consulta no banco
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha from usuario where tipo = ? and nome = ? and senha = ?;");
+            PreparedStatement ps = conexaoBanco.connection.prepareStatement("select nome,senha,codusuario from usuario where tipo = ? and nome = ? and senha = ?;");
             ps.setString(1,tipo);
             ps.setString(2,txtUsuario.getText());
             ps.setString(3,txtSenha.getText());
@@ -69,6 +69,8 @@ public class TelaLoginController implements Initializable {
             //Verifica se há resultados encontrados
             if(rs.next()){
                 existe = true;
+                codUsuario = rs.getInt("codusuario");
+                System.out.println(codUsuario);
             } else existe = false; //insere falso no booleano
             rs.close(); //Fecha ResultSet
 

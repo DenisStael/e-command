@@ -2,6 +2,7 @@ package sample;
 
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -18,6 +19,7 @@ public class Pedido {
     private SimpleIntegerProperty codpedido;
     private SimpleIntegerProperty idmesa;
     private SimpleFloatProperty preco;
+    private SimpleStringProperty observacao;
 
     public Pedido(int codpedido, int idmesa, float preco) {
         this.codpedido = new SimpleIntegerProperty(codpedido);
@@ -27,8 +29,27 @@ public class Pedido {
 
     public Pedido(){}
 
+    public Pedido(int codpedido, int idmesa, String observacao) {
+        this.codpedido = new SimpleIntegerProperty(codpedido);
+        this.idmesa = new SimpleIntegerProperty(idmesa);
+        this.observacao = new SimpleStringProperty(observacao);
+
+    }
+
     public ObservableList<Prato> getListaPedido() {
         return listaPedido;
+    }
+
+    public String getObservacao() {
+        return observacao.get();
+    }
+
+    public SimpleStringProperty observacaoProperty() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao.set(observacao);
     }
 
     public void setListaPedido(ObservableList<Prato> listaPedido) {
@@ -89,8 +110,28 @@ public class Pedido {
             tabelaPedido.setItems(listaPedidos);
 
         }catch (Exception e){
-            //JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
+        }
+    }
+    public void mostraTabelaGarcom(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa,TableColumn colunaObservacao,String sql) {
+        ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
+        try {
+            Statement stmt = conexaoBanco.connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()){
+                listaPedidos.add(new Pedido(rs.getInt("codpedido"),rs.getInt("mesa_idmesa"),rs.getString("observacao")));
+            }
+            rs.close();
+
+            colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
+            colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
+            colunaObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+            tabelaGarcom.setItems(listaPedidos);
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
         }
     }
 }

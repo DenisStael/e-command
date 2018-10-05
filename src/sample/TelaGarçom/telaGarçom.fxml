@@ -10,12 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGarçom.TelaGarçomController">
    <children>
-      <Label layoutX="310.0" layoutY="154.0" text="Bem vindo!">
+      <Label layoutX="237.0" layoutY="160.0" prefHeight="16.0" prefWidth="247.0" text="Bem vindo! Pedidos abaixo:" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="507.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar">
+      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="547.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar">
          <font>
             <Font size="15.0" />
          </font>
@@ -25,10 +25,12 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="botaoVisualizarPedidos" layoutX="290.0" layoutY="446.0" mnemonicParsing="false" onAction="#acaoVisualizarPedidos" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: #00b33c;" text="Acompanhar pedidos" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+      <TableView fx:id="tabelaGarcom" layoutY="197.0" onMouseClicked="#acaoInformacaoGarcom" prefHeight="337.0" prefWidth="720.0">
+         <columns>
+            <TableColumn fx:id="colunaCodPedido" minWidth="0.0" prefWidth="126.0" text="Número do Pedido" />
+            <TableColumn fx:id="colunaNumMesa" prefWidth="149.0" text="Número da Mesa" />
+            <TableColumn fx:id="colunaObservacao" prefWidth="444.0" text="Descrição" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
