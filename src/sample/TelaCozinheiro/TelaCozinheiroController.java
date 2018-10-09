@@ -15,9 +15,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
-
 public class TelaCozinheiroController implements Initializable {
     private Pedido pedido = new Pedido();
     private String sql = "select codpedido,mesa_idmesa,observacao from pedido where cozinheiro_usuario_codusuario is null;";
@@ -29,7 +26,7 @@ public class TelaCozinheiroController implements Initializable {
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
 
-    public void acaoInformacaoCozinheiro(MouseEvent mouseEvent) throws IOException {
+    public void acaoInformacaoCozinheiro() throws IOException {
         if(tabelaCozinheiro.getSelectionModel().getSelectedItem() != null){
             Stage stage = new Stage();
             stage.setTitle("Informações do Pedido");

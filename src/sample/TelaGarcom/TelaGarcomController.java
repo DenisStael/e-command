@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Pedido;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
