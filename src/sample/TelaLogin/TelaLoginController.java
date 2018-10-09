@@ -49,7 +49,7 @@ public class TelaLoginController implements Initializable {
                 else if (tipo.equals("Cozinheiro"))
                     Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
                 else if (tipo.equals("Garçom"))
-                    Main.trocaTela("TelaGarçom/telaGarçom.fxml");
+                    Main.trocaTela("TelaGarcom/telaGarcom.fxml");
             } else usuarioIncorreto();
 
             //Mensagem para preencher todos os campos
