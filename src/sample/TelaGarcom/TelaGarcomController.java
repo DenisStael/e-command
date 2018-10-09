@@ -1,4 +1,4 @@
-package sample.TelaGarçom;
+package sample.TelaGarcom;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaGarçomController implements Initializable {
+public class TelaGarcomController implements Initializable {
     private Pedido pedido = new Pedido();
     private String sql = "select codpedido,mesa_idmesa,observacao from pedido where garcom_usuario_codusuario is null;";
     @FXML
@@ -24,7 +24,7 @@ public class TelaGarçomController implements Initializable {
     @FXML
     private TableColumn colunaCodPedido,colunaNumMesa,colunaObservacao;
 
-    public void acaoVoltar(ActionEvent actionEvent) throws IOException {
+    public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
     public void acaoInformacaoGarcom() throws IOException {
