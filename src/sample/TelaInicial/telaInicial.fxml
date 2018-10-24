@@ -6,12 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaInicial.TelaInicialController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" stylesheets="@../css/TableStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaInicial.TelaInicialController">
     <children>
-        <Button fx:id="botaoGerente" layoutX="321.0" layoutY="265.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" text="Gerente" />
-        <Button fx:id="botaoGarcom" layoutX="321.0" layoutY="319.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" text="Garçom" />
-        <Button fx:id="botaoCozinheiro" layoutX="321.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" text="Cozinheiro" />
-        <Button fx:id="botaoMesa" layoutX="321.0" layoutY="422.0" mnemonicParsing="false" onAction="#acaoMesa" prefHeight="35.0" prefWidth="83.0" text="Mesa" />
+        <Button fx:id="botaoGerente" layoutX="335.0" layoutY="255.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" styleClass="botaoGerente" />
+        <Button fx:id="botaoGarcom" layoutX="335.0" layoutY="315.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" styleClass="botaoGarcom" />
+        <Button fx:id="botaoCozinheiro" layoutX="335.0" layoutY="376.0" mnemonicParsing="false" onAction="#acaoBotao" prefHeight="35.0" prefWidth="83.0" styleClass="botaoCozinheiro" />
+        <Button fx:id="botaoMesa" layoutX="335.0" layoutY="439.0" mnemonicParsing="false" onAction="#acaoMesa" prefHeight="35.0" prefWidth="83.0" styleClass="botaoMesa" />
         <Label layoutX="222.0" layoutY="166.0" text="Bem vindo ao E-Command" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="22.0" />

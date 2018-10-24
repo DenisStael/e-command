@@ -1,3 +1,26 @@
 .table-row-cell {
     -fx-cell-size: 30px;
 }
+.button{
+    -fx-background-radius: 30;
+}
+.button.botaoGerente{
+    -fx-background-image: url("../img/gerente2.png");
+    -fx-pref-height: 50px;
+    -fx-pref-width: 50px;
+}
+.button.botaoGarcom{
+    -fx-background-image: url("../img/garcom2.png");
+    -fx-pref-height: 50px;
+    -fx-pref-width: 50px;
+}
+.button.botaoCozinheiro{
+    -fx-background-image: url("../img/chef2.png");
+    -fx-pref-height: 50px;
+    -fx-pref-width: 50px;
+}
+.button.botaoMesa{
+    -fx-background-image: url("../img/mesa2.png");
+    -fx-pref-height: 50px;
+    -fx-pref-width: 50px;
+}
