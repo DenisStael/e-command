@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" stylesheets="@../css/TableStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
     <children>
         <Label layoutX="254.0" layoutY="223.0" text="Para continuar, faça o login:">
             <font>
@@ -23,12 +23,7 @@
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="botaoLogar" layoutX="296.0" layoutY="397.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-        <Button fx:id="botaoRecuperarSenha" layoutX="296.0" layoutY="442.0" mnemonicParsing="false" onAction="#acaoRecuperarSenha" style="-fx-background-color: #e60000;" text="Esqueci a Senha" textFill="WHITE">
+        <Button fx:id="botaoLogar" layoutX="298.0" layoutY="396.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -48,7 +43,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="334.0" layoutY="498.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Button fx:id="botaoVoltar" layoutX="335.0" layoutY="489.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
       <Label fx:id="labelErroLogin" layoutX="195.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" textFill="#ae1313">
          <font>
             <Font name="System Bold" size="15.0" />

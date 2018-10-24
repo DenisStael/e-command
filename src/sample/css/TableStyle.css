@@ -1,10 +1,31 @@
 .table-row-cell {
     -fx-cell-size: 30px;
 }
-.button{
-    -fx-background-radius: 30;
+.label{
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 15px;
 }
-.button.botaoGerente{
+.button{
+    -fx-background-radius: 100;
+    -fx-font-family: "Comic Sans MS";
+}
+.text-field{
+    -fx-background-radius: 100;
+    -fx-font-family: "Comic Sans MS";
+    -fx-background-size: 17;
+}
+.split-menu-button{
+    -fx-background-radius: 100;
+    -fx-font-size: 5;
+}
+.table-row-cell {
+    -fx-cell-size: 30px;
+}
+.table-view{
+    -fx-font-family: "Comic Sans MS";
+    
+}
+/*.button.botaoGerente{
     -fx-background-image: url("../img/gerente2.png");
     -fx-pref-height: 50px;
     -fx-pref-width: 50px;
@@ -24,3 +45,4 @@
     -fx-pref-height: 50px;
     -fx-pref-width: 50px;
 }
+*/
