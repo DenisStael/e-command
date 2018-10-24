@@ -15,7 +15,7 @@
             <TableColumn fx:id="colunaPrecoPrato" prefWidth="77.0" text="Preço" />
          </columns>
       </TableView>
-      <Button fx:id="acaoAtenderPedido" layoutX="265.0" layoutY="273.0" mnemonicParsing="false" style="-fx-background-color: #00b33c;" text="Estou atendendo este pedido!" textFill="WHITE">
+      <Button fx:id="botaoAtenderPedido" layoutX="265.0" layoutY="273.0" mnemonicParsing="false" onAction="#acaoAtenderPedido" style="-fx-background-color: #00b33c;" text="Estou atendendo este pedido!" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

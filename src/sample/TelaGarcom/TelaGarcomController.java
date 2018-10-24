@@ -21,7 +21,8 @@ public class TelaGarcomController implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
     private Pedido pedido = new Pedido();
-    private String sql = "select codpedido,mesa_idmesa,observacao from pedido where garcom_usuario_codusuario is null order by codpedido;";
+    private String sql = "select codpedido,mesa_idmesa,observacao from pedido where cozinheiro_usuario_codusuario is not null " +
+            "and garcom_usuario_codusuario is null order by codpedido;";
     @FXML
     private TableView<Pedido> tabelaGarcom;
     @FXML

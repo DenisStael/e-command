@@ -1,5 +1,6 @@
 package sample.TelaCozinheiro;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.Main;
 import sample.Pedido;
 import sample.TelaGarcom.TelaGarcomController;
@@ -20,9 +22,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TelaCozinheiroController implements Initializable {
-
     private static Usuario usuario;
     private Pedido pedido = new Pedido();
+    private Stage stage = new Stage();
     private String sql = "select distinct p.codpedido,p.mesa_idmesa,p.observacao from pedido p, prato pr, pedidoprato pp " +
             "where p.cozinheiro_usuario_codusuario is null and pp.codpedido = p.codpedido and pp.codprato = pr.codprato " +
             "and pr.tipo = 'Comida' order by p.codpedido;";
@@ -45,7 +47,6 @@ public class TelaCozinheiroController implements Initializable {
     public void acaoInformacaoCozinheiro() throws IOException {
         if(tabelaCozinheiro.getSelectionModel().getSelectedItem() != null){
             TelaInformacaoCozinheiroController.codPedido = tabelaCozinheiro.getSelectionModel().getSelectedItem().getCodpedido();
-            Stage stage = new Stage();
             stage.setTitle("Informações do Pedido");
             Parent root = FXMLLoader.load(getClass().getResource("telaInformacaoCozinheiro.fxml"));
             Scene scene = new Scene(root);
@@ -57,5 +58,13 @@ public class TelaCozinheiroController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                stage.close();//Fecha a aplicação
+                pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+            }
+        });
     }
 }
