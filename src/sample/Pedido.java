@@ -113,7 +113,7 @@ public class Pedido {
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
         }
     }
-    public void mostraTabelaGarcom(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa,TableColumn colunaObservacao,String sql) {
+    public void mostraTabela(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa,TableColumn colunaObservacao,String sql) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
         try {
             Statement stmt = conexaoBanco.connection.createStatement();

@@ -5,6 +5,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
+import sample.TelaCozinheiro.TelaCozinheiroController;
+import sample.TelaGarcom.TelaGarcomController;
+import sample.TelaGerente.TelaGerenteController;
+import sample.Usuario;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +21,8 @@ import java.util.ResourceBundle;
 
 public class TelaLoginController implements Initializable {
 
-    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão ao banco
+    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão ao banco
+    private Usuario usuario = new Usuario();
     //Atributos da tela
     @FXML
     private Label label;
@@ -44,12 +50,16 @@ public class TelaLoginController implements Initializable {
         if(!txtSenha.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
 
             if(login()){
-                if (tipo.equals("Gerente"))
+                if (tipo.equals("Gerente")) {
                     Main.trocaTela("TelaGerente/telaGerente.fxml");
-                else if (tipo.equals("Cozinheiro"))
+                    TelaGerenteController.setUsuario(usuario);
+                } else if (tipo.equals("Cozinheiro")) {
                     Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
-                else if (tipo.equals("Garçom"))
+                    TelaCozinheiroController.setUsuario(usuario);
+                } else if (tipo.equals("Garçom")) {
                     Main.trocaTela("TelaGarcom/telaGarcom.fxml");
+                    TelaGarcomController.setUsuario(usuario);
+                }
             } else usuarioIncorreto();
 
             //Mensagem para preencher todos os campos
@@ -67,12 +77,15 @@ public class TelaLoginController implements Initializable {
             ResultSet rs = ps.executeQuery();
             //Verifica se há resultados encontrados
             if(rs.next()){
+                usuario.setCodusuario(rs.getInt("codusuario"));
+                usuario.setUserNome(rs.getString("nome"));
                 existe = true;
-            } else existe = false; //insere falso no booleano
+            }
             rs.close(); //Fecha ResultSet
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro:\n"+e); //Mensagem de erro
+            //JOptionPane.showMessageDialog(null, "Erro:\n"+e); //Mensagem de erro
+            e.printStackTrace();
         }
         return existe;
     }

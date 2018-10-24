@@ -2,9 +2,21 @@ package sample.TelaGerente;
 
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
+import sample.Usuario;
+
 import java.io.IOException;
 
 public class TelaGerenteController {
+
+    private static Usuario usuario;
+
+    public static Usuario getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(Usuario usuario) {
+        TelaGerenteController.usuario = usuario;
+    }
 
     //Métodos de trocar de telas e suas respectivas telas
 
