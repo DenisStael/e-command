@@ -2,12 +2,16 @@ package sample.TelaCozinheiro;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.ConexaoBanco;
 import sample.Prato;
+import sample.TelaGarcom.TelaGarcomController;
 
+import javax.swing.*;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class TelaInformacaoCozinheiroController implements Initializable {
@@ -15,9 +19,27 @@ public class TelaInformacaoCozinheiroController implements Initializable {
     private Prato tabelaPrato = new Prato();
     public static int codPedido;
     @FXML
+    private Button botaoAtenderPedido;
+    @FXML
     private TableView<Prato> tabelaPratos;
     @FXML
     private TableColumn colunaPrato, colunaDescPrato, colunaCodPrato, colunaPrecoPrato;
+
+    public void acaoAtenderPedido(){
+        /*Aqui tem que inserir o codigo do garçom no pedido para demonstrar que o pedido foi atendido
+          e para o pedido sair da tabela de pedidos para serem atendidos*/
+
+        try {
+            PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set cozinheiro_usuario_codusuario = ? where codpedido = ?;");
+            ps.setInt(1, TelaCozinheiroController.getUsuario().getCodusuario());
+            ps.setInt(2,codPedido);
+            ps.executeUpdate();
+            botaoAtenderPedido.setDisable(true);
+            botaoAtenderPedido.setText("Pedido Atendido");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro ao atender pedido!\n"+e);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
