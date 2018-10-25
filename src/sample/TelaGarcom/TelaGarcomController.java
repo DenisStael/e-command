@@ -51,6 +51,10 @@ public class TelaGarcomController extends Logout implements Initializable {
         }
     }
 
+    public void acaoAtualizar() {
+        pedido.mostraTabela(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pedido.mostraTabela(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
@@ -59,7 +63,7 @@ public class TelaGarcomController extends Logout implements Initializable {
             @Override
             public void handle(WindowEvent event) {
                 stage.close();//Fecha a aplicação
-                pedido.mostraTabela(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+                acaoAtualizar();
             }
         });
     }

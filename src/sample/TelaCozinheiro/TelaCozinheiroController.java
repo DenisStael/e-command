@@ -8,16 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.Logout;
-import sample.Main;
 import sample.Pedido;
-import sample.TelaGarcom.TelaGarcomController;
-import sample.TelaGarcom.TelaInformacaoGarcomController;
 import sample.Usuario;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,15 +52,19 @@ public class TelaCozinheiroController extends Logout implements Initializable {
         }
     }
 
+    public void acaoAtualizar() {
+        pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        acaoAtualizar();
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 stage.close();//Fecha a aplicação
-                pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+                acaoAtualizar();
             }
         });
     }
