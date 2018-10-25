@@ -35,7 +35,7 @@
             <Font size="13.0" />
          </font>
       </SplitMenuButton>
-      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="530.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="72.0" style="-fx-background-color: WHITE;" text="Voltar">
+      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="530.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="72.0" style="-fx-background-color: #ff3333;" text="Sair" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

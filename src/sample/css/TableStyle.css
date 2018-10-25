@@ -5,9 +5,12 @@
     -fx-font-family: "Tahoma";
     -fx-font-size: 15px;
 }
+.label.titulo{
+    -fx-font-family: "System";
+    -fx-font-size: 20;
+}
 .button{
     -fx-background-radius: 100;
-    -fx-font-family: "Comic Sans MS";
 }
 .text-field{
     -fx-background-radius: 100;
@@ -21,20 +24,33 @@
 }
 .button.botaoGerente{
     -fx-font-size: 22;
+    -fx-font-family: "Comic Sans MS";
 }
 .button.botaoGarcom{
     -fx-font-size: 22;
+    -fx-font-family: "Comic Sans MS";
 }
 .button.botaoCozinheiro{
     -fx-font-size: 22;
+    -fx-font-family: "Comic Sans MS";
 }
 .button.botaoMesa{
     -fx-font-size: 22;
+    -fx-font-family: "Comic Sans MS";
 }
 .button.botaoLogar{
     -fx-font-size: 20;
+    -fx-font-family: "System";
 }
 .button.botaoVoltar{
     -fx-font-size: 20;
+    -fx-font-family: "System";
+}
+.button.sair{
+    -fx-font-family: "Comic Sans MS";
+}
+.pane{
+    -fx-border-width: 2;
+    -fx-border-color: #ffffff;
 }
 

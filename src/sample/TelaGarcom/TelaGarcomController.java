@@ -10,14 +10,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.Main;
+import sample.Logout;
 import sample.Pedido;
 import sample.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaGarcomController implements Initializable {
+public class TelaGarcomController extends Logout implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
     private Pedido pedido = new Pedido();
@@ -37,8 +37,9 @@ public class TelaGarcomController implements Initializable {
     }
 
     public void acaoVoltar() throws IOException {
-        Main.trocaTela("TelaLogin/telaLogin.fxml");
+        acaoSair();
     }
+
     public void acaoInformacaoGarcom() throws IOException {
         if(tabelaGarcom.getSelectionModel().getSelectedItem() != null){
             TelaInformacaoGarcomController.codPedido = tabelaGarcom.getSelectionModel().getSelectedItem().getCodpedido();

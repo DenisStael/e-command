@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.Logout;
 import sample.Main;
 import sample.Pedido;
 import sample.TelaGarcom.TelaGarcomController;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaCozinheiroController implements Initializable {
+public class TelaCozinheiroController extends Logout implements Initializable {
     private static Usuario usuario;
     private Pedido pedido = new Pedido();
     private Stage stage = new Stage();
@@ -32,8 +33,9 @@ public class TelaCozinheiroController implements Initializable {
     private TableView<Pedido> tabelaCozinheiro;
     @FXML
     private TableColumn colunaCodPedido,colunaNumMesa,colunaObservacao;
+
     public void acaoVoltar() throws IOException {
-        Main.trocaTela("TelaLogin/telaLogin.fxml");
+        acaoSair();
     }
 
     public static Usuario getUsuario() {

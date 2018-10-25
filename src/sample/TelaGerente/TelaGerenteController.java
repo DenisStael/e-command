@@ -1,12 +1,17 @@
 package sample.TelaGerente;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import sample.Logout;
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
 import sample.Usuario;
 
 import java.io.IOException;
 
-public class TelaGerenteController {
+public class TelaGerenteController extends Logout {
 
     private static Usuario usuario;
 
@@ -21,7 +26,7 @@ public class TelaGerenteController {
     //Métodos de trocar de telas e suas respectivas telas
 
     public void acaoVoltar() throws IOException {
-        Main.trocaTela("TelaLogin/telaLogin.fxml");
+        acaoSair();
     }
 
     public void acaoCadastrarCozinheiro() throws IOException {

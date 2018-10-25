@@ -15,9 +15,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="547.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar">
+      <Button fx:id="botaoVoltar" layoutX="327.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #ff3333;" text="Sair" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="212.0" layoutY="28.0">
