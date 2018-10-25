@@ -6,9 +6,6 @@ import sample.Main;
 import sample.TelaLogin.TelaLoginController;
 import javafx.scene.control.Button;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class TelaInicialController{
 
     @FXML

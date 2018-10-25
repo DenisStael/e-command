@@ -1,22 +1,22 @@
 package sample.TelaLogin;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.TelaCozinheiro.TelaCozinheiroController;
 import sample.TelaGarcom.TelaGarcomController;
 import sample.TelaGerente.TelaGerenteController;
 import sample.Usuario;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TelaLoginController implements Initializable {
@@ -32,6 +32,8 @@ public class TelaLoginController implements Initializable {
     private TextField txtUsuario;
     @FXML
     private Label labelErroLogin;
+    @FXML
+    private Button botaoLogar;
     private static String tipo; //Tipo de usuário atribuido pela tela inicial
 
     //Getter
@@ -109,5 +111,18 @@ public class TelaLoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         label.setText(tipo); //insere o tipo de usuário no label
+
+        botaoLogar.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode().equals(KeyCode.ENTER)){
+                    try {
+                        acaoLogar();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }

@@ -23,6 +23,11 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
+            <TextField fx:id="txtNome" layoutX="111.0" layoutY="16.0" promptText="Nome" />
+            <TextField fx:id="txtPreco" layoutX="349.0" layoutY="16.0" prefHeight="25.0" prefWidth="81.0" promptText="0.00" />
+            <TextArea fx:id="txtDescricao" layoutX="111.0" layoutY="53.0" prefHeight="82.0" prefWidth="320.0" wrapText="true" />
+            <TextField fx:id="txtCodigo" layoutX="550.0" layoutY="16.0" prefHeight="25.0" prefWidth="81.0" promptText="Código" />
+            <TextField fx:id="txtPesquisa" layoutX="212.0" layoutY="141.0" prefHeight="25.0" prefWidth="132.0" promptText="Nome" />
             <TableView fx:id="tabelaPratos" layoutX="12.0" layoutY="172.0" onMouseClicked="#clicarTabela" prefHeight="256.0" prefWidth="697.0">
               <columns>
                 <TableColumn fx:id="colunaPratos" prefWidth="132.0" text="Pratos" />
@@ -31,8 +36,6 @@
                   <TableColumn fx:id="colunaPreco" minWidth="4.0" prefWidth="81.0" text="Preço" />
               </columns>
             </TableView>
-            <TextField fx:id="txtPesquisa" layoutX="212.0" layoutY="141.0" prefHeight="25.0" prefWidth="132.0" promptText="Nome" />
-            <TextField fx:id="txtNome" layoutX="111.0" layoutY="16.0" promptText="Nome" />
             <Label layoutX="40.0" layoutY="140.0" text="Pesquisar por nome:">
                <font>
                   <Font size="18.0" />
@@ -53,9 +56,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCodigo" layoutX="550.0" layoutY="16.0" prefHeight="25.0" prefWidth="81.0" promptText="Código" />
-            <TextField fx:id="txtPreco" layoutX="349.0" layoutY="16.0" prefHeight="25.0" prefWidth="81.0" promptText="0.00" />
-            <TextArea fx:id="txtDescricao" layoutX="111.0" layoutY="53.0" prefHeight="82.0" prefWidth="320.0" />
             <Label layoutX="474.0" layoutY="18.0" text="Código:">
                <font>
                   <Font size="15.0" />

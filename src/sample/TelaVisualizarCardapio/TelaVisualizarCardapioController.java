@@ -1,14 +1,10 @@
 package sample.TelaVisualizarCardapio;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import sample.*;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
@@ -25,8 +21,6 @@ public class TelaVisualizarCardapioController implements Initializable {
     private TableView<Prato> tabelaPratoCardapio, tabelaBebidaCardapio, tabelaPedido;
     @FXML
     private TableColumn colunaNomePrato,colunaPrecoPrato,colunaNomePedido,colunaNomeBebida,colunaPrecoBebida,colunaPrecoPedido;
-    @FXML
-    ListView lista;
 
     public static Pedido getPedido() {
         return pedido;
@@ -47,14 +41,14 @@ public class TelaVisualizarCardapioController implements Initializable {
 
     @FXML
     private void acaoSelecaoPrato(){
-        /*if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null)
-            tabelaBebidaCardapio.getSelectionModel().clearSelection();*/
+        if(tabelaBebidaCardapio.getSelectionModel().getSelectedItem() != null)
+            tabelaBebidaCardapio.getSelectionModel().clearSelection();
     }
 
     @FXML
     private void acaoSelecaoBebida(){
-        /*if(tabelaPratoCardapio.getSelectionModel().getSelectedItem() != null)
-            tabelaPratoCardapio.getSelectionModel().clearSelection();*/
+        if(tabelaPratoCardapio.getSelectionModel().getSelectedItem() != null)
+            tabelaPratoCardapio.getSelectionModel().clearSelection();
     }
 
     public void acaoAddPedido() {
@@ -79,11 +73,10 @@ public class TelaVisualizarCardapioController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb){
-        /*tabelas.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
+        tabelas.mostraTabelaPrato(tabelaPratoCardapio,colunaNomePrato,colunaPrecoPrato,sqlPrato);
         tabelas.mostraTabelaPrato(tabelaBebidaCardapio,colunaNomeBebida,colunaPrecoBebida,sqlBebida);
         colunaNomePedido.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaPrecoPedido.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        tabelaPedido.setItems(pedido.getListaPedido());*/
-        lista.setItems(tabelas.listaPrato());
+        tabelaPedido.setItems(pedido.getListaPedido());
     }
 }

@@ -147,33 +147,4 @@ public class Prato {
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
         }
     }
-
-    public ObservableList<GridPane> listaPrato(){
-        ObservableList<GridPane> lista = FXCollections.observableArrayList();
-        try {
-            Statement stmt = conexaoBanco.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select nome,codprato,descricao,preco from prato where cardapio = TRUE" +
-                    " and tipo = 'Comida' order by nome;");
-
-            while(rs.next()){
-                GridPane gridPane = new GridPane();
-                gridPane.setMinSize(50,50);
-                gridPane.setPadding(new Insets(10,10,10,10));
-                gridPane.setHgap(10);
-                gridPane.setVgap(10);
-                gridPane.setAlignment(Pos.CENTER);
-                gridPane.add(new Text(rs.getString("nome")),0,0);
-                gridPane.add(new Text(rs.getString("descricao")),0,1);
-                gridPane.add(new Text(Float.toString(rs.getFloat("preco"))),2,0);
-                lista.addAll(gridPane);
-            }
-            rs.close();
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
-        }
-
-        return lista;
-    }
-
 }

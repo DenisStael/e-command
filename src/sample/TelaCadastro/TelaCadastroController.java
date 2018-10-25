@@ -1,18 +1,22 @@
 package sample.TelaCadastro;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.ConexaoBanco;
 import sample.Main;
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class TelaCadastroController {
+public class TelaCadastroController implements Initializable {
 
     ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
 
@@ -23,6 +27,8 @@ public class TelaCadastroController {
     private TextField txtNome; //caixa de texto
     @FXML
     private PasswordField txtSenha, txtConfirmaSenha; //campo de senha
+    @FXML
+    private Label labelTipo;
 
     //Método de voltar para a tela anterior
     public void acaoVoltar() throws IOException {
@@ -67,4 +73,8 @@ public class TelaCadastroController {
         } else JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        labelTipo.setText("Cadastrar "+tipo);
+    }
 }

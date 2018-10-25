@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" stylesheets="@../css/TableStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogin.TelaLoginController">
     <children>
-        <Label layoutX="254.0" layoutY="223.0" text="Para continuar, faça o login:">
+        <Label layoutX="223.0" layoutY="218.0" text="Para continuar, faça o login:">
             <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="System Bold" size="21.0" />
             </font>
         </Label>
-        <TextField fx:id="txtUsuario" layoutX="279.0" layoutY="271.0" promptText="Usuário">
+        <TextField fx:id="txtUsuario" layoutX="268.0" layoutY="262.0" prefHeight="38.0" prefWidth="173.0" promptText="Usuário" stylesheets="@../css/TableStyle.css">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <PasswordField fx:id="txtSenha" layoutX="279.0" layoutY="318.0" promptText="Senha">
+        <PasswordField fx:id="txtSenha" layoutX="268.0" layoutY="315.0" prefHeight="38.0" prefWidth="173.0" promptText="Senha" stylesheets="@../css/TableStyle.css">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="botaoLogar" layoutX="298.0" layoutY="396.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #00b33c;" text="Entrar" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+        <Button fx:id="botaoLogar" layoutX="268.0" layoutY="395.0" mnemonicParsing="false" onAction="#acaoLogar" prefHeight="66.0" prefWidth="173.0" style="-fx-background-color: #00b33c;" styleClass="botaoLogar" stylesheets="@../css/TableStyle.css" text="Entrar" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
       <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="214.0" layoutY="29.0">
          <image>
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="label" layoutX="331.0" layoutY="193.0" prefHeight="25.0" prefWidth="125.0">
+      <Label fx:id="label" layoutX="326.0" layoutY="193.0" prefHeight="25.0" prefWidth="125.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="296.0" layoutY="193.0" text="ID">
+      <Label layoutX="291.0" layoutY="193.0" text="ID">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="335.0" layoutY="489.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
-      <Label fx:id="labelErroLogin" layoutX="195.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" textFill="#ae1313">
+      <Button fx:id="botaoVoltar" layoutX="300.0" layoutY="499.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="59.0" prefWidth="109.0" style="-fx-background-color: WHITE;" styleClass="botaoVoltar" stylesheets="@../css/TableStyle.css" text="Voltar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="labelErroLogin" layoutX="185.0" layoutY="360.0" prefHeight="29.0" prefWidth="350.0" textFill="#ae1313">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

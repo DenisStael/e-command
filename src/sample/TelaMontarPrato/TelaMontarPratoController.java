@@ -20,13 +20,15 @@ public class TelaMontarPratoController implements Initializable {
 
     //Atributos da tela
     @FXML
-    TextField txtNomePrato, txtPreco, txtTipo;
+    TextField txtNomePrato, txtPreco;
     @FXML
     TextArea txtDescricao;
     @FXML
     TableColumn colunaPratos, colunaCodigo, colunaDescricao, colunaPreco;
     @FXML
     TableView tabelaPratos;
+    @FXML
+    private RadioButton tipoComida, tipoBebida;
 
     //método voltat para tela anterior
     public void acaoVoltar() throws IOException {
@@ -36,13 +38,26 @@ public class TelaMontarPratoController implements Initializable {
     //limpa os campos da tela
     public void acaoLimpar(){
         txtNomePrato.clear(); txtPreco.clear();
-        txtDescricao.clear(); txtTipo.clear();
+        txtDescricao.clear(); tipoBebida.setSelected(false);
+        tipoComida.setSelected(false);
+    }
+
+    public void selecaoComida(){
+        if(tipoBebida.isSelected()){
+            tipoBebida.setSelected(false);
+        }
+    }
+
+    public void selecaoBebida(){
+        if(tipoComida.isSelected()){
+            tipoComida.setSelected(false);
+        }
     }
 
     //Método de salvar prato no banco de dados
     public void acaoSalvar(){
         //Verifica se todos os campos estão preenchidos
-        if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
+        if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty() && (tipoBebida.isSelected() || tipoComida.isSelected())){
             try {
                 //Cria declaração sql para inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao,tipo)values(?,?,?,?);");
@@ -51,7 +66,11 @@ public class TelaMontarPratoController implements Initializable {
                 ps.setString(1, txtNomePrato.getText());
                 ps.setFloat(2, Float.parseFloat(txtPreco.getText())); //converte para float
                 ps.setString(3, txtDescricao.getText());
-                ps.setString(4, txtTipo.getText());
+                if(tipoComida.isSelected()){
+                    ps.setString(4, "Comida");
+                } else if(tipoBebida.isSelected()){
+                    ps.setString(4, "Bebida");
+                }
 
                 ps.executeUpdate(); //Executa declaração sql
 
@@ -69,5 +88,6 @@ public class TelaMontarPratoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+        tipoComida.setSelected(true);
     }
 }

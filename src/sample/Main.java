@@ -46,6 +46,7 @@ public class Main extends Application {
             stage.setScene(new Scene(root));
             stage.show();
         }
+
         //Chamada do método ao clicar no botão de fechar a tela
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

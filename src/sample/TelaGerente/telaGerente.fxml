@@ -18,7 +18,7 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <SplitMenuButton fx:id="menuGerente" layoutX="260.0" layoutY="241.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="212.0" text="Favor selecione uma opção...">
+      <SplitMenuButton fx:id="menuGerente" layoutX="254.0" layoutY="241.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="225.0" text="Favor selecione uma opção...">
         <items>
           <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#acaoCadastrarProduto" onMenuValidation="#acaoCadastrarProduto" text="Cadastrar produto" />
             <MenuItem fx:id="menuGerenciarEstoque" mnemonicParsing="false" onAction="#acaoGerenciarEstoque" onMenuValidation="#acaoGerenciarEstoque" text="Controlar estoque" />
@@ -31,7 +31,13 @@
             <MenuItem mnemonicParsing="false" onAction="#acaoVerComandas" text="Visualizar Comandas" />
             <MenuItem mnemonicParsing="false" onAction="#acaoEmitirRelatorio" text="Emitir Relatório" />
         </items>
+         <font>
+            <Font size="13.0" />
+         </font>
       </SplitMenuButton>
-      <Button fx:id="botaoVoltar" layoutX="339.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" style="-fx-background-color: WHITE;" text="Voltar" />
+      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="530.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="72.0" style="-fx-background-color: WHITE;" text="Voltar">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>
