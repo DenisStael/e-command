@@ -5,25 +5,18 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import sun.plugin.perf.PluginRollup;
-
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Prato {
 
@@ -125,26 +118,42 @@ public class Prato {
         }
     }
 
-    //método pra mostrar tabelas com os pratos na tela do cardapio
-    public void mostraTabelaPrato(TableView tabelaPratoCardapio, TableColumn colunaNomePrato, TableColumn colunaPrecoPrato, String sql) {
-        ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
+    public ObservableList<GridPane> listaPrato(String sql) {
+        ObservableList<GridPane> listaPratos = FXCollections.observableArrayList();
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
-                listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
-                        rs.getString("descricao"), rs.getFloat("preco")));
+                GridPane gridPane = new GridPane();
+                gridPane.getColumnConstraints().add(new ColumnConstraints(280));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(70));
+                gridPane.getStylesheets().add(String.valueOf(getClass().getResource("css/TableStyle.css")));
+                gridPane.getStyleClass().add("gridPane");
+                Label lblNome = new Label(rs.getString("nome"));
+                lblNome.getStyleClass().add("nome");
+                Label lblPreco = new Label("R$ "+Float.toString(rs.getFloat("preco")));
+                lblPreco.getStyleClass().add("preco");
+                Label lblDescricao = new Label(rs.getString("descricao"));
+                lblDescricao.setPrefWidth(380);
+                lblDescricao.setWrapText(true);
+                lblDescricao.getStyleClass().add("descricao");
+                gridPane.setMaxWidth(380);
+                gridPane.setPadding(new Insets(5,5,5,5));
+                gridPane.setVgap(5);
+                gridPane.setHgap(5);
+                GridPane.setHalignment(lblNome, HPos.LEFT);
+                gridPane.add(lblNome,0,0,1,1);
+                GridPane.setHalignment(lblPreco,HPos.CENTER);
+                gridPane.add(lblPreco,1,0);
+                gridPane.add(lblDescricao,0,1,2,2);
+                listaPratos.add(gridPane);
             }
             rs.close();
-
-            colunaNomePrato.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            colunaPrecoPrato.setCellValueFactory(new PropertyValueFactory<>("preco"));
-
-            tabelaPratoCardapio.setItems(listaPratos);
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
         }
+        return listaPratos;
     }
 }

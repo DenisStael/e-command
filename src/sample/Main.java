@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.TelaCadastro.TelaCadastroController;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;

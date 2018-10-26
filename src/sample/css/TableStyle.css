@@ -5,9 +5,19 @@
     -fx-font-family: "Tahoma";
     -fx-font-size: 15px;
 }
-.label.titulo{
-    -fx-font-family: "System";
-    -fx-font-size: 20;
+.label.nome{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+.label.preco{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+.label.descricao{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 13;
 }
 .button{
     -fx-background-radius: 100;
@@ -52,5 +62,9 @@
 .pane{
     -fx-border-width: 2;
     -fx-border-color: #ffffff;
+}
+.gridPane{
+    -fx-border-width: 2;
+    -fx-border-color: #5353c6;
 }
 

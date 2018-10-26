@@ -34,12 +34,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <TableView fx:id="tabelaPratoCardapio" layoutX="3.0" layoutY="1.0" prefHeight="392.0" prefWidth="378.0" stylesheets="@../css/TableStyle.css">
-                                            <columns>
-                                                <TableColumn fx:id="colunaNomePrato" prefWidth="305.0" resizable="false" text="Pratos" />
-                                                <TableColumn fx:id="colunaPrecoPrato" prefWidth="71.0" resizable="false" text="Preço" />
-                                            </columns>
-                                        </TableView>
+                                        <ListView fx:id="listaPratos" prefHeight="389.0" prefWidth="382.0" stylesheets="@../css/TableStyle.css" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -47,14 +42,9 @@
                         <TitledPane animated="false" onMouseClicked="#acaoSelecaoBebida" text="Selecione uma Bebida">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <TableView fx:id="tabelaBebidaCardapio" prefHeight="392.0" prefWidth="384.0" stylesheets="@../css/TableStyle.css">
-                                            <columns>
-                                                <TableColumn fx:id="colunaNomeBebida" prefWidth="306.0" resizable="false" text="Bebidas" />
-                                                <TableColumn fx:id="colunaPrecoBebida" prefWidth="76.0" resizable="false" text="Preço" />
-                                            </columns>
-                                        </TableView>
-                                    </children></AnchorPane>
+                           <children>
+                              <ListView fx:id="listaBebidas" prefHeight="389.0" prefWidth="382.0" stylesheets="@../css/TableStyle.css" />
+                           </children></AnchorPane>
                             </content>
                         </TitledPane>
                     </panes>
