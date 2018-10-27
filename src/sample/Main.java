@@ -33,17 +33,19 @@ public class Main extends Application {
                 "(select tipo from usuario where tipo = 'Gerente');");
         if (rs.next()) {
             root = FXMLLoader.load(getClass().getResource("TelaInicial/telaInicial.fxml"));
-            this.stage = stage;
+            stage.resizableProperty().setValue(false);
             stage.setTitle("Ecommand");
             stage.setScene(new Scene(root));
             stage.show();
+            this.stage = stage;
         } else {
             root = FXMLLoader.load(getClass().getResource("TelaCadastro/telaCadastro.fxml"));
             TelaCadastroController.tipo = "Gerente";
-            this.stage = stage;
+            stage.resizableProperty().setValue(false);
             stage.setTitle("Ecommand");
             stage.setScene(new Scene(root));
             stage.show();
+            this.stage = stage;
         }
 
         //Chamada do método ao clicar no botão de fechar a tela

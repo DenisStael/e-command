@@ -139,7 +139,7 @@ public class Prato {
                 lblDescricao.setWrapText(true);
                 lblDescricao.getStyleClass().add("descricao");
                 gridPane.setMaxWidth(380);
-                gridPane.setPadding(new Insets(5,5,5,5));
+                gridPane.setPadding(new Insets(2,2,2,2));
                 gridPane.setVgap(5);
                 gridPane.setHgap(5);
                 GridPane.setHalignment(lblNome, HPos.LEFT);

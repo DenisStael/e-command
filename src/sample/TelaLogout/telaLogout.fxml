@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -7,9 +8,15 @@
 
 <AnchorPane prefHeight="125.0" prefWidth="250.0" style="-fx-background-color: #ff3333;" styleClass="pane" stylesheets="@../css/TableStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaLogout.TelaLogoutController">
    <children>
-      <Button layoutX="64.0" layoutY="69.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="25.0" prefWidth="46.0" styleClass="sair" text="Sim" />
-      <Button layoutX="135.0" layoutY="69.0" mnemonicParsing="false" onAction="#acaoFicar" prefHeight="25.0" prefWidth="46.0" styleClass="sair" text="Não" />
-      <Label layoutX="33.0" layoutY="20.0" styleClass="titulo" text="Deseja mesmo sair?" textFill="WHITE">
+      <Button layoutX="64.0" layoutY="69.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="25.0" prefWidth="46.0" styleClass="sair" text="Sim">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="135.0" layoutY="69.0" mnemonicParsing="false" onAction="#acaoFicar" prefHeight="25.0" prefWidth="46.0" styleClass="sair" text="Não">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="59.0" layoutY="24.0" styleClass="titulo" text="Deseja mesmo sair?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

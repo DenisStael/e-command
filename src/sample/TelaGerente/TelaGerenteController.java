@@ -1,9 +1,5 @@
 package sample.TelaGerente;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import sample.Logout;
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;

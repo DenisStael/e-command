@@ -53,13 +53,15 @@ public class TelaVisualizarCardapioController implements Initializable {
     }
 
     public void acaoAddPedido() {
-        /*if(listaPratos.getSelectionModel().getSelectedItem() != null){
-            pedido.getListaPedido().add(listaPratos.getSelectionModel().getSelectedItem());
+        if(listaPratos.getSelectionModel().getSelectedItem() != null){
+            //pedido.getListaPedido().add(listaPratos.getSelectionModel().getSelectedItem());
             tabelaPedido.setItems(pedido.getListaPedido());
         } else if(listaBebidas.getSelectionModel().getSelectedItem() != null){
-            pedido.getListaPedido().add(listaBebidas.getSelectionModel().getSelectedItem());
+            //pedido.getListaPedido().add(listaBebidas.getSelectionModel().getSelectedItem());
             tabelaPedido.setItems(pedido.getListaPedido());
-        }*/
+        }
+        acaoSelecaoBebida();
+        acaoSelecaoPrato();
     }
 
     public void removerPratoPedido() {
