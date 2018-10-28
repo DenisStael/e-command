@@ -15,6 +15,7 @@ public class TelaInicialController{
     @FXML
     private void acaoBotao(ActionEvent event) throws Exception{
 
+        Main.stage.setResizable(false);
         //Verifica se o evento foi acionado por uma instancia Button
         if(event.getSource() instanceof Button) {
 
