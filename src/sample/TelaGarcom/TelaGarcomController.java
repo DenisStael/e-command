@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.Logout;
 import sample.Pedido;
+import sample.TabelaLista;
 import sample.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 public class TelaGarcomController extends Logout implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
-    private Pedido pedido = new Pedido();
+    private TabelaLista pedido = new TabelaLista();
     private String sql = "select codpedido,mesa_idmesa,observacao from pedido where cozinheiro_usuario_codusuario is not null " +
             "and garcom_usuario_codusuario is null order by codpedido;";
     @FXML
@@ -52,12 +53,12 @@ public class TelaGarcomController extends Logout implements Initializable {
     }
 
     public void acaoAtualizar() {
-        pedido.mostraTabela(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        pedido.mostraTabelaPedidos(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pedido.mostraTabela(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        pedido.mostraTabelaPedidos(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

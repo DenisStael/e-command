@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Pedido;
+import sample.TabelaLista;
 import sample.TelaInfoPedido.TelaInfoPedidoController;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
-    private Pedido tabelaPedido = new Pedido();
+    private TabelaLista tabelaPedido = new TabelaLista();
     @FXML
     private TableView<Pedido> tabelaPedidos;
     @FXML

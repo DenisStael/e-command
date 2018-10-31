@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Pedido;
+import sample.TabelaLista;
 import sample.TelaInfoPedido.TelaInfoPedidoController;
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +25,7 @@ public class TelaComandasController implements Initializable {
 
     private String sql = "select codpedido, mesa_idmesa, precototal from pedido where statuspedido = 'Aberto'";
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
-    private Pedido tabelaPedido= new Pedido();
+    private TabelaLista tabelaPedido= new TabelaLista();
     @FXML
     private TableView<Pedido> tabelaPedidos;
     @FXML

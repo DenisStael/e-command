@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.16722408026755853" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaVisualizarCardapio.TelaVisualizarCardapioController">
+<SplitPane dividerPositions="0.15719063545150502" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaVisualizarCardapio.TelaVisualizarCardapioController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
             <children>
@@ -28,13 +28,13 @@
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="433.0" prefWidth="646.0" style="-fx-background-color: #5353c6;">
             <children>
-                <Accordion layoutX="3.0" layoutY="5.0" prefHeight="441.0" prefWidth="384.0">
+                <Accordion layoutX="-2.0" layoutY="6.0" prefHeight="441.0" prefWidth="722.0" stylesheets="@../css/TableStyle.css">
                     <panes>
                         <TitledPane animated="false" onMouseClicked="#acaoSelecaoPrato" prefHeight="421.0" prefWidth="336.0" text="Selecione um Prato">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                                     <children>
-                                        <ListView fx:id="listaPratos" prefHeight="389.0" prefWidth="382.0" stylesheets="@../css/TableStyle.css" />
+                                        <ListView fx:id="listaPratos" prefHeight="389.0" prefWidth="720.0" stylesheets="@../css/TableStyle.css" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -43,7 +43,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="listaBebidas" prefHeight="389.0" prefWidth="382.0" stylesheets="@../css/TableStyle.css" />
+                              <ListView fx:id="listaBebidas" prefHeight="389.0" prefWidth="722.0" stylesheets="@../css/TableStyle.css" />
                            </children></AnchorPane>
                             </content>
                         </TitledPane>
@@ -54,23 +54,6 @@
                         <Font name="System Bold" size="13.0" />
                     </font></Button>
                 <Button layoutX="195.0" layoutY="455.0" mnemonicParsing="false" onAction="#acaoAddPedido" style="-fx-background-color: #47d147;" text="Adicionar ao Pedido" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Button>
-                <TableView fx:id="tabelaPedido" layoutX="406.0" layoutY="48.0" prefHeight="399.0" prefWidth="309.0">
-                    <columns>
-                        <TableColumn fx:id="colunaNomePedido" prefWidth="235.0" resizable="false" text="Nome" />
-                        <TableColumn fx:id="colunaPrecoPedido" prefWidth="71.0" resizable="false" text="Preço" />
-                    </columns>
-                </TableView>
-                <Label layoutX="438.0" layoutY="14.0" text="Meu pedido" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <Separator layoutX="391.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="501.0" prefWidth="14.0" />
-                <Button layoutX="419.0" layoutY="457.0" mnemonicParsing="false" onAction="#removerPratoPedido" prefHeight="25.0" prefWidth="142.0" text="Remover do Pedido" wrapText="true">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>

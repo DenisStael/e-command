@@ -92,46 +92,4 @@ public class Pedido {
         this.preco.set(preco);
     }
 
-    public void mostraTabelaPedido(TableView tabelaPedido, TableColumn colunaCodPedido, TableColumn colunaIdMesa, TableColumn colunaPreco, String sql) {
-        ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
-        try {
-            Statement stmt = conexaoBanco.connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"),rs.getInt("mesa_idmesa"),rs.getFloat("precototal")));
-            }
-            rs.close();
-
-            colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
-            colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
-            colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-
-            tabelaPedido.setItems(listaPedidos);
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
-        }
-    }
-    public void mostraTabela(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa,TableColumn colunaObservacao,String sql) {
-        ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
-        try {
-            Statement stmt = conexaoBanco.connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"),rs.getInt("mesa_idmesa"),rs.getString("observacao")));
-            }
-            rs.close();
-
-            colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
-            colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
-            colunaObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-
-            tabelaGarcom.setItems(listaPedidos);
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
-        }
-    }
 }

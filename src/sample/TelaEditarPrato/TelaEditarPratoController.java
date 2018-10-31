@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Prato;
+import sample.TabelaLista;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class TelaEditarPratoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto de conexão com o banco
-    private Prato tabelaPrato = new Prato(); //objeto do tipo TabelaPrato
+    private TabelaLista tabelaPrato = new TabelaLista(); //objeto do tipo TabelaPrato
     private String sql = "select * from prato order by codprato;"; //String sql
 
     @FXML
@@ -37,7 +38,7 @@ public class TelaEditarPratoController implements Initializable {
 
     public void acaoPesquisar() {
         String sqlPesquisa = "select * from prato where nome ilike '%"+txtPesquisa.getText()+"%';";
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sqlPesquisa);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sqlPesquisa);
     }
 
     //método que preenche os campos de texto com as informaçoes ao selecionar o prato na tabela
@@ -65,7 +66,7 @@ public class TelaEditarPratoController implements Initializable {
                     ps.executeUpdate(); // Executa a declaração sql
 
                     //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-                    tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                    tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
                     JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
                 }
                 catch(SQLException e) {
@@ -86,7 +87,7 @@ public class TelaEditarPratoController implements Initializable {
                 ps.executeUpdate(); //Eexecuta declaração sql
 
                 //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-                tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
                 acaoLimpar(); //limpa os campos de texto
                 JOptionPane.showMessageDialog(null, "Prato Deletado!"); //Mensagem de sucesso
             }
@@ -104,7 +105,7 @@ public class TelaEditarPratoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
     }
 }
 

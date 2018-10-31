@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.ConexaoBanco;
 import sample.Prato;
+import sample.TabelaLista;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class TelaInformacaoGarcomController implements Initializable {
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
-    private Prato tabelaPrato = new Prato();
+    private TabelaLista tabelaPrato = new TabelaLista();
     public static int codPedido;
     @FXML
     private Button botaoAtenderPedido;
@@ -28,7 +29,7 @@ public class TelaInformacaoGarcomController implements Initializable {
         String sql = "select p.nome, p.codprato, p.descricao, p.preco, pe.codpedido "+
                 "from prato p, pedido pe, pedidoprato pp "+
                 "where p.codprato = pp.codprato and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
     public void acaoAtenderPedido(){
         /*Aqui tem que inserir o codigo do garçom no pedido para demonstrar que o pedido foi atendido

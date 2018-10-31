@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Prato;
+import sample.TabelaLista;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +17,7 @@ import java.sql.*;
 public class TelaMontarPratoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
-    private Prato tabelaPrato = new Prato();
+    private TabelaLista tabelaPrato = new TabelaLista();
     private String sql = "select nome,codprato,descricao,preco from prato;";
 
     //Atributos da tela
@@ -76,7 +78,7 @@ public class TelaMontarPratoController implements Initializable {
 
                 acaoLimpar();//Limpa os campos da tela
 
-                tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
                 JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\n"+e); //mensagem de sucesso
@@ -87,7 +89,7 @@ public class TelaMontarPratoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
         tipoComida.setSelected(true);
     }
 }

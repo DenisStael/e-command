@@ -7,17 +7,20 @@
 }
 .label.nome{
     -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 15;
+    -fx-font-size: 18;
     -fx-font-weight: bold;
+    -fx-text-fill: #000000;
 }
 .label.preco{
     -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 15;
+    -fx-font-size: 18;
     -fx-font-weight: bold;
+    -fx-text-fill: #000000;
 }
 .label.descricao{
     -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 13;
+    -fx-font-size: 15;
+    -fx-text-fill: #000000;
 }
 .label.titulo{
     -fx-font-family: "System";
@@ -70,7 +73,53 @@
     -fx-border-color: #ffffff;
 }
 .gridPane{
-    -fx-border-width: 2;
-    -fx-border-color: #5353c6;
+    -fx-background-color: #ffffff;
 }
+.accordion{
+    -fx-background-color: #5353c6;
+    -fx-background-radius: 12;
+}
+.titled-pane{
 
+}
+.titled-pane:expanded > .title {
+    -fx-base: #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 100;
+}
+.titled-pane > .title  {
+    -fx-base: #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 100;
+}
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: #5353c6;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2;
+}
+.list-view{
+    -fx-background-color: #dbe1e7;
+    -fx-padding: 3px;
+}
+.list-cell{
+    -fx-background-color: transparent, -fx-background ;
+    -fx-padding: 2px;
+    -fx-background-insets: 0px, 2px ;
+}
+.list-cell:empty {
+    visibility:hidden;
+}
+.list-cell:selected > .gridPane > .label.nome{
+    -fx-font-size: 23;
+}
+.list-cell:selected > .gridPane > .label.preco{
+    -fx-font-size: 22;
+}
+.list-cell:selected > .gridPane > .label.descricao{
+     -fx-font-size: 20;
+}
+.list-cell:selected{
+    -fx-background-color: #ffffff;
+    -fx-padding: 20px;
+    -fx-background-insets: 0px, 2px ;
+}

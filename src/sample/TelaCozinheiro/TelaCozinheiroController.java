@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.Logout;
 import sample.Pedido;
+import sample.TabelaLista;
 import sample.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class TelaCozinheiroController extends Logout implements Initializable {
     private static Usuario usuario;
-    private Pedido pedido = new Pedido();
+    private TabelaLista pedido = new TabelaLista();
     private Stage stage = new Stage();
     private String sql = "select distinct p.codpedido,p.mesa_idmesa,p.observacao from pedido p, prato pr, pedidoprato pp " +
             "where p.cozinheiro_usuario_codusuario is null and pp.codpedido = p.codpedido and pp.codprato = pr.codprato " +
@@ -53,7 +54,7 @@ public class TelaCozinheiroController extends Logout implements Initializable {
     }
 
     public void acaoAtualizar() {
-        pedido.mostraTabela(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        pedido.mostraTabelaPedidos(tabelaCozinheiro,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
     }
 
     @Override

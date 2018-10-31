@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class TelaMontarCardapioController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
-    private Prato tabelaPrato = new Prato();
+    private TabelaLista tabelaPrato = new TabelaLista();
     private String sql = "select nome,codprato,descricao,preco from prato where cardapio = FALSE order by codprato;";//String sql
     private String sql_2 = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;";
     private String sql_3 = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;";
@@ -35,7 +35,7 @@ public class TelaMontarCardapioController implements Initializable {
     @FXML //pesquisa por nome e mostra na tabela apenas pratos correspondentes à pesquisa
     private void acaoPesquisarPrato(){
         String sqlPesquisa = "select * from prato where nome ilike '%"+txtNomePrato.getText()+"%';";
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sqlPesquisa);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sqlPesquisa);
     }
     @FXML //preenche o campo de texto com o código do prato selecionado ao clicar numa linha da tabela
     private void clicarTabelaPrato(){
@@ -113,9 +113,9 @@ public class TelaMontarCardapioController implements Initializable {
     }
 
     private void mostrarTabelas(){
-        tabelaPrato.mostraTabela(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql);
-        tabelaPrato.mostraTabela(tabelaPratos2,colunaNomePrato2,colunaDescPrato2,colunaCodPrato2,colunaPreco2,sql_2);
-        tabelaPrato.mostraTabela(tabelaBebida,colunaNomeBebida,colunaDescBebida,colunaCodBebida,colunaPrecoBebida,sql_3);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPreco,sql);
+        tabelaPrato.mostraTabelaPratos(tabelaPratos2,colunaNomePrato2,colunaDescPrato2,colunaCodPrato2,colunaPreco2,sql_2);
+        tabelaPrato.mostraTabelaPratos(tabelaBebida,colunaNomeBebida,colunaDescBebida,colunaCodBebida,colunaPrecoBebida,sql_3);
     }
 
     @Override
