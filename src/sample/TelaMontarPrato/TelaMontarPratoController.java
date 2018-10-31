@@ -5,9 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
-import sample.Prato;
 import sample.TabelaLista;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;

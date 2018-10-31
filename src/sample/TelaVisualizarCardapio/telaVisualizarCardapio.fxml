@@ -30,7 +30,7 @@
             <children>
                 <Accordion layoutX="-2.0" layoutY="6.0" prefHeight="441.0" prefWidth="722.0" stylesheets="@../css/TableStyle.css">
                     <panes>
-                        <TitledPane animated="false" onMouseClicked="#acaoSelecaoPrato" prefHeight="421.0" prefWidth="336.0" text="Selecione um Prato">
+                        <TitledPane alignment="CENTER" animated="false" onMouseClicked="#acaoSelecaoPrato" prefHeight="421.0" prefWidth="336.0" text="Selecionar Prato">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                                     <children>
@@ -39,7 +39,7 @@
                                 </AnchorPane>
                             </content>
                         </TitledPane>
-                        <TitledPane animated="false" onMouseClicked="#acaoSelecaoBebida" text="Selecione uma Bebida">
+                        <TitledPane alignment="CENTER" animated="false" onMouseClicked="#acaoSelecaoBebida" text="Selecionar Bebida">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

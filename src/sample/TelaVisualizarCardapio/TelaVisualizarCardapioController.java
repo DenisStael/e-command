@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaVisualizarCardapioController implements Initializable {
+public class TelaVisualizarCardapioController extends Logout implements Initializable {
 
     private static Pedido pedido = new Pedido();
     private TabelaLista tabelas = new TabelaLista();

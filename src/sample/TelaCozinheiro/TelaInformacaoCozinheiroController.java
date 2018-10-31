@@ -8,8 +8,6 @@ import javafx.scene.control.TableView;
 import sample.ConexaoBanco;
 import sample.Prato;
 import sample.TabelaLista;
-import sample.TelaGarcom.TelaGarcomController;
-
 import javax.swing.*;
 import java.net.URL;
 import java.sql.PreparedStatement;

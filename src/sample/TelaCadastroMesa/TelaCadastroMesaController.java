@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.ConexaoBanco;
 import sample.Main;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;

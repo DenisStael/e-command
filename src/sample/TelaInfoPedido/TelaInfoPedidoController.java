@@ -6,7 +6,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.Prato;
 import sample.TabelaLista;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

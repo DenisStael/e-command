@@ -34,8 +34,8 @@ public class Main extends Application {
         ResultSet rs = stmt.executeQuery("select codusuario from usuario where tipo = any " +
                 "(select tipo from usuario where tipo = 'Gerente');");
         if (rs.next()) {
-            root = FXMLLoader.load(getClass().getResource("TelaInicial/telaInicial.fxml"));
-            //root = FXMLLoader.load(getClass().getResource("TelaVisualizarCardapio/telaVisualizarCardapio.fxml"));
+            //root = FXMLLoader.load(getClass().getResource("TelaInicial/telaInicial.fxml"));
+            root = FXMLLoader.load(getClass().getResource("TelaVisualizarCardapio/telaVisualizarCardapio.fxml"));
             stage.setTitle("Ecommand");
             stage.setScene(new Scene(root));
             stage.setResizable(false);//Não deixa a tela ser maximizada (mas gera um bug chato no tamanho da tela)

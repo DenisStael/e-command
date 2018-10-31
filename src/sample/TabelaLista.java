@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -100,6 +99,9 @@ public class TabelaLista {
         }
         return listaPratos;
     }
+
+
+    //--------------------TABELAS E LISTAS DE PEDIDOS------------------//
 
     public void mostraTabelaPedido(TableView tabelaPedido, TableColumn colunaCodPedido, TableColumn colunaIdMesa, TableColumn colunaPreco, String sql) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();

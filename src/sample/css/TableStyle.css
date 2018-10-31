@@ -79,30 +79,28 @@
     -fx-background-color: #5353c6;
     -fx-background-radius: 12;
 }
-.titled-pane{
-
-}
 .titled-pane:expanded > .title {
-    -fx-base: #ffffff;
-    -fx-text-fill: #ffffff;
+    -fx-base: #dbe1e7;
     -fx-background-radius: 100;
+    -fx-font-family: "Comic Sans MS";
 }
-.titled-pane > .title  {
+.titled-pane > .title {
     -fx-base: #ffffff;
-    -fx-text-fill: #ffffff;
     -fx-background-radius: 100;
+    -fx-font-family: "Comic Sans MS";
 }
 .titled-pane > .title > .arrow-button .arrow {
-    -fx-background-color: #5353c6;
-    -fx-border-color: #ffffff;
-    -fx-border-width: 2;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #5353c6;
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
 }
 .list-view{
     -fx-background-color: #dbe1e7;
     -fx-padding: 3px;
 }
 .list-cell{
-    -fx-background-color: transparent, -fx-background ;
+    -fx-background-color: transparent;
     -fx-padding: 2px;
     -fx-background-insets: 0px, 2px ;
 }

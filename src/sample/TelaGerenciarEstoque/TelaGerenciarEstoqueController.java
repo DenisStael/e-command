@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Produto;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;

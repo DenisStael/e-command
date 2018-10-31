@@ -5,13 +5,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-import javax.swing.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class Pedido {
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
