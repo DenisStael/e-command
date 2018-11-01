@@ -4,7 +4,6 @@ import sample.Logout;
 import sample.Main;
 import sample.TelaCadastro.TelaCadastroController;
 import sample.Usuario;
-
 import java.io.IOException;
 
 public class TelaGerenteController extends Logout {
