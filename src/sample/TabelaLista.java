@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,12 +51,13 @@ public class TabelaLista {
         }
     }
 
-    private GridPane criaGridPane(String nome, String preco, String descricao/*, Image image*/){
+    public GridPane criaGridPane(String nome, String preco, String descricao, int codigo/*, Image image*/){
         GridPane gridPane = new GridPane();
         //gridPane.setGridLinesVisible(true);
         gridPane.getColumnConstraints().add(new ColumnConstraints(100));
         gridPane.getColumnConstraints().add(new ColumnConstraints(320));
-        gridPane.getColumnConstraints().add(new ColumnConstraints(90));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(30));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(50));
         gridPane.getStylesheets().add(String.valueOf(getClass().getResource("css/TableStyle.css")));
         gridPane.getStyleClass().add("gridPane");
         ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("img/chef.png")));
@@ -64,6 +66,9 @@ public class TabelaLista {
         Label lblPreco = new Label(preco);
         lblPreco.getStyleClass().add("preco");
         Label lblDescricao = new Label(descricao);
+        Label lblCodigo = new Label(Integer.toString(codigo));
+        Label lblCifrao = new Label("R$");
+        lblCifrao.getStyleClass().add("cifrao");
         imageView.setFitWidth(95);
         imageView.setFitHeight(90);
         lblDescricao.setPrefWidth(380);
@@ -73,16 +78,19 @@ public class TabelaLista {
         gridPane.setPadding(new Insets(2,2,2,2));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
+        lblCodigo.setVisible(false);
+        gridPane.add(lblCodigo,2,2); // codigo: indice 0
+        gridPane.add(imageView,0,0,1,3); //imagem: indice 1
         GridPane.setHalignment(lblNome, HPos.LEFT);
-        gridPane.add(lblNome,1,0);
-        GridPane.setHalignment(lblPreco,HPos.RIGHT);
-        gridPane.add(lblPreco,2,0);
-        gridPane.add(imageView,0,0,1,3);
-        gridPane.add(lblDescricao,1,2,2,1);
+        gridPane.add(lblNome,1,0); //nome: indice 2
+        gridPane.add(lblCifrao,2,0);//cifrao indice 3
+        GridPane.setHalignment(lblPreco,HPos.LEFT);
+        gridPane.add(lblPreco,3,0); //preco: indice 4
+        gridPane.add(lblDescricao,1,2,3,1); //preco: indice 5
         return gridPane;
     }
 
-    public ObservableList<GridPane> listaPrato(String sql) {
+    public void listaPrato(ListView listaPrato, String sql) {
         ObservableList<GridPane> listaPratos = FXCollections.observableArrayList();
         try {
             Statement stmt = conexaoBanco.connection.createStatement();
@@ -90,14 +98,15 @@ public class TabelaLista {
 
             while (rs.next()){
                 listaPratos.add(criaGridPane(rs.getString("nome"),Float.toString(rs.getFloat("preco")),
-                        rs.getString("descricao")));
+                        rs.getString("descricao"),rs.getInt("codprato")));
             }
             rs.close();
+
+            listaPrato.setItems(listaPratos);
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pratos!\n" + e);
         }
-        return listaPratos;
     }
 
 

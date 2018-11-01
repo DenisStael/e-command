@@ -11,6 +11,12 @@
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
+.label.cifrao{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
 .label.preco{
     -fx-font-family: "Comic Sans MS";
     -fx-font-size: 18;
@@ -107,17 +113,7 @@
 .list-cell:empty {
     visibility:hidden;
 }
-.list-cell:selected > .gridPane > .label.nome{
-    -fx-font-size: 23;
-}
-.list-cell:selected > .gridPane > .label.preco{
-    -fx-font-size: 22;
-}
-.list-cell:selected > .gridPane > .label.descricao{
-     -fx-font-size: 20;
-}
-.list-cell:selected{
-    -fx-background-color: #ffffff;
-    -fx-padding: 20px;
-    -fx-background-insets: 0px, 2px ;
+.list-cell:selected > .gridPane{
+    -fx-background-color: #dbe1e7;
+    -fx-border-color: #5353c6;
 }
