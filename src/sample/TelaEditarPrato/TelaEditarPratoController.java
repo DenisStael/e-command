@@ -6,11 +6,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.Prato;
 import sample.TabelaLista;
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -22,6 +27,7 @@ public class TelaEditarPratoController implements Initializable {
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto de conexão com o banco
     private TabelaLista tabelaPrato = new TabelaLista(); //objeto do tipo TabelaPrato
     private String sql = "select * from prato order by codprato;"; //String sql
+    private String caminhoFoto;
 
     @FXML
     private TableView<Prato> tabelaPratos;
@@ -31,6 +37,8 @@ public class TelaEditarPratoController implements Initializable {
     private TextField txtNome, txtPreco, txtCodigo, txtPesquisa;
     @FXML
     private TextArea txtDescricao;
+    @FXML
+    private ImageView imgProduto;
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
@@ -43,30 +51,44 @@ public class TelaEditarPratoController implements Initializable {
 
     //método que preenche os campos de texto com as informaçoes ao selecionar o prato na tabela
     public void clicarTabela(){
-        txtNome.setText(tabelaPratos.getSelectionModel().getSelectedItem().getNome());
-        txtCodigo.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
-        txtDescricao.setText(tabelaPratos.getSelectionModel().getSelectedItem().getDescricao());
-        txtPreco.setText(tabelaPratos.getSelectionModel().getSelectedItem().getPreco());
+        if(tabelaPratos.getSelectionModel().getSelectedItem() != null){
+            txtNome.setText(tabelaPratos.getSelectionModel().getSelectedItem().getNome());
+            txtCodigo.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
+            txtDescricao.setText(tabelaPratos.getSelectionModel().getSelectedItem().getDescricao());
+            txtPreco.setText(tabelaPratos.getSelectionModel().getSelectedItem().getPreco());
+            caminhoFoto = tabelaPratos.getSelectionModel().getSelectedItem().getImagem();
+            insereImagem();
+        }
+    }
+
+    private void insereImagem(){
+        imgProduto.setImage(new Image("file:///"+caminhoFoto));
+    }
+
+    private void limpaImagem(){
+        imgProduto.setImage(new Image(getClass().getResourceAsStream("../img/sem_imagem.png")));
     }
 
     //Método para atualizar os pratos
     public void acaoAtualizar(){
         if(!txtCodigo.getText().isEmpty()){ //verifica se o campo do código não está vazio
             //verifica se todos os campos de texto estão preenchidos
-            if(!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty()){
+            if(!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty() && caminhoFoto != null){
                 try {
                     //Cria declaração sql
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? WHERE codprato = ?;");
+                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? , imagem = ? WHERE codprato = ?;");
 
                     //Insere valores nos parâmetros da declaração sql
                     ps.setString(1, txtDescricao.getText());
                     ps.setString(2, txtNome.getText());
                     ps.setFloat(3, Float.parseFloat(txtPreco.getText()));
-                    ps.setInt(4, Integer.parseInt(txtCodigo.getText()));
+                    ps.setString(4, caminhoFoto);
+                    ps.setInt(5, Integer.parseInt(txtCodigo.getText()));
                     ps.executeUpdate(); // Executa a declaração sql
 
                     //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
                     tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                    acaoLimpar();
                     JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
                 }
                 catch(SQLException e) {
@@ -75,7 +97,6 @@ public class TelaEditarPratoController implements Initializable {
                 }
             } else JOptionPane.showMessageDialog(null,"Preencha todos os campos para atualizar!");
         } else JOptionPane.showMessageDialog(null,"Insira o código do prato que deseja atualizar!");
-        acaoLimpar();
     }
 
     public void acaoRemover(){
@@ -98,9 +119,20 @@ public class TelaEditarPratoController implements Initializable {
         }
     }
 
+    public void acaoSelecionaImagem(){
+        FileChooser f = new FileChooser();
+        f.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imagem", "*.jpg", "*.png", "*.jpeg"));
+        File file = f.showOpenDialog(new Stage());
+        if (file != null) {
+            imgProduto.setImage(new Image("file:///"+file.getAbsolutePath()));
+            caminhoFoto = file.getAbsolutePath();
+        }
+    }
+
     public void acaoLimpar(){
         txtNome.clear(); txtCodigo.clear(); txtDescricao.clear();
         txtPreco.clear(); txtPesquisa.clear();
+        limpaImagem();
     }
 
     @Override

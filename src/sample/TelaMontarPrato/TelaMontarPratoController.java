@@ -21,7 +21,7 @@ public class TelaMontarPratoController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
     private TabelaLista tabelaPrato = new TabelaLista();
-    private String sql = "select nome,codprato,descricao,preco from prato;";
+    private String sql = "select nome,codprato,descricao,preco,imagem from prato;";
     private String caminhoFoto;
 
     //Atributos da tela
@@ -36,9 +36,7 @@ public class TelaMontarPratoController implements Initializable {
     @FXML
     private RadioButton tipoComida, tipoBebida;
     @FXML
-    ImageView imgProduto;
-
-
+    private ImageView imgProduto;
 
     //método voltat para tela anterior
     public void acaoVoltar() throws IOException {
@@ -49,6 +47,7 @@ public class TelaMontarPratoController implements Initializable {
         txtNomePrato.clear(); txtPreco.clear();
         txtDescricao.clear(); tipoBebida.setSelected(false);
         tipoComida.setSelected(false);
+        insereImagem();
     }
 
     public void selecaoComida(){
@@ -63,7 +62,6 @@ public class TelaMontarPratoController implements Initializable {
         }
     }
     public void acaoSelecionaImagem() {
-        System.out.println(caminhoFoto);
         FileChooser f = new FileChooser();
         f.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imagem", "*.jpg", "*.png", "*.jpeg"));
         File file = f.showOpenDialog(new Stage());
@@ -71,12 +69,11 @@ public class TelaMontarPratoController implements Initializable {
             imgProduto.setImage(new Image("file:///"+file.getAbsolutePath()));
             caminhoFoto = file.getAbsolutePath();
         }
-        System.out.println(caminhoFoto);
     }
     //Método de salvar prato no banco de dados
     public void acaoSalvar(){
         //Verifica se todos os campos estão preenchidos
-        if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty() && (tipoBebida.isSelected() && caminhoFoto != null || tipoComida.isSelected())){
+        if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty() && caminhoFoto != null && (tipoBebida.isSelected() || tipoComida.isSelected())){
             try {
                 //Cria declaração sql para inserção no banco
                 PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao,tipo,imagem)values(?,?,?,?,?);");
@@ -96,6 +93,8 @@ public class TelaMontarPratoController implements Initializable {
 
                 acaoLimpar();//Limpa os campos da tela
 
+                insereImagem();
+
                 tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
                 JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
             } catch (Exception e) {
@@ -103,6 +102,10 @@ public class TelaMontarPratoController implements Initializable {
             }
             //mensagem de erro
         }else JOptionPane.showMessageDialog(null, "Preencha todos os campos para adicionar!");
+    }
+
+    private void insereImagem(){
+        imgProduto.setImage(new Image(getClass().getResourceAsStream("../img/sem_imagem.png")));
     }
 
     @Override

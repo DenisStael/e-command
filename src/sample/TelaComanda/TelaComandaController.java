@@ -53,8 +53,7 @@ public class TelaComandaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+
-                TelaPedidoController.numeroMesa+" and statuspedido = 'Aberto';";
+        String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+TelaPedidoController.numeroMesa;
         tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
         labelPreco.setText(Float.toString(calculaPreco()));
     }

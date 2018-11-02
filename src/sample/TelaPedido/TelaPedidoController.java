@@ -49,7 +49,7 @@ public class TelaPedidoController implements Initializable {
     public void acaoConfirmar(){
         try {
             PreparedStatement ps = conexaoBanco.connection.prepareStatement
-                    ("insert into pedido(mesa_idmesa,observacao,statuspedido,precototal)values(?,?,'Aberto',?);");
+                    ("insert into pedido(mesa_idmesa,observacao,precototal)values(?,?,?);");
             ps.setInt(1,numeroMesa);
             ps.setFloat(3,calculaPreco());
 

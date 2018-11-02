@@ -15,6 +15,8 @@ import sample.*;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController extends Logout implements Initializable {
@@ -22,8 +24,9 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     private static Pedido pedido = new Pedido();
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
     private TabelaLista tabelaLista = new TabelaLista();
-    private String sqlPrato = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
-    private String sqlBebida = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
+    private ConexaoBanco conexaoBanco = new ConexaoBanco();
+    private String sqlPrato = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
+    private String sqlBebida = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
     private ListView<GridPane> listaPratos, listaBebidas;
 
@@ -57,7 +60,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     }
 
     public void acaoAddPedido() {
-        String cod = null, nome= null, preco = null, desc = null;
+        String cod = null, nome= null, preco = null, desc = null, imagem = null;
 
         if(listaPratos.getSelectionModel().getSelectedItem() != null || listaBebidas.getSelectionModel().getSelectedItem() != null){
             if(listaPratos.getSelectionModel().getSelectedItem() != null){
@@ -71,7 +74,19 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
                 preco = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(4)).getText());
                 desc = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(5)).getText());
             }
-            pedidoAtual.pegaInformacoes(nome,preco,desc,Integer.parseInt(cod));
+            try {
+                PreparedStatement ps = conexaoBanco.connection.prepareStatement("select imagem from prato where codprato = ?;");
+                ps.setInt(1, Integer.parseInt(cod));
+                ResultSet rs = ps.executeQuery();
+
+                if(rs.next())
+                    imagem = rs.getString("imagem");
+
+                pedidoAtual.pegaInformacoes(nome,preco,desc,Integer.parseInt(cod),imagem);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         acaoSelecaoBebida();
         acaoSelecaoPrato();

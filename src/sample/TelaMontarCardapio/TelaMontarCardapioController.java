@@ -16,9 +16,9 @@ public class TelaMontarCardapioController implements Initializable {
 
     private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private TabelaLista tabelaPrato = new TabelaLista();
-    private String sql = "select nome,codprato,descricao,preco from prato where cardapio = FALSE order by codprato;";//String sql
-    private String sql_2 = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;";
-    private String sql_3 = "select nome,codprato,descricao,preco from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;";
+    private String sql = "select nome,codprato,descricao,preco,imagem from prato where cardapio = FALSE order by codprato;";//String sql
+    private String sql_2 = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;";
+    private String sql_3 = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;";
     @FXML
     private TableView<Prato> tabelaPratos,tabelaPratos2,tabelaBebida;
     @FXML

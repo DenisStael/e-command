@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,7 +31,7 @@ public class TabelaLista {
             //enquanto há resultados na consulta, registra os pratos na lista
             while (rs.next()) {
                 listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
-                        rs.getString("descricao"), rs.getFloat("preco")));
+                        rs.getString("descricao"), rs.getFloat("preco"), rs.getString("imagem")));
             }
             rs.close(); //fecha o resultset
 
@@ -51,7 +48,7 @@ public class TabelaLista {
         }
     }
 
-    public GridPane criaGridPane(String nome, String preco, String descricao, int codigo/*, Image image*/){
+    public GridPane criaGridPane(String nome, String preco, String descricao, int codigo, String imagem){
         GridPane gridPane = new GridPane();
         //gridPane.setGridLinesVisible(true);
         gridPane.getColumnConstraints().add(new ColumnConstraints(100));
@@ -60,7 +57,7 @@ public class TabelaLista {
         gridPane.getColumnConstraints().add(new ColumnConstraints(50));
         gridPane.getStylesheets().add(String.valueOf(getClass().getResource("css/TableStyle.css")));
         gridPane.getStyleClass().add("gridPane");
-        ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("img/chef.png")));
+        ImageView imageView = new ImageView(new Image("file:///"+imagem));
         Label lblNome = new Label(nome);
         lblNome.getStyleClass().add("nome");
         Label lblPreco = new Label(preco);
@@ -98,7 +95,7 @@ public class TabelaLista {
 
             while (rs.next()){
                 listaPratos.add(criaGridPane(rs.getString("nome"),Float.toString(rs.getFloat("preco")),
-                        rs.getString("descricao"),rs.getInt("codprato")));
+                        rs.getString("descricao"),rs.getInt("codprato"),rs.getString("imagem")));
             }
             rs.close();
 

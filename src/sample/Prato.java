@@ -11,6 +11,7 @@ public class Prato {
     private SimpleStringProperty descricao;
     private SimpleFloatProperty preco;
     private SimpleIntegerProperty codprato;
+    private SimpleStringProperty imagem;
 
     //construtor com 4 parâmetros
     public Prato(String nome, int codprato, String descricao, float preco) {
@@ -18,6 +19,14 @@ public class Prato {
         this.descricao = new SimpleStringProperty(descricao);
         this.preco = new SimpleFloatProperty(preco);
         this.codprato = new SimpleIntegerProperty(codprato);
+    }
+
+    public Prato(String nome, int codprato, String descricao, float preco, String imagem) {
+        this.nome = new SimpleStringProperty(nome);
+        this.descricao = new SimpleStringProperty(descricao);
+        this.preco = new SimpleFloatProperty(preco);
+        this.codprato = new SimpleIntegerProperty(codprato);
+        this.imagem = new SimpleStringProperty(imagem);
     }
 
     public Prato(){
@@ -72,4 +81,15 @@ public class Prato {
         this.codprato.set(codprato);
     }
 
+    public String getImagem() {
+        return imagem.get();
+    }
+
+    public SimpleStringProperty imagemProperty() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem.set(imagem);
+    }
 }

@@ -40,39 +40,16 @@ public class TelaComandasController implements Initializable {
     }
 
     public void acaoPesquisar(){
-        String sql;
-        if(!txtNumeroMesa.getText().isEmpty())
-            sql = "select codpedido, mesa_idmesa, precototal from pedido where statuspedido = 'Aberto' and mesa_idmesa = "+txtNumeroMesa.getText()+";";
-        else
-            sql = "select codpedido, mesa_idmesa, precototal from pedido where statuspedido = 'Aberto'";
 
-        tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
-        labelValorTotal.setText(Float.toString(calculaPreco()));
-        txtNumeroMesa.clear();
     }
 
     @FXML
     private void acaoInformacaoPedido() throws IOException {
-        if(tabelaPedidos.getSelectionModel().getSelectedItem() != null){
-            TelaInfoPedidoController.codPedido = tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido();
-            Stage stage = new Stage();
-            stage.setTitle("Informações do Pedido");
-            Parent root = FXMLLoader.load(getClass().getResource("../TelaInfoPedido/telaInfoPedido.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
+
     }
 
     public void acaoFecharPedido(){
-        try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set statuspedido = 'Fechado' where codpedido = ?;");
-            ps.setInt(1,tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido());
-            ps.executeUpdate();
-            tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     private float calculaPreco(){
@@ -85,7 +62,6 @@ public class TelaComandasController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
-        labelValorTotal.setText(Float.toString(calculaPreco()));
+
     }
 }

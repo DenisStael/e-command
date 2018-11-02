@@ -20,8 +20,8 @@ public class TelaPedidoAtualController implements Initializable {
     @FXML
     private Label precoTotal;
 
-    public void pegaInformacoes(String nome, String preco, String descricao, int cod){
-        GridPane gridPane = tabelaLista.criaGridPane(nome, preco, descricao, cod);
+    public void pegaInformacoes(String nome, String preco, String descricao, int cod, String imagem){
+        GridPane gridPane = tabelaLista.criaGridPane(nome, preco, descricao, cod, imagem);
         listaPedido.add(gridPane);
     }
 
