@@ -112,7 +112,7 @@ public class TelaLoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         label.setText(tipo); //insere o tipo de usuário no label
 
-        botaoLogar.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        txtSenha.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode().equals(KeyCode.ENTER)){
