@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 
 public class TelaCadastroMesaController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     @FXML
     private TextField txtNumeroMesas;
     @FXML
@@ -28,7 +27,7 @@ public class TelaCadastroMesaController implements Initializable {
 
     public void acaoConfirmar(){
         try {
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
 
             for(int i = 0; i < Integer.parseInt(txtNumeroMesas.getText()); i++)
                 stmt.execute("insert into mesa(idmesa)values(default);");
@@ -44,7 +43,7 @@ public class TelaCadastroMesaController implements Initializable {
     private int numeroMesas(){
         int qtd = 0;
         try {
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select count(idmesa) as qtd from mesa");
             if(rs.next())
                 qtd = rs.getInt("qtd");

@@ -19,7 +19,6 @@ import java.sql.*;
 
 public class TelaMontarPratoController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
     private TabelaLista tabelaPrato = new TabelaLista();
     private String sql = "select nome,codprato,descricao,preco,imagem from prato;";
     private String caminhoFoto;
@@ -76,7 +75,7 @@ public class TelaMontarPratoController implements Initializable {
         if(!txtNomePrato.getText().isEmpty() && !txtPreco.getText().isEmpty() && !txtDescricao.getText().isEmpty() && caminhoFoto != null && (tipoBebida.isSelected() || tipoComida.isSelected())){
             try {
                 //Cria declaração sql para inserção no banco
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into prato(nome,preco,descricao,tipo,imagem)values(?,?,?,?,?);");
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("insert into prato(nome,preco,descricao,tipo,imagem)values(?,?,?,?,?);");
 
                 //insere os valores aos parâmetros da declaração sql
                 ps.setString(1, txtNomePrato.getText());

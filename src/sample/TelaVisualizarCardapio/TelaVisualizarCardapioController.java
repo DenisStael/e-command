@@ -24,7 +24,6 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     private static Pedido pedido = new Pedido();
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
     private TabelaLista tabelaLista = new TabelaLista();
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private String sqlPrato = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
     private String sqlBebida = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
@@ -75,7 +74,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
                 desc = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(5)).getText());
             }
             try {
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("select imagem from prato where codprato = ?;");
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("select imagem from prato where codprato = ?;");
                 ps.setInt(1, Integer.parseInt(cod));
                 ResultSet rs = ps.executeQuery();
 

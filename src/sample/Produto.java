@@ -18,8 +18,6 @@ public class Produto {
     //Lista de objetos do tipo produto
     private ObservableList<Produto> listaProdutos = FXCollections.observableArrayList();
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto para conexão com o banco
-
     //atributos da classe que serão utilizados nas colunas da tabela
     private SimpleStringProperty nome;
     private SimpleStringProperty descricao;
@@ -110,7 +108,7 @@ public class Produto {
     public void mostraTabela(TableView tabelaProdutos, TableColumn colunaProd, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaQuantidade, TableColumn colunaMedida, String sql){
         try {
             this.listaProdutos.clear();//limpa a lista
-            Statement stmt = conexaoBanco.connection.createStatement();//cria declaração sql
+            Statement stmt = ConexaoBanco.getConnection().createStatement();//cria declaração sql
             ResultSet rs = stmt.executeQuery(sql); //executa a declaração e armazena o resultado
 
             //enquanto há resultados na consulta, registra os produtos na lista

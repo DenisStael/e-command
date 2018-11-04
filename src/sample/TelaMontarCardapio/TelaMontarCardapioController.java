@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class TelaMontarCardapioController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private TabelaLista tabelaPrato = new TabelaLista();
     private String sql = "select nome,codprato,descricao,preco,imagem from prato where cardapio = FALSE order by codprato;";//String sql
     private String sql_2 = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;";
@@ -66,7 +65,7 @@ public class TelaMontarCardapioController implements Initializable {
         }
         if(selecao){
             try {
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
                         ("update prato set cardapio = FALSE where codprato = ?;");
                 ps.setInt(1, cod);
                 ps.executeUpdate();
@@ -84,7 +83,7 @@ public class TelaMontarCardapioController implements Initializable {
        if(!txtCodPrato.getText().isEmpty()){
             try {
                 //Declaração SQL pra inserção no banco
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
                         ("UPDATE Prato SET cardapio = TRUE WHERE codprato = ?;");
 
                 //Atribui os parâmetros e os valores à declaração SQL criada anteriormente

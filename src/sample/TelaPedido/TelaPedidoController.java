@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 public class TelaPedidoController implements Initializable {
 
     public static int numeroMesa;
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private static Pedido pedido = new Pedido();
     @FXML
     private TextArea txtObservacao;
@@ -48,7 +47,7 @@ public class TelaPedidoController implements Initializable {
 
     public void acaoConfirmar(){
         try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
                     ("insert into pedido(mesa_idmesa,observacao,precototal)values(?,?,?);");
             ps.setInt(1,numeroMesa);
             ps.setFloat(3,calculaPreco());
@@ -60,15 +59,15 @@ public class TelaPedidoController implements Initializable {
 
             ps.executeUpdate();
 
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select max(codpedido) as qtd from pedido;");
 
             if(rs.next()){
-                PreparedStatement ps2 = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
                         ("insert into pedidoprato(codprato,codpedido)values(?,?);");
                 ps2.setInt(2,rs.getInt("qtd"));
 
-                PreparedStatement ps3 = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps3 = ConexaoBanco.getConnection().prepareStatement
                         ("update prato set quantidade = quantidade + 1 where codprato = ?;");
 
                 for(int i = 0; i < pedido.getListaPedido().size(); i++){

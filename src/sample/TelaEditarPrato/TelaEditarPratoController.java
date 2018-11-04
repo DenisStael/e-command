@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 
 public class TelaEditarPratoController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto de conexão com o banco
     private TabelaLista tabelaPrato = new TabelaLista(); //objeto do tipo TabelaPrato
     private String sql = "select * from prato order by codprato;"; //String sql
     private String caminhoFoto;
@@ -76,7 +75,7 @@ public class TelaEditarPratoController implements Initializable {
             if(!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty() && caminhoFoto != null){
                 try {
                     //Cria declaração sql
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? , imagem = ? WHERE codprato = ?;");
+                    PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? , imagem = ? WHERE codprato = ?;");
 
                     //Insere valores nos parâmetros da declaração sql
                     ps.setString(1, txtDescricao.getText());
@@ -103,7 +102,7 @@ public class TelaEditarPratoController implements Initializable {
         if(!txtCodigo.getText().isEmpty()){
             try {
                 //Cria declaração sql
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("DELETE FROM Prato WHERE codprato = ? ;");
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("DELETE FROM Prato WHERE codprato = ? ;");
                 ps.setInt(1, Integer.parseInt(txtCodigo.getText())); //Insere valor no parâmetro da declaração sql
                 ps.executeUpdate(); //Eexecuta declaração sql
 

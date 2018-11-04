@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 public class TelaComandasController implements Initializable {
 
     private String sql = "select codpedido, mesa_idmesa, precototal from pedido where statuspedido = 'Aberto'";
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private TabelaLista tabelaPedido= new TabelaLista();
     @FXML
     private TableView<Pedido> tabelaPedidos;

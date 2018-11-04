@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class TelaInformacaoGarcomController implements Initializable {
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private TabelaLista tabelaPrato = new TabelaLista();
     public static int codPedido;
     @FXML
@@ -36,7 +35,7 @@ public class TelaInformacaoGarcomController implements Initializable {
           e para o pedido sair da tabela de pedidos para serem atendidos*/
 
         try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set garcom_usuario_codusuario = ? where codpedido = ?;");
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("update pedido set garcom_usuario_codusuario = ? where codpedido = ?;");
             ps.setInt(1, TelaGarcomController.getUsuario().getCodusuario());
             ps.setInt(2,codPedido);
             ps.executeUpdate();

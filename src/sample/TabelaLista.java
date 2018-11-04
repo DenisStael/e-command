@@ -17,15 +17,13 @@ import java.sql.Statement;
 
 public class TabelaLista {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //objeto para conexão com o banco
-
     /*método que mostra a tabela com todos os pratos em estoque e
     recebe como parâmetros a tabela que será apresentada, suas colunas e a string sql*/
     public void mostraTabelaPratos(TableView tabelaPratos, TableColumn colunaPrato, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaPreco, String sql) {
         ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
         try {
             listaPratos.clear();//limpa a lista
-            Statement stmt = conexaoBanco.connection.createStatement();//cria declaração sql
+            Statement stmt = ConexaoBanco.getConnection().createStatement();//cria declaração sql
             ResultSet rs = stmt.executeQuery(sql); //executa a declaração e armazena o resultado
 
             //enquanto há resultados na consulta, registra os pratos na lista
@@ -90,7 +88,7 @@ public class TabelaLista {
     public void listaPrato(ListView listaPrato, String sql) {
         ObservableList<GridPane> listaPratos = FXCollections.observableArrayList();
         try {
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
@@ -112,7 +110,7 @@ public class TabelaLista {
     public void mostraTabelaPedido(TableView tabelaPedido, TableColumn colunaCodPedido, TableColumn colunaIdMesa, TableColumn colunaPreco, String sql) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
         try {
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
@@ -133,7 +131,7 @@ public class TabelaLista {
     public void mostraTabelaPedidos(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa,TableColumn colunaObservacao,String sql) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
         try {
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){

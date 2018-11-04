@@ -15,8 +15,6 @@ import java.util.ResourceBundle;
 
 public class TelaCadastroController implements Initializable {
 
-    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
-
     public static String tipo; //String que recebe da tela do Gerente o tipo de usuário que está sendo cadastrado
 
     //Atributos da Tela
@@ -42,7 +40,7 @@ public class TelaCadastroController implements Initializable {
             if(txtSenha.getText().equals(txtConfirmaSenha.getText())){
                 try {
                     //Declaração SQL de inserção no banco
-                    PreparedStatement ps = conexaoBanco.connection.prepareStatement("insert into usuario(nome,senha,tipo)VALUES(?,?,?);");
+                    PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("insert into usuario(nome,senha,tipo)VALUES(?,?,?);");
 
                     //Insere os valores nos determinados parâmetros da declaração SQL
                     ps.setString(1, txtNome.getText());
