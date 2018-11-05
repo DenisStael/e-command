@@ -20,6 +20,14 @@ public class TelaPedidoAtualController implements Initializable {
     @FXML
     private Label precoTotal;
 
+    public static ObservableList<GridPane> getListaPedido() {
+        return listaPedido;
+    }
+
+    public static void setListaPedido(ObservableList<GridPane> listaPedido) {
+        TelaPedidoAtualController.listaPedido = listaPedido;
+    }
+
     public void pegaInformacoes(String nome, String preco, String descricao, int cod, String imagem){
         GridPane gridPane = tabelaLista.criaGridPane(nome, preco, descricao, cod, imagem);
         listaPedido.add(gridPane);

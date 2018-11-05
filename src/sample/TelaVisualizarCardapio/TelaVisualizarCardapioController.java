@@ -21,21 +21,12 @@ import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController extends Logout implements Initializable {
 
-    private static Pedido pedido = new Pedido();
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
     private TabelaLista tabelaLista = new TabelaLista();
     private String sqlPrato = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
     private String sqlBebida = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
     private ListView<GridPane> listaPratos, listaBebidas;
-
-    public static Pedido getPedido() {
-        return pedido;
-    }
-
-    public static void setPedido(Pedido pedido) {
-        TelaVisualizarCardapioController.pedido = pedido;
-    }
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
@@ -92,7 +83,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     }
 
     public void acaoProximo() throws IOException {
-        TelaPedidoController.setPedido(pedido);
+        TelaPedidoController.setListaPedido(pedidoAtual.getListaPedido());
         Main.trocaTela("TelaPedido/telaPedido.fxml");
     }
 

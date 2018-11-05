@@ -38,11 +38,14 @@ public class TelaAtendimentoController implements Initializable {
     }
 
     public void acaoInformacao() throws IOException {
-        stage.setTitle("Meus Atendimentos");
-        Parent root = FXMLLoader.load(getClass().getResource("telaInformacao.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(tabelaPedido.getSelectionModel().getSelectedItem() != null){
+            TelaInformacaoController.codPedido = tabelaPedido.getSelectionModel().getSelectedItem().getCodpedido();
+            stage.setTitle("Meus Atendimentos");
+            Parent root = FXMLLoader.load(getClass().getResource("telaInformacao.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void acaoVoltar() throws IOException {
@@ -55,9 +58,13 @@ public class TelaAtendimentoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(usuario.getTipo().equals("Garçom"))
-            sql = "select codpedido, mesa_idmesa, observacao from pedido where garcom_usuario_codusuario = "+usuario.getCodusuario()+";";
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+                    "where pe.garcom_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
+                    "(pp.codgarcom is null or pp.codcozinheiro is null);";
         else if(usuario.getTipo().equals("Cozinheiro"))
-            sql = "select codpedido, mesa_idmesa, observacao from pedido where cozinheiro_usuario_codusuario = "+usuario.getCodusuario()+";";
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+                    "where pe.cozinheiro_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
+                    "pp.codcozinheiro is null;";
 
         tabelaLista.mostraTabelaPedidos(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
 

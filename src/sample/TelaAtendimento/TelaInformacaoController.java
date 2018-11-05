@@ -17,7 +17,6 @@ public class TelaInformacaoController implements Initializable {
     public static int codPedido;
     private int codPrato;
     private TabelaLista tabelaLista = new TabelaLista();
-    private String sql;
     @FXML
     private Button botaoSituacao;
     @FXML
@@ -30,7 +29,7 @@ public class TelaInformacaoController implements Initializable {
         if(TelaAtendimentoController.getUsuario().getTipo().equals("Garçom")){
             sql_2 = "update pedidoprato set codgarcom = ? where codprato = ? and codpedido = ?;";
         } else if(TelaAtendimentoController.getUsuario().getTipo().equals("Cozinheiro")){
-            sql_2 = "update pedidoprato set codgarcom = ? where codprato = ? and codpedido = ?;";
+            sql_2 = "update pedidoprato set codcozinheiro = ? where codprato = ? and codpedido = ?;";
         }
         try {
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(sql_2);
@@ -51,14 +50,19 @@ public class TelaInformacaoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        String sql = "";
         if(TelaAtendimentoController.getUsuario().getTipo().equals("Garçom")){
             botaoSituacao.setText("Prato entregue");
-            sql = "garcom";
+            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem from prato p, pedido pe, pedidoprato pp where " +
+                    "p.codprato = pp.codprato and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" and (pp.codgarcom is null " +
+                    "or pp.codcozinheiro is null);";
         } else if(TelaAtendimentoController.getUsuario().getTipo().equals("Cozinheiro")){
             botaoSituacao.setText("Prato Finalizado");
-            sql = "cozinheiro";
+            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem from prato p, pedido pe, pedidoprato pp where " +
+                    "p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" " +
+                    " and pp.codcozinheiro is null;";
         }
 
-        //tabelaLista.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
+        tabelaLista.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
 }

@@ -43,7 +43,7 @@ public class TelaInformacaoCozinheiroController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String sql = "select p.nome, p.codprato, p.descricao, p.preco, p.imagem, pe.codpedido "+
                 "from prato p, pedido pe, pedidoprato pp "+
-                "where p.codprato = pp.codprato and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
+                "where p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
         tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
 }

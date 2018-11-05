@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -23,44 +24,39 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="botaoVoltar" layoutX="314.0" layoutY="548.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
-            <TableView fx:id="tabelaPedido" layoutX="28.0" layoutY="134.0" prefHeight="312.0" prefWidth="292.0">
-              <columns>
-                <TableColumn fx:id="colunaNome" prefWidth="224.0" text="Nome" />
-                <TableColumn fx:id="colunaPreco" minWidth="3.0" prefWidth="67.0" text="Preço" />
-              </columns>
-            </TableView>
-            <Label layoutX="142.0" layoutY="453.0" text="Valor Total:  R$" textFill="#1706ff">
+            <Button fx:id="botaoVoltar" layoutX="14.0" layoutY="543.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="91.0" text="Voltar" />
+            <TextArea fx:id="txtObservacao" layoutX="181.0" layoutY="496.0" prefHeight="84.0" prefWidth="330.0" promptText="Adicionais ao pedido, restrições..." />
+            <Label layoutX="181.0" layoutY="466.0" text="Observações:">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="labelPrecoTotal" layoutX="264.0" layoutY="453.0" prefHeight="25.0" prefWidth="58.0" text="0.00" textFill="LIME">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="txtObservacao" layoutX="359.0" layoutY="312.0" prefHeight="134.0" prefWidth="330.0" promptText="Adicionais ao pedido, restrições..." />
-            <Label layoutX="366.0" layoutY="282.0" text="Observações:">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="359.0" layoutY="168.0" text="Número da Mesa: ">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelNumeroMesa" layoutX="497.0" layoutY="168.0" prefHeight="20.0" prefWidth="0.0" text="0">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="btConfirmarPedido" layoutX="460.0" layoutY="460.0" mnemonicParsing="false" onAction="#acaoConfirmar" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: #47d147;" text="Confirmar Pedido" textFill="WHITE">
+            <Button fx:id="btConfirmarPedido" layoutX="569.0" layoutY="543.0" mnemonicParsing="false" onAction="#acaoConfirmar" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: #47d147;" text="Confirmar Pedido" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
+            <ListView fx:id="listaPratos" layoutX="86.0" layoutY="150.0" prefHeight="303.0" prefWidth="547.0" stylesheets="@../css/TableStyle.css" />
+            <Label layoutX="86.0" layoutY="125.0" text="Número da Mesa: ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelNumeroMesa" layoutX="224.0" layoutY="125.0" prefHeight="20.0" prefWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="453.0" layoutY="453.0" text="Valor Total:  R$" textFill="#1706ff">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelPrecoTotal" layoutX="575.0" layoutY="453.0" prefHeight="25.0" prefWidth="58.0" text="0.00" textFill="LIME">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </items>
 </SplitPane>
