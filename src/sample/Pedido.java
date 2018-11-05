@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Pedido {
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private static ObservableList<Prato> listaPedido = FXCollections.observableArrayList();
     private SimpleIntegerProperty codpedido;
     private SimpleIntegerProperty idmesa;

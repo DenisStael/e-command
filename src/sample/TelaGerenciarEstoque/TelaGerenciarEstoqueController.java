@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class TelaGerenciarEstoqueController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
     private Produto tabelaProduto = new Produto(); //Tabela dos produtos cadastrados no banco
     private String sql = "select * from produto order by codproduto;"; //String sql
     //Atributos da tela
@@ -46,7 +45,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
                 int cod = Integer.parseInt(txtCodProduto.getText()); //Recebe o código inserido pelo usuário convertido para inteiro
 
                 //Cria declaração sql
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("DELETE FROM Produto WHERE codproduto = ? ;");
                 ps.setInt(1, cod); //Insere valor no parâmetro da declaração sql
                 ps.executeUpdate(); //Eexecuta declaração sql
 
@@ -68,7 +67,7 @@ public class TelaGerenciarEstoqueController implements Initializable {
                 if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
                     try {
                         //Cria declaração sql
-                        PreparedStatement ps = conexaoBanco.connection.prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ?, medida = ? WHERE codproduto = ? ;");
+                        PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ?, medida = ? WHERE codproduto = ? ;");
 
                         //Insere valores nos parâmetros da declaração sql
                         ps.setString(1, txtDescricao.getText());

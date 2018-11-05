@@ -8,7 +8,15 @@ public class ConexaoBanco {
     private String driver = "org.postgresql.Driver";//Driver do Postgres
     private String user = "postgres";//Usuário configurado no Postgres
     private String pass = "admin";//Senha de acesso ao Postgres
-    public static Connection connection;//Variável de conexão do Banco
+    private static Connection connection;//Variável de conexão do Banco
+
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void setConnection(Connection connection) {
+        ConexaoBanco.connection = connection;
+    }
 
     public void conectaBanco(){
         System.setProperty("jdbc.Drivers", driver);//Configura o driver

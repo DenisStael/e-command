@@ -17,7 +17,7 @@ public class Main extends Application {
 
     public static Stage stage; //Stage principal
     public static Class thisClass; //Atributo Classe
-    ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
+    private ConexaoBanco conexaoBanco = new ConexaoBanco(); //Objeto de conexão com o banco
 
     //Construtor da classe para definir o método getClass()
     public Main() {
@@ -30,7 +30,7 @@ public class Main extends Application {
         conexaoBanco.conectaBanco();//Realiza a conexão com o banco de dados
         Parent root;
         Image icone = new Image(getClass().getResourceAsStream("img/icone.png"));
-        Statement stmt = conexaoBanco.connection.createStatement();
+        Statement stmt = conexaoBanco.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery("select codusuario from usuario where tipo = any " +
                 "(select tipo from usuario where tipo = 'Gerente');");
         if (rs.next()) {

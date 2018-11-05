@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class TelaInformacaoCozinheiroController implements Initializable {
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
     private TabelaLista tabelaPrato = new TabelaLista();
     public static int codPedido;
     @FXML
@@ -29,7 +28,7 @@ public class TelaInformacaoCozinheiroController implements Initializable {
           e para o pedido sair da tabela de pedidos para serem atendidos*/
 
         try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement("update pedido set cozinheiro_usuario_codusuario = ? where codpedido = ?;");
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("update pedido set cozinheiro_usuario_codusuario = ? where codpedido = ?;");
             ps.setInt(1, TelaCozinheiroController.getUsuario().getCodusuario());
             ps.setInt(2,codPedido);
             ps.executeUpdate();
@@ -42,9 +41,9 @@ public class TelaInformacaoCozinheiroController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "select p.nome, p.codprato, p.descricao, p.preco, pe.codpedido "+
+        String sql = "select p.nome, p.codprato, p.descricao, p.preco, p.imagem, pe.codpedido "+
                 "from prato p, pedido pe, pedidoprato pp "+
-                "where p.codprato = pp.codprato and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
+                "where p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
         tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
 }

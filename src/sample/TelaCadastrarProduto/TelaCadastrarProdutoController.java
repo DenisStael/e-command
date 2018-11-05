@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class TelaCadastrarProdutoController implements Initializable {
 
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();//Objeto de conexão com o banco
     private Produto tabelaProduto = new Produto();//Objeto tabela que mostra todos os produtos no banco
     private String sql = "select * from produto order by codproduto;"; //sql pra consulta
 
@@ -40,7 +39,7 @@ public class TelaCadastrarProdutoController implements Initializable {
         if(!txtNomeProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtUnidadeMedida.getText().isEmpty()){
             try {
                 //Declaração SQL pra inserção no banco
-                PreparedStatement ps = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
                         ("INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES(?,?,?,?);");
 
                 //Atribui os parâmetros e os valores à declaração SQL criada anteriormente

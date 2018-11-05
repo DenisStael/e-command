@@ -1,14 +1,14 @@
 package sample.TelaPedido;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import sample.ConexaoBanco;
 import sample.Main;
-import sample.Pedido;
-import sample.Prato;
-import sample.TelaVisualizarCardapio.TelaVisualizarCardapioController;
+import sample.TelaVisualizarCardapio.TelaPedidoAtualController;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -20,35 +20,33 @@ import java.util.ResourceBundle;
 public class TelaPedidoController implements Initializable {
 
     public static int numeroMesa;
-    private ConexaoBanco conexaoBanco = new ConexaoBanco();
-    private static Pedido pedido = new Pedido();
+    private static ObservableList<GridPane> listaPedido = FXCollections.observableArrayList();
     @FXML
     private TextArea txtObservacao;
     @FXML
-    private TableView<Prato> tabelaPedido;
-    @FXML
-    private TableColumn colunaNome, colunaPreco;
+    private ListView<GridPane> listaPratos;
     @FXML
     private Label labelPrecoTotal, labelNumeroMesa;
     @FXML
     private Button btConfirmarPedido;
 
-    public static Pedido getPedido() {
-        return pedido;
+
+    public static ObservableList<GridPane> getListaPedido() {
+        return listaPedido;
     }
 
-    public static void setPedido(Pedido pedido) {
-        TelaPedidoController.pedido = pedido;
+    public static void setListaPedido(ObservableList<GridPane> listaPedido) {
+        TelaPedidoController.listaPedido = listaPedido;
     }
 
     public void acaoVoltar() throws IOException {
-        TelaVisualizarCardapioController.setPedido(pedido);
+        TelaPedidoAtualController.setListaPedido(listaPedido);
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
 
     public void acaoConfirmar(){
         try {
-            PreparedStatement ps = conexaoBanco.connection.prepareStatement
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
                     ("insert into pedido(mesa_idmesa,observacao,precototal)values(?,?,?);");
             ps.setInt(1,numeroMesa);
             ps.setFloat(3,calculaPreco());
@@ -60,26 +58,25 @@ public class TelaPedidoController implements Initializable {
 
             ps.executeUpdate();
 
-            Statement stmt = conexaoBanco.connection.createStatement();
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select max(codpedido) as qtd from pedido;");
-
             if(rs.next()){
-                PreparedStatement ps2 = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
                         ("insert into pedidoprato(codprato,codpedido)values(?,?);");
                 ps2.setInt(2,rs.getInt("qtd"));
 
-                PreparedStatement ps3 = conexaoBanco.connection.prepareStatement
+                PreparedStatement ps3 = ConexaoBanco.getConnection().prepareStatement
                         ("update prato set quantidade = quantidade + 1 where codprato = ?;");
 
-                for(int i = 0; i < pedido.getListaPedido().size(); i++){
-                    ps2.setInt(1, Integer.parseInt(pedido.getListaPedido().get(i).getCodprato()));
+                for(int i = 0; i < listaPedido.size(); i++){
+                    ps2.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));
                     ps2.executeUpdate();
-                    ps3.setInt(1, Integer.parseInt(pedido.getListaPedido().get(i).getCodprato()));
+                    ps3.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));
                     ps3.executeUpdate();
                 }
             }
             rs.close();
-            tabelaPedido.getItems().clear();
+            listaPratos.getItems().clear();
             Main.trocaTela("TelaComanda/telaComanda.fxml");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao realizar pedido!\n"+e);
@@ -88,20 +85,18 @@ public class TelaPedidoController implements Initializable {
 
     private float calculaPreco(){
         Float precoTotal = 0f;
-        for(int i = 0; i < pedido.getListaPedido().size(); i++){
-            precoTotal += Float.parseFloat(pedido.getListaPedido().get(i).getPreco());
+        for(int i = 0; i < listaPedido.size(); i++){
+            precoTotal += Float.parseFloat(((Label) listaPedido.get(i).getChildren().get(4)).getText());
         }
         return precoTotal;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        tabelaPedido.setItems(pedido.getListaPedido());
+        listaPratos.setItems(listaPedido);
         labelPrecoTotal.setText(Float.toString(calculaPreco()));
         labelNumeroMesa.setText(Integer.toString(numeroMesa));
-        if(!tabelaPedido.getItems().isEmpty())
+        if(!listaPratos.getItems().isEmpty())
             btConfirmarPedido.setDisable(false);
         else
             btConfirmarPedido.setDisable(true);
