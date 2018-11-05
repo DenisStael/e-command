@@ -27,7 +27,8 @@
             <columns>
                 <TableColumn fx:id="colunaCodPedido" minWidth="0.0" prefWidth="65.0" text="Pedido" />
                 <TableColumn fx:id="colunaNumMesa" prefWidth="65.0" text="Mesa" />
-                <TableColumn fx:id="colunaObservacao" prefWidth="589.0" text="Observação" />
+                <TableColumn fx:id="colunaObservacao" prefWidth="507.0" text="Observação" />
+            <TableColumn fx:id="colunaStatus" prefWidth="82.0" text="Status" />
             </columns>
         </TableView>
     </children>

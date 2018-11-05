@@ -10,10 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.Main;
-import sample.Pedido;
-import sample.TabelaLista;
-import sample.Usuario;
+import sample.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +25,9 @@ public class TelaAtendimentoController implements Initializable {
     @FXML
     private TableView<Pedido> tabelaPedido;
     @FXML
-    private TableColumn colunaCodPedido,colunaNumMesa,colunaObservacao;
+    private TableColumn<Pedido, String> colunaNumMesa,colunaObservacao;
+    @FXML
+    private TableColumn<Pedido, Integer> colunaCodPedido ,colunaStatus;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -55,24 +55,33 @@ public class TelaAtendimentoController implements Initializable {
             Main.trocaTela("TelaCozinheiro/telaCozinheiro.fxml");
     }
 
+    private void montaTabela(){
+        tabelaLista.mostraPedidosAtendimento(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,colunaStatus,sql);
+        Integer status;
+        for(int i = 0; i < tabelaPedido.getItems().size(); i++){
+            status = tabelaPedido.getItems().get(i).getStatus();
+            tabelaLista.criaCelula(colunaStatus,status);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(usuario.getTipo().equals("Garçom"))
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao, pp.codcozinheiro from pedido pe, pedidoprato pp " +
                     "where pe.garcom_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
                     "(pp.codgarcom is null or pp.codcozinheiro is null);";
         else if(usuario.getTipo().equals("Cozinheiro"))
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao, pp.codcozinheiro from pedido pe, pedidoprato pp " +
                     "where pe.cozinheiro_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
                     "pp.codcozinheiro is null;";
 
-        tabelaLista.mostraTabelaPedidos(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        montaTabela();
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 stage.close();//Fecha a aplicação
-                tabelaLista.mostraTabelaPedidos(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+                montaTabela();
             }
         });
     }

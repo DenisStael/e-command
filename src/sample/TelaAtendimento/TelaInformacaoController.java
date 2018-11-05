@@ -63,6 +63,6 @@ public class TelaInformacaoController implements Initializable {
                     " and pp.codcozinheiro is null;";
         }
 
-        tabelaLista.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
+        tabelaLista.mostraPratosAtendimento(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
 }
