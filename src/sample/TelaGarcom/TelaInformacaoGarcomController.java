@@ -23,17 +23,7 @@ public class TelaInformacaoGarcomController implements Initializable {
     @FXML
     private TableColumn colunaPrato, colunaDescPrato, colunaCodPrato, colunaPrecoPrato;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        String sql = "select p.nome, p.codprato, p.descricao, p.preco, pe.codpedido "+
-                "from prato p, pedido pe, pedidoprato pp "+
-                "where p.codprato = pp.codprato and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
-        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
-    }
     public void acaoAtenderPedido(){
-        /*Aqui tem que inserir o codigo do garçom no pedido para demonstrar que o pedido foi atendido
-          e para o pedido sair da tabela de pedidos para serem atendidos*/
-
         try {
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("update pedido set garcom_usuario_codusuario = ? where codpedido = ?;");
             ps.setInt(1, TelaGarcomController.getUsuario().getCodusuario());
@@ -44,5 +34,13 @@ public class TelaInformacaoGarcomController implements Initializable {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao atender pedido!\n"+e);
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String sql = "select p.nome, p.codprato, p.descricao, p.preco, p.imagem, pe.codpedido "+
+                "from prato p, pedido pe, pedidoprato pp "+
+                "where p.codprato = pp.codprato and pe.codpedido = "+codPedido+" and pe.codpedido = pp.codpedido;";
+        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
     }
 }

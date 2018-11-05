@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -29,7 +30,12 @@
             <TableColumn fx:id="colunaObservacao" prefWidth="444.0" text="Descrição" />
          </columns>
       </TableView>
-      <Button layoutX="432.0" layoutY="549.0" mnemonicParsing="false" onAction="#acaoAtualizar" prefHeight="31.0" prefWidth="76.0" text="Atualizar">
+      <Button layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#acaoAtualizar" prefHeight="31.0" prefWidth="131.0" text="Atualizar Pedidos">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="393.0" layoutY="549.0" mnemonicParsing="false" onAction="#acaoAtendimento" prefHeight="31.0" prefWidth="145.0" text="Meus Atendimentos">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

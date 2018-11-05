@@ -80,6 +80,7 @@ public class TelaLoginController implements Initializable {
             if(rs.next()){
                 usuario.setCodusuario(rs.getInt("codusuario"));
                 usuario.setUserNome(rs.getString("nome"));
+                usuario.setTipo(tipo);
                 existe = true;
             }
             rs.close(); //Fecha ResultSet

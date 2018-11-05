@@ -10,10 +10,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.Logout;
-import sample.Pedido;
-import sample.TabelaLista;
-import sample.Usuario;
+import sample.*;
+import sample.TelaAtendimento.TelaAtendimentoController;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,8 +21,7 @@ public class TelaGarcomController extends Logout implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
     private TabelaLista pedido = new TabelaLista();
-    private String sql = "select codpedido,mesa_idmesa,observacao from pedido where cozinheiro_usuario_codusuario is not null " +
-            "and garcom_usuario_codusuario is null order by codpedido;";
+    private String sql = "select codpedido,mesa_idmesa,observacao from pedido where garcom_usuario_codusuario is null order by codpedido;";
     @FXML
     private TableView<Pedido> tabelaGarcom;
     @FXML
@@ -50,6 +48,11 @@ public class TelaGarcomController extends Logout implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void acaoAtendimentos() throws IOException {
+        TelaAtendimentoController.setUsuario(usuario);
+        Main.trocaTela("TelaAtendimento/telaAtendimento.fxml");
     }
 
     public void acaoAtualizar() {

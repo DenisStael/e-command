@@ -3,6 +3,7 @@ package sample;
 public class Usuario {
     private int codusuario;
     private String userNome;
+    private String tipo;
 
     public int getCodusuario() {
         return codusuario;
@@ -18,5 +19,13 @@ public class Usuario {
 
     public void setUserNome(String userNome) {
         this.userNome = userNome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

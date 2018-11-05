@@ -10,10 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.Logout;
-import sample.Pedido;
-import sample.TabelaLista;
-import sample.Usuario;
+import sample.*;
+import sample.TelaAtendimento.TelaAtendimentoController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,6 +49,11 @@ public class TelaCozinheiroController extends Logout implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void acaoAtendimento() throws IOException {
+        TelaAtendimentoController.setUsuario(usuario);
+        Main.trocaTela("TelaAtendimento/telaAtendimento.fxml");
     }
 
     public void acaoAtualizar() {
