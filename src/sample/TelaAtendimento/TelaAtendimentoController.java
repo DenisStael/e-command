@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +20,7 @@ public class TelaAtendimentoController implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
     private TabelaLista tabelaLista = new TabelaLista();
-    private String sql;
+    private String sql, sql_2;
     @FXML
     private TableView<Pedido> tabelaPedido;
     @FXML
@@ -56,24 +55,30 @@ public class TelaAtendimentoController implements Initializable {
     }
 
     private void montaTabela(){
-        tabelaLista.mostraPedidosAtendimento(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,colunaStatus,sql);
-        Integer status;
+        tabelaLista.mostraPedidosAtendimento(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,colunaStatus,sql,sql_2);
+        Integer codcozinheiro, codgarcom, status;
         for(int i = 0; i < tabelaPedido.getItems().size(); i++){
+            //codcozinheiro = tabelaPedido.getItems().get(i).getCodcozinheiro();
+            //codgarcom = tabelaPedido.getItems().get(i).getCodgarcom();
             status = tabelaPedido.getItems().get(i).getStatus();
-            tabelaLista.criaCelula(colunaStatus,status);
+            tabelaLista.criaCelulaPedido(colunaStatus,status);
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(usuario.getTipo().equals("Garçom"))
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao, pp.codcozinheiro from pedido pe, pedidoprato pp " +
-                    "where pe.garcom_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
-                    "(pp.codgarcom is null or pp.codcozinheiro is null);";
-        else if(usuario.getTipo().equals("Cozinheiro"))
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao, pp.codcozinheiro from pedido pe, pedidoprato pp " +
-                    "where pe.cozinheiro_usuario_codusuario = "+usuario.getCodusuario()+" and pp.codpedido = pe.codpedido and " +
-                    "pp.codcozinheiro is null;";
+        if(usuario.getTipo().equals("Garçom")) {
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+                    "where pe.garcom_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido;";
+            sql_2 = "select pp.codcozinheiro, pp.codgarcom from pedidoprato pp, pedido pe where pe.codpedido = pp.codpedido" +
+                    " and pe.garcom_usuario_codusuario = "+ usuario.getCodusuario() +"and pe.codpedido = ?;";
+        }
+        else if(usuario.getTipo().equals("Cozinheiro")) {
+            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
+                    "where pe.cozinheiro_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido;";
+            sql_2 = "select pp.codcozinheiro, pp.codgarcom from pedidoprato pp, pedido pe where pe.codpedido = pp.codpedido" +
+                    " and pe.cozinheiro_usuario_codusuario = "+ usuario.getCodusuario() +"and pe.codpedido = ?;";
+        }
 
         montaTabela();
 

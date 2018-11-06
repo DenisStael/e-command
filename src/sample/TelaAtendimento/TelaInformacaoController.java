@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class TelaInformacaoController implements Initializable {
 
+    private String sql = "";
     public static int codPedido;
     private int codPrato;
     private TabelaLista tabelaLista = new TabelaLista();
@@ -22,7 +23,9 @@ public class TelaInformacaoController implements Initializable {
     @FXML
     private TableView<Prato> tabelaPratos;
     @FXML
-    private TableColumn colunaPrato, colunaDescPrato, colunaCodPrato, colunaPrecoPrato;
+    private TableColumn colunaPrato, colunaDescPrato, colunaCodPrato;
+    @FXML
+    private TableColumn<Prato, Integer> colunaStatus;
 
     public void acaoFinalizar(){
         String sql_2 = "";
@@ -48,21 +51,28 @@ public class TelaInformacaoController implements Initializable {
         }
     }
 
+    private void montaTabela(){
+        tabelaLista.mostraPratosAtendimento(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaStatus,sql);
+        Integer codcozinheiro, codgarcom;
+        for(int i = 0; i < tabelaPratos.getItems().size(); i++){
+            codcozinheiro = tabelaPratos.getItems().get(i).getCodcozinheiro();
+            codgarcom = tabelaPratos.getItems().get(i).getCodgarcom();
+            tabelaLista.criaCelulaPrato(colunaStatus,codcozinheiro,codgarcom);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "";
         if(TelaAtendimentoController.getUsuario().getTipo().equals("Garçom")){
             botaoSituacao.setText("Prato entregue");
-            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem from prato p, pedido pe, pedidoprato pp where " +
-                    "p.codprato = pp.codprato and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" and (pp.codgarcom is null " +
-                    "or pp.codcozinheiro is null);";
+            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem, pp.codcozinheiro, pp.codgarcom from prato p, pedido pe, pedidoprato pp where " +
+                    "p.codprato = pp.codprato and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+";";
         } else if(TelaAtendimentoController.getUsuario().getTipo().equals("Cozinheiro")){
             botaoSituacao.setText("Prato Finalizado");
-            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem from prato p, pedido pe, pedidoprato pp where " +
-                    "p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" " +
-                    " and pp.codcozinheiro is null;";
+            sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem, pp.codcozinheiro, pp.codgarcom from prato p, pedido pe, pedidoprato pp where " +
+                    "p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+";";
         }
 
-        tabelaLista.mostraPratosAtendimento(tabelaPratos,colunaPrato,colunaDescPrato,colunaCodPrato,colunaPrecoPrato,sql);
+        montaTabela();
     }
 }

@@ -61,15 +61,27 @@ public class TelaPedidoController implements Initializable {
             Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select max(codpedido) as qtd from pedido;");
             if(rs.next()){
-                PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
-                        ("insert into pedidoprato(codprato,codpedido)values(?,?);");
-                ps2.setInt(2,rs.getInt("qtd"));
+                String sql = "";
 
                 PreparedStatement ps3 = ConexaoBanco.getConnection().prepareStatement
                         ("update prato set quantidade = quantidade + 1 where codprato = ?;");
 
                 for(int i = 0; i < listaPedido.size(); i++){
+                    PreparedStatement ps4 = ConexaoBanco.getConnection().prepareStatement("select tipo from prato where codprato = ?;");
+                    ps4.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));
+
+                    ResultSet rs2 = ps4.executeQuery();
+
+                    if(rs2.next()){
+                        if(rs2.getString("tipo").equals("Bebida")){
+                            sql = "insert into pedidoprato(codprato,codpedido,codcozinheiro)values(?,?,1);";
+                        } else {
+                            sql = "insert into pedidoprato(codprato,codpedido,codcozinheiro)values(?,?,null);";
+                        }
+                    }
+                    PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement(sql);
                     ps2.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));
+                    ps2.setInt(2,rs.getInt("qtd"));
                     ps2.executeUpdate();
                     ps3.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));
                     ps3.executeUpdate();

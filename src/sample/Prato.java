@@ -12,6 +12,8 @@ public class Prato {
     private SimpleFloatProperty preco;
     private SimpleIntegerProperty codprato;
     private SimpleStringProperty imagem;
+    private SimpleIntegerProperty codcozinheiro;
+    private SimpleIntegerProperty codgarcom;
 
     //construtor com 4 parâmetros
     public Prato(String nome, int codprato, String descricao, float preco) {
@@ -27,6 +29,16 @@ public class Prato {
         this.preco = new SimpleFloatProperty(preco);
         this.codprato = new SimpleIntegerProperty(codprato);
         this.imagem = new SimpleStringProperty(imagem);
+    }
+
+    public Prato(String nome, int codprato, String descricao, float preco, String imagem, int codcozinheiro, int codgarcom) {
+        this.nome = new SimpleStringProperty(nome);
+        this.descricao = new SimpleStringProperty(descricao);
+        this.preco = new SimpleFloatProperty(preco);
+        this.codprato = new SimpleIntegerProperty(codprato);
+        this.imagem = new SimpleStringProperty(imagem);
+        this.codcozinheiro = new SimpleIntegerProperty(codcozinheiro);
+        this.codgarcom = new SimpleIntegerProperty(codgarcom);
     }
 
     public Prato(){
@@ -91,5 +103,29 @@ public class Prato {
 
     public void setImagem(String imagem) {
         this.imagem.set(imagem);
+    }
+
+    public int getCodcozinheiro() {
+        return codcozinheiro.get();
+    }
+
+    public SimpleIntegerProperty codcozinheiroProperty() {
+        return codcozinheiro;
+    }
+
+    public void setCodcozinheiro(int codcozinheiro) {
+        this.codcozinheiro.set(codcozinheiro);
+    }
+
+    public int getCodgarcom() {
+        return codgarcom.get();
+    }
+
+    public SimpleIntegerProperty codgarcomProperty() {
+        return codgarcom;
+    }
+
+    public void setCodgarcom(int codgarcom) {
+        this.codgarcom.set(codgarcom);
     }
 }

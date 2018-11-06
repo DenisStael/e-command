@@ -14,7 +14,7 @@
                 <TableColumn fx:id="colunaPrato" prefWidth="126.0" text="Nome" />
                 <TableColumn fx:id="colunaCodPrato" prefWidth="60.0" text="Código" />
                 <TableColumn fx:id="colunaDescPrato" prefWidth="459.0" text="Descrição" />
-                <TableColumn fx:id="colunaPrecoPrato" prefWidth="77.0" text="Preço" />
+                <TableColumn fx:id="colunaStatus" prefWidth="77.0" text="Status" />
             </columns>
         </TableView>
         <Button fx:id="botaoSituacao" layoutX="14.0" layoutY="276.0" mnemonicParsing="false" onAction="#acaoFinalizar" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #00b33c;" textFill="WHITE">

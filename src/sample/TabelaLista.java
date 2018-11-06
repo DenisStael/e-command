@@ -12,7 +12,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
+import sample.TelaAtendimento.TelaAtendimentoController;
+
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,7 +51,7 @@ public class TabelaLista {
         }
     }
 
-    public void mostraPratosAtendimento(TableView tabelaPratos, TableColumn colunaPrato, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn colunaPreco, String sql) {
+    public void mostraPratosAtendimento(TableView tabelaPratos, TableColumn colunaPrato, TableColumn colunaDescricao, TableColumn colunaCod, TableColumn<Prato, Integer> colunaStatus, String sql) {
         ObservableList<Prato> listaPratos = FXCollections.observableArrayList();
         try {
             listaPratos.clear();//limpa a lista
@@ -58,14 +61,14 @@ public class TabelaLista {
             //enquanto há resultados na consulta, registra os pratos na lista
             while (rs.next()) {
                 listaPratos.add(new Prato(rs.getString("nome"), rs.getInt("codprato"),
-                        rs.getString("descricao"), rs.getFloat("preco"), rs.getString("imagem")));
+                        rs.getString("descricao"), rs.getFloat("preco"), rs.getString("imagem"),
+                        rs.getInt("codcozinheiro"), rs.getInt("codgarcom")));
             }
 
             //atribui às colunas da tabela os valores
             colunaPrato.setCellValueFactory(new PropertyValueFactory<>("nome"));
             colunaCod.setCellValueFactory(new PropertyValueFactory<>("codprato"));
             colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-            colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
             //insere os itens na tabela
             tabelaPratos.setItems(listaPratos);
@@ -180,14 +183,36 @@ public class TabelaLista {
         }
     }
 
-    public void mostraPedidosAtendimento(TableView<Pedido> tabelaGarcom, TableColumn<Pedido, Integer> colunaCodPedido, TableColumn<Pedido, String> colunaIdMesa, TableColumn<Pedido, String> colunaObservacao, TableColumn<Pedido, Integer> colunaStatus, String sql) {
+    public void mostraPedidosAtendimento(TableView<Pedido> tabelaGarcom, TableColumn<Pedido, Integer> colunaCodPedido, TableColumn<Pedido, String> colunaIdMesa, TableColumn<Pedido, String> colunaObservacao, TableColumn<Pedido, Integer> colunaStatus, String sql, String sql_2) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
         try {
+            int status = 0;
             Statement stmt = ConexaoBanco.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(sql_2);
+
             while (rs.next()) {
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"), rs.getString("observacao"), rs.getInt("codcozinheiro")));
+                ps.setInt(1,rs.getInt("codpedido"));
+                ResultSet rs2 = ps.executeQuery();
+
+                while (rs2.next()){
+                    if(rs2.getInt("codcozinheiro") == 0){
+                        status = -1;
+                        break;
+                    } else if(rs2.getInt("codcozinheiro") != 0){
+                        status = 0;
+                    }
+
+                    if(status == 0){
+                        if(rs2.getInt("codgarcom") != 0){
+                            status = 1;
+                        }
+                    }
+                }
+
+                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"),
+                        rs.getString("observacao"), status));
             }
 
             colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
@@ -202,7 +227,7 @@ public class TabelaLista {
         }
     }
 
-    public void criaCelula(TableColumn<Pedido, Integer> colunaStatus, Integer codigo){
+    public void criaCelulaPedido(TableColumn<Pedido, Integer> colunaStatus, Integer status){
         colunaStatus.setCellFactory(new Callback<TableColumn<Pedido, Integer>, TableCell<Pedido, Integer>>() {
             @Override
             public TableCell<Pedido, Integer> call(TableColumn<Pedido, Integer> param) {
@@ -210,16 +235,52 @@ public class TabelaLista {
                     @Override
                     protected void updateItem(Integer item, boolean empty){
                         if(!empty){
-                            if(codigo != 0){
-                                setTextFill(Color.WHITE);
-                                setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color: green");
+                            if(status == 0){
+                                setTextFill(Color.BLACK);
+                                //setStyle("-fx-font-weight: bold");
+                                setStyle("-fx-background-color: #e7ee68");
                                 setText("Finalizado");
-                            } else if(codigo == 0){
+                            } else if(status == -1){
                                 setTextFill(Color.WHITE);
                                 //setStyle("-fx-font-weight: bold");
                                 setStyle("-fx-background-color: #e05555");
                                 setText("Em preparo");
+                            } else if(status == 1){
+                                setTextFill(Color.WHITE);
+                                //setStyle("-fx-font-weight: bold");
+                                setStyle("-fx-background-color:  #00b33c");
+                                setText("Entregue");
+                            }
+                        }
+                    }
+                };
+            }
+        });
+    }
+
+    public void criaCelulaPrato(TableColumn<Prato, Integer> colunaStatus, Integer codcozinheiro, Integer codgarcom){
+        colunaStatus.setCellFactory(new Callback<TableColumn<Prato, Integer>, TableCell<Prato, Integer>>() {
+            @Override
+            public TableCell<Prato, Integer> call(TableColumn<Prato, Integer> param) {
+                return new TableCell<Prato, Integer>(){
+                    @Override
+                    protected void updateItem(Integer item, boolean empty){
+                        if(!empty){
+                            if(codcozinheiro == 0 && codgarcom == 0){
+                                setTextFill(Color.WHITE);
+                                //setStyle("-fx-font-weight: bold");
+                                setStyle("-fx-background-color: #e05555");
+                                setText("Em preparo");
+                            } else if(codcozinheiro !=0 && codgarcom != 0) {
+                                setTextFill(Color.WHITE);
+                                //setStyle("-fx-font-weight: bold");
+                                setStyle("-fx-background-color:  #00b33c");
+                                setText("Entregue");
+                            } else if(codcozinheiro != 0 && codgarcom == 0){
+                                setTextFill(Color.BLACK);
+                                //setStyle("-fx-font-weight: bold");
+                                setStyle("-fx-background-color: #e7ee68");
+                                setText("Finalizado");
                             }
                         }
                     }
