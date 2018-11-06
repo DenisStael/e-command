@@ -29,7 +29,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         conexaoBanco.conectaBanco();//Realiza a conexão com o banco de dados
         Parent root;
-        Image icone = new Image(getClass().getResourceAsStream("img/icone.png"));
+        Image icone = new Image("sample/img/icone.png");
         Statement stmt = conexaoBanco.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery("select codusuario from usuario where tipo = any " +
                 "(select tipo from usuario where tipo = 'Gerente');");
