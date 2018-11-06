@@ -39,9 +39,9 @@ public class TelaAtendimentoController implements Initializable {
     public void acaoInformacao() throws IOException {
         if(tabelaPedido.getSelectionModel().getSelectedItem() != null){
             TelaInformacaoController.codPedido = tabelaPedido.getSelectionModel().getSelectedItem().getCodpedido();
-            stage.setTitle("Meus Atendimentos");
             Parent root = FXMLLoader.load(getClass().getResource("telaInformacao.fxml"));
             Scene scene = new Scene(root);
+            stage.setTitle("Meus Atendimentos");
             stage.setScene(scene);
             stage.show();
         }
@@ -56,13 +56,6 @@ public class TelaAtendimentoController implements Initializable {
 
     private void montaTabela(){
         tabelaLista.mostraPedidosAtendimento(tabelaPedido,colunaCodPedido,colunaNumMesa,colunaObservacao,colunaStatus,sql,sql_2);
-        Integer codcozinheiro, codgarcom, status;
-        for(int i = 0; i < tabelaPedido.getItems().size(); i++){
-            //codcozinheiro = tabelaPedido.getItems().get(i).getCodcozinheiro();
-            //codgarcom = tabelaPedido.getItems().get(i).getCodgarcom();
-            status = tabelaPedido.getItems().get(i).getStatus();
-            tabelaLista.criaCelulaPedido(colunaStatus,status);
-        }
     }
 
     @Override

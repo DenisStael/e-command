@@ -12,8 +12,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
-import sample.TelaAtendimento.TelaAtendimentoController;
-
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,6 +62,38 @@ public class TabelaLista {
                         rs.getString("descricao"), rs.getFloat("preco"), rs.getString("imagem"),
                         rs.getInt("codcozinheiro"), rs.getInt("codgarcom")));
             }
+
+            colunaStatus.setCellFactory(new Callback<TableColumn<Prato, Integer>, TableCell<Prato, Integer>>() {
+                @Override
+                public TableCell<Prato, Integer> call(TableColumn<Prato, Integer> param) {
+                    return new TableCell<Prato, Integer>(){
+                        @Override
+                        protected void updateItem(Integer item, boolean empty){
+                            if(!empty){
+                                int index = indexProperty().getValue() < 0 ? 0 : indexProperty().getValue();
+                                int codcozinheiro = param.getTableView().getItems().get(index).getCodcozinheiro();
+                                int codgarcom = param.getTableView().getItems().get(index).getCodgarcom();
+                                if(codcozinheiro == 0 && codgarcom == 0){
+                                    setTextFill(Color.WHITE);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color: #e05555");
+                                    setText("Em preparo");
+                                } else if(codcozinheiro !=0 && codgarcom != 0) {
+                                    setTextFill(Color.WHITE);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color:  #00b33c");
+                                    setText("Entregue");
+                                } else if(codcozinheiro != 0 && codgarcom == 0){
+                                    setTextFill(Color.BLACK);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color: #e7ee68");
+                                    setText("Finalizado");
+                                }
+                            }
+                        }
+                    };
+                }
+            });
 
             //atribui às colunas da tabela os valores
             colunaPrato.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -205,18 +235,50 @@ public class TabelaLista {
                     }
 
                     if(status == 0){
-                        if(rs2.getInt("codgarcom") != 0){
+                        if(rs2.getInt("codgarcom") == 0){
+                            status = 0;
+                            break;
+                        } else if(rs2.getInt("codgarcom") != 0){
                             status = 1;
                         }
                     }
                 }
-
                 listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"),
                         rs.getString("observacao"), status));
             }
 
+            colunaStatus.setCellFactory(new Callback<TableColumn<Pedido, Integer>, TableCell<Pedido, Integer>>() {
+                @Override
+                public TableCell<Pedido, Integer> call(TableColumn<Pedido, Integer> param) {
+                    return new TableCell<Pedido, Integer>(){
+                        @Override
+                        protected void updateItem(Integer item, boolean empty){
+                            if(!empty){
+                                int index = indexProperty().getValue() < 0 ? 0 : indexProperty().getValue();
+                                int status = param.getTableView().getItems().get(index).getStatus();
+                                if(status == 0){
+                                    setTextFill(Color.BLACK);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color: #e7ee68");
+                                    setText("Finalizado");
+                                } else if(status == -1){
+                                    setTextFill(Color.WHITE);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color: #e05555");
+                                    setText("Em preparo");
+                                } else if(status == 1){
+                                    setTextFill(Color.WHITE);
+                                    //setStyle("-fx-font-weight: bold");
+                                    setStyle("-fx-background-color:  #00b33c");
+                                    setText("Entregue");
+                                }
+                            }
+                        }
+                    };
+                }
+            });
+
             colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
-            colunaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
             colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
             colunaObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
 
@@ -225,67 +287,5 @@ public class TabelaLista {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
         }
-    }
-
-    public void criaCelulaPedido(TableColumn<Pedido, Integer> colunaStatus, Integer status){
-        colunaStatus.setCellFactory(new Callback<TableColumn<Pedido, Integer>, TableCell<Pedido, Integer>>() {
-            @Override
-            public TableCell<Pedido, Integer> call(TableColumn<Pedido, Integer> param) {
-                return new TableCell<Pedido, Integer>(){
-                    @Override
-                    protected void updateItem(Integer item, boolean empty){
-                        if(!empty){
-                            if(status == 0){
-                                setTextFill(Color.BLACK);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color: #e7ee68");
-                                setText("Finalizado");
-                            } else if(status == -1){
-                                setTextFill(Color.WHITE);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color: #e05555");
-                                setText("Em preparo");
-                            } else if(status == 1){
-                                setTextFill(Color.WHITE);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color:  #00b33c");
-                                setText("Entregue");
-                            }
-                        }
-                    }
-                };
-            }
-        });
-    }
-
-    public void criaCelulaPrato(TableColumn<Prato, Integer> colunaStatus, Integer codcozinheiro, Integer codgarcom){
-        colunaStatus.setCellFactory(new Callback<TableColumn<Prato, Integer>, TableCell<Prato, Integer>>() {
-            @Override
-            public TableCell<Prato, Integer> call(TableColumn<Prato, Integer> param) {
-                return new TableCell<Prato, Integer>(){
-                    @Override
-                    protected void updateItem(Integer item, boolean empty){
-                        if(!empty){
-                            if(codcozinheiro == 0 && codgarcom == 0){
-                                setTextFill(Color.WHITE);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color: #e05555");
-                                setText("Em preparo");
-                            } else if(codcozinheiro !=0 && codgarcom != 0) {
-                                setTextFill(Color.WHITE);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color:  #00b33c");
-                                setText("Entregue");
-                            } else if(codcozinheiro != 0 && codgarcom == 0){
-                                setTextFill(Color.BLACK);
-                                //setStyle("-fx-font-weight: bold");
-                                setStyle("-fx-background-color: #e7ee68");
-                                setText("Finalizado");
-                            }
-                        }
-                    }
-                };
-            }
-        });
     }
 }
