@@ -6,8 +6,8 @@ import java.sql.*;
 public class ConexaoBanco {
     private String url = "jdbc:postgresql://localhost:5432/ECommand";//Caminho da database PostgresSQL
     private String driver = "org.postgresql.Driver";//Driver do Postgres
-    private String user = "postgres";//Usuário configurado no Postgres
-    private String pass = "postgres";//Senha de acesso ao Postgres
+    private String user = "ecommand";//Usuário configurado no Postgres
+    private String pass = "oficina";//Senha de acesso ao Postgres
     private static Connection connection;//Variável de conexão do Banco
 
     public static Connection getConnection() {
