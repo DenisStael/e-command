@@ -21,7 +21,7 @@ public class TelaMontarPratoController implements Initializable {
 
     private TabelaLista tabelaPrato = new TabelaLista();
     private String sql = "select nome,codprato,descricao,preco,imagem from prato;";
-    private String caminhoFoto;
+    private String caminhoFoto = null;
 
     //Atributos da tela
     @FXML

@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGerente.TelaGerenteController">
    <children>
-      <Label layoutX="276.0" layoutY="158.0" text="Relatório das vendas:">
+      <Label layoutX="277.0" layoutY="148.0" text="Relatório das vendas">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -20,11 +20,30 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="botaoVoltar" layoutX="330.0" layoutY="530.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="72.0" style="-fx-background-color: #ff3333;" text="Sair" textFill="WHITE">
+      <Button fx:id="botaoVoltar" layoutX="140.0" layoutY="547.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="72.0" style="-fx-background-color: #ff3333;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="286.0" layoutY="474.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="161.0" style="-fx-background-radius: 100; -fx-background-color: WHITE;" text="Gerar relatorio das vendas" />
+      <Button fx:id="botaoGerarRelatorio" layoutX="309.0" layoutY="547.0" mnemonicParsing="false" onAction="#acaoGerarRelatorio" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: #ff3333;" text="Gerar relatório" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField layoutX="203.0" layoutY="234.0" prefHeight="52.0" prefWidth="147.0" promptText="De">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="376.0" layoutY="234.0" prefHeight="52.0" prefWidth="155.0" promptText="Até">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="171.0" layoutY="182.0" text="Escolha o período que deseja gerar o relatorio:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

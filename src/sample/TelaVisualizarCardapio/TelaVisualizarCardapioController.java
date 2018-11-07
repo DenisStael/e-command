@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController extends Logout implements Initializable {
@@ -27,7 +29,25 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     private String sqlBebida = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
     @FXML
     private ListView<GridPane> listaPratos, listaBebidas;
+    private String caminhoFoto;
+    @FXML
+    private ImageView imgRestaurante;
+    private void insereImgCardapio() {
+        imgRestaurante.setImage(new Image("file:///"+caminhoFoto));
 
+    }
+    private void selecionaImagem(){
+        try {
+            PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
+                    ("SELECT ImagemCardapio FROM ImgCardapio WHERE CodImagem = 1;");
+           ResultSet rs = ps2.executeQuery();
+            if(rs.next()){
+                caminhoFoto = rs.getString("imagemcardapio");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaMesa/telaMesa.fxml");
     }
@@ -105,5 +125,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     public void initialize(URL url, ResourceBundle rb){
         tabelaLista.listaPrato(listaPratos,sqlPrato);
         tabelaLista.listaPrato(listaBebidas,sqlBebida);
+        selecionaImagem();
+        insereImgCardapio();
     }
 }

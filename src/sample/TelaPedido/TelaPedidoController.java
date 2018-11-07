@@ -65,7 +65,6 @@ public class TelaPedidoController implements Initializable {
 
                 PreparedStatement ps3 = ConexaoBanco.getConnection().prepareStatement
                         ("update prato set quantidade = quantidade + 1 where codprato = ?;");
-
                 for(int i = 0; i < listaPedido.size(); i++){
                     PreparedStatement ps4 = ConexaoBanco.getConnection().prepareStatement("select tipo from prato where codprato = ?;");
                     ps4.setInt(1, Integer.parseInt(((Label)listaPedido.get(i).getChildren().get(0)).getText()));

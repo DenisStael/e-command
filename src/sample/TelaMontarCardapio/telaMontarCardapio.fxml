@@ -10,13 +10,13 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #5353c6;">
          <children>
-            <TabPane layoutY="114.0" prefHeight="442.0" prefWidth="718.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutY="93.0" prefHeight="463.0" prefWidth="718.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                   <Tab text="Adicionar Pratos">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="720.0" style="-fx-background-color: #ffffff;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="629.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <TableView fx:id="tabelaPratos" layoutX="6.0" layoutY="123.0" onMouseClicked="#clicarTabelaPrato" prefHeight="287.0" prefWidth="708.0">
+                              <TableView fx:id="tabelaPratos" layoutX="5.0" layoutY="139.0" onMouseClicked="#clicarTabelaPrato" prefHeight="287.0" prefWidth="708.0">
                                 <columns>
                                   <TableColumn fx:id="colunaPrato" prefWidth="126.0" text="Nome" />
                                   <TableColumn fx:id="colunaCodPrato" prefWidth="60.0" text="Código" />
@@ -24,28 +24,35 @@
                                     <TableColumn fx:id="colunaPreco" prefWidth="72.0" text="Preço" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="131.0" layoutY="26.0" text="Código do Prato/Bebida:">
+                              <Label layoutX="23.0" layoutY="26.0" text="Código do Prato/Bebida:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtCodPrato" layoutX="317.0" layoutY="26.0" prefHeight="25.0" prefWidth="147.0" promptText="Código do Prato/Bebida" />
-                              <Button fx:id="botaoAdicionarPrato" layoutX="482.0" layoutY="24.0" mnemonicParsing="false" onAction="#acaoAdicionarPrato" text="Adicionar">
+                              <TextField fx:id="txtCodPrato" layoutX="207.0" layoutY="26.0" prefHeight="25.0" prefWidth="147.0" promptText="Código do Prato/Bebida" />
+                              <Button fx:id="botaoAdicionarPrato" layoutX="360.0" layoutY="24.0" mnemonicParsing="false" onAction="#acaoAdicionarPrato" text="Adicionar">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="botaoPesquisarPrato" layoutX="474.0" layoutY="88.0" mnemonicParsing="false" onAction="#acaoPesquisarPrato" text="Pesquisar">
+                              <Button fx:id="botaoPesquisarPrato" layoutX="360.0" layoutY="88.0" mnemonicParsing="false" onAction="#acaoPesquisarPrato" text="Pesquisar">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Button>
-                              <TextField fx:id="txtNomePrato" layoutX="311.0" layoutY="90.0" promptText="Nome do prato/bebida" />
-                              <Label layoutX="139.0" layoutY="89.0" text="Pesquisar por nome:">
+                              <TextField fx:id="txtNomePrato" layoutX="206.0" layoutY="90.0" promptText="Nome do prato/bebida" />
+                              <Label layoutX="23.0" layoutY="88.0" text="Pesquisar por nome:">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
+                              <ImageView fx:id="imgCardapio" fitHeight="118.0" fitWidth="179.0" layoutX="456.0" layoutY="17.0" onMouseClicked="#acaoImagem" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/sem_imagem.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="447.0" text="Imagem que aparecerá no cardapio:" />
+                              <Button fx:id="botaoSalvarImg" layoutX="638.0" layoutY="60.0" mnemonicParsing="false" onAction="#acaoSalvarFoto" prefHeight="32.0" prefWidth="58.0" text="Salvar" wrapText="true" />
                            </children>
                         </AnchorPane>
                     </content>
