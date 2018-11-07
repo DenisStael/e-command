@@ -12,6 +12,8 @@ import sample.TabelaLista;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TelaInformacaoController implements Initializable {
@@ -46,17 +48,28 @@ public class TelaInformacaoController implements Initializable {
 
         if(finalizado){
             String sql_2 = "";
+            String sql_3 = "";
             if(TelaAtendimentoController.getUsuario().getTipo().equals("Garçom")){
-                sql_2 = "update pedidoprato set codgarcom = ? where codprato = ? and codpedido = ?;";
+                sql_2 = "update pedidoprato set codgarcom = ? where codprato = ? and codpedido = ? and codpedprato = ?;";
+                sql_3 = "select min(codpedprato) as codigo from pedidoprato where codprato = ? and codpedido = ? and codgarcom is null;";
             } else if(TelaAtendimentoController.getUsuario().getTipo().equals("Cozinheiro")){
-                sql_2 = "update pedidoprato set codcozinheiro = ? where codprato = ? and codpedido = ?;";
+                sql_2 = "update pedidoprato set codcozinheiro = ? where codprato = ? and codpedido = ? and codpedprato = ?;";
+                sql_3 = "select min(codpedprato) as codigo from pedidoprato where codprato = ? and codpedido = ? and codcozinheiro is null;";
             }
             try {
-                PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(sql_2);
-                ps.setInt(1, TelaAtendimentoController.getUsuario().getCodusuario());
-                ps.setInt(2, codPrato);
-                ps.setInt(3, codPedido);
-                ps.executeUpdate();
+                PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement(sql_3);
+                ps2.setInt(1,codPrato);
+                ps2.setInt(2,codPedido);
+                ResultSet rs = ps2.executeQuery();
+
+                if(rs.next()){
+                    PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(sql_2);
+                    ps.setInt(1, TelaAtendimentoController.getUsuario().getCodusuario());
+                    ps.setInt(2, codPrato);
+                    ps.setInt(3, codPedido);
+                    ps.setInt(4, rs.getInt("codigo"));
+                    ps.executeUpdate();
+                }
 
                 labelStatus.setText("");
                 montaTabela();
