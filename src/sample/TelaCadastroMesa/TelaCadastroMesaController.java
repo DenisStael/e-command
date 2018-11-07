@@ -1,9 +1,12 @@
 package sample.TelaCadastroMesa;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import sample.ConexaoBanco;
 import sample.Main;
 import javax.swing.*;
@@ -57,5 +60,14 @@ public class TelaCadastroMesaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         labelNumeroMesas.setText(Integer.toString(numeroMesas()));
+
+        txtNumeroMesas.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode().equals(KeyCode.ENTER)){
+                    acaoConfirmar();
+                }
+            }
+        });
     }
 }

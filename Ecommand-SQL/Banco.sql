@@ -1,5 +1,4 @@
-﻿
-CREATE SEQUENCE Usuario_seq;
+﻿CREATE SEQUENCE Usuario_seq;
 
 CREATE TABLE Usuario (
   CodUsuario INT NOT NULL DEFAULT NEXTVAL ('Usuario_seq'),
@@ -59,7 +58,7 @@ CREATE TABLE Pedido (
   Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
   precototal DECIMAL(10,2) NOT NULL DEFAULT 0,
-  Data_Pedido DATE NOT NULL,
+  Data_Pedido DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (CodPedido),
   CONSTRAINT fk_Mesa_has_Prato_Mesa1
     FOREIGN KEY (Mesa_idMesa)
@@ -120,16 +119,8 @@ CREATE TABLE ImgCardapio(
   CodImagem INT NOT NULL,
   ImagemCardapio VARCHAR (200),
   PRIMARY KEY (CodImagem)
-  );
+);
   
-  CREATE SEQUENCE Relatorio_seq;
-  
-  CREATE TABLE Relatorio(
-  
-  Id_relatorio INT NOT NULL DEFAULT NEXTVAL('Relatorio_seq'),
-  TextoRelatorio VARCHAR(8000),
-  PRIMARY KEY (Id_relatorio)
-  );
 /*
 CREATE SEQUENCE Avaliacao_seq;
 CREATE TABLE Avaliacao(

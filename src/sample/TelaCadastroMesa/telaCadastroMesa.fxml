@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaCadastroMesa.TelaCadastroMesaController">
     <children>
-        <TextField fx:id="txtNumeroMesas" layoutX="289.0" layoutY="306.0" onKeyPressed="#acaoConfirmar" prefHeight="39.0" prefWidth="150.0" promptText="Numero de mesas" style="-fx-background-radius: 100;" styleClass="fx">
+        <TextField fx:id="txtNumeroMesas" layoutX="289.0" layoutY="306.0" prefHeight="39.0" prefWidth="150.0" promptText="Numero de mesas" style="-fx-background-radius: 100;" styleClass="fx">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -18,7 +18,7 @@
             </font>
         </Button>
         <Button fx:id="botaoVoltar" layoutX="319.0" layoutY="512.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" text="Voltar" />
-        <Label layoutX="247.0" layoutY="177.0" text="Cadastrar Mesas">
+        <Label layoutX="246.0" layoutY="169.0" text="Cadastrar Mesas">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
@@ -33,12 +33,12 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="243.0" layoutY="222.0" text="Mesas cadastradas:" textFill="#e1e1e1">
+      <Label layoutX="246.0" layoutY="222.0" text="Mesas cadastradas:" textFill="#e1e1e1">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="labelNumeroMesas" layoutX="459.0" layoutY="268.0" textFill="#e1e1e1">
+      <Label fx:id="labelNumeroMesas" layoutX="451.0" layoutY="222.0" prefHeight="32.0" prefWidth="29.0" textFill="#e1e1e1">
          <font>
             <Font size="22.0" />
          </font>
