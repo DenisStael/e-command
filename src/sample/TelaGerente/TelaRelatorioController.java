@@ -8,10 +8,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.ConexaoBanco;
 import sample.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ConcurrentModificationException;
 import java.util.ResourceBundle;
 
 public class TelaRelatorioController {
@@ -37,10 +41,15 @@ public class TelaRelatorioController {
 
         LocalDate data = txtDataInicio.getValue();
         LocalDate data2 = txtDataFim.getValue();
-        System.out.println(data);
-        System.out.println(data2);
+
+        consultaBanco(data, data2);
+    }
+
+    private void consultaBanco(LocalDate data, LocalDate data2){
+       
 
     }
+
     public void initialize(URL location, ResourceBundle resources){
 
     }
