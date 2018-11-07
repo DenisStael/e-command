@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import sample.FormataPreco;
 import sample.Main;
 import sample.Pedido;
 import sample.TabelaLista;
@@ -55,6 +56,6 @@ public class TelaComandaController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+TelaPedidoController.numeroMesa;
         tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
-        labelPreco.setText(Float.toString(calculaPreco()));
+        labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
     }
 }

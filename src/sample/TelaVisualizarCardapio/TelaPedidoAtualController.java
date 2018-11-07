@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import sample.FormataPreco;
 import sample.TabelaLista;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,13 +45,13 @@ public class TelaPedidoAtualController implements Initializable {
     public void removerPratoPedido(){
         if(listaPedidoAtual.getSelectionModel().getSelectedItem() != null){
             listaPedido.remove(listaPedidoAtual.getSelectionModel().getSelectedItem());
-            precoTotal.setText(Float.toString(calculaPreco()));
+            precoTotal.setText(FormataPreco.formatarFloat(calculaPreco()));
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listaPedidoAtual.setItems(listaPedido);
-        precoTotal.setText(Float.toString(calculaPreco()));
+        precoTotal.setText(FormataPreco.formatarFloat(calculaPreco()));
     }
 }

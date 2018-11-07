@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import sample.ConexaoBanco;
+import sample.FormataPreco;
 import sample.Main;
 import sample.TelaVisualizarCardapio.TelaPedidoAtualController;
 import javax.swing.*;
@@ -15,6 +16,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class TelaPedidoController implements Initializable {
@@ -105,7 +107,7 @@ public class TelaPedidoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listaPratos.setItems(listaPedido);
-        labelPrecoTotal.setText(Float.toString(calculaPreco()));
+        labelPrecoTotal.setText(FormataPreco.formatarFloat(calculaPreco()));
         labelNumeroMesa.setText(Integer.toString(numeroMesa));
         if(!listaPratos.getItems().isEmpty())
             btConfirmarPedido.setDisable(false);
