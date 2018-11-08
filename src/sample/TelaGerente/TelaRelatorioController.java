@@ -1,5 +1,6 @@
 package sample.TelaGerente;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,7 @@ public class TelaRelatorioController {
         Main.trocaTela("TelaGerente/telaGerente.fxml");
     }
 
-    public void acaoGerarRelatorio() throws IOException {
+    /*public void acaoGerarRelatorio() throws IOException {
         Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../TelaGerente/telaRelatorioGerado.fxml"));
@@ -43,7 +44,7 @@ public class TelaRelatorioController {
         LocalDate data2 = txtDataFim.getValue();
 
         consultaBanco(data, data2);
-    }
+    }*/
 
     private void consultaBanco(LocalDate data, LocalDate data2){
        
@@ -52,5 +53,11 @@ public class TelaRelatorioController {
 
     public void initialize(URL location, ResourceBundle resources){
 
+    }
+
+    public void acaoGerarRelatorioEstoque(ActionEvent actionEvent) {
+    }
+
+    public void acaoGerarRelatorioPedidos(ActionEvent actionEvent) {
     }
 }

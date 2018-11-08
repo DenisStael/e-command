@@ -17,7 +17,7 @@
                                 <Image url="@../img/logo.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="324.0" layoutY="38.0" text="Minha Comanda" textFill="WHITE">
+                        <Label layoutX="324.0" layoutY="38.0" text="Meus Pedidos " textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="30.0" />
                             </font>
@@ -38,7 +38,7 @@
                </font>
             </Label>
             <Label layoutX="137.0" layoutY="121.0" text="(Clique no pedido para mais informações)" />
-            <Label layoutX="482.0" layoutY="173.0" text="Valor a pagar:">
+            <Label layoutX="482.0" layoutY="173.0" text="Valor total a pagar:">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

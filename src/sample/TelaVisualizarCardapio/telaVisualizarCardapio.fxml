@@ -68,7 +68,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#acaoComanda" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Minha comanda" textFill="WHITE">
+                <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#acaoComanda" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Meus Pedidos" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>

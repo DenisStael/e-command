@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static java.lang.Boolean.TRUE;
@@ -112,8 +113,12 @@ public class TelaMontarCardapioController implements Initializable {
     }
 
     @FXML
-    private void acaoSalvarFoto() {
-        if (caminhoFoto != null) {
+    private void acaoSalvarFoto() throws SQLException {
+
+            PreparedStatement psteste = ConexaoBanco.getConnection().prepareStatement("SELECT CodImagem FROM ImgCardapio;");
+            ResultSet rsteste = psteste.executeQuery();
+
+        if (!rsteste.next() && caminhoFoto != null) {
             try {
                 PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement("  INSERT INTO ImgCardapio (CodImagem,ImagemCardapio) VALUES (1,?)");
                 ps2.setString(1, caminhoFoto);
@@ -122,7 +127,17 @@ public class TelaMontarCardapioController implements Initializable {
                 desabilitaBotao();
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Erro ao salvar imagem" + e);
+                JOptionPane.showMessageDialog(null, "Erro ao salvar imagem:" + e);
+            }
+
+        }else{
+            try {
+                PreparedStatement ps3 = ConexaoBanco.getConnection().prepareStatement("UPDATE ImgCardapio SET ImagemCardapio = ? WHERE CodImagem = 1;");
+                ps3.setString(1,caminhoFoto);
+                ps3.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Imagem atualizada com sucesso!");
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null,"Erro ao atualizar imagem!"+e);
             }
 
         }
