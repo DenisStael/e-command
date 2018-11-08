@@ -176,7 +176,7 @@ public class TabelaLista {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"), rs.getFloat("precototal")));
+                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("id_mesa"), rs.getFloat("precototal")));
             }
             rs.close();
 
@@ -198,7 +198,7 @@ public class TabelaLista {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"), rs.getString("observacao")));
+                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("id_mesa"), rs.getString("observacao")));
             }
             rs.close();
 
@@ -243,7 +243,7 @@ public class TabelaLista {
                         }
                     }
                 }
-                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("mesa_idmesa"),
+                listaPedidos.add(new Pedido(rs.getInt("codpedido"), rs.getInt("id_mesa"),
                         rs.getString("observacao"), status));
             }
 
@@ -281,6 +281,7 @@ public class TabelaLista {
             colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
             colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
             colunaObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+            colunaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
             tabelaGarcom.setItems(listaPedidos);
 

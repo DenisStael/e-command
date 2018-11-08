@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import sample.ConexaoBanco;
 import sample.FormataPreco;
 import sample.Main;
+import sample.TelaComanda.TelaComandaController;
 import sample.TelaVisualizarCardapio.TelaPedidoAtualController;
 import javax.swing.*;
 import java.io.IOException;
@@ -16,12 +17,12 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class TelaPedidoController implements Initializable {
 
     public static int numeroMesa;
+    public static Integer numeroComanda;
     private static ObservableList<GridPane> listaPedido = FXCollections.observableArrayList();
     @FXML
     private TextArea txtObservacao;
@@ -48,9 +49,24 @@ public class TelaPedidoController implements Initializable {
 
     public void acaoConfirmar(){
         try {
+            if(numeroComanda == null){
+                System.out.println(numeroComanda);
+                PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
+                        ("insert into comanda(statuscomanda,id_mesa) values('Aberto',?);");
+                ps2.setInt(1,numeroMesa);
+                ps2.executeUpdate();
+
+                Statement stmt_2 = ConexaoBanco.getConnection().createStatement();
+                ResultSet rs2 = stmt_2.executeQuery("select max(codcomanda) as codmax from comanda;");
+
+                if(rs2.next()){
+                    numeroComanda = rs2.getInt("codmax");
+                }
+            }
+
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
-                    ("insert into pedido(mesa_idmesa,observacao,precototal)values(?,?,?);");
-            ps.setInt(1,numeroMesa);
+                    ("insert into pedido(codcomanda,observacao,precototal)values(?,?,?);");
+            ps.setInt(1,numeroComanda);
             ps.setFloat(3,calculaPreco());
 
             if(txtObservacao.getText().isEmpty())
@@ -89,7 +105,9 @@ public class TelaPedidoController implements Initializable {
                 }
             }
             rs.close();
+
             listaPratos.getItems().clear();
+            TelaComandaController.numeroComanda = numeroComanda;
             Main.trocaTela("TelaComanda/telaComanda.fxml");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao realizar pedido!\n"+e);

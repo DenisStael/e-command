@@ -1,6 +1,5 @@
 package sample.TelaComanda;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,18 +14,17 @@ import sample.TelaInfoPedido.TelaInfoPedidoController;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
+    public static int numeroComanda;
     private TabelaLista tabelaPedido = new TabelaLista();
     @FXML
     private TableView<Pedido> tabelaPedidos;
     @FXML
     private TableColumn colunaCodPedido, colunaNumeroMesa, colunaPrecoPedido;
     @FXML
-    private Label labelPreco,labelAguarde;
+    private Label labelPreco,labelAguarde,labelNumeroComanda;
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
@@ -44,21 +42,6 @@ public class TelaComandaController implements Initializable {
         }
     }
 
-    private float calculaPreco(){
-        Float precoTotal = 0f;
-        for(int i = 0; i < tabelaPedidos.getItems().size(); i++){
-            precoTotal += tabelaPedidos.getItems().get(i).getPreco();
-        }
-        return precoTotal;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+TelaPedidoController.numeroMesa;
-        tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
-        labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
-    }
-
     public void acaoPagarCartao() {
         labelAguarde.setText("Aguarde enquanto o garçom traz a máquina de cartão!");
     }
@@ -70,5 +53,21 @@ public class TelaComandaController implements Initializable {
             e.printStackTrace();
         }*/
         labelAguarde.setText("Favor digija-se ao balcão para efetuar o pagamento!");
+    }
+
+    private float calculaPreco(){
+        Float precoTotal = 0f;
+        for(int i = 0; i < tabelaPedidos.getItems().size(); i++){
+            precoTotal += tabelaPedidos.getItems().get(i).getPreco();
+        }
+        return precoTotal;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String sql = "select pe.codpedido, c.id_mesa, pe.precototal from pedido pe, comanda c where c.id_mesa = "+TelaPedidoController.numeroMesa+" and pe.codcomanda = c.codcomanda;";
+        tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
+        labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
+        labelNumeroComanda.setText(String.valueOf(numeroComanda));
     }
 }

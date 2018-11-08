@@ -38,17 +38,17 @@
                </font>
             </Label>
             <Label layoutX="137.0" layoutY="121.0" text="(Clique no pedido para mais informações)" />
-            <Label layoutX="482.0" layoutY="173.0" text="Valor total a pagar:">
+            <Label layoutX="454.0" layoutY="230.0" text="Valor total a pagar:">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="471.0" layoutY="208.0" text="R$" textFill="#47d147">
+            <Label layoutX="452.0" layoutY="263.0" text="R$" textFill="#47d147">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelPreco" layoutX="512.0" layoutY="208.0" prefHeight="27.0" prefWidth="85.0" text="0.00" textFill="#47d147">
+            <Label fx:id="labelPreco" layoutX="493.0" layoutY="263.0" prefHeight="27.0" prefWidth="85.0" text="0.00" textFill="#47d147">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -60,6 +60,16 @@
                </font>
             </Label>
             <Button layoutX="578.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoPagarDinheiro" prefHeight="36.0" prefWidth="137.0" text="Pagar com dinheiro" />
+            <Label layoutX="452.0" layoutY="153.0" text="Número da Comanda:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelNumeroComanda" layoutX="451.0" layoutY="180.0" prefHeight="27.0" prefWidth="85.0" text="0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
             </children></AnchorPane>
     </items>
 </SplitPane>

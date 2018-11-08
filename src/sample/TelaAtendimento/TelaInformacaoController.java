@@ -94,11 +94,11 @@ public class TelaInformacaoController implements Initializable {
         if(TelaAtendimentoController.getUsuario().getTipo().equals("Garçom")){
             botaoSituacao.setText("Prato entregue");
             sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem, pp.codcozinheiro, pp.codgarcom from prato p, pedido pe, pedidoprato pp where " +
-                    "p.codprato = pp.codprato and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+";";
+                    "p.codprato = pp.codprato and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" order by pp.codpedprato;";
         } else if(TelaAtendimentoController.getUsuario().getTipo().equals("Cozinheiro")){
             botaoSituacao.setText("Prato Finalizado");
             sql = "select p.nome, p.descricao, p.codprato ,p.preco, p.imagem, pp.codcozinheiro, pp.codgarcom from prato p, pedido pe, pedidoprato pp where " +
-                    "p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+";";
+                    "p.codprato = pp.codprato and p.tipo = 'Comida' and pe.codpedido = pp.codpedido and pe.codpedido = "+codPedido+" order by pp.codpedprato;";
         }
 
         montaTabela();

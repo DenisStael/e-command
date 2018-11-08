@@ -20,9 +20,9 @@ public class TelaCozinheiroController extends Logout implements Initializable {
     private static Usuario usuario;
     private TabelaLista pedido = new TabelaLista();
     private Stage stage = new Stage();
-    private String sql = "select distinct p.codpedido,p.mesa_idmesa,p.observacao from pedido p, prato pr, pedidoprato pp " +
+    private String sql = "select distinct p.codpedido,c.id_mesa,p.observacao from pedido p, prato pr, pedidoprato pp, comanda c " +
             "where p.cozinheiro_usuario_codusuario is null and pp.codpedido = p.codpedido and pp.codprato = pr.codprato " +
-            "and pr.tipo = 'Comida' order by p.codpedido;";
+            "and pr.tipo = 'Comida' and p.codcomanda = c.codcomanda order by p.codpedido;";
     @FXML
     private TableView<Pedido> tabelaCozinheiro;
     @FXML

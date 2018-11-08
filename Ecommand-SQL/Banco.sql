@@ -44,25 +44,29 @@ CREATE SEQUENCE Comanda_seq;
 
 CREATE TABLE Comanda (
   CodComanda INT NOT NULL DEFAULT NEXTVAL('Comanda_seq'),
-  PrecoTotalComanda DECIMAL(10,2) NOT NULL DEFAULT 0,
   StatusComanda VARCHAR(10) CHECK(StatusComanda IN ('Aberto','Fechado')),
-  PRIMARY KEY (CodComanda)
+  Id_mesa INT NOT NULL, 
+  PRIMARY KEY (CodComanda),
+  FOREIGN KEY (Id_mesa)
+    REFERENCES Mesa (idMesa)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 CREATE SEQUENCE Pedido_seq;
 
 CREATE TABLE Pedido (
   CodPedido INT NOT NULL DEFAULT NEXTVAL ('Pedido_seq'),
-  Mesa_idMesa INT NOT NULL,
+  CodComanda INT NOT NULL,
   Garcom_Usuario_CodUsuario INT,
   Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
   precototal DECIMAL(10,2) NOT NULL DEFAULT 0,
   Data_Pedido DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (CodPedido),
-  CONSTRAINT fk_Mesa_has_Prato_Mesa1
-    FOREIGN KEY (Mesa_idMesa)
-    REFERENCES Mesa (idMesa)
+  CONSTRAINT fk_comanda
+    FOREIGN KEY (CodComanda)
+    REFERENCES Comanda (CodComanda)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_Pedido_Garcom1
@@ -76,10 +80,6 @@ CREATE TABLE Pedido (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
-
-CREATE INDEX fk_Mesa_has_Prato_Mesa1_idx ON Pedido (Mesa_idMesa);
-CREATE INDEX fk_Pedido_Garcom1_idx ON Pedido (Garcom_Usuario_CodUsuario);
-CREATE INDEX fk_Pedido_Cozinheiro1_idx ON Pedido (Cozinheiro_Usuario_CodUsuario);
 
 CREATE SEQUENCE PedidoPrato_seq;
 
@@ -100,21 +100,6 @@ CREATE TABLE PedidoPrato(
   ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE PedidoComanda (
-  CodPedido INT NOT NULL,
-  CodComanda INT NOT NULL,
-  PRIMARY KEY (CodPedido, CodComanda),
-  CONSTRAINT FK_COMANDA
-    FOREIGN KEY (CodComanda)
-    REFERENCES Comanda (CodComanda)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT FK_PEDIDO
-    FOREIGN KEY (CodPedido)
-    REFERENCES Pedido (CodPedido)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
 CREATE TABLE ImgCardapio(
   CodImagem INT NOT NULL,
   ImagemCardapio VARCHAR (200),

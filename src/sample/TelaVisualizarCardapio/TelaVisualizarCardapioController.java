@@ -1,6 +1,5 @@
 package sample.TelaVisualizarCardapio;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -25,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController extends Logout implements Initializable {
 
+    public static Stage stage;
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
     private TabelaLista tabelaLista = new TabelaLista();
     private String sqlPrato = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
@@ -54,7 +53,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     @FXML
     protected void acaoVoltar() throws IOException {
         Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
-        Stage stage = new Stage();
+        stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../TelaVisualizarCardapio/telaSairMesa.fxml"));
         Scene scene = new Scene(root);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -65,8 +64,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
         stage.setTitle("Deseja mesmo sair do cardápio?");
         stage.setScene(scene);
         stage.show();
-        }
-
+    }
 
 
     public void acaoComanda() throws IOException {
@@ -145,7 +143,5 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
         selecionaImagem();
         insereImgCardapio();
     }
-
-
 
 }

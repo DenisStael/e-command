@@ -61,14 +61,16 @@ public class TelaAtendimentoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(usuario.getTipo().equals("Garçom")) {
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
-                    "where pe.garcom_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido;";
+            sql = "select distinct pe.codpedido, c.id_mesa, pe.observacao from pedido pe, pedidoprato pp, comanda c " +
+                    "where pe.garcom_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido " +
+                    "and pe.codcomanda = c.codcomanda order by pe.codpedido;";
             sql_2 = "select pp.codcozinheiro, pp.codgarcom from pedidoprato pp, pedido pe where pe.codpedido = pp.codpedido" +
                     " and pe.garcom_usuario_codusuario = "+ usuario.getCodusuario() +"and pe.codpedido = ?;";
         }
         else if(usuario.getTipo().equals("Cozinheiro")) {
-            sql = "select distinct pe.codpedido, pe.mesa_idmesa, pe.observacao from pedido pe, pedidoprato pp " +
-                    "where pe.cozinheiro_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido;";
+            sql = "select distinct pe.codpedido, c.id_mesa, pe.observacao from pedido pe, pedidoprato pp, comanda c " +
+                    "where pe.cozinheiro_usuario_codusuario = " + usuario.getCodusuario() + " and pp.codpedido = pe.codpedido" +
+                    " and pe.codcomanda = c.codcomanda order by pe.codpedido;";
             sql_2 = "select pp.codcozinheiro, pp.codgarcom from pedidoprato pp, pedido pe where pe.codpedido = pp.codpedido" +
                     " and pe.cozinheiro_usuario_codusuario = "+ usuario.getCodusuario() +"and pe.codpedido = ?;";
         }

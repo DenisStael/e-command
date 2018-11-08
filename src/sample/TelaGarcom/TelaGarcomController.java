@@ -21,7 +21,8 @@ public class TelaGarcomController extends Logout implements Initializable {
     private Stage stage = new Stage();
     private static Usuario usuario;
     private TabelaLista pedido = new TabelaLista();
-    private String sql = "select codpedido,mesa_idmesa,observacao from pedido where garcom_usuario_codusuario is null order by codpedido;";
+    private String sql = "select pe.codpedido,c.id_mesa,pe.observacao from pedido pe,comanda c where pe.garcom_usuario_codusuario is null " +
+            " and c.codcomanda = pe.codcomanda order by pe.codpedido;";
     @FXML
     private TableView<Pedido> tabelaGarcom;
     @FXML
