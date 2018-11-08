@@ -24,7 +24,7 @@
                         </Label>
                     </children>
                 </AnchorPane>
-                <Button layoutX="287.0" layoutY="534.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="145.0" text="Fazer outro pedido" />
+                <Button layoutX="137.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="36.0" prefWidth="145.0" text="Fazer outro pedido" />
             <TableView fx:id="tabelaPedidos" layoutX="51.0" layoutY="153.0" onMouseClicked="#acaoInformacaoPedido" prefHeight="347.0" prefWidth="372.0">
               <columns>
                 <TableColumn fx:id="colunaCodPedido" minWidth="0.0" prefWidth="126.0" text="Número do Pedido" />
@@ -53,6 +53,13 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <Button layoutX="414.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoPagarCartao" prefHeight="36.0" prefWidth="137.0" text="Pagar com cartão" />
+            <Label fx:id="labelAguarde" alignment="CENTER" layoutX="466.0" layoutY="451.0" prefHeight="66.0" prefWidth="196.0" textFill="#d70909" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="578.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoPagarDinheiro" prefHeight="36.0" prefWidth="137.0" text="Pagar com dinheiro" />
             </children></AnchorPane>
     </items>
 </SplitPane>

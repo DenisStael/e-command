@@ -1,5 +1,6 @@
 package sample.TelaComanda;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,14 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import sample.FormataPreco;
-import sample.Main;
-import sample.Pedido;
-import sample.TabelaLista;
+import sample.*;
 import sample.TelaInfoPedido.TelaInfoPedidoController;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
@@ -26,7 +26,7 @@ public class TelaComandaController implements Initializable {
     @FXML
     private TableColumn colunaCodPedido, colunaNumeroMesa, colunaPrecoPedido;
     @FXML
-    private Label labelPreco;
+    private Label labelPreco,labelAguarde;
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
@@ -57,5 +57,18 @@ public class TelaComandaController implements Initializable {
         String sql = "select codpedido, mesa_idmesa, precototal from pedido where mesa_idmesa = "+TelaPedidoController.numeroMesa;
         tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
         labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
+    }
+
+    public void acaoPagarCartao() {
+        labelAguarde.setText("Aguarde enquanto o garçom traz a máquina de cartão!");
+    }
+
+    public void acaoPagarDinheiro() {
+        /*try {
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("INSERT ");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+        labelAguarde.setText("Favor digija-se ao balcão para efetuar o pagamento!");
     }
 }

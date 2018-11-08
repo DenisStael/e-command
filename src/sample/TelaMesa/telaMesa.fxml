@@ -29,5 +29,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="labelMesa" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="287.0" prefHeight="27.0" prefWidth="175.0" textFill="#a40505">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
