@@ -2,8 +2,11 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -12,6 +15,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
+import sample.TelaVisualizarCardapio.TelaVisualizarCardapioController;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -108,9 +113,8 @@ public class TabelaLista {
         }
     }
 
-    public GridPane criaGridPane(String nome, String preco, String descricao, int codigo, String imagem) {
+    public GridPane criaGridPane(String nome, String preco, String descricao, int codigo, String imagem, String nomeBotao) {
         GridPane gridPane = new GridPane();
-        //gridPane.setGridLinesVisible(true);
         gridPane.getColumnConstraints().add(new ColumnConstraints(100));
         gridPane.getColumnConstraints().add(new ColumnConstraints(320));
         gridPane.getColumnConstraints().add(new ColumnConstraints(30));
@@ -125,6 +129,14 @@ public class TabelaLista {
         Label lblDescricao = new Label(descricao);
         Label lblCodigo = new Label(Integer.toString(codigo));
         Label lblCifrao = new Label("R$");
+        Button botao = new Button(nomeBotao);
+        botao.setPrefHeight(20);
+        if(nomeBotao.equals("Adicionar")){
+            botao.getStyleClass().add("botaoAdicionar");
+        } else {
+            botao.getStyleClass().add("botaoRemover");
+        }
+        botao.setCursor(Cursor.HAND);
         lblCifrao.getStyleClass().add("cifrao");
         imageView.setFitWidth(95);
         imageView.setFitHeight(90);
@@ -143,7 +155,8 @@ public class TabelaLista {
         gridPane.add(lblCifrao, 2, 0);//cifrao indice 3
         GridPane.setHalignment(lblPreco, HPos.LEFT);
         gridPane.add(lblPreco, 3, 0); //preco: indice 4
-        gridPane.add(lblDescricao, 1, 2, 3, 1); //preco: indice 5
+        gridPane.add(lblDescricao, 1, 2, 1, 1); //preco: indice 5
+        gridPane.add(botao,2,2,2,2);
         return gridPane;
     }
 
@@ -155,7 +168,7 @@ public class TabelaLista {
 
             while (rs.next()) {
                 listaPratos.add(criaGridPane(rs.getString("nome"), Float.toString(rs.getFloat("preco")),
-                        rs.getString("descricao"), rs.getInt("codprato"), rs.getString("imagem")));
+                        rs.getString("descricao"), rs.getInt("codprato"), rs.getString("imagem"), "Adicionar"));
             }
             rs.close();
 

@@ -81,6 +81,12 @@
 .gridPane{
     -fx-background-color: #ffffff;
 }
+.gridPane > .botaoAdicionar{
+    visibility: hidden;
+}
+.gridPane > .botaoRemover{
+    visibility: hidden;
+}
 .accordion{
     -fx-background-color: #5353c6;
     -fx-background-radius: 12;
@@ -116,4 +122,16 @@
 .list-cell:selected > .gridPane{
     -fx-background-color: #dbe1e7;
     -fx-border-color: #5353c6;
+}
+.list-cell:selected > .gridPane > .botaoAdicionar{
+    visibility: visible;
+    -fx-background-color: #47d147;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+.list-cell:selected > .gridPane > .botaoRemover{
+    visibility: visible;
+    -fx-background-color: #ff3333;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
 }

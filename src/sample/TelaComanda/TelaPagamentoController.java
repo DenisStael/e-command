@@ -1,8 +1,6 @@
 package sample.TelaComanda;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import sample.ConexaoBanco;
@@ -11,17 +9,14 @@ import sample.TelaGarcom.TelaAvisosController;
 import sample.TelaPedido.TelaPedidoController;
 import javax.swing.*;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 public class TelaPagamentoController {
     @FXML
     private Label labelPagamento,labelFinalizado,labelInfo;
     @FXML
     private Button botaoPagarCartao,botaoPagarDinheiro,botaoSair;
-    public void acaoPagarCartao(ActionEvent actionEvent) {
+
+    public void acaoPagarCartao() {
         TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Pagamento em cartão");
         try {
             economizaCodigo();
@@ -31,7 +26,7 @@ public class TelaPagamentoController {
         }
     }
 
-    public void acaoPagarDinheiro(ActionEvent actionEvent) {
+    public void acaoPagarDinheiro() {
         try {
             economizaCodigo();
             labelPagamento.setText("Por favor dirija-se ao balcão para realizar o pagamento!");
@@ -57,11 +52,10 @@ public class TelaPagamentoController {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
-
     }
 
-    public void acaoSair(ActionEvent actionEvent) throws IOException {
+    public void acaoSair() throws IOException {
+        TelaComandaController.stage.close();
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
-
     }
 }

@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import sample.Main;
+import sample.TelaGarcom.TelaAvisosController;
 import sample.TelaPedido.TelaPedidoController;
-
 import java.io.IOException;
 
 public class telaSairMesaController {
@@ -19,9 +19,11 @@ public class telaSairMesaController {
             Main.trocaTela("TelaMesa/telaMesa.fxml");
             TelaVisualizarCardapioController.stage.close();
             TelaPedidoController.numeroComanda = null;
+            if(TelaVisualizarCardapioController.ativado){
+                TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+            }
         }else{
             labelSair.setText("Digite a senha corretamente!");
         }
-
     }
 }
