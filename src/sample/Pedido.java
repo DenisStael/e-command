@@ -13,8 +13,6 @@ public class Pedido {
     private SimpleFloatProperty preco;
     private SimpleStringProperty observacao;
     private SimpleIntegerProperty status;
-    //private SimpleIntegerProperty codcozinheiro;
-    //private SimpleIntegerProperty codgarcom;
 
     public Pedido(int codpedido, int idmesa, float preco) {
         this.codpedido = new SimpleIntegerProperty(codpedido);
@@ -37,13 +35,12 @@ public class Pedido {
         this.status = new SimpleIntegerProperty(status);
     }
 
-    /*public Pedido(int codpedido, int idmesa, String observacao, int codcozinheiro, int codgarcom) {
+    public Pedido(int codcomanda, int codpedido, int idmesa, float preco) {
         this.codpedido = new SimpleIntegerProperty(codpedido);
         this.idmesa = new SimpleIntegerProperty(idmesa);
-        this.observacao = new SimpleStringProperty(observacao);
-        this.codcozinheiro = new SimpleIntegerProperty(codcozinheiro);
-        this.codgarcom = new SimpleIntegerProperty(codgarcom);
-    }*/
+        this.preco = new SimpleFloatProperty(preco);
+        this.status = new SimpleIntegerProperty(codcomanda);
+    }
 
     public ObservableList<Prato> getListaPedido() {
         return listaPedido;
@@ -112,4 +109,5 @@ public class Pedido {
     public void setStatus(int status) {
         this.status.set(status);
     }
+
 }

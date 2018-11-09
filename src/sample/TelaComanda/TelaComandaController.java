@@ -49,6 +49,7 @@ public class TelaComandaController implements Initializable {
     }
 
     public void acaoFecharConta() throws IOException {
+        TelaPagamentoController.precoTotal = labelPreco.getText();
         Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
         stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../TelaComanda/telaPagamento.fxml"));
@@ -73,7 +74,8 @@ public class TelaComandaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "select pe.codpedido, c.id_mesa, pe.precototal from pedido pe, comanda c where c.id_mesa = "+TelaPedidoController.numeroMesa+" and pe.codcomanda = c.codcomanda;";
+        String sql = "select pe.codpedido, c.id_mesa, pe.precototal from pedido pe, comanda c where c.id_mesa =" +
+                " "+TelaPedidoController.numeroMesa+" and pe.codcomanda = c.codcomanda and pe.statuspedido = 'Aberto';";
         tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
         labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
         labelNumeroComanda.setText(String.valueOf(numeroComanda));

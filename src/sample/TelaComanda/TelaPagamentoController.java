@@ -10,9 +10,13 @@ import sample.TelaPedido.TelaPedidoController;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class TelaPagamentoController {
+
+    public static String precoTotal;
     @FXML
-    private Label labelPagamento,labelFinalizado,labelInfo;
+    private Label labelPagamento,labelFinalizado,labelInfo,labelValorTotal,labelPrecoTotal;
     @FXML
     private Button botaoPagarCartao,botaoPagarDinheiro,botaoSair;
 
@@ -20,9 +24,23 @@ public class TelaPagamentoController {
         TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Pagamento em cartão");
         try {
             economizaCodigo();
-            labelPagamento.setText("Aguarte enquanto o garçom traz a maquina de cartão!");
+            fecharPedido();
+            labelPagamento.setText("Aguarde enquanto o garçom traz a máquina de cartão!");
+            labelValorTotal.setText("Valor total: R$");
+            labelPrecoTotal.setText(precoTotal);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
+        }
+    }
+
+    private void fecharPedido(){
+        try {
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
+                    ("UPDATE comanda SET statuscomanda = 'Fechado' WHERE id_mesa = ? AND statuscomanda = 'Aberto';");
+            ps.setInt(1, TelaPedidoController.numeroMesa);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -34,13 +52,15 @@ public class TelaPagamentoController {
             JOptionPane.showMessageDialog(null,e);
         }
     }
+
     public void economizaCodigo(){
         try {
-            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("UPDATE comanda SET statuscomanda = ? WHERE id_mesa = ?");
-            ps.setString(1,"Fechado");
-            ps.setInt(2,TelaPedidoController.numeroMesa);
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
+                    ("UPDATE pedido SET statuspedido = 'Fechado' WHERE codcomanda = ? AND statuspedido = 'Aberto';");
+            ps.setInt(1,TelaPedidoController.numeroComanda);
             ps.executeUpdate();
             TelaPedidoController.numeroComanda = null;
+            TelaComandaController.numeroComanda = 0;
             botaoPagarCartao.setDisable(true);
             botaoPagarCartao.setVisible(false);
             botaoPagarDinheiro.setDisable(true);
@@ -56,5 +76,6 @@ public class TelaPagamentoController {
     public void acaoSair() throws IOException {
         TelaComandaController.stage.close();
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
+        TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
     }
 }

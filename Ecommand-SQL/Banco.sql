@@ -62,6 +62,7 @@ CREATE TABLE Pedido (
   Cozinheiro_Usuario_CodUsuario INT,
   Observacao VARCHAR(200),
   precototal DECIMAL(10,2) NOT NULL DEFAULT 0,
+  statusPedido VARCHAR(10) CHECK(statusPedido IN ('Aberto','Fechado')),
   Data_Pedido DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (CodPedido),
   CONSTRAINT fk_comanda
