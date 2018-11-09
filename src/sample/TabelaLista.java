@@ -226,6 +226,30 @@ public class TabelaLista {
         }
     }
 
+    public void mostraTabelaPedidosComanda(TableView tabelaGarcom, TableColumn colunaCodPedido, TableColumn colunaIdMesa, TableColumn colunaPreco, TableColumn codcomanda, String sql) {
+        ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
+        try {
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                listaPedidos.add(new Pedido(rs.getInt("codcomanda"), rs.getInt("codpedido"),
+                        rs.getInt("id_mesa") ,rs.getFloat("precototal")));
+            }
+            rs.close();
+
+            colunaCodPedido.setCellValueFactory(new PropertyValueFactory<>("codpedido"));
+            colunaIdMesa.setCellValueFactory(new PropertyValueFactory<>("idmesa"));
+            colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+            codcomanda.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+            tabelaGarcom.setItems(listaPedidos);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao apresentar pedidos!\n" + e);
+        }
+    }
+
     public void mostraPedidosAtendimento(TableView<Pedido> tabelaGarcom, TableColumn<Pedido, Integer> colunaCodPedido, TableColumn<Pedido, String> colunaIdMesa, TableColumn<Pedido, String> colunaObservacao, TableColumn<Pedido, Integer> colunaStatus, String sql, String sql_2) {
         ObservableList<Pedido> listaPedidos = FXCollections.observableArrayList();
         try {

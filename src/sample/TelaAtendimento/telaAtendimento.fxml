@@ -25,10 +25,10 @@
         </ImageView>
         <TableView fx:id="tabelaPedido" layoutY="197.0" onMouseClicked="#acaoInformacao" prefHeight="337.0" prefWidth="720.0">
             <columns>
-                <TableColumn fx:id="colunaCodPedido" minWidth="0.0" prefWidth="65.0" text="Pedido" />
                 <TableColumn fx:id="colunaNumMesa" prefWidth="65.0" text="Mesa" />
-                <TableColumn fx:id="colunaObservacao" prefWidth="507.0" text="Observação" />
-            <TableColumn fx:id="colunaStatus" prefWidth="82.0" text="Status" />
+                <TableColumn fx:id="colunaObservacao" prefWidth="504.0" text="Observação" />
+                <TableColumn fx:id="colunaCodPedido" minWidth="0.0" prefWidth="60.0" text="Pedido" />
+            <TableColumn fx:id="colunaStatus" prefWidth="90.0" text="Status" />
             </columns>
         </TableView>
     </children>

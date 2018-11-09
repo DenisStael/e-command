@@ -65,7 +65,7 @@ public class TelaPedidoController implements Initializable {
             }
 
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
-                    ("insert into pedido(codcomanda,observacao,precototal)values(?,?,?);");
+                    ("insert into pedido(codcomanda,observacao,precototal,statuspedido)values(?,?,?,'Aberto');");
             ps.setInt(1,numeroComanda);
             ps.setFloat(3,calculaPreco());
 
