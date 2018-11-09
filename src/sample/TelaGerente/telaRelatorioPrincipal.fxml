@@ -30,23 +30,23 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Label layoutX="163.0" layoutY="192.0" text="Escolha o período que deseja gerar o relatório:">
+        <Label disable="true" layoutX="163.0" layoutY="192.0" text="Escolha o período que deseja gerar o relatório:" visible="false">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="238.0" layoutY="239.0" prefHeight="17.0" prefWidth="31.0" text="DE:">
+        <Label disable="true" layoutX="238.0" layoutY="239.0" prefHeight="17.0" prefWidth="31.0" text="DE:" visible="false">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="438.0" layoutY="239.0" prefHeight="17.0" prefWidth="31.0" text="ATÉ:">
+        <Label disable="true" layoutX="438.0" layoutY="239.0" prefHeight="17.0" prefWidth="31.0" text="ATÉ:" visible="false">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <DatePicker fx:id="txtDataInicio" layoutX="165.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" />
-        <DatePicker fx:id="txtDataFim" layoutX="366.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" />
+        <DatePicker fx:id="txtDataInicio" disable="true" layoutX="165.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" visible="false" />
+        <DatePicker fx:id="txtDataFim" disable="true" layoutX="366.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" visible="false" />
         <Button layoutX="383.0" layoutY="405.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioPedidos" prefHeight="39.0" prefWidth="111.0" text="Pedidos" wrapText="true">
             <font>
                 <Font name="System Bold" size="15.0" />

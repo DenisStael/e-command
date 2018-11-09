@@ -37,6 +37,14 @@ public class Produto {
         this.nome = new SimpleStringProperty(nome);
         this.descricao = new SimpleStringProperty(descricao);
     }
+    public Produto(String nome,String descricao,String medida,float quantidade){
+        this.nome = new SimpleStringProperty(nome);
+        this.descricao = new SimpleStringProperty(descricao);
+        this.medida = new SimpleStringProperty(medida);
+        this.quantidade = new SimpleFloatProperty(quantidade);
+
+
+    }
 
     public Produto() {
     }

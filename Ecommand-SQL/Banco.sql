@@ -105,7 +105,30 @@ CREATE TABLE ImgCardapio(
   ImagemCardapio VARCHAR (200),
   PRIMARY KEY (CodImagem)
 );
-  
+
+-- SCRIPT DE INSERT PRODUTOS --
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Pão',100,'Pão Francês','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Queijo',15,'Queijo suiço','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Feijão',50,'Feijão preto','Kg');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Batata',150,'Batata para fritar','Kg');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Arroz',50,'Arroz branco','Kg');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Hambúrgueres',200,'Hambúrguer por unidade','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Coca Cola',300,'Coca Cola 2 Litros','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Cerveja',300,'Cerveja Skol','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Pão de hambúrguer',200,'Pão redondo','Un');
+INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Farinha de trigo',100,'Farinha para fazer massa','Kg');
+
+
+
+
+--Pratos--
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-tudo',15.50,'X-tudo com tudo que tem direito, ovo ,bacon,hambúrguer,tomate,alface,batata palha','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Porção de batata',20.00,'Porção de 800G,serve até pessoas ','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Coca-Cola',8.00,'Coca-Cola 2L ','Bebida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Cerveja Skol',5.00,'Cerveja Skol latinha ','Bebida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-Bacon',12.00,'X-bacon com, hambúrguer, fatias de bacon, tomate,salada, queijo ','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-Egg',10.00,'X-Egg com, hambúrguer, ovo frito,presunto,queijo','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+
 /*
 CREATE SEQUENCE Avaliacao_seq;
 CREATE TABLE Avaliacao(

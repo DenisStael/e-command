@@ -53,7 +53,6 @@ public class TelaPagamentoController {
             JOptionPane.showMessageDialog(null,e);
         }
     }
-
     public void acaoSair() throws IOException {
         TelaComandaController.stage.close();
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
