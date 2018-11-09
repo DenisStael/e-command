@@ -1,5 +1,8 @@
 package sample.TelaGarcom;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.*;
@@ -34,6 +39,22 @@ public class TelaGarcomController extends Logout implements Initializable {
 
     public static void setUsuario(Usuario usuario) {
         TelaGarcomController.usuario = usuario;
+    }
+
+    @FXML
+    protected void acaoAviso() throws IOException {
+        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../TelaGarcom/telaAvisos.fxml"));
+        Scene scene = new Scene(root);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Main.stage);
+        stage.resizableProperty().setValue(false);
+        stage.sizeToScene();
+        stage.getIcons().add(icone);
+        stage.setTitle("Avisos");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void acaoVoltar() throws IOException {
@@ -72,4 +93,5 @@ public class TelaGarcomController extends Logout implements Initializable {
             }
         });
     }
+
 }

@@ -5,14 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.*;
+import sample.TelaGarcom.TelaAvisosController;
 import sample.TelaPedido.TelaPedidoController;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +25,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaVisualizarCardapioController extends Logout implements Initializable {
-
+    public boolean ativado;
     public static Stage stage;
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
     private TabelaLista tabelaLista = new TabelaLista();
@@ -33,23 +36,27 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     private String caminhoFoto;
     @FXML
     private ImageView imgRestaurante;
+    @FXML
+    private Button botaoGarcom;
 
     private void insereImgCardapio() {
-        imgRestaurante.setImage(new Image("file:///"+caminhoFoto));
+        imgRestaurante.setImage(new Image("file:///" + caminhoFoto));
 
     }
-    private void selecionaImagem(){
+
+    private void selecionaImagem() {
         try {
             PreparedStatement ps2 = ConexaoBanco.getConnection().prepareStatement
                     ("SELECT ImagemCardapio FROM ImgCardapio WHERE CodImagem = 1;");
-           ResultSet rs = ps2.executeQuery();
-            if(rs.next()){
+            ResultSet rs = ps2.executeQuery();
+            if (rs.next()) {
                 caminhoFoto = rs.getString("imagemcardapio");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     protected void acaoVoltar() throws IOException {
         Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
@@ -72,28 +79,28 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     }
 
     @FXML
-    private void acaoSelecaoPrato(){
-        if(listaBebidas.getSelectionModel().getSelectedItem() != null){
+    private void acaoSelecaoPrato() {
+        if (listaBebidas.getSelectionModel().getSelectedItem() != null) {
             listaBebidas.getSelectionModel().clearSelection();
         }
     }
 
     @FXML
-    private void acaoSelecaoBebida(){
-        if(listaPratos.getSelectionModel().getSelectedItem() != null)
+    private void acaoSelecaoBebida() {
+        if (listaPratos.getSelectionModel().getSelectedItem() != null)
             listaPratos.getSelectionModel().clearSelection();
     }
 
     public void acaoAddPedido() {
-        String cod = null, nome= null, preco = null, desc = null, imagem = null;
+        String cod = null, nome = null, preco = null, desc = null, imagem = null;
 
-        if(listaPratos.getSelectionModel().getSelectedItem() != null || listaBebidas.getSelectionModel().getSelectedItem() != null){
-            if(listaPratos.getSelectionModel().getSelectedItem() != null){
+        if (listaPratos.getSelectionModel().getSelectedItem() != null || listaBebidas.getSelectionModel().getSelectedItem() != null) {
+            if (listaPratos.getSelectionModel().getSelectedItem() != null) {
                 cod = (((Label) listaPratos.getSelectionModel().getSelectedItem().getChildren().get(0)).getText());
                 nome = (((Label) listaPratos.getSelectionModel().getSelectedItem().getChildren().get(2)).getText());
                 preco = (((Label) listaPratos.getSelectionModel().getSelectedItem().getChildren().get(4)).getText());
                 desc = (((Label) listaPratos.getSelectionModel().getSelectedItem().getChildren().get(5)).getText());
-            } else if(listaBebidas.getSelectionModel().getSelectedItem() != null){
+            } else if (listaBebidas.getSelectionModel().getSelectedItem() != null) {
                 cod = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(0)).getText());
                 nome = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(2)).getText());
                 preco = (((Label) listaBebidas.getSelectionModel().getSelectedItem().getChildren().get(4)).getText());
@@ -104,10 +111,10 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
                 ps.setInt(1, Integer.parseInt(cod));
                 ResultSet rs = ps.executeQuery();
 
-                if(rs.next())
+                if (rs.next())
                     imagem = rs.getString("imagem");
 
-                pedidoAtual.pegaInformacoes(nome,preco,desc,Integer.parseInt(cod),imagem);
+                pedidoAtual.pegaInformacoes(nome, preco, desc, Integer.parseInt(cod), imagem);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -136,12 +143,28 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
         stage.setScene(scene);
         stage.show();
     }
-
-    public void initialize(URL url, ResourceBundle rb){
-        tabelaLista.listaPrato(listaPratos,sqlPrato);
-        tabelaLista.listaPrato(listaBebidas,sqlBebida);
-        selecionaImagem();
-        insereImgCardapio();
+    public void acaoGarcom (MouseEvent mouseEvent) {
+        if (ativado == false){
+            ativado = true;
+            botaoGarcom.setStyle("-fx-background-color: #da1313; -fx-text-fill:#ffffff ;-fx-font-weight: bold");
+            botaoGarcom.setText("Cancelar Chamado");
+            TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+        }else if(ativado = true) {
+            TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Chamando garçom");
+            ativado = false;
+            botaoGarcom.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;-fx-font-weight: bold");
+            botaoGarcom.setText("Chamar Garçom");
+        }
     }
 
+    public void initialize(URL url, ResourceBundle rb) {
+        tabelaLista.listaPrato(listaPratos, sqlPrato);
+        tabelaLista.listaPrato(listaBebidas, sqlBebida);
+        selecionaImagem();
+        insereImgCardapio();
+        ativado = true;
+        botaoGarcom.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;-fx-font-weight: bold");
+        botaoGarcom.setText("Chamar Garçom");
+
+    }
 }

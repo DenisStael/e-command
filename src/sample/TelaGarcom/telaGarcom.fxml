@@ -13,7 +13,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="botaoVoltar" layoutX="204.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #ff3333;" text="Sair" textFill="WHITE">
+      <Button fx:id="botaoVoltar" layoutX="138.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #ff3333;" text="Sair" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -35,7 +35,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="386.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoAtendimentos" prefHeight="31.0" prefWidth="147.0" text="Meus atendimentos">
+      <Button layoutX="287.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoAtendimentos" prefHeight="31.0" prefWidth="147.0" text="Meus atendimentos">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="botaoAviso" layoutX="536.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoAviso" prefHeight="31.0" prefWidth="66.0" text="Avisos">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

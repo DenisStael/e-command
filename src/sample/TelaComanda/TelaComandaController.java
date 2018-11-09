@@ -1,5 +1,7 @@
 package sample.TelaComanda;
 
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,12 +10,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.*;
 import sample.TelaInfoPedido.TelaInfoPedidoController;
 import sample.TelaPedido.TelaPedidoController;
+
+import javax.swing.*;
+import javax.xml.transform.Result;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
@@ -24,7 +34,9 @@ public class TelaComandaController implements Initializable {
     @FXML
     private TableColumn colunaCodPedido, colunaNumeroMesa, colunaPrecoPedido;
     @FXML
-    private Label labelPreco,labelAguarde,labelNumeroComanda;
+    private Label labelPreco;
+    @FXML
+    private Label labelNumeroComanda;
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
     }
@@ -41,20 +53,6 @@ public class TelaComandaController implements Initializable {
             stage.show();
         }
     }
-
-    public void acaoPagarCartao() {
-        labelAguarde.setText("Aguarde enquanto o garçom traz a máquina de cartão!");
-    }
-
-    public void acaoPagarDinheiro() {
-        /*try {
-            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("INSERT ");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
-        labelAguarde.setText("Favor digija-se ao balcão para efetuar o pagamento!");
-    }
-
     private float calculaPreco(){
         Float precoTotal = 0f;
         for(int i = 0; i < tabelaPedidos.getItems().size(); i++){
@@ -69,5 +67,20 @@ public class TelaComandaController implements Initializable {
         tabelaPedido.mostraTabelaPedido(tabelaPedidos,colunaCodPedido,colunaNumeroMesa,colunaPrecoPedido,sql);
         labelPreco.setText(FormataPreco.formatarFloat(calculaPreco()));
         labelNumeroComanda.setText(String.valueOf(numeroComanda));
+    }
+
+    public void acaoFecharConta() throws IOException {
+        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../TelaComanda/telaPagamento.fxml"));
+        Scene scene = new Scene(root);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Main.stage);
+        stage.resizableProperty().setValue(false);
+        stage.sizeToScene();
+        stage.getIcons().add(icone);
+        stage.setTitle("Método de pagamento:");
+        stage.setScene(scene);
+        stage.show();
     }
 }

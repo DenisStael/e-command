@@ -60,7 +60,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button layoutX="7.0" layoutY="45.0" mnemonicParsing="false" onAction="#acaoProximo" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Finalizar Pedido" textFill="WHITE">
+                <Button layoutX="7.0" layoutY="383.0" mnemonicParsing="false" onAction="#acaoProximo" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Finalizar Pedido" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -68,7 +68,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button layoutX="7.0" layoutY="380.0" mnemonicParsing="false" onAction="#acaoComanda" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Meus Pedidos" textFill="WHITE">
+                <Button layoutX="7.0" layoutY="339.0" mnemonicParsing="false" onAction="#acaoComanda" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #47d147;" text="Meus Pedidos" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -84,6 +84,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="botaoGarcom" layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#acaoGarcom" prefHeight="36.0" prefWidth="147.0" text="Chamar Garçom" />
             </children></AnchorPane>
     </items>
 </SplitPane>

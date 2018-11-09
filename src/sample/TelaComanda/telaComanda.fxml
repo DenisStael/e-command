@@ -53,13 +53,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="414.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoPagarCartao" prefHeight="36.0" prefWidth="137.0" text="Pagar com cartão" />
-            <Label fx:id="labelAguarde" alignment="CENTER" layoutX="466.0" layoutY="451.0" prefHeight="66.0" prefWidth="196.0" textFill="#d70909" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="578.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoPagarDinheiro" prefHeight="36.0" prefWidth="137.0" text="Pagar com dinheiro" />
+            <Button layoutX="523.0" layoutY="524.0" mnemonicParsing="false" onAction="#acaoFecharConta" prefHeight="36.0" prefWidth="110.0" text="Fechar Conta" />
             <Label layoutX="452.0" layoutY="153.0" text="Número da Comanda:">
                <font>
                   <Font name="System Bold" size="18.0" />
