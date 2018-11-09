@@ -152,9 +152,9 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
             ativado = true;
             botaoGarcom.setStyle("-fx-background-color: #da1313; -fx-text-fill:#ffffff ;-fx-font-weight: bold");
             botaoGarcom.setText("Cancelar Chamado");
-            TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
-        }else{
             TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Chamando garçom");
+        }else{
+            TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
             ativado = false;
             botaoGarcom.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;-fx-font-weight: bold");
             botaoGarcom.setText("Chamar Garçom");

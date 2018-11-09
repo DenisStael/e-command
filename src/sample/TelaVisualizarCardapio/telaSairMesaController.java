@@ -19,9 +19,9 @@ public class telaSairMesaController {
             Main.trocaTela("TelaMesa/telaMesa.fxml");
             TelaVisualizarCardapioController.stage.close();
             TelaPedidoController.numeroComanda = null;
-            if(TelaVisualizarCardapioController.ativado){
-                TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
-            }
+            //if(TelaVisualizarCardapioController.ativado){
+              //  TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+            //}
         }else{
             labelSair.setText("Digite a senha corretamente!");
         }

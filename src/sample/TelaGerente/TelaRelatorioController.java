@@ -66,6 +66,11 @@ public class TelaRelatorioController {
                 doc.open();
                 PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("select nome,descricao,quantidade,medida from produto");
                 rs = ps.executeQuery();
+                doc.add(new Paragraph("RELATÓRIO DO ESTOQUE ATUAL:"));
+                doc.add(new Paragraph("                                                "));
+                doc.add(new Paragraph("                                                "));
+                doc.add(new Paragraph("                                                "));
+                doc.add(new Paragraph("                                                "));
                 while (rs.next()) {
                     //listaProdutos = rs.getString("nome");
                     doc.add(new Paragraph("Nome do produto: " + rs.getString("nome")));
