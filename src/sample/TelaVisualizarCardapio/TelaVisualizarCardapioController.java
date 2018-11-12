@@ -3,7 +3,6 @@ package sample.TelaVisualizarCardapio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -60,9 +59,9 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
 
     @FXML
     protected void acaoVoltar() throws IOException {
-        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Image icone = new Image("sample/img/icone.png");
         stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../TelaVisualizarCardapio/telaSairMesa.fxml"));
+        Parent root = Main.novaTela("TelaVisualizarCardapio/telaSairMesa.fxml");
         Scene scene = new Scene(root);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(Main.stage);
@@ -134,9 +133,9 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     }
 
     public void acaoPedidoAtual() throws IOException {
-        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Image icone = new Image("sample/img/icone.png");
         Stage stage2 = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../TelaVisualizarCardapio/telaPedido.fxml"));
+        Parent root = Main.novaTela("TelaVisualizarCardapio/telaPedido.fxml");
         Scene scene = new Scene(root);
         stage2.initModality(Modality.APPLICATION_MODAL);
         stage2.initOwner(Main.stage);

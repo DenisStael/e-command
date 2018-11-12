@@ -1,7 +1,6 @@
 package sample.TelaGerente;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -56,7 +55,7 @@ public class TelaComandasController implements Initializable {
             Stage stage = new Stage();
             TelaInfoPedidoController.codPedido = tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido();
             stage.setTitle("Informações do Pedido");
-            Parent root = FXMLLoader.load(getClass().getResource("../TelaInfoPedido/telaInfoPedido.fxml"));
+            Parent root = Main.novaTela("TelaInfoPedido/telaInfoPedido.fxml");
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

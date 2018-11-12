@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.*;
 import sample.TelaAtendimento.TelaAtendimentoController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,9 +39,9 @@ public class TelaGarcomController extends Logout implements Initializable {
 
     @FXML
     protected void acaoAviso() throws IOException {
-        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Image icone = new Image("sample/img/icone.png");
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../TelaGarcom/telaAvisos.fxml"));
+        Parent root = Main.novaTela("TelaGarcom/telaAvisos.fxml");
         Scene scene = new Scene(root);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(Main.stage);

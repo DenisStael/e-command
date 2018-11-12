@@ -74,6 +74,11 @@ public class Main extends Application {
         stage.show();
     }
 
+    public static Parent novaTela(String tela) throws IOException {
+        Parent root = FXMLLoader.load(thisClass.getResource(tela));
+        return root;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

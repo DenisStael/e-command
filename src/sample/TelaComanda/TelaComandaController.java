@@ -1,5 +1,6 @@
 package sample.TelaComanda;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +42,7 @@ public class TelaComandaController implements Initializable {
             TelaInfoPedidoController.codPedido = tabelaPedidos.getSelectionModel().getSelectedItem().getCodpedido();
             Stage stage = new Stage();
             stage.setTitle("Informações do Pedido");
-            Parent root = FXMLLoader.load(getClass().getResource("../TelaInfoPedido/telaInfoPedido.fxml"));
+            Parent root = Main.novaTela("TelaInfoPedido/telaInfoPedido.fxml");
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -50,9 +51,9 @@ public class TelaComandaController implements Initializable {
 
     public void acaoFecharConta() throws IOException {
         TelaPagamentoController.precoTotal = labelPreco.getText();
-        Image icone = new Image(getClass().getResourceAsStream("../img/icone.png"));
+        Image icone = new Image("sample/img/icone.png");
         stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../TelaComanda/telaPagamento.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("telaPagamento.fxml"));
         Scene scene = new Scene(root);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(Main.stage);
