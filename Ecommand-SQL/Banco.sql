@@ -107,6 +107,12 @@ CREATE TABLE ImgCardapio(
   PRIMARY KEY (CodImagem)
 );
 
+CREATE TABLE Aviso(
+  id_mesa INT NOT NULL,
+  informacao VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id_mesa)
+);
+
 -- SCRIPT DE INSERT PRODUTOS --
 INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Pão',100,'Pão Francês','Un');
 INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Queijo',15,'Queijo suiço','Un');
