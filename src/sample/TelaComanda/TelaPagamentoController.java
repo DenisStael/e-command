@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 public class TelaPagamentoController {
 
+    private TelaAvisosController telaAviso = new TelaAvisosController();
     public static String precoTotal;
     @FXML
     private Label labelPagamento,labelFinalizado,labelInfo,labelValorTotal,labelPrecoTotal;
@@ -21,7 +22,7 @@ public class TelaPagamentoController {
     private Button botaoPagarCartao,botaoPagarDinheiro,botaoSair;
 
     public void acaoPagarCartao() {
-        TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Pagamento em cartão");
+        telaAviso.insereLista(TelaPedidoController.numeroMesa,"Pagamento em cartão");
         try {
             economizaCodigo();
             fecharPedido();
@@ -76,6 +77,6 @@ public class TelaPagamentoController {
     public void acaoSair() throws IOException {
         TelaComandaController.stage.close();
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
-        TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+        telaAviso.removeLista(TelaPedidoController.numeroMesa);
     }
 }

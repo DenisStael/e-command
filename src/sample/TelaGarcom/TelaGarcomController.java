@@ -6,9 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -16,6 +18,9 @@ import sample.*;
 import sample.TelaAtendimento.TelaAtendimentoController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TelaGarcomController extends Logout implements Initializable {
@@ -28,6 +33,10 @@ public class TelaGarcomController extends Logout implements Initializable {
     private TableView<Pedido> tabelaGarcom;
     @FXML
     private TableColumn colunaCodPedido,colunaNumMesa,colunaObservacao;
+    @FXML
+    private ImageView imagemNotificacao;
+    @FXML
+    private Label labelNotificacao;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -75,11 +84,38 @@ public class TelaGarcomController extends Logout implements Initializable {
 
     public void acaoAtualizar() {
         pedido.mostraTabelaPedidos(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        pesquisaAvisos();
+    }
+
+    private void pesquisaAvisos(){
+        try {
+            Statement stmt = ConexaoBanco.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select count(*) as qtd from aviso;");
+
+            if(rs.next()){
+                if(rs.getInt("qtd") == 0){
+                    imagemNotificacao.setVisible(false);
+                    labelNotificacao.setVisible(false);
+                }else if(rs.getInt("qtd") < 10) {
+                    imagemNotificacao.setVisible(true);
+                    labelNotificacao.setVisible(true);
+                    labelNotificacao.setText(String.valueOf(rs.getInt("qtd")));
+                }
+                else if(rs.getInt("qtd") > 9){
+                    imagemNotificacao.setVisible(true);
+                    labelNotificacao.setVisible(true);
+                    labelNotificacao.setText("9+");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pedido.mostraTabelaPedidos(tabelaGarcom,colunaCodPedido,colunaNumMesa,colunaObservacao,sql);
+        pesquisaAvisos();
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

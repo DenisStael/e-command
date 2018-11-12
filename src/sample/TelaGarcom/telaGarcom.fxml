@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -17,6 +20,9 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <ImageView fitHeight="126.0" fitWidth="296.0" layoutX="212.0" layoutY="28.0">
          <image>
@@ -34,16 +40,35 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button layoutX="287.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoAtendimentos" prefHeight="31.0" prefWidth="147.0" text="Meus atendimentos">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="botaoAviso" layoutX="536.0" layoutY="555.0" mnemonicParsing="false" onAction="#acaoAviso" prefHeight="31.0" prefWidth="66.0" text="Avisos">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
+      <ImageView fx:id="imagemNotificacao" fitHeight="21.0" fitWidth="38.0" layoutX="592.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/notificacao.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelNotificacao" alignment="CENTER" layoutX="592.0" layoutY="546.0" prefHeight="19.0" prefWidth="21.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

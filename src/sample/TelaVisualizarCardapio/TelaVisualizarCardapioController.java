@@ -29,6 +29,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     public static boolean ativado;
     public static Stage stage;
     private TelaPedidoAtualController pedidoAtual = new TelaPedidoAtualController();
+    private TelaAvisosController telaAviso = new TelaAvisosController();
     private TabelaLista tabelaLista = new TabelaLista();
     private String sqlPrato = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Comida' order by codprato;"; //String sql
     private String sqlBebida = "select nome,codprato,descricao,preco,imagem from prato where cardapio = TRUE and tipo = 'Bebida' order by codprato;"; //String sql
@@ -127,7 +128,7 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
     public void acaoProximo() throws IOException {
         TelaPedidoController.setListaPedido(pedidoAtual.getListaPedido());
         if(ativado){
-            TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+            telaAviso.removeLista(TelaPedidoController.numeroMesa);
         }
         Main.trocaTela("TelaPedido/telaPedido.fxml");
     }
@@ -151,9 +152,9 @@ public class TelaVisualizarCardapioController extends Logout implements Initiali
             ativado = true;
             botaoGarcom.setStyle("-fx-background-color: #da1313; -fx-text-fill:#ffffff ;-fx-font-weight: bold");
             botaoGarcom.setText("Cancelar Chamado");
-            TelaAvisosController.insereLista(TelaPedidoController.numeroMesa,"Chamando garçom");
+            telaAviso.insereLista(TelaPedidoController.numeroMesa,"Chamando garçom");
         }else{
-            TelaAvisosController.removeLista(TelaPedidoController.numeroMesa);
+            telaAviso.removeLista(TelaPedidoController.numeroMesa);
             ativado = false;
             botaoGarcom.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;-fx-font-weight: bold");
             botaoGarcom.setText("Chamar Garçom");
