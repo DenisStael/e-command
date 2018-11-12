@@ -4,3 +4,5 @@ out/
 .idea/dataSources.local.xml
 .idea/dataSources.xml
 .idea/libraries/
+.idea/artifacts/
+src/META-INF
