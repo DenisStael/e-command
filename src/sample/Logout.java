@@ -13,7 +13,7 @@ public class Logout {
 
     private static Stage stage;
 
-    protected void acaoSair() throws IOException {
+    public void acaoSair() throws IOException {
         Image icone = new Image(getClass().getResourceAsStream("../img/question.png"));
         stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../TelaLogout/telaLogout.fxml"));
@@ -28,12 +28,12 @@ public class Logout {
         stage.show();
     }
 
-    protected void sair() throws IOException {
+    public void sair() throws IOException {
         stage.close();
         Main.trocaTela("TelaLogin/telaLogin.fxml");
     }
 
-    protected void ficar(){
+    public void ficar(){
         stage.close();
     }
 }
