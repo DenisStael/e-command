@@ -1,0 +1,12 @@
+.avaliacaoPane{
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-background-radius: 50;
+}
+.button{
+    -fx-background-radius: 100;
+}
+.rating > .container > .button{
+    -fx-pref-width: 45;
+    -fx-pref-height: 45;
+    -fx-background-repeat: no-repeat;
+}

@@ -75,7 +75,7 @@ public class TelaPagamentoController {
         }
     }
     public void acaoSair() throws IOException {
-        TelaComandaController.stage.close();
+        TelaAvaliacao.stage.close();
         Main.trocaTela("TelaVisualizarCardapio/telaVisualizarCardapio.fxml");
         telaAviso.removeLista(TelaPedidoController.numeroMesa);
     }

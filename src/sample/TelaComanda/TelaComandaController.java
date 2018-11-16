@@ -1,16 +1,12 @@
 package sample.TelaComanda;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.*;
 import sample.TelaInfoPedido.TelaInfoPedidoController;
@@ -21,7 +17,6 @@ import java.util.ResourceBundle;
 
 public class TelaComandaController implements Initializable {
 
-    public static Stage stage;
     public static int numeroComanda;
     private TabelaLista tabelaPedido = new TabelaLista();
     @FXML
@@ -51,18 +46,7 @@ public class TelaComandaController implements Initializable {
 
     public void acaoFecharConta() throws IOException {
         TelaPagamentoController.precoTotal = labelPreco.getText();
-        Image icone = new Image("sample/img/icone.png");
-        stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("telaPagamento.fxml"));
-        Scene scene = new Scene(root);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(Main.stage);
-        stage.resizableProperty().setValue(false);
-        stage.sizeToScene();
-        stage.getIcons().add(icone);
-        stage.setTitle("Método de pagamento:");
-        stage.setScene(scene);
-        stage.show();
+        Main.trocaTela("TelaComanda/telaAvaliacao.fxml");
     }
 
     private float calculaPreco(){
