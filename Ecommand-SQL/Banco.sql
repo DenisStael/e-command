@@ -113,8 +113,19 @@ CREATE TABLE Aviso(
   PRIMARY KEY (id_mesa)
 );
 
+CREATE SEQUENCE Avaliacao_seq;
+
+CREATE TABLE Avaliacao(
+  CodAvaliacao INT NOT NULL DEFAULT NEXTVAL ('Avaliacao_seq'),
+  NotaComida INT NOT NULL CHECK (NotaComida IN (1,2,3,4,5)), 
+  NotaAtendimento INT NOT NULL CHECK (NotaAtendimento IN (1,2,3,4,5)),
+  NotaAplicativo INT NOT NULL CHECK (NotaAplicativo IN (1,2,3,4,5)),
+  Comentario VARCHAR(200),
+  PRIMARY KEY (CodAvaliacao)
+);
+
 -- SCRIPT DE INSERT PRODUTOS --
-INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Pão',100,'Pão Francês','Un');
+/*INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Pão',100,'Pão Francês','Un');
 INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Queijo',15,'Queijo suiço','Un');
 INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Feijão',50,'Feijão preto','Kg');
 INSERT INTO Produto(nome, quantidade, descricao, medida) VALUES('Batata',150,'Batata para fritar','Kg');
@@ -134,27 +145,6 @@ INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Porção de batata',2
 INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Coca-Cola',8.00,'Coca-Cola 2L ','Bebida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
 INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('Cerveja Skol',5.00,'Cerveja Skol latinha ','Bebida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
 INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-Bacon',12.00,'X-bacon com, hambúrguer, fatias de bacon, tomate,salada, queijo ','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
-INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-Egg',10.00,'X-Egg com, hambúrguer, ovo frito,presunto,queijo','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');
+INSERT INTO Prato(nome,preco,descricao,tipo,imagem)VALUES('X-Egg',10.00,'X-Egg com, hambúrguer, ovo frito,presunto,queijo','Comida','C:\Users\ADM\Desktop\Trabalhos\HTML\picapauputasso.jpg');*/
 
-/*
-CREATE SEQUENCE Avaliacao_seq;
-CREATE TABLE Avaliacao(
-  CodAvaliacao INT NOT NULL DEFAULT NEXTVAL ('Avaliacao_seq'),
-  Comentario VARCHAR(200),
-  NotaAvaliacao INT NOT NULL CHECK (NotaAvaliacao IN (1,2,3,4,5)
-);
-CREATE TABLE AvaliacaoComanda(
-  CodComanda INT NOT NULL,
-  CodAvaliacao INT NOT NULL,
-  PRIMARY KEY (CodComanda,CodAvaliacao),
-  CONSTRAINT FK_COMANDA
-    FOREIGN KEY (CodComanda)
-    REFERENCES Comanda (CodComanda)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT FK_AVALIACAO
-    FOREIGN KEY (CodAvaliacao)
-    REFERENCES Avaliacao (CodAvaliacao)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);*/
+
