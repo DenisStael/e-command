@@ -1,3 +1,6 @@
+.panePrincipal{
+    -fx-background-color: transparent;
+}
 .avaliacaoPane{
     -fx-background-color: rgba(255,255,255,0.8);
     -fx-background-radius: 50;

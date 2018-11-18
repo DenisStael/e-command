@@ -11,49 +11,59 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" stylesheets="@../css/telaAvaliacao.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaAvaliacao">
    <children>
-      <ImageView fitHeight="105.0" fitWidth="252.0" layoutX="234.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/logo.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="288.0" layoutY="553.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="33.0" prefWidth="146.0" text="Voltar">
+      <Button layoutX="287.0" layoutY="553.0" mnemonicParsing="false" onAction="#acaoVoltar" prefHeight="33.0" prefWidth="146.0" text="Voltar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Pane fx:id="pane" layoutX="19.0" layoutY="125.0" prefHeight="405.0" prefWidth="685.0" styleClass="avaliacaoPane">
+      <Pane fx:id="pane" layoutX="17.0" layoutY="23.0" prefHeight="520.0" prefWidth="689.0" styleClass="avaliacaoPane">
          <children>
-            <Button layoutX="146.0" layoutY="352.0" mnemonicParsing="false" onAction="#acaoSemAvaliar" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: #ae1313;" text="Continuar sem Avaliar" textFill="WHITE">
+            <Button layoutX="142.0" layoutY="463.0" mnemonicParsing="false" onAction="#acaoSemAvaliar" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: #ae1313;" text="Continuar sem Avaliar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button layoutX="392.0" layoutY="352.0" mnemonicParsing="false" onAction="#acaoEnviarAvaliacao" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: #00b33c;" text="Enviar Avaliação" textFill="WHITE">
+            <Button layoutX="388.0" layoutY="463.0" mnemonicParsing="false" onAction="#acaoEnviarAvaliacao" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: #00b33c;" text="Enviar Avaliação" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Label layoutX="100.0" layoutY="125.0" text="Atendimento:">
+            <Label layoutX="95.0" layoutY="121.0" text="Atendimento:" textFill="#4242c6">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="131.0" layoutY="187.0" text="Aplicativo:">
+            <Label layoutX="126.0" layoutY="183.0" text="Aplicativo:" textFill="#4242c6">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="156.0" layoutY="250.0" text="Comida:">
+            <Label layoutX="151.0" layoutY="246.0" text="Comida:" textFill="#4242c6">
                <font>
                   <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="58.0" text="Por favor deixe-nos sua opinião a fim de melhorarmos nosso serviço:" textFill="#02029a">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtComentario" layoutX="129.0" layoutY="331.0" prefHeight="119.0" prefWidth="418.0" promptText="Escreva seu comentário aqui..." wrapText="true" />
+            <Label layoutX="138.0" layoutY="299.0" prefHeight="32.0" prefWidth="392.0" text="Deixe-nos seu comentário (opcional): " textFill="#4242c6">
+               <font>
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="78.0" layoutY="172.0" text="Por favor deixe-nos sua opinião a fim de melhorarmos nosso serviço:" textFill="#32392c">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

@@ -1,53 +1,52 @@
 package sample.TelaComanda;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
+import sample.ConexaoBanco;
 import sample.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaAvaliacao implements Initializable {
 
-    public static Stage stage;
     private Rating ratingAtendimento = new Rating(), ratingAplicativo = new Rating(), ratingComida = new Rating();
 
     @FXML
     private Pane pane;
+    @FXML
+    private TextArea txtComentario;
 
     public void acaoSemAvaliar() throws IOException {
-        telaPagamento();
+        Main.trocaTela("TelaComanda/telaPagamento.fxml");
     }
 
-    public void acaoEnviarAvaliacao(){
-        System.out.println("Comida: "+ratingComida.getRating()+"\nAtendimento: "+ratingAtendimento.getRating()+"\nAplicativo: "+ratingAplicativo.getRating());
+    public void acaoEnviarAvaliacao() {
+        try {
+            PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
+                    ("insert into avaliacao(notaatendimento,notacomida,notaaplicativo,comentario)values(?,?,?,?);");
+            ps.setInt(1, (int) ratingAtendimento.getRating());
+            ps.setInt(2, (int) ratingComida.getRating());
+            ps.setInt(3, (int) ratingAplicativo.getRating());
+            if (!txtComentario.getText().isEmpty()) {
+                ps.setString(4, txtComentario.getText());
+            } else {
+                ps.setString(4, null);
+            }
+            ps.executeUpdate();
+            Main.trocaTela("TelaComanda/telaPagamento.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void acaoVoltar() throws IOException {
         Main.trocaTela("TelaComanda/telaComanda.fxml");
-    }
-
-    private void telaPagamento() throws IOException {
-        Image icone = new Image("sample/img/icone.png");
-        stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("telaPagamento.fxml"));
-        Scene scene = new Scene(root);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(Main.stage);
-        stage.resizableProperty().setValue(false);
-        stage.sizeToScene();
-        stage.getIcons().add(icone);
-        stage.setTitle("Método de pagamento:");
-        stage.setScene(scene);
-        stage.show();
     }
 
     @Override
@@ -56,11 +55,11 @@ public class TelaAvaliacao implements Initializable {
         ratingAplicativo.getStyleClass().add("rating");
         ratingComida.getStyleClass().add("rating");
         ratingAtendimento.setLayoutX(260);
-        ratingAtendimento.setLayoutY(123);
+        ratingAtendimento.setLayoutY(118);
         ratingAplicativo.setLayoutX(260);
-        ratingAplicativo.setLayoutY(185);
+        ratingAplicativo.setLayoutY(180);
         ratingComida.setLayoutX(260);
-        ratingComida.setLayoutY(250);
-        pane.getChildren().addAll(ratingAtendimento,ratingAplicativo,ratingComida);
+        ratingComida.setLayoutY(245);
+        pane.getChildren().addAll(ratingAtendimento, ratingAplicativo, ratingComida);
     }
 }
