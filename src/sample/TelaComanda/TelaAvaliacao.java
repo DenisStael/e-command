@@ -10,13 +10,11 @@ import sample.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TelaAvaliacao implements Initializable {
 
     private Rating ratingAtendimento = new Rating(), ratingAplicativo = new Rating(), ratingComida = new Rating();
-
     @FXML
     private Pane pane;
     @FXML

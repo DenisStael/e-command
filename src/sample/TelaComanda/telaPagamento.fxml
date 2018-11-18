@@ -7,32 +7,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="263.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaPagamentoController">
+<AnchorPane prefHeight="600.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaPagamentoController">
    <children>
-      <Button fx:id="botaoPagarCartao" layoutX="57.0" layoutY="203.0" mnemonicParsing="false" onAction="#acaoPagarCartao" prefHeight="46.0" prefWidth="126.0" style="-fx-background-radius: 50;" text="Pagar com cartão" />
-      <Button fx:id="botaoPagarDinheiro" layoutX="194.0" layoutY="203.0" mnemonicParsing="false" onAction="#acaoPagarDinheiro" prefHeight="46.0" prefWidth="126.0" style="-fx-background-radius: 50;" text="Pagar com dinheiro" />
-      <Label fx:id="labelPagamento" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="135.0" prefHeight="63.0" prefWidth="262.0" wrapText="true">
+      <Button fx:id="botaoPagarCartao" layoutX="224.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoPagarCartao" prefHeight="46.0" prefWidth="126.0" style="-fx-background-radius: 50;" text="Pagar com cartão" />
+      <Button fx:id="botaoPagarDinheiro" layoutX="361.0" layoutY="372.0" mnemonicParsing="false" onAction="#acaoPagarDinheiro" prefHeight="46.0" prefWidth="126.0" style="-fx-background-radius: 50;" text="Pagar com dinheiro" />
+      <Label fx:id="labelPagamento" alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="304.0" prefHeight="63.0" prefWidth="262.0" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="97.0" prefHeight="46.0" prefWidth="273.0" text="Favor escolha o método de pagamento:">
+      <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="266.0" prefHeight="46.0" prefWidth="273.0" text="Favor escolha o método de pagamento:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelFinalizado" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="14.0" prefHeight="40.0" prefWidth="191.0" wrapText="true">
+      <Label fx:id="labelFinalizado" alignment="CENTER" contentDisplay="CENTER" layoutX="257.0" layoutY="183.0" prefHeight="40.0" prefWidth="191.0" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="botaoSair" disable="true" layoutX="150.0" layoutY="68.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 100;" text="Sair" visible="false" />
-      <Label fx:id="labelValorTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="106.0" prefHeight="29.0" prefWidth="100.0">
+      <Button fx:id="botaoSair" disable="true" layoutX="317.0" layoutY="237.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 100;" text="Sair" visible="false" />
+      <Label fx:id="labelValorTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="271.0" layoutY="275.0" prefHeight="29.0" prefWidth="100.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelPrecoTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="208.0" layoutY="111.0" prefHeight="20.0" prefWidth="60.0">
+      <Label fx:id="labelPrecoTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="375.0" layoutY="280.0" prefHeight="20.0" prefWidth="60.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
