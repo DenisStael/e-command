@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaGerente.TelaRelatorioController">
     <children>
-        <Label layoutX="317.0" layoutY="155.0" text="Relatórios">
+        <Label layoutX="317.0" layoutY="155.0" text="Relatórios ">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -25,7 +25,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button layoutX="229.0" layoutY="405.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioEstoque" prefHeight="39.0" prefWidth="111.0" text="Estoque" wrapText="true">
+        <Button layoutX="219.0" layoutY="430.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioEstoque" prefHeight="39.0" prefWidth="111.0" text="Estoque" wrapText="true">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -45,17 +45,37 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <DatePicker fx:id="txtDataInicio" disable="true" layoutX="165.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" visible="false" />
-        <DatePicker fx:id="txtDataFim" disable="true" layoutX="366.0" layoutY="275.0" prefHeight="39.0" prefWidth="176.0" visible="false" />
-        <Button layoutX="383.0" layoutY="405.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioPedidos" prefHeight="39.0" prefWidth="111.0" text="Pedidos" wrapText="true">
+        <DatePicker fx:id="txtDataInicio" editable="false" layoutX="141.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
+        <DatePicker fx:id="txtDataFim" editable="false" layoutX="391.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
+        <Button layoutX="383.0" layoutY="430.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioPedidos" prefHeight="39.0" prefWidth="111.0" text="Pedidos" wrapText="true">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Label layoutX="274.0" layoutY="350.0" text="Gerar o relatório de:">
+        <Label layoutX="274.0" layoutY="372.0" text="Gerar o relatório de:">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
+      <Label layoutX="176.0" layoutY="206.0" text="Escolha o período que deseja ter o relatório">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="306.0" text="De">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="464.0" layoutY="306.0" text="Até">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="307.0" layoutY="333.0" mnemonicParsing="false" onAction="#acaoHoje" prefHeight="27.0" prefWidth="101.0" text="Hoje">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

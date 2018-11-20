@@ -3,6 +3,7 @@ package sample.TelaComanda;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import sample.ConexaoBanco;
 import sample.Main;
 import sample.TelaGarcom.TelaAvisosController;
@@ -17,23 +18,28 @@ public class TelaPagamentoController {
     private TelaAvisosController telaAviso = new TelaAvisosController();
     public static String precoTotal;
     @FXML
-    private Label labelPagamento,labelFinalizado,labelInfo,labelValorTotal,labelPrecoTotal;
+    private Label labelPagamento,labelFinalizado,labelInfo,labelValorTotal,labelPrecoTotal,labelCartao,labelDinheiro;
     @FXML
-    private Button botaoPagarCartao,botaoPagarDinheiro,botaoSair;
+    private Button botaoSair;
+    @FXML
+    private ImageView imgCartao,imgDinheiro;
 
     public void acaoPagarCartao() {
         telaAviso.insereLista(TelaPedidoController.numeroMesa,"Pagamento em cartão");
         try {
             economizaCodigo();
             fecharPedido();
-            labelPagamento.setText("Aguarde enquanto o garçom traz a máquina de cartão!");
+            labelPagamento.setText("Aguarde o garçom com a máquina de cartão!");
             labelValorTotal.setText("Valor total: R$");
             labelPrecoTotal.setText(precoTotal);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
     }
+    @FXML
+    private void acaoInfo(){
 
+    }
     private void fecharPedido(){
         try {
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
@@ -48,7 +54,7 @@ public class TelaPagamentoController {
     public void acaoPagarDinheiro() {
         try {
             economizaCodigo();
-            labelPagamento.setText("Por favor dirija-se ao balcão para realizar o pagamento!");
+            labelPagamento.setText("Por favor dirija-se ao caixa para o pagamento!");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
@@ -62,13 +68,17 @@ public class TelaPagamentoController {
             ps.executeUpdate();
             TelaPedidoController.numeroComanda = null;
             TelaComandaController.numeroComanda = 0;
-            botaoPagarCartao.setDisable(true);
-            botaoPagarCartao.setVisible(false);
-            botaoPagarDinheiro.setDisable(true);
-            botaoPagarDinheiro.setVisible(false);
+            imgCartao.setDisable(true);
+            imgCartao.setVisible(false);
+            imgDinheiro.setDisable(true);
+            imgDinheiro.setVisible(false);
             botaoSair.setVisible(true);
             botaoSair.setDisable(false);
             labelInfo.setVisible(false);
+            labelCartao.setDisable(true);
+            labelDinheiro.setVisible(false);
+            labelDinheiro.setDisable(true);
+            labelCartao.setVisible(false);
             labelFinalizado.setText("FINALIZADO");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e);

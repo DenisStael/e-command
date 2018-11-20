@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.*;
 import sample.TelaGarcom.TelaAvisosController;
 import sample.TelaPedido.TelaPedidoController;
