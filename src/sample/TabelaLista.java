@@ -2,8 +2,6 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
@@ -15,8 +13,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
-import sample.TelaVisualizarCardapio.TelaVisualizarCardapioController;
-
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

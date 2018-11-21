@@ -65,4 +65,8 @@ public class TelaGerenteController extends Logout {
     public void acaoEmitirRelatorio() throws IOException {
         Main.trocaTela("TelaGerente/telaRelatorioPrincipal.fxml");
     }
+
+    public void acaoVerAvaliacoes() throws IOException {
+        Main.trocaTela("TelaGerente/telaVisualizarAvaliacao.fxml");
+    }
 }

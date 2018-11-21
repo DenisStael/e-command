@@ -53,11 +53,11 @@ public class TelaAvaliacao implements Initializable {
         ratingAplicativo.getStyleClass().add("rating");
         ratingComida.getStyleClass().add("rating");
         ratingAtendimento.setLayoutX(260);
-        ratingAtendimento.setLayoutY(118);
+        ratingAtendimento.setLayoutY(113);
         ratingAplicativo.setLayoutX(260);
-        ratingAplicativo.setLayoutY(180);
+        ratingAplicativo.setLayoutY(175);
         ratingComida.setLayoutX(260);
-        ratingComida.setLayoutY(245);
+        ratingComida.setLayoutY(238);
         pane.getChildren().addAll(ratingAtendimento, ratingAplicativo, ratingComida);
     }
 }
