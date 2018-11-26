@@ -7,14 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
 import sample.Avaliacao;
 import sample.ConexaoBanco;
-import sample.FormataPreco;
 import sample.Main;
-import sun.misc.FormattedFloatingDecimal;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -30,7 +29,7 @@ public class TelaVisualizarAvaliacaoController implements Initializable{
     @FXML
     private Label labelMedia, labelAtendimento, labelComida, labelAplicativo;
     @FXML
-    private ListView listaComentarios;
+    private ListView<GridPane> listaComentarios;
     @FXML
     private AnchorPane paneMedia, paneAvaliacoes;
 
@@ -51,6 +50,56 @@ public class TelaVisualizarAvaliacaoController implements Initializable{
         }
     }
 
+    private void criaGridPane(ObservableList<Avaliacao> lista){
+        ObservableList<GridPane> listaGridpane = FXCollections.observableArrayList();
+        for(int i = 0; i < lista.size(); i++) {
+            if(lista.get(i).getComentario() != null){
+                GridPane gridPane = new GridPane();
+                gridPane.getColumnConstraints().add(new ColumnConstraints(75));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(155));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(60));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(145));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(95));
+                gridPane.getColumnConstraints().add(new ColumnConstraints(140));
+                gridPane.getStyleClass().add("gridPane");
+                //gridPane.setGridLinesVisible(true);
+                Rating notaAtendimento = new Rating();
+                notaAtendimento.setRating(lista.get(i).getNota_atendimento());
+                notaAtendimento.setDisable(true);
+                Rating notaComida = new Rating();
+                notaComida.setRating(lista.get(i).getNota_comida());
+                notaComida.setDisable(true);
+                Rating notaAplicativo = new Rating();
+                notaAplicativo.setRating(lista.get(i).getNota_aplicativo());
+                notaAplicativo.setDisable(true);
+                Label comentario = new Label();
+                comentario.setText(lista.get(i).getComentario());
+                comentario.getStyleClass().add("text");
+                comentario.setMaxWidth(700);
+                comentario.setWrapText(true);
+                Label labelAtend = new Label("Atendimento:");
+                labelAtend.getStyleClass().add("title");
+                Label labelCom = new Label("Comida:");
+                labelCom.getStyleClass().add("title");
+                Label labelAplic = new Label("Aplicativo:");
+                labelAplic.getStyleClass().add("title");
+                gridPane.add(comentario, 0,1,6,1);
+                gridPane.add(labelAplic,0,0);
+                gridPane.add(notaAplicativo,1,0);
+                gridPane.add(labelCom,2,0);
+                gridPane.add(notaComida,3,0);
+                gridPane.add(labelAtend,4,0);
+                gridPane.add(notaAtendimento,5,0);
+                listaGridpane.add(gridPane);
+            }
+        }
+        listaComentarios.setItems(listaGridpane);
+    }
+
+    public void acaoVoltar() throws IOException {
+        Main.trocaTela("TelaGerente/telaGerente.fxml");
+    }
+
     private float calculaMedia(){
         float media, mediaTotal = 0f, soma;
 
@@ -62,16 +111,49 @@ public class TelaVisualizarAvaliacaoController implements Initializable{
             mediaTotal += media;
         }
 
-        return mediaTotal / listaAvaliacao.size();
+        if(mediaTotal != 0){
+            return mediaTotal / listaAvaliacao.size();
+        } else
+            return mediaTotal;
     }
 
-    private void criaGridPane(ObservableList lista){
-        GridPane gridPane = new GridPane();
+    private float calculaMediaAtendimento(){
+        float soma = 0f;
 
+        for(int i = 0; i < listaAvaliacao.size(); i++){
+            soma += listaAvaliacao.get(i).getNota_atendimento();
+        }
+
+        if(soma != 0){
+            return soma / listaAvaliacao.size();
+        } else
+            return soma;
     }
 
-    public void acaoVoltar() throws IOException {
-        Main.trocaTela("TelaGerente/telaGerente.fxml");
+    private float calculaMediaAplicativo(){
+        float soma = 0f;
+
+        for(int i = 0; i < listaAvaliacao.size(); i++){
+            soma += listaAvaliacao.get(i).getNota_aplicativo();
+        }
+
+        if(soma != 0){
+            return soma / listaAvaliacao.size();
+        } else
+            return soma;
+    }
+
+    private float calculaMediaComida(){
+        float soma = 0f;
+
+        for(int i = 0; i < listaAvaliacao.size(); i++){
+            soma += listaAvaliacao.get(i).getNota_comida();
+        }
+
+        if(soma != 0){
+            return soma / listaAvaliacao.size();
+        } else
+            return soma;
     }
 
     @Override
@@ -92,25 +174,40 @@ public class TelaVisualizarAvaliacaoController implements Initializable{
         ratingAtendimento.setPartialRating(true);
         ratingAtendimento.setDisable(true);
 
-        ratingAplicativo.getStylesheets().add("sample/css/telaAvaliacao.css");
-        ratingAplicativo.getStyleClass().add("rating");
-        ratingAplicativo.setLayoutX(350);
-        ratingAplicativo.setLayoutY(126);
-        ratingAplicativo.setPartialRating(true);
-        ratingAplicativo.setDisable(true);
-
         ratingComida.getStylesheets().add("sample/css/telaAvaliacao.css");
         ratingComida.getStyleClass().add("rating");
         ratingComida.setLayoutX(350);
-        ratingComida.setLayoutY(240);
+        ratingComida.setLayoutY(126);
         ratingComida.setPartialRating(true);
         ratingComida.setDisable(true);
 
+        ratingAplicativo.getStylesheets().add("sample/css/telaAvaliacao.css");
+        ratingAplicativo.getStyleClass().add("rating");
+        ratingAplicativo.setLayoutX(350);
+        ratingAplicativo.setLayoutY(240);
+        ratingAplicativo.setPartialRating(true);
+        ratingAplicativo.setDisable(true);
+
         paneAvaliacoes.getChildren().addAll(ratingAplicativo,ratingAtendimento,ratingComida);
 
-        ratingMedia.setRating(calculaMedia());
-        ratingAtendimento.setRating(3.4);
-        System.out.println(calculaMedia());
-        labelMedia.setText(String.format("%.1f",calculaMedia()));
+        float media = calculaMedia();
+        ratingMedia.setRating(media);
+        labelMedia.setText(String.format("%.1f",media));
+
+        float media_atendimento = calculaMediaAtendimento();
+        ratingAtendimento.setRating(media_atendimento);
+        labelAtendimento.setText(String.format("%.1f",media_atendimento));
+
+        float media_aplicativo = calculaMediaAplicativo();
+        ratingAplicativo.setRating(media_aplicativo);
+        labelAplicativo.setText(String.format("%.1f",media_aplicativo));
+
+        float media_comida = calculaMediaComida();
+        ratingComida.setRating(media_comida);
+        labelComida.setText(String.format("%.1f",media_comida));
+
+        criaGridPane(listaAvaliacao);
+
+        listaComentarios.setFocusTraversable(false);
     }
 }

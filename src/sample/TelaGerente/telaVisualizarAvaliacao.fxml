@@ -86,7 +86,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listaComentarios" prefHeight="301.0" prefWidth="713.0" />
+                        <ListView fx:id="listaComentarios" prefHeight="301.0" prefWidth="713.0" stylesheets="@../css/listaComentarios.css" />
                      </children>
                   </AnchorPane>
             </content>
