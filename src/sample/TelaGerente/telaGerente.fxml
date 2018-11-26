@@ -29,6 +29,7 @@
             <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarCozinheiro" text="Cadastrar Cozinheiro" />
             <MenuItem mnemonicParsing="false" onAction="#acaoCadastrarGarcom" text="Cadastrar Garçom" />
             <MenuItem mnemonicParsing="false" onAction="#acaoVerComandas" text="Visualizar Comandas" />
+            <MenuItem mnemonicParsing="false" onAction="#acaoVerAvaliacoes" text="Avaliações dos clientes" />
             <MenuItem mnemonicParsing="false" onAction="#acaoEmitirRelatorio" text="Emitir Relatório" />
         </items>
          <font>

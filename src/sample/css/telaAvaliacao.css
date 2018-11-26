@@ -8,8 +8,17 @@
 .button{
     -fx-background-radius: 100;
 }
+.rating > .container > .button:disabled{
+    -fx-pref-width: 40 ;
+    -fx-pref-height: 40 ;
+    -fx-background-size: cover;
+    -fx-padding: 0;
+    -fx-opacity: 1
+}
 .rating > .container > .button{
-    -fx-pref-width: 45;
-    -fx-pref-height: 45;
+    -fx-pref-width: 45 ;
+    -fx-pref-height: 45 ;
+    -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
+
