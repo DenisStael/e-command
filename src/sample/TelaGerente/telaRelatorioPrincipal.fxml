@@ -45,8 +45,8 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <DatePicker fx:id="txtDataInicio" editable="false" layoutX="141.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
-        <DatePicker fx:id="txtDataFim" editable="false" layoutX="391.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
+        <DatePicker fx:id="txtDataInicio" layoutX="141.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
+        <DatePicker fx:id="txtDataFim" layoutX="391.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" />
         <Button layoutX="383.0" layoutY="430.0" mnemonicParsing="false" onAction="#acaoGerarRelatorioPedidos" prefHeight="39.0" prefWidth="111.0" text="Pedidos" wrapText="true">
             <font>
                 <Font name="System Bold" size="15.0" />

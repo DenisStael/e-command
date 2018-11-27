@@ -6,6 +6,7 @@
     -fx-background-color: transparent;
     -fx-padding: 15 0;
     -fx-background-insets: 0px, 2px ;
+    -fx-border-color: #5353c6;
 }
 .list-cell:empty {
     visibility:hidden;
