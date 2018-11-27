@@ -24,10 +24,9 @@
       </AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="296.0" prefWidth="604.0">
          <children>
-            <TextField fx:id="txtCodProduto" layoutX="98.0" layoutY="18.0" prefHeight="25.0" prefWidth="149.0" promptText="Codigo" />
-            <TextField fx:id="txtNomeProduto" layoutX="98.0" layoutY="54.0" prefHeight="25.0" prefWidth="149.0" promptText="Nome" />
-            <TextField fx:id="txtQtdProduto" layoutX="97.0" layoutY="94.0" prefHeight="25.0" prefWidth="82.0" promptText="Quantidade" />
-            <TextField fx:id="txtMedida" layoutX="97.0" layoutY="132.0" prefHeight="25.0" prefWidth="68.0" promptText="Kg, Lt, Un" />
+            <TextField fx:id="txtCodProduto" layoutX="98.0" layoutY="18.0" prefHeight="30.0" prefWidth="149.0" promptText="Codigo" />
+            <TextField fx:id="txtNomeProduto" layoutX="98.0" layoutY="60.0" prefHeight="30.0" prefWidth="149.0" promptText="Nome" />
+            <TextField fx:id="txtQtdProduto" layoutX="117.0" layoutY="105.0" prefHeight="30.0" prefWidth="131.0" promptText="Quantidade" />
             <TextArea fx:id="txtDescricao" layoutX="277.0" layoutY="54.0" prefHeight="71.0" prefWidth="348.0" />
             <TextField fx:id="txtPesquisar" layoutX="183.0" layoutY="218.0" prefHeight="25.0" prefWidth="131.0" promptText="Digite sua pesquisa" />
             <TableView fx:id="tabelaProdutos" layoutX="-3.0" layoutY="256.0" onMouseClicked="#acaoClicarTabela" prefHeight="168.0" prefWidth="723.0">
@@ -39,12 +38,12 @@
                   <TableColumn fx:id="colunaMedida" prefWidth="70.0" text="Medida" />
                </columns>
             </TableView>
-            <Label layoutX="31.0" layoutY="54.0" prefHeight="25.0" prefWidth="51.0" text="Nome:">
+            <Label layoutX="33.0" layoutY="65.0" prefHeight="25.0" prefWidth="51.0" text="Nome:">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="98.0" text="Quantidade:">
+            <Label layoutX="27.0" layoutY="110.0" text="Quantidade:">
                <font>
                   <Font size="15.0" />
                </font>
@@ -54,7 +53,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="16.0" prefHeight="30.0" prefWidth="68.0" text="Código:">
+            <Label layoutX="34.0" layoutY="17.0" prefHeight="30.0" prefWidth="68.0" text="Código:">
                <font>
                   <Font size="15.0" />
                </font>
@@ -64,7 +63,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="botaoCancelar" layoutX="451.0" layoutY="142.0" mnemonicParsing="false" onAction="#acaoLimpar" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #ff3333;" text="Limpar" textFill="WHITE">
+            <Button fx:id="botaoCancelar" layoutX="443.0" layoutY="142.0" mnemonicParsing="false" onAction="#acaoLimpar" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #ff3333;" text="Limpar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -74,7 +73,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="botaoAttProduto" layoutX="189.0" layoutY="142.0" mnemonicParsing="false" onAction="#acaoAttProduto" prefHeight="30.0" prefWidth="77.0" text="Atualizar">
+            <Button fx:id="botaoAttProduto" layoutX="559.0" layoutY="142.0" mnemonicParsing="false" onAction="#acaoAttProduto" prefHeight="30.0" prefWidth="77.0" text="Atualizar">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -85,11 +84,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="132.0" text="Medida:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
+            <RadioButton fx:id="radioKilo" layoutX="66.0" layoutY="149.0" mnemonicParsing="false" text="Kg">
+               <toggleGroup>
+                  <ToggleGroup fx:id="unidadeMedida" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="radioUnidade" layoutX="129.0" layoutY="149.0" mnemonicParsing="false" text="Un" toggleGroup="$unidadeMedida" />
+            <RadioButton fx:id="radioLitro" layoutX="194.0" layoutY="149.0" mnemonicParsing="false" text="Lt" toggleGroup="$unidadeMedida" />
          </children>
       </AnchorPane>
    </items>

@@ -1,5 +1,6 @@
 package sample.TelaGerenciarEstoque;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -18,13 +19,15 @@ public class TelaGerenciarEstoqueController implements Initializable {
     private String sql = "select * from produto order by codproduto;"; //String sql
     //Atributos da tela
     @FXML
-    private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar, txtMedida; //Caixas de texto
+    private TextField txtNomeProduto,txtQtdProduto, txtCodProduto, txtPesquisar; //Caixas de texto
     @FXML
     private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade, colunaMedida; //Colunas da tabela
     @FXML
     private TableView<Produto> tabelaProdutos; //Tabela
     @FXML
     private TextArea txtDescricao; //Caixa de texto
+    @FXML
+    private RadioButton radioKilo, radioUnidade, radioLitro;
 
     //Método de voltar para tela anterior
     public void acaoVoltar() throws IOException {
@@ -35,7 +38,8 @@ public class TelaGerenciarEstoqueController implements Initializable {
     public void acaoLimpar() {
         txtCodProduto.clear(); txtDescricao.clear();
         txtNomeProduto.clear(); txtQtdProduto.clear();
-        txtPesquisar.clear(); txtMedida.clear();
+        txtPesquisar.clear(); radioKilo.setSelected(false);
+        radioLitro.setSelected(false); radioUnidade.setSelected(false);
     }
 
     //Método de remover os produtos do banco
@@ -64,7 +68,8 @@ public class TelaGerenciarEstoqueController implements Initializable {
     //Método de atualizar produtos
     public void acaoAttProduto() {
             if(!txtCodProduto.getText().isEmpty()){
-                if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty()){
+                if(!txtNomeProduto.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() &&
+                        (radioLitro.isSelected() || radioKilo.isSelected() || radioUnidade.isSelected())){
                     try {
                         //Cria declaração sql
                         PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("UPDATE Produto set descricao = ? ,nome = ? ,quantidade = ?, medida = ? WHERE codproduto = ? ;");
@@ -73,7 +78,13 @@ public class TelaGerenciarEstoqueController implements Initializable {
                         ps.setString(1, txtDescricao.getText());
                         ps.setString(2, txtNomeProduto.getText());
                         ps.setFloat(3, Float.parseFloat(txtQtdProduto.getText()));
-                        ps.setString(4, txtMedida.getText());
+                        if(radioUnidade.isSelected()){
+                            ps.setString(4, "Un");
+                        } else if(radioKilo.isSelected()){
+                            ps.setString(4, "Kg");
+                        } else if(radioLitro.isSelected()){
+                            ps.setString(4, "Lt");
+                        }
                         ps.setInt(5, Integer.parseInt(txtCodProduto.getText()));
                         ps.executeUpdate(); // Executa a declaração sql
 
@@ -101,7 +112,13 @@ public class TelaGerenciarEstoqueController implements Initializable {
         txtNomeProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getNome());
         txtDescricao.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getDescricao());
         txtQtdProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getQuantidade());
-        txtMedida.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getMedida());
+        if(tabelaProdutos.getSelectionModel().getSelectedItem().getMedida().equals("Kg")){
+            radioKilo.setSelected(true);
+        } else if(tabelaProdutos.getSelectionModel().getSelectedItem().getMedida().equals("Lt")){
+            radioLitro.setSelected(true);
+        }else if(tabelaProdutos.getSelectionModel().getSelectedItem().getMedida().equals("Un")){
+            radioUnidade.setSelected(true);
+        }
         txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodproduto());
     }
 

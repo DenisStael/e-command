@@ -19,13 +19,15 @@ public class TelaCadastrarProdutoController implements Initializable {
 
     //Atributos da tela
     @FXML
-    private TextField txtQtdProduto, txtNomeProduto, txtUnidadeMedida; //caixas de texto
+    private TextField txtQtdProduto, txtNomeProduto; //caixas de texto
     @FXML
     private TableColumn colunaProd, colunaDescricao, colunaCod, colunaQuantidade, colunaMedida; //Colunas da tabela que serão preenchidas com atributos de produto
     @FXML
     private TableView tabelaProdutos; //Tabela que será mostrada na tela com os produtos cadastrados no banco
     @FXML
     private TextArea txtDescricao;
+    @FXML
+    private RadioButton radioLitro, radioUnidade, radioKilo;
 
     //método voltar pra tela anterior
     public void acaoVoltar() throws IOException {
@@ -36,7 +38,8 @@ public class TelaCadastrarProdutoController implements Initializable {
     public void acaoCdProduto() {
 
         //checa se todos os campos foram preenchidos
-        if(!txtNomeProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() && !txtUnidadeMedida.getText().isEmpty()){
+        if(!txtNomeProduto.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtQtdProduto.getText().isEmpty() &&
+                (radioKilo.isSelected() || radioLitro.isSelected() || radioUnidade.isSelected())){
             try {
                 //Declaração SQL pra inserção no banco
                 PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
@@ -46,7 +49,13 @@ public class TelaCadastrarProdutoController implements Initializable {
                 ps.setString(1, txtNomeProduto.getText());
                 ps.setFloat(2, Float.parseFloat(txtQtdProduto.getText()));
                 ps.setString(3, txtDescricao.getText());
-                ps.setString(4, txtUnidadeMedida.getText());
+                if(radioUnidade.isSelected()){
+                    ps.setString(4, "Un");
+                } else if(radioLitro.isSelected()){
+                    ps.setString(4, "Lt");
+                } else if(radioKilo.isSelected()){
+                    ps.setString(4, "Kg");
+                }
 
                 ps.executeUpdate();//Executa a declaração SQL
 
@@ -71,7 +80,9 @@ public class TelaCadastrarProdutoController implements Initializable {
         txtQtdProduto.clear();
         txtDescricao.clear();
         txtNomeProduto.clear();
-        txtUnidadeMedida.clear();
+        radioKilo.setSelected(false);
+        radioLitro.setSelected(false);
+        radioUnidade.setSelected(false);
     }
 
     //Método que é executado assim que a tela é exibida

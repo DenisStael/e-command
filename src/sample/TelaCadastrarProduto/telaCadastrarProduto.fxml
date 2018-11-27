@@ -35,7 +35,6 @@
             </TableView>
             <TextField fx:id="txtNomeProduto" layoutX="87.0" layoutY="51.0" />
             <TextField fx:id="txtQtdProduto" layoutX="354.0" layoutY="50.0" prefHeight="25.0" prefWidth="85.0" />
-            <TextField fx:id="txtUnidadeMedida" layoutX="597.0" layoutY="50.0" prefHeight="25.0" prefWidth="77.0" promptText="Kg, Lt, Un" />
             <TextArea fx:id="txtDescricao" layoutX="88.0" layoutY="82.0" prefHeight="73.0" prefWidth="586.0" wrapText="true" />
             <Label layoutX="24.0" layoutY="52.0" text="Nome:">
                <font>
@@ -76,11 +75,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="453.0" layoutY="52.0" text="Unidade de medida:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
+            <RadioButton fx:id="radioKilo" layoutX="474.0" layoutY="52.0" mnemonicParsing="false" text="Kg">
+               <toggleGroup>
+                  <ToggleGroup fx:id="unidadeMedida" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="radioUnidade" layoutX="542.0" layoutY="52.0" mnemonicParsing="false" text="Un" toggleGroup="$unidadeMedida" />
+            <RadioButton fx:id="radioLitro" layoutX="608.0" layoutY="52.0" mnemonicParsing="false" text="Lt" toggleGroup="$unidadeMedida" />
          </children>
       </AnchorPane>
    </items>
