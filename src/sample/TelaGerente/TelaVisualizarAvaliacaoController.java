@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import org.controlsfx.control.Rating;
 import sample.Avaliacao;
 import sample.ConexaoBanco;
