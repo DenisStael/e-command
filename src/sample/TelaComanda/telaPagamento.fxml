@@ -10,43 +10,52 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #5353c6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaComanda.TelaPagamentoController">
    <children>
-      <Label fx:id="labelPagamento" alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="295.0" prefHeight="46.0" prefWidth="265.0" wrapText="true">
+      <Label fx:id="labelPagamento" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="293.0" prefHeight="81.0" prefWidth="597.0" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="215.0" layoutY="248.0" prefHeight="55.0" prefWidth="291.0" text="Favor escolha o método de pagamento:">
+      <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="131.0" layoutY="215.0" prefHeight="55.0" prefWidth="489.0" text="Favor escolha o método de pagamento:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="labelFinalizado" alignment="CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="174.0" prefHeight="40.0" prefWidth="191.0" wrapText="true">
+      <Label fx:id="labelFinalizado" alignment="CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="174.0" prefHeight="40.0" prefWidth="216.0" wrapText="true">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Button fx:id="botaoSair" disable="true" layoutX="308.0" layoutY="228.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 100;" text="Sair" visible="false" />
-      <Label fx:id="labelValorTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="266.0" prefHeight="29.0" prefWidth="100.0">
+      <Button fx:id="botaoSair" disable="true" layoutX="319.0" layoutY="449.0" mnemonicParsing="false" onAction="#acaoSair" prefHeight="44.0" prefWidth="85.0" style="-fx-background-radius: 100;" text="Sair" visible="false">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="20.0" />
+         </font></Button>
+      <Label fx:id="labelValorTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="270.0" prefHeight="29.0" prefWidth="124.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelPrecoTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="366.0" layoutY="271.0" prefHeight="20.0" prefWidth="60.0">
+      <Label fx:id="labelPrecoTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="272.0" prefHeight="27.0" prefWidth="85.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgCartao" fitHeight="78.0" fitWidth="87.0" layoutX="248.0" layoutY="338.0" onMouseClicked="#acaoPagarCartao" onMouseDragEntered="#acaoInfo" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgCartao" fitHeight="99.0" fitWidth="134.0" layoutX="213.0" layoutY="318.0" onMouseClicked="#acaoPagarCartao" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/cartao.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgDinheiro" fitHeight="99.0" fitWidth="126.0" layoutX="377.0" layoutY="328.0" onMouseClicked="#acaoPagarDinheiro" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgDinheiro" fitHeight="124.0" fitWidth="155.0" layoutX="403.0" layoutY="305.0" onMouseClicked="#acaoPagarDinheiro" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/dinheiro.png" />
          </image>
       </ImageView>
-      <Label fx:id="labelCartao" layoutX="266.0" layoutY="407.0" prefHeight="20.0" prefWidth="42.0" text="Cartão" />
-      <Label fx:id="labelDinheiro" layoutX="403.0" layoutY="408.0" text="Dinheiro" />
+      <Label fx:id="labelCartao" layoutX="239.0" layoutY="408.0" prefHeight="27.0" prefWidth="60.0" text="Cartão">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="labelDinheiro" layoutX="431.0" layoutY="407.0" text="Dinheiro">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>

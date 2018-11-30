@@ -29,17 +29,14 @@ public class TelaPagamentoController {
         try {
             economizaCodigo();
             fecharPedido();
-            labelPagamento.setText("Aguarde o garçom com a máquina de cartão!");
+            labelPagamento.setText("Favor aguarde na mesa enquanto o garçom traz a máquina de cartão!");
             labelValorTotal.setText("Valor total: R$");
             labelPrecoTotal.setText(precoTotal);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
     }
-    @FXML
-    private void acaoInfo(){
 
-    }
     private void fecharPedido(){
         try {
             PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement
@@ -54,7 +51,7 @@ public class TelaPagamentoController {
     public void acaoPagarDinheiro() {
         try {
             economizaCodigo();
-            labelPagamento.setText("Por favor dirija-se ao caixa para o pagamento!");
+            labelPagamento.setText("Por favor dirija-se ao caixa para realizar o pagamento!");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e);
         }
