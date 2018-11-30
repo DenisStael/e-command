@@ -35,11 +35,6 @@ public class TelaRelatorioController {
     }
 
     public void acaoGerarRelatorioEstoque() {
-        LocalDate data = txtDataInicio.getValue();
-        LocalDate data2 = txtDataFim.getValue();
-
-        if (data != null && data2 != null) {
-            if ((data.isEqual(data2) || data.isBefore(data2))) {
                 Document doc = new Document();
                 FileChooser f = new FileChooser();
                 f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
@@ -93,16 +88,6 @@ public class TelaRelatorioController {
                     alert.setHeaderText("Defina um lugar para salvar o Relarório!");
                     alert.show();
                 }
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("A data de inicio não pode ser depois da data de fim");
-                alert.show();
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("As datas não podem ficar vazias!");
-            alert.show();
-        }
     }
 
     public void acaoGerarRelatorioPedidos() {

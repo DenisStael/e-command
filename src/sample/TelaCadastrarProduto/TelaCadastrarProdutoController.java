@@ -60,19 +60,30 @@ public class TelaCadastrarProdutoController implements Initializable {
                 ps.executeUpdate();//Executa a declaração SQL
 
                 //Mensagem de Sucesso
-                JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Produto cadastrado!");
+                alert.show();
+                //JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
 
                 //Chama o método mostraTabela da classe TabelaProduto para mostrar os produtos cadastrados no banco na tabela
                 tabelaProduto.mostraTabela(tabelaProdutos,colunaProd,colunaDescricao,colunaCod,colunaQuantidade,colunaMedida,sql);
             } catch (Exception e) {
                 //Mensagem de erro
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Erro ao cadastrar produto!\nErro: "+e);
+                alert.show();
+                //JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!\nErro: " + e);
             }
             //Limpa os campos de texto
             acaoCancelar();
 
         //Mensagem caso os campos não tenham todos sidos preenchidos
-        } else JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Preencha todos os campos!");
+            alert.show();
+            //JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }
     }
 
     //Método que limpa os campos de texto na tela

@@ -3,6 +3,7 @@ package sample.TelaCadastroMesa;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -37,7 +38,9 @@ public class TelaCadastroMesaController implements Initializable {
 
             labelNumeroMesas.setText(Integer.toString(numeroMesas()));
             txtNumeroMesas.clear();
-            JOptionPane.showMessageDialog(null,"Mesas Cadastradas!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Mesas cadastradas!");
+            alert.show();
         } catch (SQLException e) {
             e.printStackTrace();
         }

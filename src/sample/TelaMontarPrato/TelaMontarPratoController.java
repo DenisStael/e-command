@@ -95,12 +95,21 @@ public class TelaMontarPratoController implements Initializable {
                 insereImagem();
 
                 tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
-                JOptionPane.showMessageDialog(null, "Prato Cadastrado!");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Prato cadastrado!");
+                alert.show();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar prato!\n"+e); //mensagem de sucesso
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Erro ao cadastrar prato!\nErro: "+e);
+                alert.show();
+                 //mensagem de erro
             }
             //mensagem de erro
-        }else JOptionPane.showMessageDialog(null, "Preencha todos os campos para adicionar!");
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Preencha todos os campos para adiconar!");
+            alert.show();
+        }
     }
 
     private void insereImagem(){

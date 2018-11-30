@@ -2,6 +2,7 @@ package sample.TelaCozinheiro;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,7 +36,9 @@ public class TelaInformacaoCozinheiroController implements Initializable {
             botaoAtenderPedido.setDisable(true);
             botaoAtenderPedido.setText("Pedido Atendido");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro ao atender pedido!\n"+e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Erro ao atender pedido!\n"+e);
+            alert.show();
         }
     }
 

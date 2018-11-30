@@ -2,10 +2,7 @@ package sample.TelaEditarPrato;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -44,13 +41,13 @@ public class TelaEditarPratoController implements Initializable {
     }
 
     public void acaoPesquisar() {
-        String sqlPesquisa = "select * from prato where nome ilike '%"+txtPesquisa.getText()+"%';";
-        tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sqlPesquisa);
+        String sqlPesquisa = "select * from prato where nome ilike '%" + txtPesquisa.getText() + "%';";
+        tabelaPrato.mostraTabelaPratos(tabelaPratos, colunaPratos, colunaDescricao, colunaCodigo, colunaPreco, sqlPesquisa);
     }
 
     //método que preenche os campos de texto com as informaçoes ao selecionar o prato na tabela
-    public void clicarTabela(){
-        if(tabelaPratos.getSelectionModel().getSelectedItem() != null){
+    public void clicarTabela() {
+        if (tabelaPratos.getSelectionModel().getSelectedItem() != null) {
             txtNome.setText(tabelaPratos.getSelectionModel().getSelectedItem().getNome());
             txtCodigo.setText(tabelaPratos.getSelectionModel().getSelectedItem().getCodprato());
             txtDescricao.setText(tabelaPratos.getSelectionModel().getSelectedItem().getDescricao());
@@ -60,19 +57,19 @@ public class TelaEditarPratoController implements Initializable {
         }
     }
 
-    private void insereImagem(){
-        imgProduto.setImage(new Image("file:///"+caminhoFoto));
+    private void insereImagem() {
+        imgProduto.setImage(new Image("file:///" + caminhoFoto));
     }
 
-    private void limpaImagem(){
+    private void limpaImagem() {
         imgProduto.setImage(new Image(getClass().getResourceAsStream("../img/sem_imagem.png")));
     }
 
     //Método para atualizar os pratos
-    public void acaoAtualizar(){
-        if(!txtCodigo.getText().isEmpty()){ //verifica se o campo do código não está vazio
+    public void acaoAtualizar() {
+        if (!txtCodigo.getText().isEmpty()) { //verifica se o campo do código não está vazio
             //verifica se todos os campos de texto estão preenchidos
-            if(!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty() && caminhoFoto != null){
+            if (!txtNome.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtDescricao.getText().isEmpty() && !txtPreco.getText().isEmpty() && caminhoFoto != null) {
                 try {
                     //Cria declaração sql
                     PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement("UPDATE Prato set descricao = ? ,nome = ? ,preco = ? , imagem = ? WHERE codprato = ?;");
@@ -86,17 +83,31 @@ public class TelaEditarPratoController implements Initializable {
                     ps.executeUpdate(); // Executa a declaração sql
 
                     //Chama método mostraTabela com passagem de parâmetros da tabela, colunas e String sql que será executada
-                    tabelaPrato.mostraTabelaPratos(tabelaPratos,colunaPratos,colunaDescricao,colunaCodigo,colunaPreco,sql);
+                    tabelaPrato.mostraTabelaPratos(tabelaPratos, colunaPratos, colunaDescricao, colunaCodigo, colunaPreco, sql);
                     acaoLimpar();
-                    JOptionPane.showMessageDialog(null, "Produto Atualizado!");//Mensagem de Sucesso
-                }
-                catch(SQLException e) {
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Produto atualizado!");
+                    alert.show();//Mensagem de Sucesso
+
+                } catch (SQLException e) {
                     //Mensagem de erro
-                    JOptionPane.showMessageDialog(null, "Erro ao Atualizar prato!\nErro: " + e);
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("Erro ao atualizar produto!\nErro: " + e);
+                    alert.show();
                 }
-            } else JOptionPane.showMessageDialog(null,"Preencha todos os campos para atualizar!");
-        } else JOptionPane.showMessageDialog(null,"Insira o código do prato que deseja atualizar!");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Preencha todos os campos para atualizar!");
+                alert.show();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Insira o código do prato que deseja atualizar!");
+            alert.show();
+        }
     }
+
 
     public void acaoRemover(){
         if(!txtCodigo.getText().isEmpty()){
